@@ -1,0 +1,14 @@
+Useful code for JavaFX:
+- scene.setCursor(Cursor.CROSSHAIR); // Change mouse image
+- switch(event.getCode().getCode()) {}); // Get key input
+- primaryStage.setFullScreen(true);
+- stage.initModality(Modality.APPLICATION_MODAL); // Create pop out window
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 

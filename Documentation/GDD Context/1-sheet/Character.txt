@@ -1,0 +1,10 @@
+Name: Lings
+
+Background:
+- A average high-school students
+
+Personality:
+- Lively
+- Joyless
+- Kind
+

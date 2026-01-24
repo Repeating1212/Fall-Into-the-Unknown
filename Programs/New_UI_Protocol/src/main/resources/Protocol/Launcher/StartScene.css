@@ -1,0 +1,20 @@
+.main-button {
+    -fx-background-radius: 15;
+    -fx-font-size: 24px;
+    -fx-pref-height: 100;
+    -fx-pref-width: 275;
+    -fx-background-color: #E6E6E6;
+    -fx-font-family: Verdana;
+}
+
+.text{
+    -fx-font-family: Verdana;
+}
+
+.title-text{
+    -fx-font-size: 48;
+}
+
+.subtitle-text{
+    -fx-font-size: 24;
+}

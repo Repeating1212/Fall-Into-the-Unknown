@@ -1,0 +1,70 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.2 Chrome/134.0.6998.178 Electron/35.1.2 Safari/537.36" version="26.2.2">
+  <diagram name="Page-1" id="oXe6dUu0YJytnaqvEuzG">
+    <mxGraphModel dx="1427" dy="2173" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-14" value="ArcSupplier" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="40" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-15" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-14">
+          <mxGeometry y="26" width="300" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-16" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-14">
+          <mxGeometry y="52" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-5" value="&lt;div style=&quot;line-height: 180%;&quot;&gt;+ getArc(double radius, double angle): Arc&lt;br&gt;• Creates a semi-transparent red arc for visual effects&lt;br&gt;    • Parameters: radius, angle (spread angle)&lt;br&gt;    • Returns: JavaFX Arc with predefined styling&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-14">
+          <mxGeometry y="60" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-18" value="CoinSupplier" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-19" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-18">
+          <mxGeometry y="26" width="300" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-20" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-18">
+          <mxGeometry y="52" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-6" value="&lt;div style=&quot;line-height: 180%;&quot;&gt;+ getProperty(double x, double y): BasePrt&lt;br&gt;    • Creates a coin entity at specified coordinates&lt;br&gt;• Uses CoinConfig for dimensions and speed&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-18">
+          <mxGeometry y="60" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-22" value="StakeSupplier" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="680" width="300" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-23" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-22">
+          <mxGeometry y="26" width="300" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-24" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-22">
+          <mxGeometry y="52" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-9" value="&lt;div style=&quot;line-height: 180%;&quot;&gt;- Methods:&lt;br&gt;  + getProperty(): BasePrt&lt;br&gt;    • Creates stake entity with position from StakeConfig&lt;br&gt;    • Uses StakeConfig for dimensions and speed&lt;br&gt;&lt;br&gt;  + getHealth(): HealthPrt&lt;br&gt;    • Creates health component for stake&lt;br&gt;    • Uses StakeConfig.INITIAL_HEALTH&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-22">
+          <mxGeometry y="60" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-26" value="GuardSupplier" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="280" width="300" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-27" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-26">
+          <mxGeometry y="26" width="300" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-28" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-26">
+          <mxGeometry y="52" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-7" value="&lt;div style=&quot;line-height: 180%;&quot;&gt;+ getProperty(): BasePrt&lt;br&gt;    • Creates guard entity with position from GuardConfig&lt;br&gt;    • Uses GuardConfig for dimensions and speed&lt;br&gt;&lt;br&gt;  + getHealth(): HealthPrt&lt;br&gt;    • Creates health component for guard&lt;br&gt;    • Uses GuardConfig.MAXIMUM_HEALTH&lt;br&gt;&lt;br&gt;  + getAttackBehaviour(BasePrt guard): AttackBehaviour&lt;br&gt;    • Creates attack behavior for guard&lt;br&gt;    • Configures: ConeAttackArea, ConeAttackVisual, CooldownSystem&lt;br&gt;    • Uses multiple GuardConfig parameters&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-26">
+          <mxGeometry y="60" width="300" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-30" value="PlayerSupplier" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="280" width="300" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-31" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-30">
+          <mxGeometry y="26" width="300" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-32" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-30">
+          <mxGeometry y="52" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="2IBXF1h9uOyU8FSa2NT3-8" value="+ getProperty(): BasePrt&#xa;    • Creates player entity with position from PlayerConfig&#xa;    • Uses PlayerConfig for dimensions and speed&#xa;  &#xa;  + initializeHealth(): void&#xa;    • Updates health display using PlayerHeartView&#xa;    • Uses PlayerConfig.MAXIMUM_HEALTH&#xa;  &#xa;  + getHealth(): HealthPrt&#xa;    • Creates health component for player&#xa;    • Uses PlayerConfig.MAXIMUM_HEALTH&#xa;  &#xa;  + getAttackBehaviour(BasePrt player): AttackBehaviour&#xa;    • Creates attack behavior for player&#xa;    • Similar to guard but with PlayerConfig parameters" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="2IBXF1h9uOyU8FSa2NT3-30">
+          <mxGeometry y="60" width="300" height="240" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
