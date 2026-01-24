@@ -178,7 +178,7 @@
                    <Text fx:id="coinDisplay" text="0" />
                </children>
             </HBox>
-            <Button fx:id="exitButton" layoutX="1084.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleExitButton" stylesheets="@LevelScene.css" text="Exit Game" />
+            <Button layoutX="1084.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleResume" stylesheets="@LevelScene.css" text="Pause Game" />
          </children>
       </AnchorPane>
    </children>

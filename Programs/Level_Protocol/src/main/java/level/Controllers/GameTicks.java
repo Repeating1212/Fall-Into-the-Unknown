@@ -2,18 +2,21 @@ package level.Controllers;
 
 import javafx.animation.AnimationTimer;
 import level.Managers.MainManager;
+import level.Managers.PlayerHandler;
 
 public class GameTicks {
 
     private AnimationTimer gameLoop;
 
     private final MainManager manager;
+    private final PlayerHandler inputHandle;
 
     private long lastUpdateTime = 0;
     private boolean isRunning = false;
 
-    public GameTicks(MainManager mainManager) {
+    public GameTicks(MainManager mainManager, PlayerHandler playerHandler) {
         manager = mainManager;
+        inputHandle = playerHandler;
     }
 
     public void start() {
@@ -25,6 +28,8 @@ public class GameTicks {
         gameLoop = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                if (!isRunning) return;
+
                 if (lastUpdateTime == 0) {
                     lastUpdateTime = now;
                     return;
@@ -38,31 +43,39 @@ public class GameTicks {
         gameLoop.start();
     }
 
-    // Not Using Code
-//    public void stop() {
-//        if (!isRunning) return;
-//
-//        isRunning = false;
-//        if (gameLoop != null) {
-//            gameLoop.stop();
-//        }
-//    }
-//
-//    public void pause() {
-//        if (gameLoop != null) {
-//            gameLoop.stop();
-//            isRunning = false;
-//        }
-//    }
-//
-//    public void resume() {
-//        if (gameLoop != null && !isRunning) {
-//            gameLoop.start();
-//            isRunning = true;
-//        }
-//    }
-//
-//    public boolean isRunning() {
-//        return isRunning;
-//    }
+    public void handlePause() {
+        if (gameLoop == null) return;
+        if (isRunning){
+            isRunning = false;
+            inputHandle.setPause();
+            lastUpdateTime = 0; // Reset when paused
+            gameLoop.stop();
+
+        } else{
+            isRunning = true;
+            inputHandle.setContinue();
+            lastUpdateTime = 0; // Reset when paused
+            gameLoop.start();
+
+        }
+    }
+
+
+    public void pause() {
+        if (gameLoop != null) {
+            gameLoop.stop();
+            isRunning = false;
+        }
+    }
+
+    public void resume() {
+        if (gameLoop != null && !isRunning) {
+            gameLoop.start();
+            isRunning = true;
+        }
+    }
+
+    public boolean isGamePause(){
+        return ! isRunning;
+    }
 }

@@ -51,7 +51,7 @@ public class Controller {
 
         playerHandler =  new PlayerHandler(sceneView.getSkillBoxView());
         mainManager = new MainManager(sceneView, playerHandler);
-        gameUpdater = new GameTicks(mainManager);
+        gameUpdater = new GameTicks(mainManager, playerHandler);
 
         gameUpdater.start();
         rootPane.requestFocus();
@@ -127,8 +127,7 @@ public class Controller {
     }
 
     @FXML
-    public void handleExitButton() {
-        Stage stage = (Stage) rootPane.getScene().getWindow();
-        stage.close();
+    private void handleResume() {
+        gameUpdater.handlePause();
     }
 }
