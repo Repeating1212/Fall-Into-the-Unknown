@@ -8,7 +8,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import level.Controllers.EndGame;
+import level.Controllers.WinController;
+import level.Controllers.GameTicks;
+import level.Controllers.PauseController;
 import level.Objects.Base_Class.DisplayableObject;
 
 
@@ -56,6 +58,14 @@ public class SceneView {
         objectList.addAll(toDisplay);
     }
 
+    public void addDebugHitBox(ArrayList<Rectangle> debugHitBox){
+        for (Rectangle rectangle : debugHitBox){
+            if (! rootPane.getChildren().contains(rectangle)) {
+                rootPane.getChildren().add(rectangle);
+            }
+        }
+    }
+
     public void setMoneyValue(int money){
         coinLabel.setText(String.valueOf(money));
     }
@@ -73,7 +83,7 @@ public class SceneView {
             winScreen.setLayoutX(200);
             winScreen.setLayoutY(85);
             rootPane.getChildren().add(winScreen);
-            EndGame endGameController = loader.getController();
+            WinController endGameController = loader.getController();
             endGameController.updateCoinLabel(coinValue);
         } catch (IOException e) {
             e.printStackTrace();
@@ -88,6 +98,23 @@ public class SceneView {
             winScreen.setLayoutX(200);
             winScreen.setLayoutY(85);
             rootPane.getChildren().add(winScreen);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showPauseScreen(GameTicks gameTicks) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("pause-screen.fxml"));
+            Pane pauseScreen = loader.load();
+            pauseScreen.setPrefHeight(500);
+            pauseScreen.setPrefWidth(800);
+            pauseScreen.setLayoutX(200);
+            pauseScreen.setLayoutY(85);
+            rootPane.getChildren().add(pauseScreen);
+            PauseController pauseGameController = loader.getController();
+            pauseGameController.setData(rootPane, gameTicks);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

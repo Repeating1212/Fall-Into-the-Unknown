@@ -5,21 +5,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class EndGame {
-
-    @FXML private Pane rootPane;
-    @FXML private Text coinLabel;
+public class PauseController {
+    @FXML
+    private Pane PauseScreen;
+    private Pane rootPane;
+    private GameTicks gameTicks;
 
     @FXML
     public void initialize() {}
 
-    public void updateCoinLabel(int coinValue){
-        coinLabel.setText(String.valueOf(coinValue));
+    public void setData(Pane rootPane, GameTicks gameTicks){
+        this.rootPane = rootPane;
+        this.gameTicks = gameTicks;
     }
 
     @FXML
@@ -43,5 +44,10 @@ public class EndGame {
         }
     }
 
-
+    @FXML
+    private void handleResumeButton() {
+        if (rootPane == null) return;
+        rootPane.getChildren().remove(PauseScreen);
+        gameTicks.handlePause();
+    }
 }

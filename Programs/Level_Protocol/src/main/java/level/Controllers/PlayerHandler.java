@@ -1,10 +1,9 @@
-package level.Managers;
+package level.Controllers;
 
 import level.Objects.Concrete_Class.Player;
 import level.View.SkillBoxView;
 
 public class PlayerHandler {
-
 
     private final SkillBoxView skillBoxView;
     private final int ATTACK_SKILL_ID = 0;

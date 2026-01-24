@@ -18,13 +18,8 @@ public class SkillBoxView {
         this.skillCooldowns = skillCooldowns;
 
         skill = new Image(getClass().getResourceAsStream("/picture/Skill/Skill.png"));
-        updateSkillCooldown();
-    }
-
-    private void updateSkillCooldown() {
-        for (int i = 0; i < 4; i++) {
-            skills[i].setImage(skill);
-        }
+        displaySkill();
+        updateSkillCooldowns(new double[] {0,0,0,0});
     }
 
     public void updateSkillSelection(int currentSkill) {
@@ -43,6 +38,13 @@ public class SkillBoxView {
         if (cooldownPercentages.length != 4) return;
         for (int i = 0;i < 4; i++ ){
             skillCooldowns[i].setWidth(cooldownPercentages[i] * skills[i].getFitWidth());
+        }
+    }
+
+    // Private Method
+    private void displaySkill() {
+        for (int i = 0; i < 4; i++) {
+            skills[i].setImage(skill);
         }
     }
 }

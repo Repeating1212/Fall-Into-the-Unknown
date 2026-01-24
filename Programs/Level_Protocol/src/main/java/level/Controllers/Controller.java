@@ -11,9 +11,8 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
+import level.MainApp;
 import level.Managers.MainManager;
-import level.Managers.PlayerHandler;
 import level.View.* ;
 import level.Objects.Base_Class.GameObject;
 
@@ -34,14 +33,12 @@ public class Controller {
     private SceneView sceneView;
     private GameTicks gameUpdater;
     private PlayerHandler playerHandler;
-    private MainManager mainManager;
 
     @FXML private Pane rootPane;
 
 
     @FXML
     public void initialize() {
-
         ImageView[] hearts = new ImageView[]{heart1, heart2, heart3, heart4, heart5, heart6, heart7, heart8};
         ImageView[] skills = new ImageView[]{skill1, skill2, skill3, skill4};
         Rectangle[] skillCooldowns = new Rectangle[] {skillCooldown1, skillCooldown2, skillCooldown3, skillCooldown4};
@@ -50,7 +47,7 @@ public class Controller {
         sceneView = new SceneView(rootPane, coinDisplay, hearts, skills, skillBackgrounds, bossHealthBar, map, skillCooldowns);
 
         playerHandler =  new PlayerHandler(sceneView.getSkillBoxView());
-        mainManager = new MainManager(sceneView, playerHandler);
+        MainManager mainManager = new MainManager(sceneView, playerHandler);
         gameUpdater = new GameTicks(mainManager, playerHandler);
 
         gameUpdater.start();
@@ -66,20 +63,17 @@ public class Controller {
         // Left click to attack
         rootPane.setOnMousePressed(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
-                handleSkillAvtivation(event);
+                handleSkillActivation(event);
             }
         });
     }
 
-
-    private void handleSkillAvtivation(MouseEvent event) {
+   private void handleSkillActivation(MouseEvent event) {
         // Convert mouse coordinates to scene coordinates
         double mouseX = event.getX();
         double mouseY = event.getY();
         playerHandler.skillActivate(mouseX, mouseY);
     }
-
-
 
     private void setupKeyboardInputOnPane() {
         rootPane.setOnKeyPressed(event -> {
@@ -119,15 +113,9 @@ public class Controller {
         event.consume(); // Prevent default behavior
     }
 
-    public void hitBoxDebug(List<GameObject> gameObjects){
-        for (GameObject object : gameObjects) {
-            rootPane.getChildren().add(object.getProperty().getDebugHitBox());
-            object.getProperty().showDebugHitBox();
-        }
-    }
-
     @FXML
     private void handleResume() {
         gameUpdater.handlePause();
+        sceneView.showPauseScreen(gameUpdater);
     }
 }

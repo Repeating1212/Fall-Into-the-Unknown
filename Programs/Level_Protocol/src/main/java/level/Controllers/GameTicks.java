@@ -2,7 +2,6 @@ package level.Controllers;
 
 import javafx.animation.AnimationTimer;
 import level.Managers.MainManager;
-import level.Managers.PlayerHandler;
 
 public class GameTicks {
 
@@ -58,24 +57,5 @@ public class GameTicks {
             gameLoop.start();
 
         }
-    }
-
-
-    public void pause() {
-        if (gameLoop != null) {
-            gameLoop.stop();
-            isRunning = false;
-        }
-    }
-
-    public void resume() {
-        if (gameLoop != null && !isRunning) {
-            gameLoop.start();
-            isRunning = true;
-        }
-    }
-
-    public boolean isGamePause(){
-        return ! isRunning;
     }
 }
