@@ -1,5 +1,7 @@
 package level.Managers;
 
+import javafx.scene.shape.Rectangle;
+import level.Controllers.PlayerHandler;
 import level.Managers.LevelData.LevelSupplier;
 import level.Objects.Base_Class.Boss;
 import level.Objects.Base_Class.GameObject;
@@ -106,5 +108,15 @@ public class MainManager {
         portal.setPosition(boss.getX(), boss.getY());
         level.addDisplay(portal);
         level.addObjects(portal);
+    }
+
+    private void addHitBoxDebug(){
+        // For Debug purpose
+        ArrayList<Rectangle> rectangles = new ArrayList<>();
+        for (GameObject object : level.getGameObjects()) {
+            rectangles.add(object.getProperty().getDebugHitBox());
+            object.getProperty().showDebugHitBox();
+        }
+        sceneView.addDebugHitBox(rectangles);
     }
 }
