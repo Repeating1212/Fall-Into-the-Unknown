@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" style="-fx-background-color: #404040;" stylesheets="@GameScene.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game_UI.Controller.GameScene">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="200.0" layoutY="575.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.25;" width="800.0" />
+      <HBox alignment="BOTTOM_LEFT" layoutX="225.0" prefWidth="200.0" spacing="100.0" stylesheets="@GameScene.css" AnchorPane.bottomAnchor="0.0">
+         <children>
+            <ImageView fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="characterIcon">
+               <image>
+                  <Image url="@Images/Character.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" stylesheets="@GameScene.css">
+               <children>
+                  <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/Attack.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+                     <image>
+                        <Image url="@Images/Defend.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+                     <image>
+                        <Image url="@Images/Flash.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+                     <image>
+                        <Image url="@Images/Attack.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+               <image>
+                  <Image url="@Images/Character.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <ImageView fitHeight="150.0" fitWidth="50.0" layoutX="1136.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/Setting.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="500.0" fitWidth="1000.0" layoutX="100.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/Map.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

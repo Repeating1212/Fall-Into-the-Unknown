@@ -1,17 +1,16 @@
-package Protocol.Launcher;
+package Game_UI;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class MainApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Load the FXML file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("StartScene/StartScene.fxml"));
         Parent root = loader.load();
 
         // Set up the stage

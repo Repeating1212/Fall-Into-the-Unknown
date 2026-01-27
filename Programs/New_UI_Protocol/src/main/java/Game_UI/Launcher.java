@@ -1,4 +1,4 @@
-package Protocol.Launcher;
+package Game_UI;
 
 import javafx.application.Application;
 
