@@ -12,7 +12,6 @@ import java.io.IOException;
 
 public class StartScene {
 
-
     @FXML
     public void test(ActionEvent event) {
         System.out.println("Test");
