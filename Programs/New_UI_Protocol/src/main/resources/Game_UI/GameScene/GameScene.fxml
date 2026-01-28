@@ -64,31 +64,31 @@
          <children>
             <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#676767" height="120.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0" y="-5.0" />
             <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" height="120.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: 0.25;" width="800.0" />
-            <HBox alignment="TOP_CENTER" prefWidth="800.0" spacing="100.0" stylesheets="@GameScene.css">
+            <HBox alignment="TOP_CENTER" prefWidth="800.0" stylesheets="@GameScene.css">
                <children>
                   <ImageView fitWidth="90.0" pickOnBounds="true" preserveRatio="true" styleClass="characterIcon">
                      <image>
-                        <Image url="@Images/Icons/Untitled%20135.png" />
+                        <Image url="@Images/Icons/Character.png" />
                      </image>
                   </ImageView>
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" stylesheets="@GameScene.css">
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" stylesheets="@GameScene.css">
                      <children>
-                        <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Images/Icons/Cmp_Attack.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+                        <ImageView fitWidth="70.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
                            <image>
-                              <Image url="@Images/Icons/Defend.png" />
+                              <Image url="@Images/Icons/Cmp_Defend.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+                        <ImageView fitWidth="70.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
                            <image>
                               <Image url="@Images/Icons/Flash.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+                        <ImageView fitWidth="70.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
                            <image>
                               <Image url="@Images/Icons/Untitled%20137.png" />
                            </image>
@@ -97,12 +97,24 @@
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
+                     <HBox.margin>
+                        <Insets left="50.0" right="75.0" top="15.0" />
+                     </HBox.margin>
                   </HBox>
-                  <ImageView fitWidth="90.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
-                     <image>
-                        <Image url="@Images/Icons/Untitled%20139.png" />
-                     </image>
-                  </ImageView>
+                  <HBox spacing="10.0">
+                     <children>
+                        <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+                           <image>
+                              <Image url="@Images/Icons/Untitled%20146.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitWidth="90.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+                           <image>
+                              <Image url="@Images/Icons/Store.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children>
                <padding>
                   <Insets top="5.0" />
