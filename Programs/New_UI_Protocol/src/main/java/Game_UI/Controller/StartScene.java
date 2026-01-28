@@ -14,7 +14,6 @@ public class StartScene {
 
     @FXML
     public void test(ActionEvent event) {
-        System.out.println("Test");
         try {
             // Get the button that was clicked
             Button clickedButton = (Button) event.getSource();
@@ -34,28 +33,4 @@ public class StartScene {
             e.printStackTrace();
         }
     }
-//
-//    @FXML
-//    private void switchToLevelScene(ActionEvent event) {
-//        try {
-//            // Get the button that was clicked
-//            Button clickedButton = (Button) event.getSource();
-//
-//            // Load the second scene
-//            Parent secondScene = FXMLLoader.load(
-//                    getClass().getResource("LevelScene.fxml")
-//            );
-//
-//            // Get stage from ANY node in the current scene
-//            Stage stage = (Stage) clickedButton.getScene().getWindow();
-//
-//            // Set new scene
-//            Scene scene = new Scene(secondScene);
-//            stage.setScene(scene);
-//            stage.show();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
 }

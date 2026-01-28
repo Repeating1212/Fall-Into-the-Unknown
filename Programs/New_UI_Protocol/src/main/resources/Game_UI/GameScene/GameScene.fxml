@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" style="-fx-background-color: #404040;" stylesheets="@GameScene.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game_UI.Controller.GameScene">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" style="-fx-background-color: #404040;" stylesheets="@GameScene.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game_UI.Controller.GameScene">
    <children>
       <ImageView fx:id="Dragon" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -60,11 +60,6 @@
             <Image url="@Images/Map_Components/Portal.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="50.0" layoutX="1136.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/Setting.png" />
-         </image>
-      </ImageView>
       <StackPane alignment="TOP_CENTER" layoutX="200.0" layoutY="431.0" prefHeight="120.0" style="-fx-border-color: Black; -fx-border-width: 5; -fx-border-radius: 20;" AnchorPane.bottomAnchor="-30.0">
          <children>
             <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#676767" height="120.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0" y="-5.0" />
@@ -103,9 +98,9 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
-                  <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+                  <ImageView fitWidth="90.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
                      <image>
-                        <Image url="@Images/Icons/Store.png" />
+                        <Image url="@Images/Icons/Untitled%20139.png" />
                      </image>
                   </ImageView>
                </children>
@@ -115,5 +110,10 @@
             </HBox>
          </children>
       </StackPane>
+      <ImageView fx:id="settingIcon" fitWidth="50.0" layoutX="1136.0" layoutY="14.0" onMouseClicked="#showSetting" onMouseEntered="#handleSettingMouseEntered" onMouseExited="#handleSettingMouseExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/Icons/Setting.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
