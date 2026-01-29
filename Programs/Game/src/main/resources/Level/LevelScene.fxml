@@ -96,13 +96,13 @@
                      <children>
                         <ImageView fx:id="skill1" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@picture/Skill/Skill.png" />
+                              <Image url="@picture/Skill/Cmp_Attack.png" />
                            </image>
                            <StackPane.margin>
                               <Insets />
                            </StackPane.margin>
                         </ImageView>
-                        <Rectangle fx:id="skillCooldown1" arcHeight="5.0" arcWidth="5.0" height="40.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.4;" width="40.0">
+                        <Rectangle fx:id="skillCooldown1" height="40.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.4;" width="40.0">
                            <StackPane.margin>
                               <Insets />
                            </StackPane.margin>
@@ -116,10 +116,10 @@
                      <children>
                         <ImageView fx:id="skill2" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@picture/Skill/Skill.png" />
+                              <Image url="@picture/Skill/Cmp_Flash.png" />
                            </image>
                         </ImageView>
-                        <Rectangle fx:id="skillCooldown2" arcHeight="5.0" arcWidth="5.0" height="40.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.4;" width="40.0" />
+                        <Rectangle fx:id="skillCooldown2" height="40.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.4;" width="40.0" />
                      </children>
                      <HBox.margin>
                         <Insets />
@@ -132,10 +132,10 @@
                      <children>
                         <ImageView fx:id="skill3" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@picture/Skill/Skill.png" />
+                              <Image url="@picture/Skill/Cmp_Defend.png" />
                            </image>
                         </ImageView>
-                        <Rectangle fx:id="skillCooldown3" arcHeight="5.0" arcWidth="5.0" height="40.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.4;" width="40.0" />
+                        <Rectangle fx:id="skillCooldown3" height="40.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.4;" width="40.0" />
                      </children>
                      <HBox.margin>
                         <Insets />
@@ -154,7 +154,7 @@
                               <Insets />
                            </StackPane.margin>
                         </ImageView>
-                        <Rectangle fx:id="skillCooldown4" arcHeight="5.0" arcWidth="5.0" height="40.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.4;" width="40.0" />
+                        <Rectangle fx:id="skillCooldown4" height="40.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.4;" width="40.0" />
                      </children>
                      <HBox.margin>
                         <Insets />

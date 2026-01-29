@@ -16,9 +16,6 @@ public class SkillBoxView {
         this.skills = skills;
         this.skillBackgrounds = skillBackgrounds;
         this.skillCooldowns = skillCooldowns;
-
-        skill = new Image(getClass().getResourceAsStream("/Level/picture/Skill/Skill.png"));
-        displaySkill();
         updateSkillCooldowns(new double[] {0,0,0,0});
     }
 
@@ -38,13 +35,6 @@ public class SkillBoxView {
         if (cooldownPercentages.length != 4) return;
         for (int i = 0;i < 4; i++ ){
             skillCooldowns[i].setWidth(cooldownPercentages[i] * skills[i].getFitWidth());
-        }
-    }
-
-    // Private Method
-    private void displaySkill() {
-        for (int i = 0; i < 4; i++) {
-            skills[i].setImage(skill);
         }
     }
 }
