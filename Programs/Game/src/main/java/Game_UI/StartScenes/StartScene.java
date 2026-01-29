@@ -1,5 +1,6 @@
 package Game_UI.StartScenes;
 
+import Game_Data.DataManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,9 +17,8 @@ public class StartScene {
     @FXML
     public void loadGameScene(ActionEvent event) {
         try {
-            // Get the button that was clicked
-            Button clickedButton = (Button) event.getSource();
 
+            Button clickedButton = (Button) event.getSource();
             Parent secondScene = FXMLLoader.load(getClass().getResource("/Game_UI/GameScenes/GameScene/GameScene.fxml"));
             Stage stage = (Stage) clickedButton.getScene().getWindow();
 
@@ -36,7 +36,6 @@ public class StartScene {
     public void loadGameDesigner(ActionEvent event) {
         try {
             Button clickedButton = (Button) event.getSource();
-
             Parent secondScene = FXMLLoader.load(getClass().getResource("/Game_UI/StartScenes/GameDesignerScene/UnknownScene.fxml"));
             Stage stage = (Stage) clickedButton.getScene().getWindow();
 
@@ -52,6 +51,8 @@ public class StartScene {
 
     @FXML
     public void quitGame(ActionEvent event) {
+        DataManager.saveData();
+
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();

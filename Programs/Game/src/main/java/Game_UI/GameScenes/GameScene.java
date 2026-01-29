@@ -4,17 +4,16 @@ import Game_UI.GameScenes.Icons_Scene.CharacterScene;
 import Game_UI.GameScenes.Icons_Scene.EncyclopediaScene;
 import Game_UI.GameScenes.Icons_Scene.SkillScene;
 import Game_UI.GameScenes.Icons_Scene.StoreScene;
-import Level.MainApp;
+import Game_Data.DataManager;
 import javafx.animation.RotateTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -24,6 +23,7 @@ public class GameScene {
     @FXML private ImageView Forest, Graveyard, Bridge, Fish_Port, Lake, Mountain, Tower, Dragon, Portal;
     @FXML private ImageView settingIcon;
     @FXML private Pane rootPane;
+    @FXML private Text CoinLabel;
 
     private RotateTransition settingRotationEnter;
     private RotateTransition settingRotationExit;
@@ -37,19 +37,21 @@ public class GameScene {
             level.setOpacity(0.5);
         }
         setupSettingIconAnimation();
+        DataManager.loadData();
+        CoinLabel.setText(String.valueOf(DataManager.getGameData().getCoins()));
     }
 
     private void setupSettingIconAnimation() {
         // Create the rotation animation
         settingRotationEnter = new RotateTransition(Duration.seconds(0.5), settingIcon);
-        settingRotationEnter.setFromAngle(0);    // Start from 0 degrees
-        settingRotationEnter.setToAngle(90);    // Rotate to 360 degrees
-        settingRotationEnter.setCycleCount(1);   // Play once
+        settingRotationEnter.setFromAngle(0);
+        settingRotationEnter.setToAngle(90);
+        settingRotationEnter.setCycleCount(1);
 
         settingRotationExit = new RotateTransition(Duration.seconds(0.5), settingIcon);
-        settingRotationExit.setFromAngle(0);    // Start from 0 degrees
-        settingRotationExit.setToAngle(-90);    // Rotate to 360 degrees
-        settingRotationExit.setCycleCount(1);   // Play once
+        settingRotationExit.setFromAngle(0);
+        settingRotationExit.setToAngle(-90);
+        settingRotationExit.setCycleCount(1);
     }
 
     @FXML

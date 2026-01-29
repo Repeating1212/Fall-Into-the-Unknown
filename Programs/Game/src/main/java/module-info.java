@@ -5,6 +5,7 @@ module Game {
     requires javafx.base;
     requires java.sql;
     requires java.desktop;
+    requires com.google.gson;
 
     opens Game_UI to javafx.fxml;
     exports Game_UI;
@@ -15,6 +16,8 @@ module Game {
     exports Game_UI.GameScenes;
     opens Game_UI.GameScenes to javafx.fxml;
 
+    exports Game_Data to com.google.gson;
+    opens Game_Data to com.google.gson;
 
     exports Level.View;
     opens Level.View to javafx.fxml;
