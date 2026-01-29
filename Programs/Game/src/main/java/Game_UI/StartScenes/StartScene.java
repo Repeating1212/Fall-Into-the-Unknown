@@ -19,10 +19,7 @@ public class StartScene {
             // Get the button that was clicked
             Button clickedButton = (Button) event.getSource();
 
-            // Load the second scene
             Parent secondScene = FXMLLoader.load(getClass().getResource("/Game_UI/GameScenes/GameScene/GameScene.fxml"));
-
-            // Get stage from ANY node in the current scene
             Stage stage = (Stage) clickedButton.getScene().getWindow();
 
             // Set new scene

@@ -12,7 +12,7 @@ public class CoinConfig {
     public static final int RANDOMIZE_SPAWN_MAX = 100;
 
     public static Image loadImage() {
-        Image image = new Image(CoinConfig.class.getResourceAsStream("/picture/Coin_Animation.gif"));
+        Image image = new Image(CoinConfig.class.getResourceAsStream("/Level/picture/Coin_Animation.gif"));
         if (image.isError()) {
             System.out.println("Coin image not found, using placeholder");
         }

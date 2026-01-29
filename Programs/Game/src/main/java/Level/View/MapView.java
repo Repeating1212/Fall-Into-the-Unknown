@@ -11,7 +11,7 @@ public class MapView {
         this.map = map;
 
         // Load images
-        Image mapImg = new Image(getClass().getResourceAsStream("/picture/map.png"));
+        Image mapImg = new Image(getClass().getResourceAsStream("/Level/picture/map.png"));
         this.map.setImage(mapImg);
     }
 }

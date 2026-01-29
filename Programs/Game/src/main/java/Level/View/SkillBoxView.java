@@ -17,7 +17,7 @@ public class SkillBoxView {
         this.skillBackgrounds = skillBackgrounds;
         this.skillCooldowns = skillCooldowns;
 
-        skill = new Image(getClass().getResourceAsStream("/picture/Skill/Skill.png"));
+        skill = new Image(getClass().getResourceAsStream("/Level/picture/Skill/Skill.png"));
         displaySkill();
         updateSkillCooldowns(new double[] {0,0,0,0});
     }

@@ -4,12 +4,18 @@ import Game_UI.GameScenes.Icons_Scene.CharacterScene;
 import Game_UI.GameScenes.Icons_Scene.EncyclopediaScene;
 import Game_UI.GameScenes.Icons_Scene.SkillScene;
 import Game_UI.GameScenes.Icons_Scene.StoreScene;
+import Level.MainApp;
 import javafx.animation.RotateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -114,6 +120,23 @@ public class GameScene {
             rootPane.getChildren().add(pane);
             StoreScene storeScene = loader.getController();
             storeScene.setRootPane(rootPane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void loadLevel01(MouseEvent event) {  // Change to MouseEvent
+        try {
+            ImageView clickedImageView = (ImageView) event.getSource();
+            Parent secondScene = FXMLLoader.load(getClass().getResource("/Level/LevelScene.fxml"));
+            Stage stage = (Stage) clickedImageView.getScene().getWindow();
+
+            // Set new scene
+            Scene scene = new Scene(secondScene);
+            stage.setScene(scene);
+            stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();

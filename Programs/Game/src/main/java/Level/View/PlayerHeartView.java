@@ -16,8 +16,8 @@ public class PlayerHeartView {
     public PlayerHeartView (ImageView[] hearts){
         this.hearts = hearts;
         // Load images
-        heartFull = new Image(getClass().getResourceAsStream("/picture/HeartFull.png"));
-        heartEmpty = new Image(getClass().getResourceAsStream("/picture/HeartEmpty.png"));
+        heartFull = new Image(getClass().getResourceAsStream("/Level/picture/HeartFull.png"));
+        heartEmpty = new Image(getClass().getResourceAsStream("/Level/picture/HeartEmpty.png"));
     }
 
     // Method to update health display

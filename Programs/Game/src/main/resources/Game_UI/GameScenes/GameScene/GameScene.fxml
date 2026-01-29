@@ -17,7 +17,7 @@
             <Image url="@Images/Map_Components/Map_Background.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Forest" fitWidth="350.0" layoutX="126.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" styleClass="hover-enlarge">
+      <ImageView fx:id="Forest" fitWidth="350.0" layoutX="126.0" layoutY="23.0" onMouseClicked="#loadLevel01" pickOnBounds="true" preserveRatio="true" styleClass="hover-enlarge">
          <image>
             <Image url="@Images/Map_Components/Forest.png" />
          </image>

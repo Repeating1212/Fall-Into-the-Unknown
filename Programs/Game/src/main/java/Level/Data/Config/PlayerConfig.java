@@ -33,7 +33,7 @@ public class PlayerConfig {
     public static final double ATTACK_RIGID_TIME = TOTAL_ANIMATION_PERIOD * 2.0;
 
     public static Image loadImage() {
-        Image image = new Image(PlayerConfig.class.getResourceAsStream("/picture/Player.png"));
+        Image image = new Image(PlayerConfig.class.getResourceAsStream("/Level/picture/Player.png"));
         if (image.isError()) {
             System.out.println("Coin image not found, using placeholder");
         }
