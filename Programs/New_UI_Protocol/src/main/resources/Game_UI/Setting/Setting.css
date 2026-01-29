@@ -1,0 +1,13 @@
+.shadow-rectangle {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 3);
+}
+
+.main-button {
+    -fx-background-radius: 10;
+    -fx-font-size: 14px;
+    -fx-background-color: #E6E6E6;
+    -fx-font-family: Verdana;
+
+    -fx-pref-height: 50;
+    -fx-pref-width: 100;
+}

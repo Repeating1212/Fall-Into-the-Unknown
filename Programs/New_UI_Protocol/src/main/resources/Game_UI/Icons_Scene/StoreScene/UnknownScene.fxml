@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="675.0" maxWidth="1200.0" prefHeight="675.0" prefWidth="1200.0" style="-fx-background-color: #1A1A1A;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game_UI.Controller.Icons_Scene.StoreScene">
+   <children>
+      <Button layoutX="875.0" layoutY="532.0" mnemonicParsing="false" onAction="#handleReturn" prefHeight="100.0" prefWidth="275.0" style="-fx-background-radius: 20; -fx-background-color: #E6E6E6;" text="Return">
+         <font>
+            <Font name="Verdana" size="24.0" />
+         </font></Button>
+      <VBox alignment="CENTER_LEFT" layoutX="41.0" layoutY="529.0">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Store Page">
+               <font>
+                  <Font size="48.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="subtitle-text" />
+                  <String fx:value="text" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Text>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Sorry, current page does not exist">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="title-text" />
+                  <String fx:value="text" />
+               </styleClass>
+            </Text>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

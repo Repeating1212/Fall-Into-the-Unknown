@@ -9,4 +9,6 @@ module Protocol.new_ui_protocol {
 
     exports Game_UI;
     exports Game_UI.Controller;
+    exports Game_UI.Controller.Icons_Scene;
+    opens Game_UI.Controller.Icons_Scene to javafx.fxml;
 }

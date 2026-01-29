@@ -15,9 +15,9 @@
             <Image url="@Character_Image.png" />
          </image>
       </ImageView>
-      <Button layoutX="875.0" layoutY="120.0" mnemonicParsing="false" onAction="#test" styleClass="main-button" text="Play Game" />
-      <Button layoutX="875.0" layoutY="299.0" mnemonicParsing="false" styleClass="main-button" text="Game Designer" />
-      <Button layoutX="875.0" layoutY="482.0" mnemonicParsing="false" styleClass="main-button" text="About Us" />
+      <Button layoutX="875.0" layoutY="120.0" mnemonicParsing="false" onAction="#loadGameScene" styleClass="main-button" text="Play Game" />
+      <Button layoutX="875.0" layoutY="299.0" mnemonicParsing="false" onAction="#loadGameDesigner" styleClass="main-button" text="Game Designer" />
+      <Button layoutX="875.0" layoutY="482.0" mnemonicParsing="false" onAction="#loadGameDesigner" styleClass="main-button" text="About Us" />
       <AnchorPane layoutX="201.0" layoutY="525.0" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Text fill="WHITE" layoutX="193.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Summer Game Development">

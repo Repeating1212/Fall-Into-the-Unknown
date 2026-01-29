@@ -1,5 +1,9 @@
 package Game_UI.Controller;
 
+import Game_UI.Controller.Icons_Scene.CharacterScene;
+import Game_UI.Controller.Icons_Scene.EncyclopediaScene;
+import Game_UI.Controller.Icons_Scene.SkillScene;
+import Game_UI.Controller.Icons_Scene.StoreScene;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,11 +57,63 @@ public class GameScene {
 
     public void showSetting() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/Setting.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/Setting/Setting.fxml"));
             Pane settingWindow = loader.load();
             rootPane.getChildren().add(settingWindow);
             Setting settingController = loader.getController();
             settingController.setRootPane(rootPane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showCharacterState() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/Icons_Scene/CharacterScene/UnknownScene.fxml"));
+            Pane pane = loader.load();
+            rootPane.getChildren().add(pane);
+            CharacterScene characterScene = loader.getController();
+            characterScene.setRootPane(rootPane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showSkillScene() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/Icons_Scene/SkillScene/UnknownScene.fxml"));
+            Pane pane = loader.load();
+            rootPane.getChildren().add(pane);
+            SkillScene skillScene = loader.getController();
+            skillScene.setRootPane(rootPane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showEncyclopedia() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/Icons_Scene/EncyclopediaScene/UnknownScene.fxml"));
+            Pane pane = loader.load();
+            rootPane.getChildren().add(pane);
+            EncyclopediaScene encyclopediaScene = loader.getController();
+            encyclopediaScene.setRootPane(rootPane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showStore() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/Icons_Scene/StoreScene/UnknownScene.fxml"));
+            Pane pane = loader.load();
+            rootPane.getChildren().add(pane);
+            StoreScene storeScene = loader.getController();
+            storeScene.setRootPane(rootPane);
 
         } catch (IOException e) {
             e.printStackTrace();

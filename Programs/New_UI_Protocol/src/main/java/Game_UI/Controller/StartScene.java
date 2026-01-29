@@ -13,7 +13,7 @@ import java.io.IOException;
 public class StartScene {
 
     @FXML
-    public void test(ActionEvent event) {
+    public void loadGameScene(ActionEvent event) {
         try {
             // Get the button that was clicked
             Button clickedButton = (Button) event.getSource();
@@ -22,6 +22,24 @@ public class StartScene {
             Parent secondScene = FXMLLoader.load(getClass().getResource("/Game_UI/GameScene/GameScene.fxml"));
 
             // Get stage from ANY node in the current scene
+            Stage stage = (Stage) clickedButton.getScene().getWindow();
+
+            // Set new scene
+            Scene scene = new Scene(secondScene);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void loadGameDesigner(ActionEvent event) {
+        try {
+            Button clickedButton = (Button) event.getSource();
+
+            Parent secondScene = FXMLLoader.load(getClass().getResource("/Game_UI/GameDesignerScene/UnknownScene.fxml"));
             Stage stage = (Stage) clickedButton.getScene().getWindow();
 
             // Set new scene
