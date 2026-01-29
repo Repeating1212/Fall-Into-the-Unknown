@@ -1,12 +1,3 @@
-.displayIcon{
-    -fx-fit-height: 120;
-}
-
-.characterIcon{
-    -fx-fit-height: 140;
-}
-
-
 .hover-enlarge {
     -fx-scale-x: 1.0;
     -fx-scale-y: 1.0;
@@ -29,4 +20,11 @@
     -fx-scale-x: 1.2;
     -fx-scale-y: 1.2;
     -fx-rotate: 360;
+}
+
+.image-icon:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 20, 0.7, 0, 0);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-transition: all 0.3s ease;
 }

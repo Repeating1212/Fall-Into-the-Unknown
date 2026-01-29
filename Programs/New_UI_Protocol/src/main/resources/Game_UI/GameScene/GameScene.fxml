@@ -66,29 +66,29 @@
             <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" height="120.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: 0.25;" width="800.0" />
             <HBox alignment="TOP_CENTER" prefWidth="800.0" stylesheets="@GameScene.css">
                <children>
-                  <ImageView fitWidth="90.0" pickOnBounds="true" preserveRatio="true" styleClass="characterIcon">
+                  <ImageView fitWidth="90.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                      <image>
                         <Image url="@Images/Icons/Character.png" />
                      </image>
                   </ImageView>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" stylesheets="@GameScene.css">
                      <children>
-                        <ImageView fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitWidth="70.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                            <image>
                               <Image url="@Images/Icons/Cmp_Attack.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitWidth="70.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+                        <ImageView fitWidth="70.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                            <image>
                               <Image url="@Images/Icons/Cmp_Defend.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitWidth="70.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+                        <ImageView fitWidth="70.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                            <image>
                               <Image url="@Images/Icons/Flash.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitWidth="70.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+                        <ImageView fitWidth="70.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                            <image>
                               <Image url="@Images/Icons/Untitled%20137.png" />
                            </image>
@@ -103,12 +103,12 @@
                   </HBox>
                   <HBox spacing="10.0">
                      <children>
-                        <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+                        <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                            <image>
                               <Image url="@Images/Icons/Untitled%20146.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitWidth="90.0" pickOnBounds="true" preserveRatio="true" styleClass="displayIcon">
+                        <ImageView fitWidth="90.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                            <image>
                               <Image url="@Images/Icons/Store.png" />
                            </image>
