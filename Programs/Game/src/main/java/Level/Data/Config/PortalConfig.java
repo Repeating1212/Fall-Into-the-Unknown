@@ -1,0 +1,20 @@
+package Level.Data.Config;
+
+import javafx.scene.image.Image;
+
+public class PortalConfig {
+    public static final int HEIGHT = 50;
+    public static final int WIDTH = 50;
+    public static final int SPEED = 0;
+    public static final boolean IS_BLOCKABLE = true;
+
+    public static final int MAXIMUM_HEALTH = 1;
+
+    public static Image loadImage() {
+        Image image = new Image(PlayerConfig.class.getResourceAsStream("/picture/Portal.png"));
+        if (image.isError()) {
+            System.out.println("Portal image not found!");
+        }
+        return image;
+    }
+}
