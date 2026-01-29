@@ -1,4 +1,4 @@
-package Game_UI.Controller;
+package Game_UI.GameScenes;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +24,7 @@ public class Setting {
     private void handleQuit() {
         try {
             // Reload the FXML
-            Parent gameRoot = FXMLLoader.load(getClass().getResource("/Game_UI/StartScene/StartScene.fxml"));
+            Parent gameRoot = FXMLLoader.load(getClass().getResource("/Game_UI/StartScenes/StartScene/StartScene.fxml"));
             Scene startScene = new Scene(gameRoot);
 
             Stage stage = (Stage) rootPane.getScene().getWindow();

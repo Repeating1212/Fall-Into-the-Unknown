@@ -1,4 +1,4 @@
-package Game_UI.Controller.Icons_Scene;
+package Game_UI.GameScenes.Icons_Scene;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SkillScene {
+public class StoreScene {
     private Pane rootPane;
     @FXML
     public void initialize() {}
@@ -23,7 +23,7 @@ public class SkillScene {
     private void handleReturn() {
         try {
             // Reload the FXML
-            Parent gameRoot = FXMLLoader.load(getClass().getResource("/Game_UI/GameScene/GameScene.fxml"));
+            Parent gameRoot = FXMLLoader.load(getClass().getResource("/Game_UI/GameScenes/GameScene/GameScene.fxml"));
             Scene startScene = new Scene(gameRoot);
 
             Stage stage = (Stage) rootPane.getScene().getWindow();
