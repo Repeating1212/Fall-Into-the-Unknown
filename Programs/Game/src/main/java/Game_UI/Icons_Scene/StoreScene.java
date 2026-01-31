@@ -1,4 +1,4 @@
-package Game_UI.GameScenes.Icons_Scene;
+package Game_UI.Icons_Scene;
 
 import Game_Data.DataManager;
 import javafx.animation.TranslateTransition;

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox prefHeight="150.0" spacing="100.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game_UI.Skill_Scene.SkillController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="150.0" style="-fx-background-color: #D9D9D9;">
+         <children>
+            <Pane prefHeight="150.0" prefWidth="500.0">
+               <children>
+                  <Text layoutX="10.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attack" />
+               </children>
+            </Pane>
+            <ImageView fx:id="skillIcon" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Icons/Empty_Skill.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <VBox spacing="25.0">
+         <children>
+            <Button fx:id="equipButton" mnemonicParsing="false" onAction="#equipSkill" prefHeight="60.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: #E6E6E6;" styleClass="dropEffect" text="Removed">
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</HBox>

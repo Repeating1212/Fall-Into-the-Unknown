@@ -1,4 +1,4 @@
-package Game_UI.GameScenes.Icons_Scene;
+package Game_UI.Icons_Scene;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SkillScene {
+public class EncyclopediaScene {
     private Pane rootPane;
     @FXML
     public void initialize() {}

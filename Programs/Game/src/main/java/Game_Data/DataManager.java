@@ -3,7 +3,7 @@ package Game_Data;
 public class DataManager {
 
     private static GameData currentGameData;
-    public static SkillData skillData;
+    private static SkillData skillData;
 
     public static GameData getGameData(){
         return currentGameData;

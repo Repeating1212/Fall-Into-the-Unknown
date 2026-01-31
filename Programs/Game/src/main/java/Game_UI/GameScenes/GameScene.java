@@ -1,9 +1,9 @@
 package Game_UI.GameScenes;
 
-import Game_UI.GameScenes.Icons_Scene.CharacterScene;
-import Game_UI.GameScenes.Icons_Scene.EncyclopediaScene;
-import Game_UI.GameScenes.Icons_Scene.SkillScene;
-import Game_UI.GameScenes.Icons_Scene.StoreScene;
+import Game_UI.Icons_Scene.CharacterScene;
+import Game_UI.Icons_Scene.EncyclopediaScene;
+import Game_UI.Skill_Scene.SkillScene;
+import Game_UI.Icons_Scene.StoreScene;
 import Game_Data.DataManager;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
@@ -83,7 +83,7 @@ public class GameScene {
     @FXML
     private void showCharacterState() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/GameScenes/Icons_Scene/CharacterScene/UnknownScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/Icons_Scene/CharacterScene/UnknownScene.fxml"));
             Pane pane = loader.load();
             rootPane.getChildren().add(pane);
             CharacterScene characterScene = loader.getController();
@@ -95,23 +95,29 @@ public class GameScene {
     }
 
     @FXML
-    private void showSkillScene() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/GameScenes/Icons_Scene/SkillScene/UnknownScene.fxml"));
-            Pane pane = loader.load();
-            rootPane.getChildren().add(pane);
-            SkillScene skillScene = loader.getController();
-            skillScene.setRootPane(rootPane);
+    private void showSkillScene_Skill01() {
+        loadSkillScene(1);
+    }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @FXML
+    private void showSkillScene_Skill02() {
+        loadSkillScene(2);
+    }
+
+    @FXML
+    private void showSkillScene_Skill03() {
+        loadSkillScene(3);
+    }
+
+    @FXML
+    private void showSkillScene_Skill04() {
+        loadSkillScene(4);
     }
 
     @FXML
     private void showEncyclopedia() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/GameScenes/Icons_Scene/EncyclopediaScene/UnknownScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/Icons_Scene/EncyclopediaScene/UnknownScene.fxml"));
             Pane pane = loader.load();
             rootPane.getChildren().add(pane);
             EncyclopediaScene encyclopediaScene = loader.getController();
@@ -125,7 +131,7 @@ public class GameScene {
     @FXML
     private void showStore() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/GameScenes/Icons_Scene/StoreScene/UnknownScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/Icons_Scene/StoreScene/UnknownScene.fxml"));
             Pane pane = loader.load();
             rootPane.getChildren().add(pane);
             StoreScene storeScene = loader.getController();
@@ -174,6 +180,20 @@ public class GameScene {
             skill03.setImage(dashSkill);
         } else {
             skill03.setImage(emptySkill);
+        }
+    }
+
+    private void loadSkillScene(int selectSkill){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/Icons_Scene/SkillScene/SkillScene.fxml"));
+            Pane pane = loader.load();
+            SkillScene skillScene = loader.getController();
+            skillScene.setRootPane(rootPane);
+            skillScene.setCurrentSkillSelection(selectSkill);
+            rootPane.getChildren().add(pane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
