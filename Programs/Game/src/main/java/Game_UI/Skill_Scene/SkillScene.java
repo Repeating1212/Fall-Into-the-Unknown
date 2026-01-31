@@ -34,9 +34,9 @@ public class SkillScene {
             returnButtonAnimation(returnButton, 0);
         });
         skillButtons = new Button[]{skill01Btn, skill02Btn, skill03Btn, skill04Btn};
-        loadAttackSkill();
-        loadDefendSkill();
-        loadDashSkill();
+        Supplier.loadAttackSkill(Skill_Vbox);
+        Supplier.loadDefendSkill(Skill_Vbox);
+        Supplier.loadDashSkill(Skill_Vbox);
     }
 
     public void setCurrentSkillSelection(int currentSkillSelection){
@@ -51,7 +51,6 @@ public class SkillScene {
     @FXML
     private void handleReturn() {
         try {
-            // Reload the FXML
             Parent gameRoot = FXMLLoader.load(getClass().getResource("/Game_UI/GameScenes/GameScene/GameScene.fxml"));
             Scene startScene = new Scene(gameRoot);
 
@@ -122,63 +121,5 @@ public class SkillScene {
             case 4 -> skill04Btn;
             default -> skill02Btn;
         };
-    }
-
-    private void loadAttackSkill() {
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/Game_UI/Icons_Scene/SkillScene/SkillDisplay.fxml")
-            );
-            Image Attack_Icon = new Image(getClass().getResourceAsStream("/Game_UI/Icons_Scene/SkillScene/Icons/Cmp_Attack.png"));
-
-            // Load the FXML content (could be any Node: Button, Pane, etc.)
-            Node skillNode = loader.load();
-            SkillController controller = loader.getController();
-            controller.initializeData(1, Attack_Icon);
-
-            // Add to VBox
-            Skill_Vbox.getChildren().add(skillNode);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void loadDefendSkill() {
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/Game_UI/Icons_Scene/SkillScene/SkillDisplay.fxml")
-            );
-            Image Defend_Icon = new Image(getClass().getResourceAsStream("/Game_UI/Icons_Scene/SkillScene/Icons/Cmp_Defend.png"));
-
-            // Load the FXML content (could be any Node: Button, Pane, etc.)
-            Node skillNode = loader.load();
-            SkillController controller = loader.getController();
-            controller.initializeData(2, Defend_Icon);
-
-            // Add to VBox
-            Skill_Vbox.getChildren().add(skillNode);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    private void loadDashSkill() {
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/Game_UI/Icons_Scene/SkillScene/SkillDisplay.fxml")
-            );
-            Image Dash_Icon = new Image(getClass().getResourceAsStream("/Game_UI/Icons_Scene/SkillScene/Icons/Flash.png"));
-
-            Node skillNode = loader.load();
-            SkillController controller = loader.getController();
-            controller.initializeData(3, Dash_Icon);
-
-            // Add to VBox
-            Skill_Vbox.getChildren().add(skillNode);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
