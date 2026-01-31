@@ -75,24 +75,24 @@
                   </ImageView>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" stylesheets="@GameScene.css">
                      <children>
-                        <ImageView fitWidth="70.0" onMouseClicked="#showSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+                        <ImageView fx:id="skill01" fitWidth="70.0" onMouseClicked="#showSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                            <image>
                               <Image url="@Images/Icons/Cmp_Attack.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitWidth="70.0" onMouseClicked="#showSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+                        <ImageView fx:id="skill02" fitWidth="70.0" onMouseClicked="#showSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                            <image>
                               <Image url="@Images/Icons/Cmp_Defend.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitWidth="70.0" onMouseClicked="#showSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+                        <ImageView fx:id="skill03" fitWidth="70.0" onMouseClicked="#showSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                            <image>
                               <Image url="@Images/Icons/Flash.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitWidth="70.0" onMouseClicked="#showSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+                        <ImageView fx:id="skill04" fitWidth="70.0" onMouseClicked="#showSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                            <image>
-                              <Image url="@Images/Icons/Untitled%20137.png" />
+                              <Image url="@Images/Icons/Empty_Skill.png" />
                            </image>
                         </ImageView>
                      </children>

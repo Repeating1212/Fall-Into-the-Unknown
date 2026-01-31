@@ -3,22 +3,27 @@ package Game_Data;
 public class DataManager {
 
     private static GameData currentGameData;
-
-    public static void resetGameData(GameData gameData) {
-        currentGameData = gameData;
-    }
+    public static SkillData skillData;
 
     public static GameData getGameData(){
         return currentGameData;
+    }
+
+    public static void saveData(){
+        JSONStorage.saveSkillData(skillData);
+        JSONStorage.saveGameData(currentGameData);
     }
 
     public static void loadData(){
         if (currentGameData == null){
             currentGameData = JSONStorage.loadGameData();
         }
+        if (skillData == null){
+            skillData = JSONStorage.loadSkillData();
+        }
     }
 
-    public static void saveData(){
-        JSONStorage.saveGameData(currentGameData);
+    public static SkillData getSkillData(){
+        return skillData;
     }
 }

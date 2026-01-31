@@ -16,6 +16,9 @@ public class MovementState {
 
     protected double getSpeed(){ return speed;}
 
+    protected boolean isMovingLeft() {return (!movingRight && movingLeft);}
+    protected boolean isMovingRight() {return  (!movingLeft && movingRight);}
+
     // Movement control methods
     protected void moveUp(boolean isMoving) {
         movingUp = isMoving;

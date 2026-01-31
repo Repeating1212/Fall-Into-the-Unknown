@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -24,6 +25,7 @@ public class GameScene {
     @FXML private ImageView settingIcon;
     @FXML private Pane rootPane;
     @FXML private Text CoinLabel;
+    @FXML private ImageView skill01, skill02, skill03;
 
     private RotateTransition settingRotationEnter;
     private RotateTransition settingRotationExit;
@@ -39,6 +41,7 @@ public class GameScene {
         setupSettingIconAnimation();
         DataManager.loadData();
         CoinLabel.setText(String.valueOf(DataManager.getGameData().getCoins()));
+        loadSkillIcon();
     }
 
     private void setupSettingIconAnimation() {
@@ -63,7 +66,8 @@ public class GameScene {
         settingRotationExit.playFromStart();
     }
 
-    public void showSetting() {
+    @FXML
+    private void showSetting() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/GameScenes/Setting/Setting.fxml"));
             Pane settingWindow = loader.load();
@@ -76,7 +80,8 @@ public class GameScene {
         }
     }
 
-    public void showCharacterState() {
+    @FXML
+    private void showCharacterState() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/GameScenes/Icons_Scene/CharacterScene/UnknownScene.fxml"));
             Pane pane = loader.load();
@@ -89,7 +94,8 @@ public class GameScene {
         }
     }
 
-    public void showSkillScene() {
+    @FXML
+    private void showSkillScene() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/GameScenes/Icons_Scene/SkillScene/UnknownScene.fxml"));
             Pane pane = loader.load();
@@ -102,7 +108,8 @@ public class GameScene {
         }
     }
 
-    public void showEncyclopedia() {
+    @FXML
+    private void showEncyclopedia() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/GameScenes/Icons_Scene/EncyclopediaScene/UnknownScene.fxml"));
             Pane pane = loader.load();
@@ -115,7 +122,8 @@ public class GameScene {
         }
     }
 
-    public void showStore() {
+    @FXML
+    private void showStore() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/GameScenes/Icons_Scene/StoreScene/UnknownScene.fxml"));
             Pane pane = loader.load();
@@ -129,7 +137,7 @@ public class GameScene {
     }
 
     @FXML
-    public void loadLevel01(MouseEvent event) {  // Change to MouseEvent
+    private void loadLevel01(MouseEvent event) {  // Change to MouseEvent
         try {
             ImageView clickedImageView = (ImageView) event.getSource();
             Parent secondScene = FXMLLoader.load(getClass().getResource("/Level/LevelScene.fxml"));
@@ -142,6 +150,30 @@ public class GameScene {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    // Private Method
+
+    private void loadSkillIcon(){
+        Image emptySkill = new Image(getClass().getResourceAsStream("/Game_UI/GameScenes/GameScene/Images/Icons/Empty_Skill.png"));
+        Image attackSkill = new Image(getClass().getResourceAsStream("/Game_UI/GameScenes/GameScene/Images/Icons/Cmp_Attack.png"));
+        Image defendSkill = new Image(getClass().getResourceAsStream("/Game_UI/GameScenes/GameScene/Images/Icons/Cmp_Defend.png"));
+        Image dashSkill = new Image(getClass().getResourceAsStream("/Game_UI/GameScenes/GameScene/Images/Icons/Flash.png"));
+        if (DataManager.getSkillData().isAttackEquip()){
+            skill01.setImage(attackSkill);
+        } else {
+            skill01.setImage(emptySkill);
+        }
+        if (DataManager.getSkillData().isDefendEquip()){
+            skill02.setImage(defendSkill);
+        } else {
+            skill02.setImage(emptySkill);
+        }
+        if (DataManager.getSkillData().isDashEquip()){
+            skill03.setImage(dashSkill);
+        } else {
+            skill03.setImage(emptySkill);
         }
     }
 }

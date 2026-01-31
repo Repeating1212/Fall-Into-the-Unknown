@@ -6,9 +6,10 @@ import com.google.gson.GsonBuilder;
 
 public class JSONStorage {
     private static final String FILE_PATH = "game_data.json";
+    private static final String SKILL_FILE_PATH = "skill_data.json";
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    // Save game data
+    // Game data
     protected static void saveGameData(GameData gameData) {
         try (FileWriter writer = new FileWriter(FILE_PATH)) {
             gson.toJson(gameData, writer);
@@ -17,7 +18,6 @@ public class JSONStorage {
         }
     }
 
-    // Load game data
     protected static GameData loadGameData() {
         try (FileReader reader = new FileReader(FILE_PATH)) {
             GameData loadedData = gson.fromJson(reader, GameData.class);
@@ -26,6 +26,27 @@ public class JSONStorage {
         } catch (IOException e) {
             // Return new instance if file doesn't exist
             return new GameData();
+        }
+    }
+
+    // Skill Data
+
+    protected static SkillData loadSkillData() {
+        try (FileReader reader = new FileReader(SKILL_FILE_PATH)) {
+            SkillData loadedData = gson.fromJson(reader, SkillData.class);
+            if (loadedData == null) return new SkillData();
+            return loadedData;
+        } catch (IOException e) {
+            // Return new instance if file doesn't exist
+            return new SkillData();
+        }
+    }
+
+    protected static void saveSkillData(SkillData skillData) {
+        try (FileWriter writer = new FileWriter(SKILL_FILE_PATH)) {
+            gson.toJson(skillData, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

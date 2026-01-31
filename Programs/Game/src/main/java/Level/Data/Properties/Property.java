@@ -68,6 +68,10 @@ public class Property {
 
     public double getSpeed() { return  movementState.getSpeed();}
 
+    public boolean isMovingLeft() {return movementState.isMovingLeft();}
+    public boolean isMovingRight() {return movementState.isMovingRight();}
+
+
     public void moveUp(boolean isMoving) {
         movementState.moveUp(isMoving);
     }

@@ -16,7 +16,7 @@ public class Player extends ImageObject {
 
     // Constructor
     public Player(Observer observer) {
-        super(PlayerSupplier.getProperty(), PlayerConfig.loadImage(), observer);
+        super(PlayerSupplier.getProperty(), PlayerConfig.loadImageRight(), observer);
         this.updateHealth();
         this.attackSkill = PlayerSupplier.getAttackBehaviour(property);
     }
@@ -43,6 +43,13 @@ public class Player extends ImageObject {
         if(! defend.isDefending()){
             super.takeDamage(damage);
         }
+    }
+
+    @Override
+    public void updateSpritePosition(){
+        if (property.isMovingLeft()) sprite.setImage(PlayerConfig.loadImageLeft());
+        else if (property.isMovingRight()) sprite.setImage(PlayerConfig.loadImageRight());
+        super.updateSpritePosition();
     }
 
     // Private Method

@@ -18,7 +18,6 @@ public class AttackSkill {
     private final Timer ANIMATION_TIMER;
 
     // private value
-//    private boolean pendingAttack = false;
     private Position destinationPos = new Position();
     private ArrayList<GameObject> targetEntity = new ArrayList<GameObject>();
 

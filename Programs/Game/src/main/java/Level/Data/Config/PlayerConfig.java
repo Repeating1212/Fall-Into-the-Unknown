@@ -3,8 +3,8 @@ package Level.Data.Config;
 import javafx.scene.image.Image;
 
 public class PlayerConfig {
-    public static final int HEIGHT = 40;
-    public static final int WIDTH = 40;
+    public static final int HEIGHT = 50;
+    public static final int WIDTH = HEIGHT / 2;
     public static final int SPEED = 5;
     public static final int INITIAL_X = 600;
     public static final int INITIAL_Y = 500;
@@ -32,11 +32,20 @@ public class PlayerConfig {
     public static final double TOTAL_ANIMATION_PERIOD = FADE_OUT_DURATION + ENLARGE_DURATION;
     public static final double ATTACK_RIGID_TIME = TOTAL_ANIMATION_PERIOD * 2.0;
 
-    public static Image loadImage() {
-        Image image = new Image(PlayerConfig.class.getResourceAsStream("/Level/picture/Player.png"));
+    public static Image loadImageRight() {
+        Image image = new Image(PlayerConfig.class.getResourceAsStream("/Level/picture/Character Animation/Character_Right.png"));
         if (image.isError()) {
-            System.out.println("Coin image not found, using placeholder");
+            System.out.println("Player image not found");
         }
         return image;
     }
+
+    public static Image loadImageLeft() {
+        Image image = new Image(PlayerConfig.class.getResourceAsStream("/Level/picture/Character Animation/Character_Left.png"));
+        if (image.isError()) {
+            System.out.println("Player image not found");
+        }
+        return image;
+    }
+
 }

@@ -9,14 +9,14 @@ public class GameData implements Serializable {
 //    private boolean soundEnabled;
 //    private String playerName;
 
-    // Getters and setters
-    public int getCoins() { return coins; }
+    // Coins
+    public int getCoins() {
+        return coins;
+    }
 
     public void addCoins(int increment) {
         coins += increment;
     }
-
-    public void setCoins(int coins) { this.coins = coins; }
 
 //    public int getHighScore() { return highScore; }
 //    public void setHighScore(int highScore) { this.highScore = highScore; }
