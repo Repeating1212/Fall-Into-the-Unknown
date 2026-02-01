@@ -1,9 +1,9 @@
 {
-  "coins": 15,
+  "coins": 23,
   "equipedSkill": [
-    1,
-    2,
     3,
+    2,
+    1,
     0
   ]
 }

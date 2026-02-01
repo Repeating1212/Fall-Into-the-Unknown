@@ -11,7 +11,7 @@ public class PortalConfig {
     public static final int MAXIMUM_HEALTH = 1;
 
     public static Image loadImage() {
-        Image image = new Image(PlayerConfig.class.getResourceAsStream("/Level/picture/Portal.png"));
+        Image image = new Image(PlayerConfig.class.getResourceAsStream("/Picture/Level_Picture/Character/Portal.png"));
         if (image.isError()) {
             System.out.println("Portal image not found!");
         }

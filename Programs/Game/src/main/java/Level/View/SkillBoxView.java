@@ -1,5 +1,7 @@
 package Level.View;
 
+import Game_Data.Config.SkillConfig;
+import Game_Data.DataManager;
 import Level.Skills.Attacks.AttackSkill;
 import Level.Skills.Player.Dash;
 import Level.Skills.Player.Defend;
@@ -10,11 +12,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 
 public class SkillBoxView {
-
-    private final Image attack = new Image(getClass().getResourceAsStream("/Skill_Icon/Cmp_Attack.png"));
-    private final Image defend = new Image(getClass().getResourceAsStream("/Skill_Icon/Cmp_Defend.png"));
-    private final Image dash = new Image(getClass().getResourceAsStream("/Skill_Icon/Cmp_Dash.png"));
-    private final Image emptySkill = new Image(getClass().getResourceAsStream("/Skill_Icon/Empty_Skill.png"));
 
     private ImageView[] skillView;
     private StackPane[] skillBackgrounds;
@@ -29,13 +26,13 @@ public class SkillBoxView {
     public void setSkillImage(Skill[] skills){
         for (int i = 0; i < skills.length; i ++){
             if (skills[i].getClass() == AttackSkill.class){
-                skillView[i].setImage(attack);
+                skillView[i].setImage(SkillConfig.ATTACK_ICON);
             } else if(skills[i].getClass() == Defend.class){
-                skillView[i].setImage(defend);
+                skillView[i].setImage(SkillConfig.DEFEND_ICON);
             } else if (skills[i].getClass() == Dash.class){
-                skillView[i].setImage(dash);
+                skillView[i].setImage(SkillConfig.CMP_DASH_ICON);
             } else {
-                skillView[i].setImage(emptySkill);
+                skillView[i].setImage(SkillConfig.EMPTY_ICON);
             }
         }
     }

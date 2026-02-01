@@ -15,7 +15,7 @@ public class StakeConfig {
 
 
     public static Image loadImage() {
-        Image image = new Image(StakeConfig.class.getResourceAsStream("/Level/picture/Stake.png"));
+        Image image = new Image(StakeConfig.class.getResourceAsStream("/Picture/Level_Picture/Character/Stake.png"));
         if (image.isError()) {
             System.out.println("Coin image not found, using placeholder");
         }

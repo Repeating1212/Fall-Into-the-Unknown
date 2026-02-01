@@ -6,10 +6,11 @@ import javafx.scene.image.Image;
 
 public class SkillConfig {
 
-    public static final Image ATTACK_ICON = new Image(SkillConfig.class.getResourceAsStream("/Skill_Icon/Cmp_Attack.png"));
-    public static final Image DEFEND_ICON = new Image(SkillConfig.class.getResourceAsStream("/Skill_Icon/Cmp_Defend.png"));
-    public static final Image DASH_ICON = new Image(SkillConfig.class.getResourceAsStream("/Skill_Icon/Dash.png"));
-    public static final Image EMPTY_ICON = new Image(SkillConfig.class.getResourceAsStream("/Skill_Icon/Empty_Skill.png"));
+    public static final Image ATTACK_ICON = new Image(SkillConfig.class.getResourceAsStream("/Picture/Skill_Icon/Cmp_Attack.png"));
+    public static final Image DEFEND_ICON = new Image(SkillConfig.class.getResourceAsStream("/Picture/Skill_Icon/Cmp_Defend.png"));
+    public static final Image DASH_ICON = new Image(SkillConfig.class.getResourceAsStream("/Picture/Skill_Icon/Dash.png"));
+    public static final Image CMP_DASH_ICON = new Image(SkillConfig.class.getResourceAsStream("/Picture/Skill_Icon/Cmp_Dash.png"));
+    public static final Image EMPTY_ICON = new Image(SkillConfig.class.getResourceAsStream("/Picture/Skill_Icon/Empty_Skill.png"));
     public static final Image[] SKILL_ICONS = new Image[]{
             EMPTY_ICON, ATTACK_ICON, DEFEND_ICON, DASH_ICON
     };
