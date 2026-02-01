@@ -2,6 +2,7 @@ package Game_UI.GameScenes;
 
 import Game_UI.Icons_Scene.CharacterScene;
 import Game_UI.Icons_Scene.EncyclopediaScene;
+import Game_UI.Skill_Scene.SkillConfig;
 import Game_UI.Skill_Scene.SkillScene;
 import Game_UI.Icons_Scene.StoreScene;
 import Game_Data.DataManager;
@@ -25,23 +26,24 @@ public class GameScene {
     @FXML private ImageView settingIcon;
     @FXML private Pane rootPane;
     @FXML private Text CoinLabel;
-    @FXML private ImageView skill01, skill02, skill03;
+    @FXML private ImageView skill01, skill02, skill03, skill04;
 
     private RotateTransition settingRotationEnter;
     private RotateTransition settingRotationExit;
 
     private ImageView[] levels;
+    private ImageView[] skillIcons;
 
     @FXML
     public void initialize() {
         levels = new  ImageView[]{Graveyard, Bridge, Fish_Port, Lake, Mountain, Tower, Dragon, Portal};
-        for (ImageView level : levels){
-            level.setOpacity(0.5);
-        }
-        setupSettingIconAnimation();
+        skillIcons  = new ImageView[]{skill01, skill02, skill03, skill04};
+
         DataManager.loadData();
+        for (ImageView level : levels) level.setOpacity(0.5);
+        setupSettingIconAnimation();
         CoinLabel.setText(String.valueOf(DataManager.getGameData().getCoins()));
-        loadSkillIcon();
+        updateSkillIcons();
     }
 
     private void setupSettingIconAnimation() {
@@ -96,22 +98,22 @@ public class GameScene {
 
     @FXML
     private void showSkillScene_Skill01() {
-        loadSkillScene(1);
+        loadSkillScene(0);
     }
 
     @FXML
     private void showSkillScene_Skill02() {
-        loadSkillScene(2);
+        loadSkillScene(1);
     }
 
     @FXML
     private void showSkillScene_Skill03() {
-        loadSkillScene(3);
+        loadSkillScene(2);
     }
 
     @FXML
     private void showSkillScene_Skill04() {
-        loadSkillScene(4);
+        loadSkillScene(3);
     }
 
     @FXML
@@ -161,39 +163,27 @@ public class GameScene {
 
     // Private Method
 
-    private void loadSkillIcon(){
-        Image emptySkill = new Image(getClass().getResourceAsStream("/Game_UI/GameScenes/GameScene/Images/Icons/Empty_Skill.png"));
-        Image attackSkill = new Image(getClass().getResourceAsStream("/Game_UI/GameScenes/GameScene/Images/Icons/Cmp_Attack.png"));
-        Image defendSkill = new Image(getClass().getResourceAsStream("/Game_UI/GameScenes/GameScene/Images/Icons/Cmp_Defend.png"));
-        Image dashSkill = new Image(getClass().getResourceAsStream("/Game_UI/GameScenes/GameScene/Images/Icons/Flash.png"));
-        if (DataManager.getSkillData().isAttackEquip()){
-            skill01.setImage(attackSkill);
-        } else {
-            skill01.setImage(emptySkill);
-        }
-        if (DataManager.getSkillData().isDefendEquip()){
-            skill02.setImage(defendSkill);
-        } else {
-            skill02.setImage(emptySkill);
-        }
-        if (DataManager.getSkillData().isDashEquip()){
-            skill03.setImage(dashSkill);
-        } else {
-            skill03.setImage(emptySkill);
-        }
-    }
-
     private void loadSkillScene(int selectSkill){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_UI/Icons_Scene/SkillScene/SkillScene.fxml"));
             Pane pane = loader.load();
             SkillScene skillScene = loader.getController();
-            skillScene.setRootPane(rootPane);
-            skillScene.setCurrentSkillSelection(selectSkill);
+            skillScene.initializeData(rootPane);
             rootPane.getChildren().add(pane);
-
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void updateSkillIcons(){
+        Image[] skillImages = SkillConfig.SKILL_ICONS;
+        int[] equipedSkill = DataManager.getSkillData().getEquipedSkill();
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < equipedSkill.length; j ++){
+                if(equipedSkill[i] == j){
+                    skillIcons[i].setImage(skillImages[j]);
+                }
+            }
         }
     }
 }

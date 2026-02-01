@@ -1,8 +1,8 @@
 {
-  "ATTACK_SKILL_ID": 1,
-  "DEFEND_SKILL_ID": 2,
-  "DASH_SKILL_ID": 3,
-  "attackEquip": false,
-  "defendEquip": true,
-  "dashEquip": false
+  "equipedSkill": [
+    2,
+    0,
+    0,
+    0
+  ]
 }

@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -34,114 +30,5 @@
          <font>
             <Font name="Verdana" size="20.0" />
          </font></Button>
-      <VBox layoutX="58.0" layoutY="115.0" spacing="30.0">
-         <children>
-            <HBox prefHeight="150.0" prefWidth="1068.0" spacing="100.0">
-               <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="850.0" style="-fx-background-color: #D9D9D9;">
-                     <children>
-                        <TextArea prefHeight="150.0" prefWidth="700.0" style="-fx-background-color: transparent;" text="&#10;Attack">
-                           <font>
-                              <Font name="Verdana" size="12.0" />
-                           </font>
-                        </TextArea>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../GameScene/Images/Icons/Cmp_Attack.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="25.0" right="25.0" />
-                           </HBox.margin>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <VBox spacing="25.0">
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: #E6E6E6;" text="Purchase">
-                           <font>
-                              <Font name="Verdana" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="attackEquipButton" mnemonicParsing="false" onAction="#equipAttackSkill" prefHeight="60.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: #E6E6E6;" text="Removed">
-                           <font>
-                              <Font name="Verdana" size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox prefHeight="150.0" prefWidth="1068.0" spacing="100.0">
-               <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="850.0" style="-fx-background-color: #D9D9D9;">
-                     <children>
-                        <TextArea prefHeight="150.0" prefWidth="700.0" style="-fx-background-color: transparent;" text="&#10;Defend">
-                           <font>
-                              <Font name="Verdana" size="12.0" />
-                           </font>
-                        </TextArea>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../GameScene/Images/Icons/Cmp_Defend.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="25.0" right="25.0" />
-                           </HBox.margin>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <VBox spacing="25.0">
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: #E6E6E6;" text="Purchase">
-                           <font>
-                              <Font name="Verdana" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="defendEquipButton" mnemonicParsing="false" onAction="#equipDefendSkill" prefHeight="60.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: #E6E6E6;" text="Removed">
-                           <font>
-                              <Font name="Verdana" size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox prefHeight="150.0" prefWidth="1068.0" spacing="100.0">
-               <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="850.0" style="-fx-background-color: #D9D9D9;">
-                     <children>
-                        <TextArea prefHeight="150.0" prefWidth="700.0" style="-fx-background-color: transparent;" text="&#10;Dash">
-                           <font>
-                              <Font name="Verdana" size="12.0" />
-                           </font>
-                        </TextArea>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../GameScene/Images/Icons/Flash.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="25.0" right="25.0" />
-                           </HBox.margin>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <VBox spacing="25.0">
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: #E6E6E6;" text="Purchase">
-                           <font>
-                              <Font name="Verdana" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="dashEquipButton" mnemonicParsing="false" onAction="#equipDashSkill" prefHeight="60.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: #E6E6E6;" text="Removed">
-                           <font>
-                              <Font name="Verdana" size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
    </children>
 </AnchorPane>

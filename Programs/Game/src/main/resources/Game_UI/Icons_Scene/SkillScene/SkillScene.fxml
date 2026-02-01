@@ -23,22 +23,22 @@
       <VBox fx:id="Skill_Vbox" layoutX="178.0" layoutY="112.0" spacing="30.0" />
       <VBox layoutX="-63.0" layoutY="92.0" spacing="50.0">
          <children>
-            <Button fx:id="skill01Btn" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#updateSkillPage" onMouseEntered="#skillButton_MouseEnter" onMouseExited="#skillButton_MouseExit" prefHeight="100.0" prefWidth="133.0" styleClass="sideButton" text="First Skill">
+            <Button alignment="TOP_CENTER" mnemonicParsing="false" onMouseEntered="#skillButton_MouseEnter" onMouseExited="#skillButton_MouseExit" prefHeight="100.0" prefWidth="133.0" styleClass="sideButton" text="First Skill">
                <font>
                   <Font name="Verdana" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="skill02Btn" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#updateSkillPage" onMouseEntered="#skillButton_MouseEnter" onMouseExited="#skillButton_MouseExit" prefHeight="100.0" prefWidth="133.0" styleClass="sideButton" text="Second Skill">
+            <Button alignment="TOP_CENTER" mnemonicParsing="false" onMouseEntered="#skillButton_MouseEnter" onMouseExited="#skillButton_MouseExit" prefHeight="100.0" prefWidth="133.0" styleClass="sideButton" text="Second Skill">
                <font>
                   <Font name="Verdana" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="skill03Btn" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#updateSkillPage" onMouseEntered="#skillButton_MouseEnter" onMouseExited="#skillButton_MouseExit" prefHeight="100.0" prefWidth="133.0" styleClass="sideButton" text="Third Skill">
+            <Button alignment="TOP_CENTER" mnemonicParsing="false" onMouseEntered="#skillButton_MouseEnter" onMouseExited="#skillButton_MouseExit" prefHeight="100.0" prefWidth="133.0" styleClass="sideButton" text="Third Skill">
                <font>
                   <Font name="Verdana" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="skill04Btn" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#updateSkillPage" onMouseEntered="#skillButton_MouseEnter" onMouseExited="#skillButton_MouseExit" prefHeight="100.0" prefWidth="133.0" styleClass="sideButton" text="Fourth Skill">
+            <Button alignment="TOP_CENTER" mnemonicParsing="false" onMouseEntered="#skillButton_MouseEnter" onMouseExited="#skillButton_MouseExit" prefHeight="100.0" prefWidth="133.0" styleClass="sideButton" text="Fourth Skill">
                <font>
                   <Font name="Verdana" size="18.0" />
                </font>

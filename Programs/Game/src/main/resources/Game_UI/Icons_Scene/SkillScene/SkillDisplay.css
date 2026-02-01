@@ -1,0 +1,17 @@
+.text_highlighted{
+    -fx-fill: White;
+}
+
+.background_highlighted{
+    -fx-background-color: #999999;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+.sideBoard_highlighted{
+    -fx-background-color: transparent;
+}
+
+.sideBoard{
+    -fx-background-color: #D9D9D9;
+}

@@ -19,6 +19,7 @@ module Game {
     exports Game_Data to com.google.gson;
     opens Game_Data to com.google.gson;
 
+
     exports Level.View;
     opens Level.View to javafx.fxml;
     exports Level.Data.Properties;
