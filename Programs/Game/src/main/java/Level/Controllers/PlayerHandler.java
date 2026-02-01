@@ -1,20 +1,26 @@
 package Level.Controllers;
 
+import Level.Data.Suppliers.PlayerSupplier;
 import Level.Objects.Concrete_Class.Player;
+import Level.Skills.Skill;
 import Level.View.SkillBoxView;
 
 public class PlayerHandler {
 
     private final SkillBoxView skillBoxView;
-    private final int ATTACK_SKILL_ID = 0;
-    private final int DASH_SKILL_ID = 1;
-    private final int DEFEND_SKILL_ID = 2;
     private boolean classEmpty = false;
 
     private Player player;
     private int currentSkill = 0;
-    private final int MAXIMUM_SKILL = 3;
     private boolean isPause = false;
+
+    private final Skill[] skills = new Skill[]{
+            PlayerSupplier.getAttack(),
+            PlayerSupplier.getDash(),
+            PlayerSupplier.getDefend(),
+            PlayerSupplier.getEmptySkill()
+
+    };
 
     public PlayerHandler (SkillBoxView skillBoxView){
         this.skillBoxView = skillBoxView;
@@ -24,6 +30,10 @@ public class PlayerHandler {
         this.player = player;
         skillBoxView.updateSkillSelection(currentSkill);
         classEmpty = false;
+    }
+
+    public Skill[] getSkills(){
+        return skills;
     }
 
     public void moveUp(boolean isMove){
@@ -55,24 +65,14 @@ public class PlayerHandler {
         if (classEmpty) return;
         if (isPause) return;
 
-        switch (currentSkill){
-            case ATTACK_SKILL_ID:
-                player.attack(mouseX,mouseY);
-                break;
-            case DASH_SKILL_ID:
-                player.dash(mouseX,mouseY);
-                break;
-            case DEFEND_SKILL_ID:
-                player.defend();
-                break;
-        }
+        player.activateSkill(currentSkill, mouseX, mouseY);
     }
 
     public void increaseCurrentSkill(){
         if (classEmpty) return;
         if (isPause) return;
 
-        if (currentSkill < MAXIMUM_SKILL){
+        if (currentSkill < skills.length - 1){
             currentSkill += 1;
             skillBoxView.updateSkillSelection(currentSkill);
         }

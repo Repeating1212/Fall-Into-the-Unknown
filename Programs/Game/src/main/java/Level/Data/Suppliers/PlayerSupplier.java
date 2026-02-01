@@ -1,5 +1,6 @@
 package Level.Data.Suppliers;
 
+import Level.Data.Properties.PlayerState;
 import Level.Skills.Attacks.AttackArea;
 import Level.Skills.Attacks.ConeAttackArea;
 import Level.Skills.Player.Dash;
@@ -7,6 +8,7 @@ import Level.Skills.Player.Defend;
 import Level.Data.Config.PlayerConfig;
 import Level.Skills.Attacks.AttackSkill;
 import Level.Data.Properties.*;
+import Level.Skills.Player.EmptySkill;
 import Level.View.AttackVisualize.ConeAttackVisual;
 
 public class PlayerSupplier {
@@ -23,18 +25,22 @@ public class PlayerSupplier {
         return new Health(PlayerConfig.MAXIMUM_HEALTH);
     }
 
-    public static AttackSkill getAttackBehaviour(Property player){
+    public static AttackSkill getAttack(){
         AttackArea attackArea = new ConeAttackArea(PlayerConfig.INITIAL_ATTACK_RANGE, PlayerConfig.ATTACK_AREA_ANGLE);
         ConeAttackVisual attackVisual = new ConeAttackVisual(PlayerConfig.INITIAL_ATTACK_RANGE, PlayerConfig.ATTACK_AREA_ANGLE, PlayerConfig.ENLARGE_DURATION, PlayerConfig.FADE_OUT_DURATION);
 
-        return new AttackSkill(attackVisual, PlayerConfig.ATTACK_RIGID_TIME, player, attackArea, PlayerConfig.INITIAL_DAMAGE, PlayerConfig.INITIAL_ATTACK_COOLDOWN, PlayerConfig.ENLARGE_DURATION);
+        return new AttackSkill(attackVisual, PlayerConfig.ATTACK_RIGID_TIME, attackArea, PlayerConfig.INITIAL_DAMAGE, PlayerConfig.INITIAL_ATTACK_COOLDOWN, PlayerConfig.ENLARGE_DURATION);
     }
 
-    public static Dash getDash(Property property){
-        return new Dash(PlayerConfig.DASH_COOLDOWN, PlayerConfig.DASH_RANGE, property);
+    public static Dash getDash(){
+        return new Dash(PlayerConfig.DASH_COOLDOWN, PlayerConfig.DASH_RANGE);
     }
 
-    public static Defend getDefend(Property property) {
-        return new Defend(PlayerConfig.DEFEND_COOLDOWN, PlayerConfig.DEFEND_DURATION, property);
+    public static Defend getDefend() {
+        return new Defend(PlayerConfig.DEFEND_COOLDOWN, PlayerConfig.DEFEND_DURATION);
+    }
+
+    public static EmptySkill getEmptySkill(){
+        return new EmptySkill();
     }
 }

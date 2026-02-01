@@ -1,5 +1,6 @@
 package Level.Skills.Player;
 
+import Level.Data.Properties.PlayerState;
 import Level.Managers.Observer;
 import Level.Skills.Skill;
 import Level.Skills.Timer;
@@ -9,15 +10,18 @@ import Level.Data.Properties.Position;
 public class Dash implements Skill {
 
     private final double RANGE;
-    private final Property owner;
+    private Property owner;
 
     private final Timer cooldownSystem;
     private boolean pendingDash;
     private Position destination = new Position();
 
-    public Dash (Double cooldown, Double range, Property owner){
+    public Dash (Double cooldown, Double range){
         this.cooldownSystem = new Timer(cooldown);
         this.RANGE = range;
+    }
+
+    public void initializeData(Property owner, PlayerState playerState){
         this.owner = owner;
     }
 

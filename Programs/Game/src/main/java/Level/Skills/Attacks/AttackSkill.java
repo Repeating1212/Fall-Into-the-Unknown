@@ -1,5 +1,6 @@
 package Level.Skills.Attacks;
 
+import Level.Data.Properties.PlayerState;
 import Level.Managers.Observer;
 import Level.Objects.Base_Class.GameObject;
 import Level.Data.Properties.Property;
@@ -19,23 +20,26 @@ public class AttackSkill implements Skill {
     private final AttackArea ATTACK_AREA;
     private final Timer COOLDOWN;
     private final Timer ANIMATION_TIMER;
-    private final Property owner;
+    private Property owner;
 
     // private value
     private Position destinationPos = new Position();
     private ArrayList<GameObject> targetEntity = new ArrayList<GameObject>();
 
 
-    public AttackSkill(AttackVisual attackVisual, double attackRigidTime, Property owner, AttackArea attackArea, double attackDamage,
+    public AttackSkill(AttackVisual attackVisual, double attackRigidTime, AttackArea attackArea, double attackDamage,
                        double cooldown, double animationTime){
         this.ATTACK_VISUAL = attackVisual;
         this.ATTACK_AREA = attackArea;
         this.ATTACK_RIGID_TIME = attackRigidTime;
         this.ATTACK_DAMAGE = attackDamage;
-        this.owner = owner;
 
         this.COOLDOWN = new Timer(cooldown);
         this.ANIMATION_TIMER = new Timer(animationTime);
+    }
+
+    public void initializeData(Property owner, PlayerState playerState){
+        this.owner = owner;
     }
 
     public void activate(double positionX, double positionY){

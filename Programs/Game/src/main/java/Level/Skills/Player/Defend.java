@@ -3,6 +3,7 @@ package Level.Skills.Player;
 import Level.Data.Properties.Position;
 import Level.Data.Properties.Property;
 import Level.Managers.Observer;
+import Level.Data.Properties.PlayerState;
 import Level.Skills.Skill;
 import Level.Skills.Timer;
 
@@ -10,16 +11,17 @@ public class Defend implements Skill {
 
     private final Timer defendTimer;
     private final Timer cooldownTimer;
-    private final Property owner;
+    private Property owner;
+    private PlayerState playerState;
 
-    public Defend(Double cooldown, double defendDuration, Property owner){
+    public Defend(Double cooldown, double defendDuration){
         this.defendTimer = new Timer(defendDuration);
         this.cooldownTimer = new Timer(cooldown);
-        this.owner = owner;
     }
 
-    public boolean isDefending(){
-        return defendTimer.isTicking();
+    public void initializeData(Property owner, PlayerState playerState){
+        this.owner = owner;
+        this.playerState = playerState;
     }
 
     public double getCooldownPercentage(){
@@ -33,7 +35,6 @@ public class Defend implements Skill {
     public void activate(Position position){
         if (cooldownTimer.isDeactive() && defendTimer.isDeactive()){
             defendTimer.setPending();
-            System.out.println("Set Defend");
         }
     }
 
@@ -41,16 +42,19 @@ public class Defend implements Skill {
         if(defendTimer.isPending()){
             defendTimer.start();
             cooldownTimer.setPending();
+            playerState.setDefend(true);
         }
         if(defendTimer.isEnd() && cooldownTimer.isPending()){
+            playerState.setDefend(false);
             cooldownTimer.start();
-            System.out.println("Defend finished");
         }
         cooldownTimer.update(deltaTime);
         defendTimer.update(deltaTime);
     }
 
     public void handleRigid(){
-        // Empty
+        if (defendTimer.isPending()){
+            owner.pauseMovement(defendTimer.getDuration());
+        }
     }
 }

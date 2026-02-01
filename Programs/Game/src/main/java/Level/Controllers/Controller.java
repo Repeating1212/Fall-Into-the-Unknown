@@ -49,6 +49,7 @@ public class Controller {
         playerHandler =  new PlayerHandler(sceneView.getSkillBoxView());
         MainManager mainManager = new MainManager(sceneView, playerHandler);
         gameUpdater = new GameTicks(mainManager, playerHandler);
+        sceneView.getSkillBoxView().setSkillImage(playerHandler.getSkills());
 
         gameUpdater.start();
         rootPane.requestFocus();

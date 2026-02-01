@@ -17,7 +17,8 @@ public class Guard extends Boss {
     public Guard(GameObject enemy, Observer observer) {
         super(GuardSupplier.getProperty(), GuardConfig.loadImage(),
                 enemy, observer);
-        this.attackSkill = GuardSupplier.getAttackBehaviour(property);
+        this.attackSkill = GuardSupplier.getAttackBehaviour();
+        this.attackSkill.initializeData(property, null);
     }
 
     // Override Method

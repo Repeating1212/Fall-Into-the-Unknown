@@ -42,4 +42,6 @@ public class Timer {
     public double getCooldownPercentage(){
         return (currentTime / COOLDOWN);
     }
+
+    public double getDuration(){ return COOLDOWN;}
 }

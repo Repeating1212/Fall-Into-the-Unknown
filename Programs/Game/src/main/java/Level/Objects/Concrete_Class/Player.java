@@ -1,8 +1,7 @@
 package Level.Objects.Concrete_Class;
 
+import Level.Data.Properties.PlayerState;
 import Level.Objects.Base_Class.ImageObject;
-import Level.Skills.Player.Dash;
-import Level.Skills.Player.Defend;
 import Level.Managers.Observer;
 import Level.Skills.Skill;
 import Level.View.AttackVisualize.AttackVisual;
@@ -11,17 +10,18 @@ import Level.Skills.Attacks.AttackSkill;
 import Level.Data.Config.PlayerConfig;
 
 public class Player extends ImageObject {
-    private final AttackSkill attackSkill = PlayerSupplier.getAttackBehaviour(property);
-    private final Dash dash = PlayerSupplier.getDash(property);
-    private final Defend defend = PlayerSupplier.getDefend(property);
-    private final Skill[] skills = new Skill[]{
-            attackSkill, dash, defend, null
-    };
+    private final PlayerState playerState = new PlayerState();
+
+    private final Skill[] skills;
 
     // Constructor
-    public Player(Observer observer) {
+    public Player(Observer observer, Skill[] skills) {
         super(PlayerSupplier.getProperty(), PlayerConfig.loadImageRight(), observer);
         this.updateHealth();
+        this.skills = skills;
+        for (Skill skill : this.skills){
+            skill.initializeData(property, playerState);
+        }
     }
 
     // Update player position
@@ -29,11 +29,15 @@ public class Player extends ImageObject {
         super.update(deltaTime);
         updateSpritePosition();
         for(Skill skill : skills){
-            if (skill == null) continue;
             skill.handleRigid();
             skill.update(deltaTime, observer);
         }
         displaySkillCooldown();
+    }
+
+    public void activateSkill(int skillID, double mouseX, double mouseY){
+        if(skillID > skills.length) return;
+        skills[skillID].activate(mouseX, mouseY);
     }
 
     // Override Method
@@ -45,7 +49,7 @@ public class Player extends ImageObject {
 
     @Override
     public void takeDamage(double damage){
-        if(! defend.isDefending()){
+        if(! playerState.isDefend()){
             super.takeDamage(damage);
         }
     }
@@ -61,25 +65,19 @@ public class Player extends ImageObject {
 
     private void displaySkillCooldown(){
         for (int i = 0; i < skills.length; i ++){
-            if (skills[i] == null) return;
             observer.updateSkillCooldowns(i, skills[i].getCooldownPercentage());
         }
     }
 
     // Middle Man Method
 
-    public void attack(double mouseX, double mouseY) {
-        attackSkill.activate(mouseX, mouseY);
+    public AttackVisual getAttackVisual() {
+        for (Skill skill: skills){
+            if (skill.getClass() == AttackSkill.class){
+                AttackSkill attackSkill = (AttackSkill) skill;
+                return attackSkill.getAttackVisual();
+            }
+        }
+        return null;
     }
-
-    public void dash(double mouseX, double mouseY){
-        dash.activate(mouseX, mouseY);
-    }
-
-    public void defend(){
-        defend.activate(null);
-    }
-
-    public AttackVisual getAttackVisual() { return attackSkill.getAttackVisual(); }
-
 }

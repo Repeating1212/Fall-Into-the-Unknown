@@ -96,7 +96,7 @@
                      <children>
                         <ImageView fx:id="skill1" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@picture/Skill/Cmp_Attack.png" />
+                              <Image url="@../Skill_Icon/Empty_Skill.png" />
                            </image>
                            <StackPane.margin>
                               <Insets />
@@ -116,7 +116,7 @@
                      <children>
                         <ImageView fx:id="skill2" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@picture/Skill/Cmp_Flash.png" />
+                              <Image url="@../Skill_Icon/Empty_Skill.png" />
                            </image>
                         </ImageView>
                         <Rectangle fx:id="skillCooldown2" height="40.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.4;" width="40.0" />
@@ -132,7 +132,7 @@
                      <children>
                         <ImageView fx:id="skill3" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@picture/Skill/Cmp_Defend.png" />
+                              <Image url="@../Skill_Icon/Empty_Skill.png" />
                            </image>
                         </ImageView>
                         <Rectangle fx:id="skillCooldown3" height="40.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.4;" width="40.0" />

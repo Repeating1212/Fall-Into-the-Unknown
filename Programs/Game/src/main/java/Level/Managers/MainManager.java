@@ -34,7 +34,7 @@ public class MainManager {
         observer = new Observer(level, sceneView);
         this.coinManager = new CoinManager(level);
 
-        player = new Player(observer);
+        player = new Player(observer, playerHandler.getSkills());
         boss = new Guard(player, observer);
         portal = new Portal(observer);
 

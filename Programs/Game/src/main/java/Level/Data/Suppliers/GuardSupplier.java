@@ -20,10 +20,10 @@ public class GuardSupplier {
         return new Health(GuardConfig.MAXIMUM_HEALTH);
     }
 
-    public static AttackSkill getAttackBehaviour(Property guard){
+    public static AttackSkill getAttackBehaviour(){
         AttackArea attackArea = new ConeAttackArea(GuardConfig.INITIAL_ATTACK_RANGE, GuardConfig.ATTACK_AREA_ANGLE);
         ConeAttackVisual attackVisual = new ConeAttackVisual(GuardConfig.INITIAL_ATTACK_RANGE, GuardConfig.ATTACK_AREA_ANGLE, GuardConfig.ENLARGE_DURATION, GuardConfig.FADE_OUT_DURATION);
 
-        return new AttackSkill(attackVisual, GuardConfig.ATTACK_RIGID_TIME, guard, attackArea, GuardConfig.INITIAL_DAMAGE, GuardConfig.INITIAL_ATTACK_COOLDOWN, GuardConfig.ENLARGE_DURATION);
+        return new AttackSkill(attackVisual, GuardConfig.ATTACK_RIGID_TIME, attackArea, GuardConfig.INITIAL_DAMAGE, GuardConfig.INITIAL_ATTACK_COOLDOWN, GuardConfig.ENLARGE_DURATION);
     }
 }
