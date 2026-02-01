@@ -1,5 +1,7 @@
 package Game_Data;
 
+import Game_Data.Skill.SkillData;
+
 public class DataManager {
 
     private static GameData currentGameData;

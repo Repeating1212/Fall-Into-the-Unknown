@@ -1,5 +1,7 @@
 package Level.Controllers;
 
+import Game_Data.DataManager;
+import Game_Data.Skill.SkillConfig;
 import Level.Data.Suppliers.PlayerSupplier;
 import Level.Objects.Concrete_Class.Player;
 import Level.Skills.Skill;
@@ -14,16 +16,14 @@ public class PlayerHandler {
     private int currentSkill = 0;
     private boolean isPause = false;
 
-    private final Skill[] skills = new Skill[]{
-            PlayerSupplier.getAttack(),
-            PlayerSupplier.getDash(),
-            PlayerSupplier.getDefend(),
-            PlayerSupplier.getEmptySkill()
-
-    };
+    private final Skill[] skills = new Skill[4];
 
     public PlayerHandler (SkillBoxView skillBoxView){
         this.skillBoxView = skillBoxView;
+        int[] equipedSkill = DataManager.getSkillData().getEquipedSkill();
+        for (int i = 0; i < equipedSkill.length; i++){
+            skills[i] = SkillConfig.getPlayerSkill(equipedSkill[i]);
+        }
     }
 
     public void initialize (Player player){

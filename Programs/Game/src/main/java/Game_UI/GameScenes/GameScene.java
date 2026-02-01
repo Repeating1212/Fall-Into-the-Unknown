@@ -2,7 +2,7 @@ package Game_UI.GameScenes;
 
 import Game_UI.Icons_Scene.CharacterScene;
 import Game_UI.Icons_Scene.EncyclopediaScene;
-import Game_UI.Skill_Scene.SkillConfig;
+import Game_Data.Skill.SkillConfig;
 import Game_UI.Skill_Scene.SkillScene;
 import Game_UI.Icons_Scene.StoreScene;
 import Game_Data.DataManager;

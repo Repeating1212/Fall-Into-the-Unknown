@@ -1,6 +1,4 @@
-package Game_Data;
-
-import javafx.scene.image.Image;
+package Game_Data.Skill;
 
 public class SkillData {
 

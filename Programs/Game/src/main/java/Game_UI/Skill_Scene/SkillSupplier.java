@@ -1,8 +1,8 @@
 package Game_UI.Skill_Scene;
 
+import Game_Data.Skill.SkillConfig;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
