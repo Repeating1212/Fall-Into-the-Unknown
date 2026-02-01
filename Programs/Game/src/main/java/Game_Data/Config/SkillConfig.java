@@ -1,6 +1,5 @@
-package Game_Data.Skill;
+package Game_Data.Config;
 
-import Level.Data.Config.PlayerConfig;
 import Level.Data.Suppliers.PlayerSupplier;
 import Level.Skills.Skill;
 import javafx.scene.image.Image;
@@ -15,9 +14,11 @@ public class SkillConfig {
             EMPTY_ICON, ATTACK_ICON, DEFEND_ICON, DASH_ICON
     };
 
+    public static final int EMPTY_SKILL_ID = -1;
     public static final int ATTACK_SKILL_ID = 1;
     public static final int DEFEND_SKILL_ID = 2;
     public static final int DASH_SKILL_ID = 3;
+
 
     public static Skill getPlayerSkill(int skillID){
         return switch (skillID) {

@@ -1,6 +1,6 @@
 package Game_UI.Skill_Scene;
 
-import Game_Data.Skill.SkillConfig;
+import Game_Data.Config.SkillConfig;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;

@@ -30,16 +30,16 @@ public class Skill_Pane {
 
     @FXML
     private void equipSkill() {
-        if (DataManager.getSkillData().isEquip(skillID)){
-            DataManager.getSkillData().setUnequip(skillID);
+        if (DataManager.getGameData().isEquip(skillID)){
+            DataManager.getGameData().setUnequip(skillID);
         } else {
-            DataManager.getSkillData().setEquip(skillID);
+            DataManager.getGameData().setEquip(skillID);
         }
         updateText();
     }
 
     private void updateText(){
-        if (DataManager.getSkillData().isEquip(skillID)){
+        if (DataManager.getGameData().isEquip(skillID)){
             equipButton.setText("Equiped");
         } else {
             equipButton.setText("Unequip");

@@ -1,5 +1,7 @@
 package Game_UI.GameScenes;
 
+import Game_UI.OverlayController;
+import Game_UI.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Setting {
+public class Setting implements OverlayController {
     @FXML
     private Pane SettingPane;
     private Pane rootPane;
@@ -22,17 +24,7 @@ public class Setting {
 
     @FXML
     private void handleQuit() {
-        try {
-            // Reload the FXML
-            Parent gameRoot = FXMLLoader.load(getClass().getResource("/Game_UI/StartScenes/StartScene/StartScene.fxml"));
-            Scene startScene = new Scene(gameRoot);
-
-            Stage stage = (Stage) rootPane.getScene().getWindow();
-            stage.setScene(startScene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.START);
     }
 
     @FXML

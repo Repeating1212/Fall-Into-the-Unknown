@@ -45,6 +45,6 @@ module Game {
     opens Level.Skills to javafx.fxml;
     exports Game_UI.Skill_Scene;
     opens Game_UI.Skill_Scene to javafx.fxml;
-    exports Game_Data.Skill;
-    opens Game_Data.Skill to com.google.gson, javafx.fxml;
+    exports Game_Data.Config;
+    opens Game_Data.Config to com.google.gson, javafx.fxml;
 }

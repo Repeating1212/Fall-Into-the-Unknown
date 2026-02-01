@@ -1,8 +1,7 @@
 package Level.Controllers;
 
 import Game_Data.DataManager;
-import Game_Data.Skill.SkillConfig;
-import Level.Data.Suppliers.PlayerSupplier;
+import Game_Data.Config.SkillConfig;
 import Level.Objects.Concrete_Class.Player;
 import Level.Skills.Skill;
 import Level.View.SkillBoxView;
@@ -20,7 +19,7 @@ public class PlayerHandler {
 
     public PlayerHandler (SkillBoxView skillBoxView){
         this.skillBoxView = skillBoxView;
-        int[] equipedSkill = DataManager.getSkillData().getEquipedSkill();
+        int[] equipedSkill = DataManager.getGameData().getEquipedSkill();
         for (int i = 0; i < equipedSkill.length; i++){
             skills[i] = SkillConfig.getPlayerSkill(equipedSkill[i]);
         }

@@ -1,35 +1,18 @@
 package Game_UI.StartScenes;
 
-import javafx.event.ActionEvent;
+import Game_UI.SceneLoader;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
-
-import java.io.IOException;
+import javafx.scene.layout.Pane;
 
 public class GameDesignerScene {
+
+    @FXML private Pane rootPane;
 
     @FXML
     public void initialize() {}
 
     @FXML
-    private void handleReturn(ActionEvent event) {
-        try {
-            Button clickedButton = (Button) event.getSource();
-
-            Parent secondScene = FXMLLoader.load(getClass().getResource("/Game_UI/StartScenes/StartScene/StartScene.fxml"));
-            Stage stage = (Stage) clickedButton.getScene().getWindow();
-
-            // Set new scene
-            Scene scene = new Scene(secondScene);
-            stage.setScene(scene);
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void handleReturn() {
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.START);
     }
 }

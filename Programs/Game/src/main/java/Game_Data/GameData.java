@@ -4,6 +4,7 @@ import java.io.*;
 
 public class GameData implements Serializable {
     private int coins = 0;
+    private final int[] equipedSkill = new int[]{1, 0,0,0 };
 
 //    private int highScore;
 //    private boolean soundEnabled;
@@ -16,6 +17,33 @@ public class GameData implements Serializable {
 
     public void addCoins(int increment) {
         coins += increment;
+    }
+
+    public void setEquip(int skill_id){
+        for (int i = 0; i < equipedSkill.length; i++){
+            if (equipedSkill[i] == 0) {
+                equipedSkill[i] = skill_id;
+                break;
+            }
+        }
+    }
+
+    public void setUnequip(int skill_id){
+        for (int i = 0; i < equipedSkill.length; i++){
+            if (equipedSkill[i] == skill_id)
+                equipedSkill[i] = 0;
+        }
+    }
+
+    public boolean isEquip(int skill_id){
+        for (int j : equipedSkill) {
+            if (j == skill_id) return true;
+        }
+        return false;
+    }
+
+    public int[] getEquipedSkill(){
+        return equipedSkill;
     }
 
 //    public int getHighScore() { return highScore; }

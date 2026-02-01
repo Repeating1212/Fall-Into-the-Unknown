@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="675.0" maxWidth="1200.0" prefHeight="675.0" prefWidth="1200.0" style="-fx-background-color: #676767;" stylesheets="@StoreScene.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game_UI.Icons_Scene.StoreScene">
+<AnchorPane fx:id="rootPane" maxHeight="675.0" maxWidth="1200.0" prefHeight="675.0" prefWidth="1200.0" style="-fx-background-color: #676767;" stylesheets="@StoreScene.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game_UI.Icons_Scene.StoreScene">
    <children>
       <ImageView fitHeight="675.0" fitWidth="1200.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0;">
          <image>

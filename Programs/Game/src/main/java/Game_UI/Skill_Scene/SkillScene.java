@@ -1,5 +1,6 @@
 package Game_UI.Skill_Scene;
 
+import Game_UI.SceneLoader;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class SkillScene {
-    private Pane rootPane;
+    @FXML private Pane rootPane;
     @FXML private Button returnButton;
     @FXML private VBox Skill_Vbox;
 
@@ -27,10 +28,7 @@ public class SkillScene {
         returnButton.setOnMouseExited(e -> {
             returnButtonAnimation(returnButton, 0);
         });
-    }
 
-    public void initializeData(Pane rootPane){
-        this.rootPane = rootPane;
         SkillSupplier.loadAttackSkill(Skill_Vbox);
         SkillSupplier.loadDefendSkill(Skill_Vbox);
         SkillSupplier.loadDashSkill(Skill_Vbox);
@@ -38,16 +36,7 @@ public class SkillScene {
 
     @FXML
     private void handleReturn() {
-        try {
-            Parent gameRoot = FXMLLoader.load(getClass().getResource("/Game_UI/GameScenes/GameScene/GameScene.fxml"));
-            Scene startScene = new Scene(gameRoot);
-
-            Stage stage = (Stage) rootPane.getScene().getWindow();
-            stage.setScene(startScene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.GAME);
     }
 
     @FXML
@@ -67,8 +56,6 @@ public class SkillScene {
         tt.setToX(0);
         tt.play();
     }
-
-
 
     // Private Method
 
