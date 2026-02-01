@@ -9,9 +9,6 @@ import Level.Skills.Boss.GuardMove;
 import Level.Objects.Base_Class.GameObject;
 import Level.View.AttackVisualize.AttackVisual;
 
-
-import java.util.ArrayList;
-
 public class Guard extends Boss {
 
     private final AttackSkill attackSkill;
@@ -30,7 +27,7 @@ public class Guard extends Boss {
         GuardMove.directTowardPlayer(enemy.getProperty(), this.property);
         super.update(deltaTime);
         updateSpritePosition();
-        handleAttack(observer.getLivingEntities(), deltaTime);
+        handleAttack(deltaTime);
     }
 
     @Override
@@ -40,10 +37,10 @@ public class Guard extends Boss {
 
     // Private Method
 
-    private void handleAttack(ArrayList<GameObject> healthObj, double deltaTime){
-        if (isNearEnemy()) attackSkill.setAttack(enemy.getCenterPos(), healthObj);
-        attackSkill.handleAttackRigid(property);
-        attackSkill.update(deltaTime);
+    private void handleAttack(double deltaTime){
+        if (isNearEnemy()) attackSkill.activate(enemy.getCenterPos());
+        attackSkill.handleRigid();
+        attackSkill.update(deltaTime, observer);
     }
 
     private boolean isNearEnemy(){

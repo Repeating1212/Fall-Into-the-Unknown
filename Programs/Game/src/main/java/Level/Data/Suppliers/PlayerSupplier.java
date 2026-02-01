@@ -30,11 +30,11 @@ public class PlayerSupplier {
         return new AttackSkill(attackVisual, PlayerConfig.ATTACK_RIGID_TIME, player, attackArea, PlayerConfig.INITIAL_DAMAGE, PlayerConfig.INITIAL_ATTACK_COOLDOWN, PlayerConfig.ENLARGE_DURATION);
     }
 
-    public static Dash getDash(){
-        return new Dash(PlayerConfig.DASH_COOLDOWN, PlayerConfig.DASH_RANGE);
+    public static Dash getDash(Property property){
+        return new Dash(PlayerConfig.DASH_COOLDOWN, PlayerConfig.DASH_RANGE, property);
     }
 
-    public static Defend getDefend() {
-        return new Defend(PlayerConfig.DEFEND_COOLDOWN, PlayerConfig.DEFEND_DURATION);
+    public static Defend getDefend(Property property) {
+        return new Defend(PlayerConfig.DEFEND_COOLDOWN, PlayerConfig.DEFEND_DURATION, property);
     }
 }

@@ -16,7 +16,6 @@ public class SkillBoxView {
         this.skills = skills;
         this.skillBackgrounds = skillBackgrounds;
         this.skillCooldowns = skillCooldowns;
-        updateSkillCooldowns(new double[] {0,0,0,0});
     }
 
     public void updateSkillSelection(int currentSkill) {
@@ -31,10 +30,8 @@ public class SkillBoxView {
         }
     }
 
-    public void updateSkillCooldowns(double[] cooldownPercentages){
-        if (cooldownPercentages.length != 4) return;
-        for (int i = 0;i < 4; i++ ){
-            skillCooldowns[i].setWidth(cooldownPercentages[i] * skills[i].getFitWidth());
-        }
+    public void updateSkillCooldowns(int skillID , double cooldownPercentages){
+        if (skillID < 0 || skillID > 3) return;
+        skillCooldowns[skillID].setWidth(cooldownPercentages * skills[skillID].getFitWidth());
     }
 }

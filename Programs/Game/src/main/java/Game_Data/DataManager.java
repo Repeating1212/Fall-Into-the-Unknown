@@ -6,6 +6,7 @@ public class DataManager {
     private static SkillData skillData;
 
     public static GameData getGameData(){
+        if (currentGameData == null) loadData();
         return currentGameData;
     }
 

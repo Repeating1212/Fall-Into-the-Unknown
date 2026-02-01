@@ -47,9 +47,8 @@ public class Observer {
         sceneView.updateBossHealthBar(progress);
     }
 
-    public void updateSkillCooldowns(double[] cooldownPercentage){
-        // Only if cooldownPercentage.length = 4
-        sceneView.updateSkillCooldowns(cooldownPercentage);
+    public void updateSkillCooldowns(int skillID , double cooldownPercentages){
+        sceneView.updateSkillCooldowns(skillID ,cooldownPercentages);
     }
 
     public void updatePlayerHeartView(int heart){

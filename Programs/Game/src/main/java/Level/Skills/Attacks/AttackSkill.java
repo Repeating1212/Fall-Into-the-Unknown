@@ -1,21 +1,25 @@
 package Level.Skills.Attacks;
 
+import Level.Managers.Observer;
 import Level.Objects.Base_Class.GameObject;
 import Level.Data.Properties.Property;
 import Level.Data.Properties.Position;
+import Level.Skills.Skill;
 import Level.Skills.Timer;
 import Level.View.AttackVisualize.AttackVisual;
 
 import java.util.ArrayList;
 
-public class AttackSkill {
+public class AttackSkill implements Skill {
+
+    private final double ATTACK_DAMAGE;
+    private final double ATTACK_RIGID_TIME;
+
     private final AttackVisual ATTACK_VISUAL;
     private final AttackArea ATTACK_AREA;
-    private final double ATTACK_DAMAGE;
-    private final Property OWNER;
-    private final double ATTACK_RIGID_TIME;
     private final Timer COOLDOWN;
     private final Timer ANIMATION_TIMER;
+    private final Property owner;
 
     // private value
     private Position destinationPos = new Position();
@@ -28,26 +32,25 @@ public class AttackSkill {
         this.ATTACK_AREA = attackArea;
         this.ATTACK_RIGID_TIME = attackRigidTime;
         this.ATTACK_DAMAGE = attackDamage;
-        this.OWNER = owner;
+        this.owner = owner;
 
         this.COOLDOWN = new Timer(cooldown);
         this.ANIMATION_TIMER = new Timer(animationTime);
-
     }
 
-    public void setAttack(double positionX, double positionY, ArrayList<GameObject> healthObj){
-        setAttack(new Position(positionX, positionY), healthObj);
+    public void activate(double positionX, double positionY){
+        activate(new Position(positionX, positionY));
     }
 
-    public void setAttack(Position destinationPos, ArrayList<GameObject> healthObj){
+    public void activate(Position destinationPos){
         if (COOLDOWN.isDeactive() && ANIMATION_TIMER.isDeactive()) {
             this.destinationPos = destinationPos;
-            this.targetEntity = getTargets(healthObj);
             ANIMATION_TIMER.setPending();
         }
     }
 
-    public void update(double deltaTime){
+    public void update(double deltaTime, Observer observer){
+        this.targetEntity = getTargets(observer.getLivingEntities());
         ANIMATION_TIMER.update(deltaTime);
         COOLDOWN.update(deltaTime);
         ATTACK_VISUAL.update(deltaTime);
@@ -55,7 +58,7 @@ public class AttackSkill {
         handleDamaging();
     }
 
-    public void handleAttackRigid(Property owner){
+    public void handleRigid(){
         if (ANIMATION_TIMER.isPending()) {
             owner.pauseMovement(ATTACK_RIGID_TIME);
         }
@@ -74,8 +77,8 @@ public class AttackSkill {
         if (ANIMATION_TIMER.isPending()){
             ANIMATION_TIMER.start();
             COOLDOWN.setPending();
-            ATTACK_VISUAL.activate(new Position(OWNER.getCenterX(), OWNER.getCenterY()), destinationPos);
-            ATTACK_AREA.updatePosition(new Position(OWNER.getCenterX(), OWNER.getCenterY()), destinationPos);
+            ATTACK_VISUAL.activate(new Position(owner.getCenterX(), owner.getCenterY()), destinationPos);
+            ATTACK_AREA.updatePosition(new Position(owner.getCenterX(), owner.getCenterY()), destinationPos);
         }
     }
 
@@ -89,7 +92,7 @@ public class AttackSkill {
     private ArrayList<GameObject> getTargets(ArrayList<GameObject> healthObj){
         ArrayList<GameObject> targets = new ArrayList<>();
         for (GameObject entity : healthObj) {
-                if (entity.getProperty() == OWNER) continue;
+                if (entity.getProperty() == owner) continue;
                 targets.add(entity);
             }
         return targets;

@@ -120,8 +120,8 @@ public class SceneView {
         }
     }
 
-    public void updateSkillCooldowns(double[] cooldownPercentages){
-        skillBoxView.updateSkillCooldowns(cooldownPercentages);
+    public void updateSkillCooldowns(int skillID , double cooldownPercentages){
+        skillBoxView.updateSkillCooldowns(skillID ,cooldownPercentages);
     }
     // Middle Man
 

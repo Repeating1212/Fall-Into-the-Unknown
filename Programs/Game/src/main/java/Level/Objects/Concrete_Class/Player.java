@@ -4,30 +4,35 @@ import Level.Objects.Base_Class.ImageObject;
 import Level.Skills.Player.Dash;
 import Level.Skills.Player.Defend;
 import Level.Managers.Observer;
+import Level.Skills.Skill;
 import Level.View.AttackVisualize.AttackVisual;
 import Level.Data.Suppliers.PlayerSupplier;
 import Level.Skills.Attacks.AttackSkill;
 import Level.Data.Config.PlayerConfig;
 
 public class Player extends ImageObject {
-    private final AttackSkill attackSkill;
-    private final Dash dash = PlayerSupplier.getDash();
-    private final Defend defend = PlayerSupplier.getDefend();
+    private final AttackSkill attackSkill = PlayerSupplier.getAttackBehaviour(property);
+    private final Dash dash = PlayerSupplier.getDash(property);
+    private final Defend defend = PlayerSupplier.getDefend(property);
+    private final Skill[] skills = new Skill[]{
+            attackSkill, dash, defend, null
+    };
 
     // Constructor
     public Player(Observer observer) {
         super(PlayerSupplier.getProperty(), PlayerConfig.loadImageRight(), observer);
         this.updateHealth();
-        this.attackSkill = PlayerSupplier.getAttackBehaviour(property);
     }
 
     // Update player position
     public void update(double deltaTime) {
         super.update(deltaTime);
         updateSpritePosition();
-        handleAttack(deltaTime);
-        handleDash(deltaTime);
-        defend.update(deltaTime);
+        for(Skill skill : skills){
+            if (skill == null) continue;
+            skill.handleRigid();
+            skill.update(deltaTime, observer);
+        }
         displaySkillCooldown();
     }
 
@@ -54,36 +59,26 @@ public class Player extends ImageObject {
 
     // Private Method
 
-    private void handleAttack(double deltaTime){
-        attackSkill.handleAttackRigid(property);
-        attackSkill.update(deltaTime);
-    }
-
-    private void handleDash(Double deltaTime){
-        dash.updateDash(property, deltaTime, observer.getObjectProperties());
-    }
-
     private void displaySkillCooldown(){
-        double[] skillCooldownPercentage = new double[]{
-                attackSkill.getCooldownPercentage(),
-                dash.getCooldownPercentage(),
-                defend.cooldownPercentage(),
-                1
-        };
-        observer.updateSkillCooldowns(skillCooldownPercentage);
+        for (int i = 0; i < skills.length; i ++){
+            if (skills[i] == null) return;
+            observer.updateSkillCooldowns(i, skills[i].getCooldownPercentage());
+        }
     }
 
     // Middle Man Method
 
     public void attack(double mouseX, double mouseY) {
-        attackSkill.setAttack(mouseX, mouseY, observer.getLivingEntities());
+        attackSkill.activate(mouseX, mouseY);
     }
 
     public void dash(double mouseX, double mouseY){
-        dash.setDash(mouseX, mouseY);
+        dash.activate(mouseX, mouseY);
     }
 
-    public void defend(){ defend.setDefend();}
+    public void defend(){
+        defend.activate(null);
+    }
 
     public AttackVisual getAttackVisual() { return attackSkill.getAttackVisual(); }
 
