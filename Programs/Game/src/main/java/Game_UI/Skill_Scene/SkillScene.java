@@ -3,17 +3,11 @@ package Game_UI.Skill_Scene;
 import Game_UI.SceneLoader;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.io.IOException;
 
 public class SkillScene {
     @FXML private Pane rootPane;
@@ -29,9 +23,9 @@ public class SkillScene {
             returnButtonAnimation(returnButton, 0);
         });
 
-        SkillSupplier.loadAttackSkill(Skill_Vbox);
-        SkillSupplier.loadDefendSkill(Skill_Vbox);
-        SkillSupplier.loadDashSkill(Skill_Vbox);
+        SkillPaneSupplier.loadAttackSkill(Skill_Vbox);
+        SkillPaneSupplier.loadDefendSkill(Skill_Vbox);
+        SkillPaneSupplier.loadDashSkill(Skill_Vbox);
     }
 
     @FXML

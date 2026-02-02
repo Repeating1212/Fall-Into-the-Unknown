@@ -1,5 +1,6 @@
 package Level.Controllers;
 
+import Game_Data.Config.SkillSupplier;
 import Game_Data.DataManager;
 import Game_Data.Config.SkillConfig;
 import Level.Objects.Concrete_Class.Player;
@@ -23,7 +24,7 @@ public class PlayerHandler {
         // Update skill data
         int[] equipedSkill = DataManager.getGameData().getEquipedSkill();
         for (int i = 0; i < equipedSkill.length; i++){
-            skills[i] = SkillConfig.getPlayerSkill(equipedSkill[i]);
+            skills[i] = SkillSupplier.getPlayerSkill(equipedSkill[i]);
         }
         skillBoxView.setSkillImage(skills);
         skillBoxView.updateSkillSelection(currentSkill);

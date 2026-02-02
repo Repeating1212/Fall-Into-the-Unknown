@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class SkillSupplier {
+public class SkillPaneSupplier {
 
     protected static void loadAttackSkill(VBox Skill_Vbox) {
         Skill_Pane controller = loadNewPane(Skill_Vbox);
@@ -36,7 +36,7 @@ public class SkillSupplier {
 
     private static Skill_Pane loadNewPane(VBox Skill_VBox){
         try {
-            FXMLLoader loader = new FXMLLoader(SkillSupplier.class.getResource("/Game_UI/Icons_Scene/SkillScene/SkillDisplay.fxml"));
+            FXMLLoader loader = new FXMLLoader(SkillPaneSupplier.class.getResource("/Game_UI/Icons_Scene/SkillScene/SkillDisplay.fxml"));
             Node skillNode = loader.load();
             Skill_VBox.getChildren().add(skillNode);
             return loader.getController();

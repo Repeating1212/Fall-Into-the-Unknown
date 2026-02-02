@@ -24,23 +24,4 @@ public class PlayerSupplier {
     public static Health getHealth(){
         return new Health(PlayerConfig.MAXIMUM_HEALTH);
     }
-
-    public static AttackSkill getAttack(){
-        AttackArea attackArea = new ConeAttackArea(PlayerConfig.INITIAL_ATTACK_RANGE, PlayerConfig.ATTACK_AREA_ANGLE);
-        ConeAttackVisual attackVisual = new ConeAttackVisual(PlayerConfig.INITIAL_ATTACK_RANGE, PlayerConfig.ATTACK_AREA_ANGLE, PlayerConfig.ENLARGE_DURATION, PlayerConfig.FADE_OUT_DURATION);
-
-        return new AttackSkill(attackVisual, PlayerConfig.ATTACK_RIGID_TIME, attackArea, PlayerConfig.INITIAL_DAMAGE, PlayerConfig.INITIAL_ATTACK_COOLDOWN, PlayerConfig.ENLARGE_DURATION);
-    }
-
-    public static Dash getDash(){
-        return new Dash(PlayerConfig.DASH_COOLDOWN, PlayerConfig.DASH_RANGE);
-    }
-
-    public static Defend getDefend() {
-        return new Defend(PlayerConfig.DEFEND_COOLDOWN, PlayerConfig.DEFEND_DURATION);
-    }
-
-    public static EmptySkill getEmptySkill(){
-        return new EmptySkill();
-    }
 }
