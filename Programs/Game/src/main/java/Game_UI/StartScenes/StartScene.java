@@ -1,16 +1,24 @@
 package Game_UI.StartScenes;
 
+import Game_Data.Config.ImageConfig;
 import Game_Data.DataManager;
 import Game_UI.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class StartScene {
 
     @FXML private Pane rootPane;
+    @FXML private ImageView fallingGirl;
+
+    @FXML
+    private void initialize(){
+        fallingGirl.setImage(ImageConfig.STARTSCENE_BACKGROUND);
+    }
 
     @FXML
     private void loadGameScene() {

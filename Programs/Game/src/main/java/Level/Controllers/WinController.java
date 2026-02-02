@@ -1,5 +1,6 @@
 package Level.Controllers;
 
+import Game_Data.Config.ImageConfig;
 import Game_Data.DataManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -17,9 +19,12 @@ public class WinController {
 
     @FXML private Pane rootPane;
     @FXML private Text coinLabel;
+    @FXML private ImageView coinImage;
 
     @FXML
-    public void initialize() {}
+    public void initialize() {
+        coinImage.setImage(ImageConfig.COIN);
+    }
 
     public void updateCoinLabel(int coinValue){
         coinLabel.setText(String.valueOf(coinValue));

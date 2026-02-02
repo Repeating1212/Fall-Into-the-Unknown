@@ -31,21 +31,4 @@ public class PlayerConfig {
     public static final double FADE_OUT_DURATION = 0.1;
     public static final double TOTAL_ANIMATION_PERIOD = FADE_OUT_DURATION + ENLARGE_DURATION;
     public static final double ATTACK_RIGID_TIME = TOTAL_ANIMATION_PERIOD * 2.0;
-
-    public static Image loadImageRight() {
-        Image image = new Image(PlayerConfig.class.getResourceAsStream("/Picture/Level_Picture/Character/Character_Right.png"));
-        if (image.isError()) {
-            System.out.println("Player image not found");
-        }
-        return image;
-    }
-
-    public static Image loadImageLeft() {
-        Image image = new Image(PlayerConfig.class.getResourceAsStream("/Picture/Level_Picture/Character/Character_Left.png"));
-        if (image.isError()) {
-            System.out.println("Player image not found");
-        }
-        return image;
-    }
-
 }

@@ -1,5 +1,6 @@
 package Level.Objects.Concrete_Class;
 
+import Game_Data.Config.ImageConfig;
 import Level.Data.Config.CoinConfig;
 import Level.Data.Properties.Property;
 import Level.Data.Suppliers.CoinSupplier;
@@ -14,7 +15,7 @@ public class Coin extends ImageObject {
 
     public Coin(Property property, Observer observer) {
         super( CoinSupplier.getProperty(property),
-                CoinConfig.loadImage(), observer
+                ImageConfig.COIN_ANIMATION, observer
         );
         randomizePosition();
     }

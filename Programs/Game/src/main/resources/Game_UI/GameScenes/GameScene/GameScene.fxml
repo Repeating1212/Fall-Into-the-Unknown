@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" style="-fx-background-color: #404040;" stylesheets="@GameScene.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game_UI.GameScenes.GameScene">
    <children>
-      <ImageView pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fx:id="gameBackground" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../../../Picture/Map%20Components/Map_Background.png" />
          </image>
@@ -68,7 +68,7 @@
             <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" height="120.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: 0.25;" width="800.0" />
             <HBox alignment="TOP_CENTER" prefWidth="800.0" stylesheets="@GameScene.css">
                <children>
-                  <ImageView fitWidth="90.0" onMouseClicked="#loadCharacterState" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+                  <ImageView fx:id="characterView" fitWidth="90.0" onMouseClicked="#loadCharacterState" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                      <image>
                         <Image url="@../../../Picture/Game_Icon/Character.png" />
                      </image>
@@ -105,12 +105,12 @@
                   </HBox>
                   <HBox spacing="10.0">
                      <children>
-                        <ImageView fitWidth="80.0" onMouseClicked="#loadEncyclopedia" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+                        <ImageView fx:id="encyclopediaView" fitWidth="80.0" onMouseClicked="#loadEncyclopedia" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                            <image>
                               <Image url="@../../../Picture/Game_Icon/Encyclopedia.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitWidth="90.0" onMouseClicked="#loadStore" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+                        <ImageView fx:id="storeView" fitWidth="90.0" onMouseClicked="#loadStore" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                            <image>
                               <Image url="@../../../Picture/Game_Icon/Store.png" />
                            </image>
@@ -124,7 +124,7 @@
             </HBox>
          </children>
       </StackPane>
-      <ImageView fx:id="settingIcon" fitWidth="50.0" layoutX="1136.0" layoutY="14.0" onMouseClicked="#showSetting" onMouseEntered="#handleSettingMouseEntered" onMouseExited="#handleSettingMouseExit" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="settingView" fitWidth="50.0" layoutX="1136.0" layoutY="14.0" onMouseClicked="#showSetting" onMouseEntered="#handleSettingMouseEntered" onMouseExited="#handleSettingMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Picture/Game_Icon/Setting.png" />
          </image>
@@ -136,7 +136,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <ImageView fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="coinView" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Picture/Game_Icon/Coin_Image.png" />
                </image>

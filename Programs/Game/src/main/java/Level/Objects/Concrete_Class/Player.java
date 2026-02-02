@@ -1,5 +1,6 @@
 package Level.Objects.Concrete_Class;
 
+import Game_Data.Config.ImageConfig;
 import Level.Data.Properties.PlayerState;
 import Level.Objects.Base_Class.ImageObject;
 import Level.Managers.Observer;
@@ -16,7 +17,7 @@ public class Player extends ImageObject {
 
     // Constructor
     public Player(Observer observer, Skill[] skills) {
-        super(PlayerSupplier.getProperty(), PlayerConfig.loadImageRight(), observer);
+        super(PlayerSupplier.getProperty(), ImageConfig.PLAYER_RIGHT, observer);
         this.updateHealth();
         this.skills = skills;
         for (Skill skill : this.skills){
@@ -56,8 +57,8 @@ public class Player extends ImageObject {
 
     @Override
     public void updateSpritePosition(){
-        if (property.isMovingLeft()) sprite.setImage(PlayerConfig.loadImageLeft());
-        else if (property.isMovingRight()) sprite.setImage(PlayerConfig.loadImageRight());
+        if (property.isMovingLeft()) sprite.setImage(ImageConfig.PLAYER_LEFT);
+        else if (property.isMovingRight()) sprite.setImage(ImageConfig.PLAYER_RIGHT);
         super.updateSpritePosition();
     }
 

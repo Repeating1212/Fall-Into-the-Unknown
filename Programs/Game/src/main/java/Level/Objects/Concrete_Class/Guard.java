@@ -1,5 +1,6 @@
 package Level.Objects.Concrete_Class;
 
+import Game_Data.Config.ImageConfig;
 import Level.Skills.Attacks.AttackSkill;
 import Level.Managers.Observer;
 import Level.Objects.Base_Class.Boss;
@@ -15,7 +16,7 @@ public class Guard extends Boss {
     private final double ATTACK_OFFSET = GuardConfig.ATTACK_DISTANCE_OFFSET;
 
     public Guard(GameObject enemy, Observer observer) {
-        super(GuardSupplier.getProperty(), GuardConfig.loadImage(),
+        super(GuardSupplier.getProperty(), ImageConfig.STAKE,
                 enemy, observer);
         this.attackSkill = GuardSupplier.getAttackBehaviour();
         this.attackSkill.initializeData(property, null);

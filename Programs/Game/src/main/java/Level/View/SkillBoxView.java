@@ -1,5 +1,6 @@
 package Level.View;
 
+import Game_Data.Config.ImageConfig;
 import Game_Data.Config.SkillConfig;
 import Game_Data.DataManager;
 import Level.Skills.Attacks.AttackSkill;
@@ -26,13 +27,13 @@ public class SkillBoxView {
     public void setSkillImage(Skill[] skills){
         for (int i = 0; i < skills.length; i ++){
             if (skills[i].getClass() == AttackSkill.class){
-                skillView[i].setImage(SkillConfig.ATTACK_ICON);
+                skillView[i].setImage(ImageConfig.ATTACK_ICON);
             } else if(skills[i].getClass() == Defend.class){
-                skillView[i].setImage(SkillConfig.DEFEND_ICON);
+                skillView[i].setImage(ImageConfig.DEFEND_ICON);
             } else if (skills[i].getClass() == Dash.class){
-                skillView[i].setImage(SkillConfig.CMP_DASH_ICON);
+                skillView[i].setImage(ImageConfig.CMP_DASH_ICON);
             } else {
-                skillView[i].setImage(SkillConfig.EMPTY_ICON);
+                skillView[i].setImage(ImageConfig.EMPTY_ICON);
             }
         }
     }

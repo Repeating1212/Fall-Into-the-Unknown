@@ -1,5 +1,6 @@
 package Game_UI.Skill_Scene;
 
+import Game_Data.Config.ImageConfig;
 import Game_Data.Config.SkillConfig;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,7 +14,7 @@ public class SkillSupplier {
         Skill_Pane controller = loadNewPane(Skill_Vbox);
         controller.initializeData(
                 SkillConfig.ATTACK_SKILL_ID,
-                SkillConfig.ATTACK_ICON
+                ImageConfig.ATTACK_ICON
         );
     }
 
@@ -21,7 +22,7 @@ public class SkillSupplier {
         Skill_Pane controller = loadNewPane(Skill_Vbox);
         controller.initializeData(
                 SkillConfig.DEFEND_SKILL_ID,
-                SkillConfig.DEFEND_ICON
+                ImageConfig.DEFEND_ICON
         );
     }
 
@@ -29,7 +30,7 @@ public class SkillSupplier {
         Skill_Pane controller = loadNewPane(Skill_Vbox);
         controller.initializeData(
                 SkillConfig.DASH_SKILL_ID,
-                SkillConfig.DASH_ICON
+                ImageConfig.DASH_ICON
         );
     }
 

@@ -12,13 +12,4 @@ public class StakeConfig {
     public static final boolean IS_BLOCKABLE = true;
 
     public static final int INITIAL_HEALTH = 20;
-
-
-    public static Image loadImage() {
-        Image image = new Image(StakeConfig.class.getResourceAsStream("/Picture/Level_Picture/Character/Stake.png"));
-        if (image.isError()) {
-            System.out.println("Coin image not found, using placeholder");
-        }
-        return image;
-    }
 }

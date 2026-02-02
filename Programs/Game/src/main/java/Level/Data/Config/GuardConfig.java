@@ -25,12 +25,4 @@ public class GuardConfig {
     // Attack time-related
     public static final double INITIAL_ATTACK_COOLDOWN = 3.0;
     public static final double ATTACK_RIGID_TIME = TOTAL_ANIMATION_PERIOD * 1.2;
-
-    public static Image loadImage() {
-        Image image = new Image(PlayerConfig.class.getResourceAsStream("/Picture/Level_Picture/Character/Stake.png"));
-        if (image.isError()) {
-            System.out.println("Coin image not found, using placeholder");
-        }
-        return image;
-    }
 }

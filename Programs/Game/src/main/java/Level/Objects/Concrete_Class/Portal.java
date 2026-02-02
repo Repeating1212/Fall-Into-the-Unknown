@@ -1,5 +1,6 @@
 package Level.Objects.Concrete_Class;
 
+import Game_Data.Config.ImageConfig;
 import Level.Data.Config.PortalConfig;
 import Level.Data.Suppliers.PortalSupplier;
 import Level.Managers.Observer;
@@ -9,7 +10,7 @@ public class Portal extends ImageObject {
 
     public Portal(Observer observer){
         super(PortalSupplier.getProperty(),
-                PortalConfig.loadImage(),
+                ImageConfig.PORTAL,
                 observer);
     }
 
