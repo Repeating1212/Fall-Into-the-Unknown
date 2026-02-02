@@ -1,6 +1,6 @@
 package Level.Objects.Concrete_Class;
 
-import Game_Data.Config.ImageConfig;
+import Game_Data.ImageLoader;
 import Level.Data.Properties.PlayerState;
 import Level.Objects.Base_Class.ImageObject;
 import Level.Managers.Observer;
@@ -9,7 +9,6 @@ import Level.Skills.Skill;
 import Level.View.AttackVisualize.AttackVisual;
 import Level.Data.Suppliers.PlayerSupplier;
 import Level.Skills.Attacks.AttackSkill;
-import Level.Data.Config.PlayerConfig;
 
 public class Player extends ImageObject {
     private final PlayerState playerState = new PlayerState();
@@ -19,7 +18,7 @@ public class Player extends ImageObject {
 
     // Constructor
     public Player(Observer observer) {
-        super(PlayerSupplier.getProperty(), ImageConfig.PLAYER_RIGHT, observer);
+        super(PlayerSupplier.getProperty(), ImageLoader.PLAYER_RIGHT, observer);
         this.updateHealth();
     }
 
@@ -62,8 +61,8 @@ public class Player extends ImageObject {
 
     @Override
     public void updateSpritePosition(){
-        if (property.isMovingLeft()) sprite.setImage(ImageConfig.PLAYER_LEFT);
-        else if (property.isMovingRight()) sprite.setImage(ImageConfig.PLAYER_RIGHT);
+        if (property.isMovingLeft()) sprite.setImage(ImageLoader.PLAYER_LEFT);
+        else if (property.isMovingRight()) sprite.setImage(ImageLoader.PLAYER_RIGHT);
         super.updateSpritePosition();
     }
 

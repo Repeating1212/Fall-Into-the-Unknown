@@ -1,6 +1,6 @@
 package Game_UI.Skill_Scene;
 
-import Game_UI.SceneLoader;
+import Game_Data.SceneLoader;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

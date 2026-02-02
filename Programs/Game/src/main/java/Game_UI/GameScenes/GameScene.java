@@ -1,8 +1,8 @@
 package Game_UI.GameScenes;
 
-import Game_Data.Config.ImageConfig;
-import Game_UI.SceneLoader;
-import Game_Data.DataManager;
+import Game_Data.ImageLoader;
+import Game_Data.SceneLoader;
+import LoadFile.DataManager;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -32,13 +32,13 @@ public class GameScene {
         levels = new  ImageView[]{Graveyard, Bridge, Fish_Port, Lake, Mountain, Tower, Dragon, Portal};
         skillIcons  = new ImageView[]{skill01, skill02, skill03, skill04};
 
-        DataManager.loadData();
+        DataManager.loadFile();
         initializeImage();
         initializeSkillImage();
 
         for (ImageView level : levels) level.setOpacity(0.5);
         setupSettingIconAnimation();
-        CoinLabel.setText(String.valueOf(DataManager.getGameData().getCoins()));
+        CoinLabel.setText(String.valueOf(DataManager.getGameFile().getCoins()));
 
     }
 
@@ -86,8 +86,8 @@ public class GameScene {
     // Private Method
 
     private void initializeSkillImage(){
-        Image[] skillImages = ImageConfig.SKILL_ICONS;
-        int[] equipedSkill = DataManager.getGameData().getEquipedSkill();
+        Image[] skillImages = ImageLoader.SKILL_ICONS;
+        int[] equipedSkill = DataManager.getGameFile().getEquipedSkill();
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < equipedSkill.length; j ++){
                 if(equipedSkill[i] == j){
@@ -98,22 +98,22 @@ public class GameScene {
     }
 
     private void initializeImage(){
-        Forest.setImage(ImageConfig.FOREST);
-        Graveyard.setImage(ImageConfig.GRAVEYARD);
-        Bridge.setImage(ImageConfig.BRIDGE);
-        Fish_Port.setImage(ImageConfig.FISH_PORT);
-        Lake.setImage(ImageConfig.LAKE);
-        Mountain.setImage(ImageConfig.MOUNTAIN);
-        Tower.setImage(ImageConfig.TOWER);
-        Dragon.setImage(ImageConfig.DRAGON);
-        Portal.setImage(ImageConfig.MAP_PORTAL);
-        gameBackground.setImage(ImageConfig.GAME_BACKGROUND);
+        Forest.setImage(ImageLoader.FOREST);
+        Graveyard.setImage(ImageLoader.GRAVEYARD);
+        Bridge.setImage(ImageLoader.BRIDGE);
+        Fish_Port.setImage(ImageLoader.FISH_PORT);
+        Lake.setImage(ImageLoader.LAKE);
+        Mountain.setImage(ImageLoader.MOUNTAIN);
+        Tower.setImage(ImageLoader.TOWER);
+        Dragon.setImage(ImageLoader.DRAGON);
+        Portal.setImage(ImageLoader.MAP_PORTAL);
+        gameBackground.setImage(ImageLoader.GAME_BACKGROUND);
 
-        coinView.setImage(ImageConfig.COIN);
-        characterView.setImage(ImageConfig.CHARACTER_ICON);
-        storeView.setImage(ImageConfig.STORE_ICON);
-        encyclopediaView.setImage(ImageConfig.ENCYCLOPEDIA_ICON);
-        settingView.setImage(ImageConfig.SETTING_ICON);
+        coinView.setImage(ImageLoader.COIN);
+        characterView.setImage(ImageLoader.CHARACTER_ICON);
+        storeView.setImage(ImageLoader.STORE_ICON);
+        encyclopediaView.setImage(ImageLoader.ENCYCLOPEDIA_ICON);
+        settingView.setImage(ImageLoader.SETTING_ICON);
     }
 
 

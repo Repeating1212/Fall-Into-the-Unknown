@@ -1,9 +1,9 @@
-package Game_Data.Config;
+package Game_Data;
 
 import Level.Data.Config.PlayerConfig;
 import javafx.scene.image.Image;
 
-public class ImageConfig {
+public class ImageLoader {
 
     // Skill Icons
     private static final String ATTACK_ICON_Path    = "/Picture/Skill_Icon/Cmp_Attack.png";
@@ -48,45 +48,45 @@ public class ImageConfig {
 
     // Getter Method
 
-    public static final Image ATTACK_ICON = new Image(SkillConfig.class.getResourceAsStream(ATTACK_ICON_Path));
-    public static final Image DEFEND_ICON = new Image(SkillConfig.class.getResourceAsStream(DEFEND_ICON_Path));
-    public static final Image DASH_ICON = new Image(SkillConfig.class.getResourceAsStream(DASH_ICON_Path));
-    public static final Image CMP_DASH_ICON = new Image(SkillConfig.class.getResourceAsStream(CMP_DASH_ICON_Path));
-    public static final Image EMPTY_ICON = new Image(SkillConfig.class.getResourceAsStream(EMPTY_ICON_Path));
+    public static final Image ATTACK_ICON = new Image(SkillSupplier.class.getResourceAsStream(ATTACK_ICON_Path));
+    public static final Image DEFEND_ICON = new Image(SkillSupplier.class.getResourceAsStream(DEFEND_ICON_Path));
+    public static final Image DASH_ICON = new Image(SkillSupplier.class.getResourceAsStream(DASH_ICON_Path));
+    public static final Image CMP_DASH_ICON = new Image(SkillSupplier.class.getResourceAsStream(CMP_DASH_ICON_Path));
+    public static final Image EMPTY_ICON = new Image(SkillSupplier.class.getResourceAsStream(EMPTY_ICON_Path));
     public static final Image[] SKILL_ICONS = new Image[]{
             EMPTY_ICON, ATTACK_ICON, DEFEND_ICON, DASH_ICON
     };
 
 
-    public static final Image FOREST = new Image(SkillConfig.class.getResourceAsStream(FOREST_Path));
-    public static final Image GRAVEYARD = new Image(SkillConfig.class.getResourceAsStream(GRAVEYARD_Path));
-    public static final Image BRIDGE = new Image(SkillConfig.class.getResourceAsStream(BRIDGE_Path));
-    public static final Image FISH_PORT = new Image(SkillConfig.class.getResourceAsStream(FISH_PORT_Path));
-    public static final Image LAKE = new Image(SkillConfig.class.getResourceAsStream(LAKE_Path));
-    public static final Image MOUNTAIN = new Image(SkillConfig.class.getResourceAsStream(MOUNTAIN_Path));
-    public static final Image TOWER = new Image(SkillConfig.class.getResourceAsStream(TOWER_Path));
-    public static final Image DRAGON = new Image(SkillConfig.class.getResourceAsStream(DRAGON_Path));
-    public static final Image MAP_PORTAL = new Image(SkillConfig.class.getResourceAsStream(MAP_PORTAL_Path));
-    public static final Image GAME_BACKGROUND = new Image(SkillConfig.class.getResourceAsStream(GAME_BACKGROUND_Path));
+    public static final Image FOREST = new Image(SkillSupplier.class.getResourceAsStream(FOREST_Path));
+    public static final Image GRAVEYARD = new Image(SkillSupplier.class.getResourceAsStream(GRAVEYARD_Path));
+    public static final Image BRIDGE = new Image(SkillSupplier.class.getResourceAsStream(BRIDGE_Path));
+    public static final Image FISH_PORT = new Image(SkillSupplier.class.getResourceAsStream(FISH_PORT_Path));
+    public static final Image LAKE = new Image(SkillSupplier.class.getResourceAsStream(LAKE_Path));
+    public static final Image MOUNTAIN = new Image(SkillSupplier.class.getResourceAsStream(MOUNTAIN_Path));
+    public static final Image TOWER = new Image(SkillSupplier.class.getResourceAsStream(TOWER_Path));
+    public static final Image DRAGON = new Image(SkillSupplier.class.getResourceAsStream(DRAGON_Path));
+    public static final Image MAP_PORTAL = new Image(SkillSupplier.class.getResourceAsStream(MAP_PORTAL_Path));
+    public static final Image GAME_BACKGROUND = new Image(SkillSupplier.class.getResourceAsStream(GAME_BACKGROUND_Path));
 
 
-    public static final Image COIN = new Image(ImageConfig.class.getResourceAsStream(COIN_Path));
-    public static final Image CHARACTER_ICON = new Image(ImageConfig.class.getResourceAsStream(CHARACTER_PATH));
-    public static final Image STORE_ICON = new Image(ImageConfig.class.getResourceAsStream(STORE_Path));
-    public static final Image ENCYCLOPEDIA_ICON = new Image(ImageConfig.class.getResourceAsStream(ENCYCLOPEDIA_PATH));
-    public static final Image SETTING_ICON = new Image(ImageConfig.class.getResourceAsStream(SETTING_PATH));
+    public static final Image COIN = new Image(ImageLoader.class.getResourceAsStream(COIN_Path));
+    public static final Image CHARACTER_ICON = new Image(ImageLoader.class.getResourceAsStream(CHARACTER_PATH));
+    public static final Image STORE_ICON = new Image(ImageLoader.class.getResourceAsStream(STORE_Path));
+    public static final Image ENCYCLOPEDIA_ICON = new Image(ImageLoader.class.getResourceAsStream(ENCYCLOPEDIA_PATH));
+    public static final Image SETTING_ICON = new Image(ImageLoader.class.getResourceAsStream(SETTING_PATH));
 
 
-    public static final Image STAKE = new Image(ImageConfig.class.getResourceAsStream(STAKE_Path));
+    public static final Image STAKE = new Image(ImageLoader.class.getResourceAsStream(STAKE_Path));
     public static final Image PLAYER_LEFT = new Image(PlayerConfig.class.getResourceAsStream(PLAYER_LEFT_Path));
     public static final Image PLAYER_RIGHT =  new Image(PlayerConfig.class.getResourceAsStream(PLAYER_RIGHT_Path));
     public static final Image PORTAL = new Image(PlayerConfig.class.getResourceAsStream(PORTAL_Path));
 
 
-    public static final Image LEVEL01_MAP = new Image(ImageConfig.class.getResourceAsStream(LEVEL01_MAP_Path));
-    public static final Image HEART_FULL = new Image(ImageConfig.class.getResourceAsStream(HEART_FULL_Path));
-    public static final Image HEART_EMPTY = new Image(ImageConfig.class.getResourceAsStream(HEART_EMPTY_Path));
-    public static final Image COIN_ANIMATION = new Image(ImageConfig.class.getResourceAsStream(COIN_ANIMATION_Path));
+    public static final Image LEVEL01_MAP = new Image(ImageLoader.class.getResourceAsStream(LEVEL01_MAP_Path));
+    public static final Image HEART_FULL = new Image(ImageLoader.class.getResourceAsStream(HEART_FULL_Path));
+    public static final Image HEART_EMPTY = new Image(ImageLoader.class.getResourceAsStream(HEART_EMPTY_Path));
+    public static final Image COIN_ANIMATION = new Image(ImageLoader.class.getResourceAsStream(COIN_ANIMATION_Path));
 
-    public static final Image STARTSCENE_BACKGROUND = new Image(ImageConfig.class.getResourceAsStream(STARTSCENE_IMAGE_Path));
+    public static final Image STARTSCENE_BACKGROUND = new Image(ImageLoader.class.getResourceAsStream(STARTSCENE_IMAGE_Path));
 }

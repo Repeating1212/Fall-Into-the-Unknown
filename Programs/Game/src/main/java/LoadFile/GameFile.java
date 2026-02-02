@@ -1,10 +1,12 @@
-package Game_Data;
+package LoadFile;
+
+import Game_Data.SkillSupplier;
 
 import java.io.*;
 
-public class GameData implements Serializable {
+public class GameFile implements Serializable {
     private int coins = 0;
-    private final int[] equipedSkill = new int[]{1, 0,0,0 };
+    private final int[] equipedSkill = new int[]{1, -1, -1, -1 };
 
 //    private int highScore;
 //    private boolean soundEnabled;
@@ -19,9 +21,11 @@ public class GameData implements Serializable {
         coins += increment;
     }
 
+    // Equips skill
+
     public void setEquip(int skill_id){
         for (int i = 0; i < equipedSkill.length; i++){
-            if (equipedSkill[i] == 0) {
+            if (equipedSkill[i] == SkillSupplier.EMPTY_SKILL_ID) {
                 equipedSkill[i] = skill_id;
                 break;
             }
@@ -31,7 +35,7 @@ public class GameData implements Serializable {
     public void setUnequip(int skill_id){
         for (int i = 0; i < equipedSkill.length; i++){
             if (equipedSkill[i] == skill_id)
-                equipedSkill[i] = 0;
+                equipedSkill[i] = SkillSupplier.EMPTY_SKILL_ID;
         }
     }
 

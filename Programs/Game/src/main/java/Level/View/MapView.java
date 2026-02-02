@@ -1,6 +1,6 @@
 package Level.View;
 
-import Game_Data.Config.ImageConfig;
+import Game_Data.ImageLoader;
 import javafx.scene.image.ImageView;
 
 public class MapView {
@@ -9,6 +9,6 @@ public class MapView {
 
     public MapView (ImageView map){
         this.map = map;
-        this.map.setImage(ImageConfig.LEVEL01_MAP);
+        this.map.setImage(ImageLoader.LEVEL01_MAP);
     }
 }

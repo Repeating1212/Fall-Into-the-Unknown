@@ -1,8 +1,6 @@
 package Level.View;
 
-import Game_Data.Config.ImageConfig;
-import javafx.fxml.FXML;
-import javafx.scene.image.Image;
+import Game_Data.ImageLoader;
 import javafx.scene.image.ImageView;
 
 public class PlayerHeartView {
@@ -19,9 +17,9 @@ public class PlayerHeartView {
 
         for (int i = 0; i < 8; i++) {
             if (i < currentHealth) {
-                hearts[i].setImage(ImageConfig.HEART_FULL);  // Lighted icon
+                hearts[i].setImage(ImageLoader.HEART_FULL);  // Lighted icon
             } else {
-                hearts[i].setImage(ImageConfig.HEART_EMPTY); // Dark icon
+                hearts[i].setImage(ImageLoader.HEART_EMPTY); // Dark icon
             }
         }
     }

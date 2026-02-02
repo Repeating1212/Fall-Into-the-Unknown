@@ -1,8 +1,8 @@
 package Game_UI.StartScenes;
 
-import Game_Data.Config.ImageConfig;
-import Game_Data.DataManager;
-import Game_UI.SceneLoader;
+import Game_Data.ImageLoader;
+import LoadFile.DataManager;
+import Game_Data.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -17,7 +17,7 @@ public class StartScene {
 
     @FXML
     private void initialize(){
-        fallingGirl.setImage(ImageConfig.STARTSCENE_BACKGROUND);
+        fallingGirl.setImage(ImageLoader.STARTSCENE_BACKGROUND);
     }
 
     @FXML
@@ -32,7 +32,7 @@ public class StartScene {
 
     @FXML
     public void quitGame(ActionEvent event) {
-        DataManager.saveData();
+        DataManager.saveFile();
 
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();

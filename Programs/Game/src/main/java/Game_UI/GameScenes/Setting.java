@@ -1,15 +1,9 @@
 package Game_UI.GameScenes;
 
-import Game_UI.OverlayController;
-import Game_UI.SceneLoader;
+import Game_Data.OverlayController;
+import Game_Data.SceneLoader;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class Setting implements OverlayController {
     @FXML

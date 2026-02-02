@@ -1,7 +1,7 @@
 package Level.Controllers;
 
-import Game_Data.Config.ImageConfig;
-import Game_Data.DataManager;
+import Game_Data.ImageLoader;
+import LoadFile.DataManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,12 +23,12 @@ public class WinController {
 
     @FXML
     public void initialize() {
-        coinView.setImage(ImageConfig.COIN);
+        coinView.setImage(ImageLoader.COIN);
     }
 
     public void updateCoinLabel(int coinValue){
         coinLabel.setText(String.valueOf(coinValue));
-        DataManager.getGameData().addCoins(coinValue);
+        DataManager.getGameFile().addCoins(coinValue);
     }
 
     @FXML

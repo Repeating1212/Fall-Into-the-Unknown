@@ -1,6 +1,6 @@
 package Game_UI.Skill_Scene;
 
-import Game_Data.DataManager;
+import LoadFile.DataManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -30,16 +30,16 @@ public class Skill_Pane {
 
     @FXML
     private void equipSkill() {
-        if (DataManager.getGameData().isEquip(skillID)){
-            DataManager.getGameData().setUnequip(skillID);
+        if (DataManager.getGameFile().isEquip(skillID)){
+            DataManager.getGameFile().setUnequip(skillID);
         } else {
-            DataManager.getGameData().setEquip(skillID);
+            DataManager.getGameFile().setEquip(skillID);
         }
         updateText();
     }
 
     private void updateText(){
-        if (DataManager.getGameData().isEquip(skillID)){
+        if (DataManager.getGameFile().isEquip(skillID)){
             equipButton.setText("Equiped");
         } else {
             equipButton.setText("Unequip");

@@ -1,4 +1,4 @@
-package Game_UI;
+package Game_Data;
 
 import javafx.scene.layout.Pane;
 

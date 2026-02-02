@@ -1,9 +1,8 @@
 package Level.Objects.Concrete_Class;
 
-import Game_Data.Config.ImageConfig;
+import Game_Data.ImageLoader;
 import Level.Managers.Observer;
 import Level.Objects.Base_Class.ImageObject;
-import Level.Data.Config.StakeConfig;
 import Level.Data.Suppliers.StakeSupplier;
 
 
@@ -13,7 +12,7 @@ public class Stake extends ImageObject {
 
     // Constructor
     public Stake(Observer observer) {
-        super( StakeSupplier.getProperty(), ImageConfig.STAKE, observer);
+        super( StakeSupplier.getProperty(), ImageLoader.STAKE, observer);
     }
 
     @Override
