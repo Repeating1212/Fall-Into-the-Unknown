@@ -14,7 +14,7 @@ public class Observer {
     private final SceneView sceneView;
     private final Level level;
 
-    protected Observer(Level level, SceneView sceneView){
+    public Observer(Level level, SceneView sceneView){
         this.level = level;
         this.sceneView = sceneView;
     }

@@ -8,28 +8,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WinController {
-
-    @FXML private Pane rootPane;
-    @FXML private Text coinLabel;
-    @FXML private ImageView coinView;
+public class LoseController {
 
     @FXML
-    public void initialize() {
-        coinView.setImage(ImageConfig.COIN);
-    }
+    private Pane rootPane;
+    @FXML private Text coinLabel;
 
-    public void updateCoinLabel(int coinValue){
-        coinLabel.setText(String.valueOf(coinValue));
-        DataManager.getGameData().addCoins(coinValue);
-    }
+    @FXML
+    public void initialize() {}
 
     @FXML
     private void handleExitButton(ActionEvent event) {

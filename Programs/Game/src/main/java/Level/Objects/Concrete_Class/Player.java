@@ -4,6 +4,7 @@ import Game_Data.Config.ImageConfig;
 import Level.Data.Properties.PlayerState;
 import Level.Objects.Base_Class.ImageObject;
 import Level.Managers.Observer;
+import Level.Skills.Player.EmptySkill;
 import Level.Skills.Skill;
 import Level.View.AttackVisualize.AttackVisual;
 import Level.Data.Suppliers.PlayerSupplier;
@@ -12,13 +13,17 @@ import Level.Data.Config.PlayerConfig;
 
 public class Player extends ImageObject {
     private final PlayerState playerState = new PlayerState();
-
-    private final Skill[] skills;
+    private Skill[] skills = new Skill[]{
+            new EmptySkill(), new EmptySkill(), new EmptySkill(), new EmptySkill()
+    };
 
     // Constructor
-    public Player(Observer observer, Skill[] skills) {
+    public Player(Observer observer) {
         super(PlayerSupplier.getProperty(), ImageConfig.PLAYER_RIGHT, observer);
         this.updateHealth();
+    }
+
+    public void setSkills(Skill[] skills){
         this.skills = skills;
         for (Skill skill : this.skills){
             skill.initializeData(property, playerState);

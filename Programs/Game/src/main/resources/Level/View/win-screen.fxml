@@ -30,7 +30,7 @@
                      <Font name="Verdana" size="14.0" />
                   </font>
                </Text>
-               <ImageView fx:id="coinImage" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fx:id="coinView" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../../Picture/Game_Icon/Coin_Image.png" />
                   </image>

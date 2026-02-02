@@ -15,7 +15,7 @@ public class Level {
     private final ArrayList<GameObject> gameObjects = new ArrayList<>();
 
 
-    protected Level(SceneView sceneView){
+    public Level(SceneView sceneView){
         this.sceneView = sceneView;
     }
 

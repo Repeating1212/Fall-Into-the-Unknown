@@ -27,13 +27,13 @@ public class SceneView {
     private final SkillBoxView skillBoxView;
     private final MapView mapView;
 
-    public SceneView(Pane rootPane, Text moneyLabel, ImageView[] hearts, ImageView[] skills, StackPane[] skillBackgrounds,
-                     ProgressBar progressBar, ImageView map, Rectangle[] skillCooldowns){
+    public SceneView(Pane rootPane, Text moneyLabel, ImageView[] hearts,
+                     ProgressBar progressBar, ImageView map, SkillBoxView skillBoxView){
         this.rootPane = rootPane;
         this.coinLabel = moneyLabel;
         bossHealthView = new BossHealthBar(progressBar);
         playerHeartView = new PlayerHeartView(hearts);
-        skillBoxView = new SkillBoxView(skills, skillBackgrounds, skillCooldowns);
+        this.skillBoxView = skillBoxView;
         mapView = new MapView(map);
     }
 

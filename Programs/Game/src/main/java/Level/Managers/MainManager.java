@@ -28,17 +28,15 @@ public class MainManager {
     private boolean rewardState = false;
     private boolean gameRunning = true;
 
-    public MainManager(SceneView sceneView, PlayerHandler playerHandler){
-        level = new Level(sceneView);
+    public MainManager(SceneView sceneView, Player player, Level level, Observer observer){
+        this.level = level;
         this.sceneView = sceneView;
-        observer = new Observer(level, sceneView);
+        this.observer = observer;
         this.coinManager = new CoinManager(level);
 
-        player = new Player(observer, playerHandler.getSkills());
+        this.player = player;
         boss = new Guard(player, observer);
         portal = new Portal(observer);
-
-        playerHandler.initialize(player);
         observer.setPlayer(player);
 
         level.addObjects(LevelSupplier.getObjects(player, boss));

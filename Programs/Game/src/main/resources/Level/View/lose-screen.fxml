@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="rootPane" prefHeight="525.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Level.Controllers.WinController">
+<StackPane fx:id="rootPane" prefHeight="525.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Level.Controllers.LoseController">
    <children>
       <Region prefHeight="500.0" prefWidth="800.0" styleClass="displayScreen" stylesheets="@win-lose-screen.css" />
       <VBox alignment="CENTER" spacing="50">

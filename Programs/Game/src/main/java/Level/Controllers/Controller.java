@@ -1,6 +1,9 @@
 package Level.Controllers;
 
 
+import Level.Managers.Level;
+import Level.Managers.Observer;
+import Level.Objects.Concrete_Class.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -11,12 +14,8 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
-import Level.MainApp;
 import Level.Managers.MainManager;
 import Level.View.* ;
-import Level.Objects.Base_Class.GameObject;
-
-import java.util.List;
 
 public class Controller {
 
@@ -31,7 +30,7 @@ public class Controller {
     @FXML private Rectangle skillCooldown1, skillCooldown2, skillCooldown3, skillCooldown4;
 
     private SceneView sceneView;
-    private GameTicks gameUpdater;
+    private GameTicks gameTicks;
     private PlayerHandler playerHandler;
 
     @FXML private Pane rootPane;
@@ -39,25 +38,36 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        ImageView[] hearts = new ImageView[]{heart1, heart2, heart3, heart4, heart5, heart6, heart7, heart8};
-        ImageView[] skills = new ImageView[]{skill1, skill2, skill3, skill4};
-        Rectangle[] skillCooldowns = new Rectangle[] {skillCooldown1, skillCooldown2, skillCooldown3, skillCooldown4};
-        StackPane[] skillBackgrounds = new StackPane[]{skillBgd1, skillBgd2, skillBgd3, skillBgd4};
-
-        sceneView = new SceneView(rootPane, coinDisplay, hearts, skills, skillBackgrounds, bossHealthBar, map, skillCooldowns);
-
-        playerHandler =  new PlayerHandler(sceneView.getSkillBoxView());
-        MainManager mainManager = new MainManager(sceneView, playerHandler);
-        gameUpdater = new GameTicks(mainManager, playerHandler);
-        sceneView.getSkillBoxView().setSkillImage(playerHandler.getSkills());
-
-        gameUpdater.start();
+        createClass();
+        gameTicks.start();
         rootPane.requestFocus();
 
         // Setup Input
         setupKeyboardInputOnPane();
         rootPane.setOnScroll(this::handleMouseWheel);
         setupMouseInput();
+    }
+
+    private void createClass(){
+
+        ImageView[] hearts = new ImageView[]{heart1, heart2, heart3, heart4, heart5, heart6, heart7, heart8};
+        ImageView[] skills = new ImageView[]{skill1, skill2, skill3, skill4};
+        Rectangle[] skillCooldowns = new Rectangle[] {skillCooldown1, skillCooldown2, skillCooldown3, skillCooldown4};
+        StackPane[] skillBackgrounds = new StackPane[]{skillBgd1, skillBgd2, skillBgd3, skillBgd4};
+
+        // Display Related
+        SkillBoxView skillBoxView = new SkillBoxView(skills, skillBackgrounds, skillCooldowns);
+        sceneView = new SceneView(rootPane, coinDisplay, hearts, bossHealthBar, map, skillBoxView);
+
+        // Data Related
+        Level level = new Level(sceneView);
+        Observer observer = new Observer(level, sceneView);
+
+        // Game update related
+        Player player = new Player(observer);
+        playerHandler = new PlayerHandler(skillBoxView, player);
+        MainManager mainManager = new MainManager(sceneView, player, level, observer);
+        gameTicks = new GameTicks(mainManager, playerHandler);
     }
 
     private void setupMouseInput() {
@@ -116,7 +126,7 @@ public class Controller {
 
     @FXML
     private void handleResume() {
-        gameUpdater.handlePause();
-        sceneView.showPauseScreen(gameUpdater);
+        gameTicks.handlePause();
+        sceneView.showPauseScreen(gameTicks);
     }
 }
