@@ -1,10 +1,7 @@
 package Level.View;
 
-import Game_Data.ImageLoader;
-import Level.Skills.Attacks.AttackSkill;
-import Level.Skills.Player.Dash;
-import Level.Skills.Player.Defend;
-import Level.Skills.Skill;
+import Game_Data.SkillSupplier;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
@@ -19,19 +16,13 @@ public class SkillBoxView {
         this.skillView = skills;
         this.skillBackgrounds = skillBackgrounds;
         this.skillCooldowns = skillCooldowns;
+        setSkillImage();
     }
 
-    public void setSkillImage(Skill[] skills){
-        for (int i = 0; i < skills.length; i ++){
-            if (skills[i].getClass() == AttackSkill.class){
-                skillView[i].setImage(ImageLoader.ATTACK_ICON);
-            } else if(skills[i].getClass() == Defend.class){
-                skillView[i].setImage(ImageLoader.DEFEND_ICON);
-            } else if (skills[i].getClass() == Dash.class){
-                skillView[i].setImage(ImageLoader.CMP_DASH_ICON);
-            } else {
-                skillView[i].setImage(ImageLoader.EMPTY_ICON);
-            }
+    public void setSkillImage(){
+        Image[] images = SkillSupplier.getImages_Level();
+        for (int i = 0; i < skillView.length; i ++){
+            skillView[i].setImage(images[i]);
         }
     }
 

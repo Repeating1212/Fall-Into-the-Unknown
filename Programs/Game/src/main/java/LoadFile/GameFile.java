@@ -6,7 +6,12 @@ import java.io.*;
 
 public class GameFile implements Serializable {
     private int coins = 0;
-    private final int[] equipedSkill = new int[]{1, -1, -1, -1 };
+    private final int[] equipedSkill = new int[]{
+            SkillSupplier.ATTACK_SKILL_ID,
+            SkillSupplier.EMPTY_SKILL_ID,
+            SkillSupplier.EMPTY_SKILL_ID,
+            SkillSupplier.EMPTY_SKILL_ID
+    };
 
 //    private int highScore;
 //    private boolean soundEnabled;
@@ -49,6 +54,8 @@ public class GameFile implements Serializable {
     public int[] getEquipedSkill(){
         return equipedSkill;
     }
+
+    public int getSkillLength(){ return equipedSkill.length;}
 
 //    public int getHighScore() { return highScore; }
 //    public void setHighScore(int highScore) { this.highScore = highScore; }

@@ -14,24 +14,10 @@ public class PlayerHandler {
     private int currentSkill = 0;
     private boolean isPause = false;
 
-    private final Skill[] skills = new Skill[4];
-
     public PlayerHandler (SkillBoxView skillBoxView, Player player){
         this.player = player;
         this.skillBoxView = skillBoxView;
-
-        // Update skill data
-        int[] equipedSkill = DataManager.getGameFile().getEquipedSkill();
-        for (int i = 0; i < equipedSkill.length; i++){
-            skills[i] = SkillSupplier.getPlayerSkill(equipedSkill[i]);
-        }
-        skillBoxView.setSkillImage(skills);
         skillBoxView.updateSkillSelection(currentSkill);
-        player.setSkills(skills);
-    }
-
-    public Skill[] getSkills(){
-        return skills;
     }
 
     public void moveUp(boolean isMove){
@@ -64,7 +50,7 @@ public class PlayerHandler {
     public void increaseCurrentSkill(){
         if (isPause) return;
 
-        if (currentSkill < skills.length - 1){
+        if (currentSkill <  DataManager.getGameFile().getSkillLength() - 1){
             currentSkill += 1;
             skillBoxView.updateSkillSelection(currentSkill);
         }

@@ -1,1 +1,6 @@
-null
+{
+  "damageUpgrade": 0,
+  "rangeUpgrade": 0,
+  "cooldownUpgrade": 0,
+  "areaAngleUpgrade": 0
+}

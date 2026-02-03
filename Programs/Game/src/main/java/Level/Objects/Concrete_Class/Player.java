@@ -1,6 +1,7 @@
 package Level.Objects.Concrete_Class;
 
 import Game_Data.ImageLoader;
+import Game_Data.SkillSupplier;
 import Level.Data.Properties.PlayerState;
 import Level.Objects.Base_Class.ImageObject;
 import Level.Managers.Observer;
@@ -20,11 +21,8 @@ public class Player extends ImageObject {
     public Player(Observer observer) {
         super(PlayerSupplier.getProperty(), ImageLoader.PLAYER_RIGHT, observer);
         this.updateHealth();
-    }
-
-    public void setSkills(Skill[] skills){
-        this.skills = skills;
-        for (Skill skill : this.skills){
+        skills = SkillSupplier.getPlayerSkills();
+        for(Skill skill : skills){
             skill.initializeData(property, playerState);
         }
     }

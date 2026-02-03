@@ -19,9 +19,9 @@ public class ImageLoader {
     private static final String FISH_PORT_Path  = "/Picture/Map Components/Fish_Port.png";
     private static final String LAKE_Path       = "/Picture/Map Components/Lake.png";
     private static final String MOUNTAIN_Path   = "/Picture/Map Components/Mountain.png";
-    private static final String TOWER_Path      = "/Picture/Map Components/Portal.png";
+    private static final String TOWER_Path      = "/Picture/Map Components/Tower.png";
     private static final String DRAGON_Path     = "/Picture/Map Components/Dragon.png";
-    private static final String MAP_PORTAL_Path = "/Picture/Map Components/Tower.png";
+    private static final String MAP_PORTAL_Path = "/Picture/Map Components/Portal.png";
     private static final String GAME_BACKGROUND_Path = "/Picture/Map Components/Map_Background.png";
 
     // GameScene Icon
@@ -53,8 +53,11 @@ public class ImageLoader {
     public static final Image DASH_ICON = new Image(SkillSupplier.class.getResourceAsStream(DASH_ICON_Path));
     public static final Image CMP_DASH_ICON = new Image(SkillSupplier.class.getResourceAsStream(CMP_DASH_ICON_Path));
     public static final Image EMPTY_ICON = new Image(SkillSupplier.class.getResourceAsStream(EMPTY_ICON_Path));
-    public static final Image[] SKILL_ICONS = new Image[]{
+    public static final Image[] SKILL_ICONS_UI = new Image[]{
             EMPTY_ICON, ATTACK_ICON, DEFEND_ICON, DASH_ICON
+    };
+    public static final Image[] SKILL_ICONS_LEVEL = new Image[]{
+            EMPTY_ICON, ATTACK_ICON, DEFEND_ICON, CMP_DASH_ICON
     };
 
 

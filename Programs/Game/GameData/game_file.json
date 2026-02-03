@@ -1,1 +1,9 @@
-null
+{
+  "coins": 10,
+  "equipedSkill": [
+    1,
+    2,
+    3,
+    0
+  ]
+}

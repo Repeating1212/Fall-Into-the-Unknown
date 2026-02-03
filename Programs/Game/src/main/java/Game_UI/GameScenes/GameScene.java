@@ -2,6 +2,7 @@ package Game_UI.GameScenes;
 
 import Game_Data.ImageLoader;
 import Game_Data.SceneLoader;
+import Game_Data.SkillSupplier;
 import LoadFile.DataManager;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
@@ -86,14 +87,9 @@ public class GameScene {
     // Private Method
 
     private void initializeSkillImage(){
-        Image[] skillImages = ImageLoader.SKILL_ICONS;
-        int[] equipedSkill = DataManager.getGameFile().getEquipedSkill();
+        Image[] images = SkillSupplier.getImages_UI();
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < equipedSkill.length; j ++){
-                if(equipedSkill[i] == j){
-                    skillIcons[i].setImage(skillImages[j]);
-                }
-            }
+            skillIcons[i].setImage(images[i]);
         }
     }
 
