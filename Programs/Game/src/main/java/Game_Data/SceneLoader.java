@@ -15,7 +15,7 @@ public class SceneLoader {
         SETTING("/Game_UI/GameScenes/Setting/Setting.fxml"),
         CHARACTER("/Game_UI/Icons_Scene/CharacterScene/UnknownScene.fxml"),
         ENCYCLOPEDIA("/Game_UI/Icons_Scene/EncyclopediaScene/UnknownScene.fxml"),
-        STORE("/Game_UI/Icons_Scene/StoreScene/UnknownScene.fxml"),
+        STORE("/Game_UI/Icons_Scene/StoreScene/StoreScene.fxml"),
         SKILL("/Game_UI/Icons_Scene/SkillScene/SkillScene.fxml"),
         GAME("/Game_UI/GameScenes/GameScene/GameScene.fxml"),
         GAME_DESIGNER("/Game_UI/StartScenes/GameDesignerScene/UnknownScene.fxml"),

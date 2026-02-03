@@ -7,6 +7,89 @@
     -fx-background-color: transparent;
 }
 
-.returnButton{
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0.3, 0, 2);
+.returnButtonNew{
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 0, 0.3, 0, 5);
+    -fx-background-color: #BFBFBF;
+    -fx-background-radius: 30;
+}
+
+.returnButtonNew:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 0, 0.3, 0, 5);
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+.shadow{
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0.3, 0, 5);
+}
+
+.upgradeButton{
+    -fx-background-radius: 10;
+    -fx-background-color: #D9D9D9;
+}
+
+.upgradeButton:hover{
+    -fx-background-color: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, #FFFFFF, 20, 0.3, 0, 0);
+}
+
+.upgradePane{
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-border-color: transparent;
+    -fx-background-radius: 20;
+    -fx-background-color: #333333;
+    -fx-opacity: 0.8;
+}
+
+.upgradePane:hover{
+    -fx-border-color: #FFFFFFC0;
+    -fx-opacity: 1;
+}
+
+.resourcesBox{
+    -fx-background-color: #FFFFFF40;
+    -fx-background-radius: 10;
+    -fx-padding:5 10;
+}
+
+.resourcesPane{
+    -fx-border-width: 2;
+    -fx-border-radius: 0 0 18 18;
+    -fx-border-color: #000000C0;
+    -fx-background-radius: 0 0 20 20;
+    -fx-background-color: #D9D9D9;
+    -fx-padding: 10 20;
+}
+
+.resourcesText {
+    -fx-fill: #000000C0;
+}
+
+
+/* Progression Bar */
+
+.rounded-progress-bar {
+    -fx-background-color: #FFFFFF40;
+    -fx-background-radius: 5px;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+
+.rounded-progress-bar .track {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.rounded-progress-bar .bar {
+    -fx-background-color: White;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    /* Top-left, Top-right, Bottom-right, Bottom-left */
+    -fx-background-radius: 5px 0 0 5px;
+}
+
+.rounded-progress-bar:filled .bar {
+    -fx-background-radius: 5px;
 }

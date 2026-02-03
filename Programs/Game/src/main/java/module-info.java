@@ -48,5 +48,7 @@ module Game {
     opens Level.Managers.LevelData to javafx.fxml;
     exports Level.Skills;
     opens Level.Skills to javafx.fxml;
+    exports Game_UI.Store;
+    opens Game_UI.Store to javafx.fxml;
 
 }
