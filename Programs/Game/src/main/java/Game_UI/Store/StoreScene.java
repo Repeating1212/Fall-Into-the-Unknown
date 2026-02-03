@@ -1,9 +1,11 @@
 package Game_UI.Store;
 
+import Game_Data.AttackConfig;
 import Game_Data.ImageLoader;
 import Game_Data.SceneLoader;
+import Game_Data.SkillData.UpgradeData;
+import Game_Data.SkillSupplier;
 import Game_UI.Skill_Scene.SkillPaneSupplier;
-import Game_UI.Skill_Scene.Skill_Pane;
 import LoadFile.DataManager;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -31,10 +33,12 @@ public class StoreScene {
         coinView.setImage(ImageLoader.COIN);
         coinLabel.setText(String.valueOf(DataManager.getGameFile().getCoins()));
 
-        for (int i = 0; i < 10; i ++){
+        for (UpgradeData data : AttackConfig.upgradeData){
             try {
                 FXMLLoader loader = new FXMLLoader(SkillPaneSupplier.class.getResource("/Game_UI/Icons_Scene/StoreScene/UpgradePane.fxml"));
                 Node skillNode = loader.load();
+                UpgradesController upgradesController = loader.getController();
+                upgradesController.initializeData(data);
                 upgradeFlowPane.getChildren().add(skillNode);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -59,6 +63,8 @@ public class StoreScene {
 
     private void setupScrolling() {
         rootPane.setOnScroll(event -> {
+
+            if (upgradeFlowPane.getHeight() < (rootPane.getHeight() - displayPane.getLayoutY())) return;
 
             double deltaY = event.getDeltaY();
             double currentY = upgradeFlowPane.getTranslateY();

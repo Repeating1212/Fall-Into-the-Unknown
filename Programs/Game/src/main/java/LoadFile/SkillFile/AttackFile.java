@@ -27,28 +27,28 @@ public class AttackFile {
 
     public void setAreaAngleUpgrade(int areaAngleUpgrade) {
         if (areaAngleUpgrade > 0 &&
-                areaAngleUpgrade < AttackConfig.AREA_ANGLE_UPG.length){
+                areaAngleUpgrade < AttackConfig.angleUpgLength() ){
             this.areaAngleUpgrade = areaAngleUpgrade;
         }
     }
 
     public void setCooldownUpgrade(int cooldownUpgrade) {
         if (cooldownUpgrade > 0 &&
-                cooldownUpgrade < AttackConfig.COOLDOWN_UPG.length){
+                cooldownUpgrade < AttackConfig.cooldownUpgLength()){
             this.cooldownUpgrade = cooldownUpgrade;
         }
     }
 
     public void setDamageUpgrade(int damageUpgrade) {
         if (damageUpgrade > 0 &&
-                damageUpgrade < AttackConfig.DAMAGE_UPG.length){
+                damageUpgrade < AttackConfig.damageUpgLength()){
             this.damageUpgrade = damageUpgrade;
         }
     }
 
     public void setRangeUpgrade(int rangeUpgrade) {
         if (rangeUpgrade > 0 &&
-                rangeUpgrade < AttackConfig.RANGE_UPG.length){
+                rangeUpgrade < AttackConfig.rangeUpgLength()){
             this.rangeUpgrade = rangeUpgrade;
         }
     }
