@@ -1,36 +1,58 @@
 package Game_Data.Config;
 
+import Game_Data.Data.UpgradeData;
+import Game_Data.Data.UpgradeValue;
 import Game_Data.Supplier.ImageLoader;
+import Game_Data.Supplier.SceneLoader;
 import Level.Skills.Player.Dash;
 import LoadFile.DataManager;
 import LoadFile.SkillFile.DashFile;
 
-public class DashConfig extends SkillConfig_Interface{
+public class DashConfig extends SkillConfig {
 
     // Upgrades
-    private static final double RANGE_l1 = 150;
-    private static final double RANGE_l2 = 225;
-    private static final double RANGE_l3 = 300;
+    public static final int RANGE_ID = 1;
+    public static final int COOLDOWN_ID = 2;
 
-    private static final double COOLDOWN_l1 = 5;
-    private static final double COOLDOWN_l2 = 4;
-    private static final double COOLDOWN_l3 = 3;
-
-    public DashConfig(){
-        super(ImageLoader.DASH_ICON);
+    public DashConfig(int configID){
+        super(ImageLoader.DASH_ICON, configID);
     }
 
-    public static final double[] RANGE_UPG = new double[]{
-            RANGE_l1, RANGE_l2, RANGE_l3
-    };
-    public static final double[] COOLDOWN_UPG = new double[]{
-            COOLDOWN_l1, COOLDOWN_l2, COOLDOWN_l3
-    };
+    private final UpgradeValue RANGE = new UpgradeValue(
+            new double[]{ 150, 225, 300},
+            new double[]{ 2, 4, 4},
+            configID,
+            RANGE_ID
+    );
+
+    private final UpgradeValue COOLDOWN = new UpgradeValue(
+            new double[]{ 5, 4, 3},
+            new double[]{ 2, 4, 4},
+            configID,
+            COOLDOWN_ID
+    );
+
+    private final UpgradeData rangeUpg = new UpgradeData(
+            "Dash", "Increase Range", "Range",
+            "", ImageLoader.DASH_ICON, RANGE
+    );
+
+    private final UpgradeData cooldownUpg = new UpgradeData(
+            "Dash", "Decrease Cooldown", "Cooldown",
+            "", ImageLoader.DASH_ICON, COOLDOWN
+    );
+
+    public final UpgradeData[] getUpgradeData(){
+        return new UpgradeData[]{
+                rangeUpg, cooldownUpg
+        };
+    }
+
 
     public Dash getSkill(){
         DashFile dashFile = DataManager.getDashFile();
-        double range = RANGE_UPG[dashFile.getRangeUpgrades()];
-        double cooldown = COOLDOWN_UPG[dashFile.getCooldownUpgrades()];
+        double range = RANGE.getValue(dashFile.getRangeUpgrades());
+        double cooldown = COOLDOWN.getValue(dashFile.getCooldownUpgrades());
         return new Dash(cooldown, range);
     }
 }

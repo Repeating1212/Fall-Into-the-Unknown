@@ -1,8 +1,10 @@
 package LoadFile.SkillFile;
 
+import Game_Data.Config.AttackConfig;
+import Game_Data.Config.DashConfig;
 import Game_Data.Config.DefendConfig;
 
-public class DefendFile {
+public class DefendFile implements SkillFile{
     private int durationUpgrade = 0;
     private int cooldownUpgrades = 0;
 
@@ -14,17 +16,18 @@ public class DefendFile {
         return durationUpgrade;
     }
 
-    public void setCooldownUpgrades(int cooldownUpgrades) {
-        if (cooldownUpgrades > 0 &&
-                cooldownUpgrades < DefendConfig.COOLDOWN_UPG.length){
-            this.cooldownUpgrades = cooldownUpgrades;
+    public void upgrade(int upgradeID){
+        switch(upgradeID){
+            case DefendConfig.DURATION_ID -> durationUpgrade ++;
+            case DefendConfig.COOLDOWN_ID -> cooldownUpgrades ++;
         }
     }
 
-    public void setDurationUpgrade(int durationUpgrade) {
-        if (durationUpgrade > 0 &&
-                durationUpgrade < DefendConfig.DURATION_UPG.length){
-            this.durationUpgrade = durationUpgrade;
-        }
+    public int getUpgrade(int upgradeID){
+        return switch (upgradeID){
+            case DefendConfig.COOLDOWN_ID -> cooldownUpgrades;
+            case DefendConfig.DURATION_ID -> durationUpgrade;
+            default -> 0;
+        };
     }
 }

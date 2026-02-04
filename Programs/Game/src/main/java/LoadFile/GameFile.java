@@ -1,13 +1,12 @@
 package LoadFile;
 
-import Game_Data.Config.SkillConfig;
 import Game_Data.Supplier.SkillSupplier;
 
 import java.io.*;
 
 public class GameFile implements Serializable {
     private int coins = 0;
-    private int[] equipedSkill = SkillConfig.initialSkill();
+    private int[] equipedSkill = SkillSupplier.getInitialSkill();
 
     // Coins
     public int getCoins() {

@@ -1,5 +1,6 @@
 package Game_Data.Data;
 
+import Game_Data.Supplier.SkillSupplier;
 import LoadFile.DataManager;
 
 public class UpgradeValue {
@@ -27,7 +28,7 @@ public class UpgradeValue {
     }
 
     public void reloadData(){
-        this.currentUpgState = DataManager.getAttackFile().getUpgrade(upgradeID);
+        this.currentUpgState = SkillSupplier.getSkillFile(skillID).getUpgrade(upgradeID);
     }
 
     public double getValue(int currentUpgrade) {

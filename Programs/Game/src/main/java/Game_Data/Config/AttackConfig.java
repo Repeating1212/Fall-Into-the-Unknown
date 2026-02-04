@@ -11,7 +11,7 @@ import LoadFile.DataManager;
 import LoadFile.SkillFile.AttackFile;
 import javafx.scene.image.Image;
 
-public class AttackConfig extends SkillConfig_Interface{
+public class AttackConfig extends SkillConfig {
 
     public static final Image skillImage = ImageLoader.ATTACK_ICON;
 
@@ -20,8 +20,8 @@ public class AttackConfig extends SkillConfig_Interface{
     public static final int COOLDOWN_ID = 3;
     public static final int ATTACK_ANGLE_ID = 4;
 
-    public AttackConfig(){
-        super(skillImage);
+    public AttackConfig(int configID){
+        super(skillImage, configID);
     }
 
     // AttackConfig Animation
@@ -83,6 +83,10 @@ public class AttackConfig extends SkillConfig_Interface{
     public final UpgradeData[] upgradeData = new UpgradeData[]{
             damageUpg, rangeUpg, cooldownUpg, angleUpg
     };
+
+    public final UpgradeData[] getUpgradeData(){
+        return upgradeData;
+    }
 
 
     public AttackSkill getSkill(){

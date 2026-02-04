@@ -1,11 +1,13 @@
 package Game_UI.Store;
 
-import Game_Data.Config.AttackConfig;
 import Game_Data.Config.SkillConfig;
+import Game_Data.Supplier.SkillConfigList;
 import Game_Data.Supplier.ImageLoader;
 import Game_Data.Supplier.SceneLoader;
 import Game_Data.Data.UpgradeData;
+import Game_Data.Supplier.SkillSupplier;
 import LoadFile.DataManager;
+import LoadFile.SkillFile.SkillFile;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,15 +34,17 @@ public class StoreScene {
         coinView.setImage(ImageLoader.COIN);
         coinLabel.setText(String.valueOf(DataManager.getGameFile().getCoins()));
 
-        for (UpgradeData data : SkillConfig.attackConfig.upgradeData){
-            try {
-                FXMLLoader loader = new FXMLLoader(StoreScene.class.getResource("/Game_UI/Icons_Scene/StoreScene/UpgradePane.fxml"));
-                Node skillNode = loader.load();
-                UpgradesController upgradesController = loader.getController();
-                upgradesController.initializeData(data, coinLabel, upgradeFlowPane);
-                upgradeFlowPane.getChildren().add(skillNode);
-            } catch (IOException e) {
-                e.printStackTrace();
+        for (SkillConfig skillConfig : SkillSupplier.getSkillsConfig()){
+            for(UpgradeData data: skillConfig.getUpgradeData()){
+                try {
+                    FXMLLoader loader = new FXMLLoader(StoreScene.class.getResource("/Game_UI/Icons_Scene/StoreScene/UpgradePane.fxml"));
+                    Node skillNode = loader.load();
+                    UpgradesController upgradesController = loader.getController();
+                    upgradesController.initializeData(data, coinLabel, upgradeFlowPane);
+                    upgradeFlowPane.getChildren().add(skillNode);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
         setupScrolling();

@@ -93,6 +93,8 @@ public class UpgradesController {
         int cost = upgradeData.getCost();
         int skillID = upgradeData.getSkillID();
         DataManager.getGameFile().reduceCoins(cost);
+        System.out.println(upgradeData.getSkillID());
+        System.out.println(upgradeData.getTitle());
         SkillFile file = SkillSupplier.getSkillFile(skillID);
         file.upgrade(upgradeData.getUpgradeID());
         reloadData();

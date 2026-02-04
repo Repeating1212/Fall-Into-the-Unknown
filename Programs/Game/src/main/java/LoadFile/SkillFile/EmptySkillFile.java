@@ -7,4 +7,8 @@ public class EmptySkillFile implements SkillFile{
     public void upgrade(int upgradeID){
         //empty
     }
+
+    public int getUpgrade(int upgradeID){
+        return 0;
+    }
 }

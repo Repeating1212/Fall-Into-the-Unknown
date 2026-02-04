@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
 public class SkillSupplier {
 
     private static final int TOTAL_SKILL = 4;
-    private static final SkillConfig skillConfig = new SkillConfig();
+    private static final SkillConfigList skillConfigList = new SkillConfigList();
 
     public static Skill[] getPlayerSkills(){
         int[] equipedSkill = DataManager.getGameFile().getEquipedSkill();
@@ -53,7 +53,9 @@ public class SkillSupplier {
 
     public static SkillFile getSkillFile(int skillID) {
         return switch (skillID) {
-            case SkillConfig.ATTACK_SKILL_ID -> DataManager.getAttackFile();
+            case SkillConfigList.ATTACK_ID -> DataManager.getAttackFile();
+            case SkillConfigList.DASH_ID -> DataManager.getDashFile();
+            case SkillConfigList.DEFEND_ID -> DataManager.getDefendFile();
             default -> new EmptySkillFile();
         };
     }
@@ -62,7 +64,7 @@ public class SkillSupplier {
 
     public static int[] setEquip(int skill_id, int[] equipedSkill){
         for (int i = 0; i < equipedSkill.length; i++){
-            if (equipedSkill[i] == SkillConfig.EMPTY_SKILL_ID) {
+            if (equipedSkill[i] == skillConfigList.EMPTY_SKILL_ID) {
                 equipedSkill[i] = skill_id;
                 break;
             }
@@ -73,7 +75,7 @@ public class SkillSupplier {
     public static int[] setUnequip(int skill_id, int[] equipedSkill){
         for (int i = 0; i < equipedSkill.length; i++){
             if (equipedSkill[i] == skill_id)
-                equipedSkill[i] = SkillConfig.EMPTY_SKILL_ID;
+                equipedSkill[i] = skillConfigList.EMPTY_SKILL_ID;
         }
         return equipedSkill;
     }
@@ -85,19 +87,19 @@ public class SkillSupplier {
         return false;
     }
 
-    public static SkillConfig_Interface[] getSkillsConfig(){
-        return skillConfig.getSkillsConfig();
+    public static SkillConfig[] getSkillsConfig(){
+        return skillConfigList.getSkillsConfig();
     }
 
     public static int[] getInitialSkill(){
-        return skillConfig.initialSkill();
+        return skillConfigList.initialSkill();
     }
 
 
     // Private Method
 
     private static Skill getSkill(int skillID){
-        for (SkillConfig_Interface skillConfig : skillConfig.getSkillsConfig()){
+        for (SkillConfig skillConfig : skillConfigList.getSkillsConfig()){
             if (skillConfig.getConfigID() == skillID){
                 return skillConfig.getSkill();
             }

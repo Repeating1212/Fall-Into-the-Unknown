@@ -3,6 +3,7 @@ package LoadFile;
 import LoadFile.SkillFile.AttackFile;
 import LoadFile.SkillFile.DashFile;
 import LoadFile.SkillFile.DefendFile;
+import LoadFile.SkillFile.SkillFile;
 
 public class DataManager {
 
@@ -10,25 +11,26 @@ public class DataManager {
     private static AttackFile attackFile;
     private static DashFile dashFile;
     private static DefendFile defendFile;
+    private static SkillFile[] skillFiles;
 
     public static GameFile getGameFile(){
-        loadFile();
         return currentGameFile;
     }
 
     public static AttackFile getAttackFile(){
-        loadFile();
         return attackFile;
     }
 
     public static DashFile getDashFile(){
-        loadFile();
         return dashFile;
     }
 
     public static DefendFile getDefendFile(){
-        loadFile();
         return defendFile;
+    }
+
+    public static SkillFile[] getSkillFiles(){
+        return skillFiles;
     }
 
     public static void saveFile(){
@@ -39,9 +41,6 @@ public class DataManager {
     }
 
     public static void loadFile(){
-        if (currentGameFile == null){
-            currentGameFile = JSONStorage.loadGameFile();
-        }
         if (attackFile == null){
             attackFile = JSONStorage.loadAttackFile();
         }
@@ -50,6 +49,13 @@ public class DataManager {
         }
         if(defendFile == null){
             defendFile = JSONStorage.loadDefendFile();
+        }
+        skillFiles = new SkillFile[]{
+                attackFile, dashFile, defendFile
+        };
+        // GameFile need to load other file to run
+        if (currentGameFile == null){
+            currentGameFile = JSONStorage.loadGameFile();
         }
     }
 }

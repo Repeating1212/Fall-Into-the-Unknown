@@ -2,7 +2,6 @@ package Game_UI.EquipSkill;
 
 import Game_Data.Config.EmptySkillConfig;
 import Game_Data.Config.SkillConfig;
-import Game_Data.Config.SkillConfig_Interface;
 import Game_Data.Supplier.SceneLoader;
 import Game_Data.Supplier.SkillSupplier;
 import javafx.animation.TranslateTransition;
@@ -67,7 +66,7 @@ public class SkillScene {
     }
 
     private void loadSkill(){
-        for (SkillConfig_Interface skillConfig : SkillSupplier.getSkillsConfig()){
+        for (SkillConfig skillConfig : SkillSupplier.getSkillsConfig()){
 
             // Ignore Empty skill
             if(skillConfig.getClass() == EmptySkillConfig.class) continue;

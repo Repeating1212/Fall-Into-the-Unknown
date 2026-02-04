@@ -1,8 +1,10 @@
 package LoadFile.SkillFile;
 
+import Game_Data.Config.AttackConfig;
 import Game_Data.Config.DashConfig;
+import Game_Data.Config.SkillConfig;
 
-public class DashFile {
+public class DashFile implements SkillFile {
     private int cooldownUpgrades = 0;
     private int rangeUpgrades = 0;
 
@@ -14,18 +16,19 @@ public class DashFile {
         return rangeUpgrades;
     }
 
-    public void setCooldownUpgrades(int cooldownUpgrades) {
-        if (cooldownUpgrades > 0 &&
-                cooldownUpgrades < DashConfig.COOLDOWN_UPG.length){
-            this.cooldownUpgrades = cooldownUpgrades;
+    public void upgrade(int upgradeID){
+        switch(upgradeID){
+            case DashConfig.RANGE_ID -> rangeUpgrades ++;
+            case DashConfig.COOLDOWN_ID -> cooldownUpgrades ++;
         }
     }
 
-    public void setRangeUpgrades(int rangeUpgrades) {
-        if (rangeUpgrades > 0 &&
-                rangeUpgrades < DashConfig.RANGE_UPG.length){
-            this.rangeUpgrades = rangeUpgrades;
-        }
+    public int getUpgrade(int upgradeID){
+        return switch (upgradeID){
+            case DashConfig.COOLDOWN_ID -> cooldownUpgrades;
+            case DashConfig.RANGE_ID -> rangeUpgrades;
+            default -> 0;
+        };
     }
 }
 

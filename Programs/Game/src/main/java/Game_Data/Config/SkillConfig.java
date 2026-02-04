@@ -1,35 +1,29 @@
 package Game_Data.Config;
 
-public class SkillConfig {
+import Game_Data.Data.UpgradeData;
+import Level.Skills.Skill;
+import javafx.scene.image.Image;
 
-    public static final AttackConfig attackConfig = new AttackConfig();
-    public static final int EMPTY_SKILL_ID = 0;
-    public static final int ATTACK_SKILL_ID = 1;
+public abstract class SkillConfig {
 
-    private final SkillConfig_Interface[] skillsConfig = new SkillConfig_Interface[]{
-            new EmptySkillConfig(),
-            new AttackConfig(),
-            new DefendConfig(),
-            new DashConfig(),
-    };
+    protected final int configID;
+    protected final Image image;
+    protected UpgradeData[] upgradeData;
 
-    public SkillConfig(){
-        for (int i = 0; i < skillsConfig.length; i++){
-            skillsConfig[i].initializeID(i);
-        }
+    public SkillConfig(Image image, int configID){
+        this.image = image;
+        this.configID = configID;
     }
 
-    public SkillConfig_Interface[] getSkillsConfig() {
-        return skillsConfig;
+    public int getConfigID(){
+        return configID;
     }
 
-    public int[] initialSkill(){
-        return new int[] {1,0,0,0};
-//        return new int[]{
-//                attackConfig.getConfigID(),
-//                emptySkill.getConfigID(),
-//                emptySkill.getConfigID(),
-//                emptySkill.getConfigID(),
-//        };
+    public abstract Skill getSkill();
+
+    public abstract UpgradeData[] getUpgradeData();
+
+    public Image getImage(){
+        return image;
     }
 }
