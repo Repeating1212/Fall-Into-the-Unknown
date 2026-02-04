@@ -5,11 +5,10 @@ import javafx.scene.image.Image;
 
 public abstract class SkillConfig_Interface {
 
-    public final int configID;
-    public final Image image;
+    protected int configID;
+    protected final Image image;
 
-    public SkillConfig_Interface(int configID, Image image){
-        this.configID = configID;
+    public SkillConfig_Interface(Image image){
         this.image = image;
     }
 
@@ -21,5 +20,9 @@ public abstract class SkillConfig_Interface {
 
     public Image getImage(){
         return image;
+    }
+
+    public void initializeID(int configID){
+        this.configID = configID;
     }
 }

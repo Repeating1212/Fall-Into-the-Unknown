@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 public class SkillSupplier {
 
     private static final int TOTAL_SKILL = 4;
+    private static final SkillConfig skillConfig = new SkillConfig();
 
     public static Skill[] getPlayerSkills(){
         int[] equipedSkill = DataManager.getGameFile().getEquipedSkill();
@@ -84,11 +85,19 @@ public class SkillSupplier {
         return false;
     }
 
+    public static SkillConfig_Interface[] getSkillsConfig(){
+        return skillConfig.getSkillsConfig();
+    }
+
+    public static int[] getInitialSkill(){
+        return skillConfig.initialSkill();
+    }
+
 
     // Private Method
 
     private static Skill getSkill(int skillID){
-        for (SkillConfig_Interface skillConfig : SkillConfig.skillsConfig){
+        for (SkillConfig_Interface skillConfig : skillConfig.getSkillsConfig()){
             if (skillConfig.getConfigID() == skillID){
                 return skillConfig.getSkill();
             }

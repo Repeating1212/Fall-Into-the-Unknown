@@ -17,8 +17,7 @@ public class DefendConfig extends SkillConfig_Interface{
     private static final double DURATION_l3 = 2.0;
 
     public DefendConfig(){
-        super(SkillConfig.DEFEND_SKILL_ID,
-                ImageLoader.DEFEND_ICON);
+        super(ImageLoader.DEFEND_ICON);
     }
 
     public static final double[] COOLDOWN_UPG = new double[]{

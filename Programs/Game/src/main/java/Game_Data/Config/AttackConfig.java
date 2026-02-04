@@ -13,7 +13,6 @@ import javafx.scene.image.Image;
 
 public class AttackConfig extends SkillConfig_Interface{
 
-    public static final int SKILL_ID = SkillConfig.ATTACK_SKILL_ID;
     public static final Image skillImage = ImageLoader.ATTACK_ICON;
 
     public static final int DAMAGE_ID = 1;
@@ -22,7 +21,7 @@ public class AttackConfig extends SkillConfig_Interface{
     public static final int ATTACK_ANGLE_ID = 4;
 
     public AttackConfig(){
-        super(SKILL_ID, skillImage);
+        super(skillImage);
     }
 
     // AttackConfig Animation
@@ -31,72 +30,59 @@ public class AttackConfig extends SkillConfig_Interface{
     private static final double TOTAL_ANIMATION_PERIOD = FADE_OUT_DURATION + ENLARGE_DURATION;
     private static final double RIGID_TIME = TOTAL_ANIMATION_PERIOD * 2.0;
 
-    private static final UpgradeValue DAMAGE = new UpgradeValue(
+    private final UpgradeValue DAMAGE = new UpgradeValue(
             new double[]{ 6, 12, 18},
             new double[]{ 2, 4, 4},
-            SKILL_ID,
+            configID,
             DAMAGE_ID
     );
 
-    private static final UpgradeValue RANGE = new UpgradeValue(
+    private final UpgradeValue RANGE = new UpgradeValue(
             new double[]{ 100, 120, 140},
             new double[]{ 4, 4, 4},
-            SKILL_ID,
+            configID,
             RANGE_ID
     );
 
-    private static final UpgradeValue COOLDOWN = new UpgradeValue(
+    private final UpgradeValue COOLDOWN = new UpgradeValue(
             new double[]{ 2.0, 1.5, 1.0},
             new double[]{ 4, 8, 8},
-            SKILL_ID,
+            configID,
             COOLDOWN_ID
     );
 
-    private static final UpgradeValue ATTACK_ANGLE = new UpgradeValue(
+    private final UpgradeValue ATTACK_ANGLE = new UpgradeValue(
             new double[]{ 60, 75, 90},
             new double[]{ 4, 8, 8},
-            SKILL_ID,
+            configID,
             ATTACK_ANGLE_ID
     );
 
-    private static final UpgradeData damageUpg = new UpgradeData(
+    private final UpgradeData damageUpg = new UpgradeData(
             "Attack", "Increase Damage", "Damage",
             "", ImageLoader.ATTACK_ICON, DAMAGE
     );
 
-    private static final UpgradeData rangeUpg = new UpgradeData(
+    private final UpgradeData rangeUpg = new UpgradeData(
             "Attack", "Increase Range", "Range",
             "", ImageLoader.ATTACK_ICON, RANGE
     );
 
-    private static final UpgradeData cooldownUpg = new UpgradeData(
+    private final UpgradeData cooldownUpg = new UpgradeData(
             "Attack", "Decrease Cooldown", "Cooldown",
             "s", ImageLoader.ATTACK_ICON, COOLDOWN
     );
 
-    private static final UpgradeData angleUpg = new UpgradeData(
+    private final UpgradeData angleUpg = new UpgradeData(
             "Attack", "Increase Attack Angle", "Attack Angle",
             "\u00B0", ImageLoader.ATTACK_ICON, ATTACK_ANGLE
     );
 
     // Public Method
 
-    public static final UpgradeData[] upgradeData = new UpgradeData[]{
+    public final UpgradeData[] upgradeData = new UpgradeData[]{
             damageUpg, rangeUpg, cooldownUpg, angleUpg
     };
-
-    public static int damageUpgLength(){
-        return DAMAGE.getTotalUpgrade();
-    }
-    public static int rangeUpgLength(){
-        return RANGE.getTotalUpgrade();
-    }
-    public static int cooldownUpgLength(){
-        return COOLDOWN.getTotalUpgrade();
-    }
-    public static int angleUpgLength(){
-        return ATTACK_ANGLE.getTotalUpgrade();
-    }
 
 
     public AttackSkill getSkill(){

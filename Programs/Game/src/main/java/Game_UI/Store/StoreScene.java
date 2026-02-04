@@ -1,6 +1,7 @@
 package Game_UI.Store;
 
 import Game_Data.Config.AttackConfig;
+import Game_Data.Config.SkillConfig;
 import Game_Data.Supplier.ImageLoader;
 import Game_Data.Supplier.SceneLoader;
 import Game_Data.Data.UpgradeData;
@@ -31,7 +32,7 @@ public class StoreScene {
         coinView.setImage(ImageLoader.COIN);
         coinLabel.setText(String.valueOf(DataManager.getGameFile().getCoins()));
 
-        for (UpgradeData data : AttackConfig.upgradeData){
+        for (UpgradeData data : SkillConfig.attackConfig.upgradeData){
             try {
                 FXMLLoader loader = new FXMLLoader(StoreScene.class.getResource("/Game_UI/Icons_Scene/StoreScene/UpgradePane.fxml"));
                 Node skillNode = loader.load();

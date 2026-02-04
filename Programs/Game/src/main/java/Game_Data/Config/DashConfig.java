@@ -17,8 +17,7 @@ public class DashConfig extends SkillConfig_Interface{
     private static final double COOLDOWN_l3 = 3;
 
     public DashConfig(){
-        super(SkillConfig.DASH_SKILL_ID,
-                ImageLoader.DASH_ICON);
+        super(ImageLoader.DASH_ICON);
     }
 
     public static final double[] RANGE_UPG = new double[]{

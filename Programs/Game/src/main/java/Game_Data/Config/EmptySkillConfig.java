@@ -7,7 +7,7 @@ import Level.Skills.Skill;
 public class EmptySkillConfig extends SkillConfig_Interface{
 
     public EmptySkillConfig(){
-        super(SkillConfig.EMPTY_SKILL_ID, ImageLoader.EMPTY_ICON);
+        super(ImageLoader.EMPTY_ICON);
     }
 
     public Skill getSkill(){
