@@ -26,6 +26,10 @@ public class GameFile implements Serializable {
         coins += increment;
     }
 
+    public void reduceCoins(int decrement) {
+        coins -= decrement;
+    }
+
     // Equips skill
 
     public void setEquip(int skill_id){

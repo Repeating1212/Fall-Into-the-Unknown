@@ -11,6 +11,13 @@ import LoadFile.SkillFile.AttackFile;
 
 public class AttackConfig {
 
+    public static final int SKILL_ID = SkillSupplier.ATTACK_SKILL_ID;
+    public static final int DAMAGE_ID = 1;
+    public static final int RANGE_ID = 2;
+    public static final int COOLDOWN_ID = 3;
+    public static final int ATTACK_ANGLE_ID = 4;
+
+
     // AttackConfig Animation
     private static final double ENLARGE_DURATION = 0.2;
     private static final double FADE_OUT_DURATION = 0.1;
@@ -19,46 +26,50 @@ public class AttackConfig {
 
     private static final UpgradeValue DAMAGE = new UpgradeValue(
             new double[]{ 6, 12, 18},
-            new double[]{ 2, 4, 4}
+            new double[]{ 2, 4, 4},
+            SKILL_ID,
+            DAMAGE_ID
     );
 
     private static final UpgradeValue RANGE = new UpgradeValue(
             new double[]{ 100, 120, 140},
-            new double[]{ 4, 4, 4}
+            new double[]{ 4, 4, 4},
+            SKILL_ID,
+            RANGE_ID
     );
 
     private static final UpgradeValue COOLDOWN = new UpgradeValue(
             new double[]{ 2.0, 1.5, 1.0},
-            new double[]{ 4, 8, 8}
+            new double[]{ 4, 8, 8},
+            SKILL_ID,
+            COOLDOWN_ID
     );
 
     private static final UpgradeValue ATTACK_ANGLE = new UpgradeValue(
             new double[]{ 60, 75, 90},
-            new double[]{ 4, 8, 8}
+            new double[]{ 4, 8, 8},
+            SKILL_ID,
+            ATTACK_ANGLE_ID
     );
 
     private static final UpgradeData damageUpg = new UpgradeData(
             "Attack", "Increase Damage", "Damage",
-            "", ImageLoader.ATTACK_ICON, DAMAGE,
-            DataManager.getAttackFile().getDamageUpgrade()
+            "", ImageLoader.ATTACK_ICON, DAMAGE
     );
 
     private static final UpgradeData rangeUpg = new UpgradeData(
             "Attack", "Increase Range", "Range",
-            "", ImageLoader.ATTACK_ICON, RANGE,
-            DataManager.getAttackFile().getRangeUpgrade()
+            "", ImageLoader.ATTACK_ICON, RANGE
     );
 
     private static final UpgradeData cooldownUpg = new UpgradeData(
             "Attack", "Decrease Cooldown", "Cooldown",
-            "s", ImageLoader.ATTACK_ICON, COOLDOWN,
-            DataManager.getAttackFile().getCooldownUpgrade()
+            "s", ImageLoader.ATTACK_ICON, COOLDOWN
     );
 
     private static final UpgradeData angleUpg = new UpgradeData(
             "Attack", "Increase Attack Angle", "Attack Angle",
-            "\u00B0", ImageLoader.ATTACK_ICON, ATTACK_ANGLE,
-            DataManager.getAttackFile().getAreaAngleUpgrade()
+            "\u00B0", ImageLoader.ATTACK_ICON, ATTACK_ANGLE
     );
 
     // Public Method

@@ -10,30 +10,28 @@ public class UpgradeData {
 
     private final Image skillImage;
     private final UpgradeValue upgradeValue;
-    private final int currentUpgradeID;
 
     public UpgradeData(String title, String description, String upgradeText,
                        String  unit, Image skillImage,
-                       UpgradeValue updateValue, int currentUpgradeID){
+                       UpgradeValue updateValue){
         this.title = title;
         this.description = description;
         this.upgradeText = upgradeText;
         this.unit = unit;
         this.skillImage = skillImage;
         this.upgradeValue = updateValue;
-        this.currentUpgradeID = currentUpgradeID;
     }
 
     public double getNextUpg() {
-        return upgradeValue.getIncrement(currentUpgradeID);
+        return upgradeValue.getIncrement();
     }
 
     public double getProgress(){
-        return (double) currentUpgradeID / upgradeValue.getTotalUpgrade();
+        return upgradeValue.getProgress();
     }
 
-    public int getCurrentUpgradeID() {
-        return currentUpgradeID;
+    public int getUpgradeState() {
+        return upgradeValue.getCurrentUpgState();
     }
 
     public Image getSkillImage() {
@@ -59,6 +57,22 @@ public class UpgradeData {
     }
 
     public int getCost(){
-        return upgradeValue.getCost(currentUpgradeID);
+        return upgradeValue.getCost();
+    }
+
+    public int getSkillID(){
+        return upgradeValue.getSkillID();
+    }
+
+    public int getUpgradeID(){
+        return upgradeValue.getUpgradeID();
+    }
+
+    public void reloadData(){
+        upgradeValue.reloadData();
+    }
+
+    public boolean isComplete(){
+        return upgradeValue.isComplete();
     }
 }

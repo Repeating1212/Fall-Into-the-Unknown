@@ -3,6 +3,8 @@ package Game_Data;
 import Level.Skills.Player.EmptySkill;
 import Level.Skills.Skill;
 import LoadFile.DataManager;
+import LoadFile.SkillFile.EmptyFile;
+import LoadFile.SkillFile.SkillFile;
 import javafx.scene.image.Image;
 
 public class SkillSupplier {
@@ -51,6 +53,14 @@ public class SkillSupplier {
         }
         return returnImage;
     }
+
+    public static SkillFile getSkillFile(int skillID) {
+        return switch (skillID) {
+            case ATTACK_SKILL_ID -> DataManager.getAttackFile();
+            default -> new EmptyFile();
+        };
+    }
+
 
     // Private Method
 

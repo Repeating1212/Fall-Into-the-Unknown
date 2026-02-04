@@ -2,7 +2,7 @@ package LoadFile.SkillFile;
 
 import Game_Data.AttackConfig;
 
-public class AttackFile {
+public class AttackFile implements SkillFile {
 
     private int damageUpgrade = 0;
     private int rangeUpgrade = 0;
@@ -23,6 +23,25 @@ public class AttackFile {
 
     public int getRangeUpgrade() {
         return rangeUpgrade;
+    }
+
+    public void upgrade(int upgradeID){
+        switch(upgradeID){
+            case AttackConfig.DAMAGE_ID -> damageUpgrade ++;
+            case AttackConfig.RANGE_ID -> rangeUpgrade ++;
+            case AttackConfig.COOLDOWN_ID -> cooldownUpgrade ++;
+            case AttackConfig.ATTACK_ANGLE_ID -> areaAngleUpgrade ++;
+        }
+    }
+
+    public int getUpgrade(int upgradeID){
+        return switch (upgradeID){
+            case AttackConfig.DAMAGE_ID -> damageUpgrade;
+            case AttackConfig.RANGE_ID -> rangeUpgrade;
+            case AttackConfig.COOLDOWN_ID -> cooldownUpgrade;
+            case AttackConfig.ATTACK_ANGLE_ID -> areaAngleUpgrade;
+            default -> 0;
+        };
     }
 
     public void setAreaAngleUpgrade(int areaAngleUpgrade) {

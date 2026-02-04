@@ -38,7 +38,7 @@ public class StoreScene {
                 FXMLLoader loader = new FXMLLoader(SkillPaneSupplier.class.getResource("/Game_UI/Icons_Scene/StoreScene/UpgradePane.fxml"));
                 Node skillNode = loader.load();
                 UpgradesController upgradesController = loader.getController();
-                upgradesController.initializeData(data);
+                upgradesController.initializeData(data, coinLabel, upgradeFlowPane);
                 upgradeFlowPane.getChildren().add(skillNode);
             } catch (IOException e) {
                 e.printStackTrace();
