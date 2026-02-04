@@ -1,6 +1,6 @@
 package LoadFile.SkillFile;
 
-import Game_Data.AttackConfig;
+import Game_Data.Config.AttackConfig;
 
 public class AttackFile implements SkillFile {
 

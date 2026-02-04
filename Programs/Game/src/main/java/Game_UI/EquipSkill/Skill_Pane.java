@@ -1,4 +1,4 @@
-package Game_UI.Skill_Scene;
+package Game_UI.EquipSkill;
 
 import LoadFile.DataManager;
 import javafx.fxml.FXML;

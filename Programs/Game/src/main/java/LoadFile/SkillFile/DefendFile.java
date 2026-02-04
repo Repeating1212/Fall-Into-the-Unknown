@@ -1,6 +1,6 @@
 package LoadFile.SkillFile;
 
-import Game_Data.DefendConfig;
+import Game_Data.Config.DefendConfig;
 
 public class DefendFile {
     private int durationUpgrade = 0;

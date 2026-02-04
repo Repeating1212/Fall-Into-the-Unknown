@@ -1,6 +1,6 @@
 package Level.Objects.Concrete_Class;
 
-import Game_Data.ImageLoader;
+import Game_Data.Supplier.ImageLoader;
 import Level.Skills.Attacks.AttackSkill;
 import Level.Managers.Observer;
 import Level.Objects.Base_Class.Boss;

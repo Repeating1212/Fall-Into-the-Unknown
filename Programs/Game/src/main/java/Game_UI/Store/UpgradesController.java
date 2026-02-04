@@ -1,8 +1,8 @@
 package Game_UI.Store;
 
-import Game_Data.ImageLoader;
-import Game_Data.SkillData.UpgradeData;
-import Game_Data.SkillSupplier;
+import Game_Data.Supplier.ImageLoader;
+import Game_Data.Data.UpgradeData;
+import Game_Data.Supplier.SkillSupplier;
 import LoadFile.DataManager;
 import LoadFile.SkillFile.SkillFile;
 import javafx.fxml.FXML;

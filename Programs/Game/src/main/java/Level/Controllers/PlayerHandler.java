@@ -1,9 +1,7 @@
 package Level.Controllers;
 
-import Game_Data.SkillSupplier;
 import LoadFile.DataManager;
 import Level.Objects.Concrete_Class.Player;
-import Level.Skills.Skill;
 import Level.View.SkillBoxView;
 
 public class PlayerHandler {

@@ -1,8 +1,8 @@
 package Game_UI.GameScenes;
 
-import Game_Data.ImageLoader;
-import Game_Data.SceneLoader;
-import Game_Data.SkillSupplier;
+import Game_Data.Supplier.ImageLoader;
+import Game_Data.Supplier.SceneLoader;
+import Game_Data.Supplier.SkillSupplier;
 import LoadFile.DataManager;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;

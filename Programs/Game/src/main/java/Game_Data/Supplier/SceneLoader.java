@@ -1,5 +1,6 @@
-package Game_Data;
+package Game_Data.Supplier;
 
+import Game_Data.OverlayController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

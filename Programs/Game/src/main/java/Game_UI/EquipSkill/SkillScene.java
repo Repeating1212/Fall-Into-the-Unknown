@@ -1,13 +1,20 @@
-package Game_UI.Skill_Scene;
+package Game_UI.EquipSkill;
 
-import Game_Data.SceneLoader;
+import Game_Data.Config.EmptySkillConfig;
+import Game_Data.Config.SkillConfig;
+import Game_Data.Config.SkillConfig_Interface;
+import Game_Data.Supplier.SceneLoader;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+
+import java.io.IOException;
 
 public class SkillScene {
     @FXML private Pane rootPane;
@@ -23,9 +30,7 @@ public class SkillScene {
             returnButtonAnimation(returnButton, 0);
         });
 
-        SkillPaneSupplier.loadAttackSkill(Skill_Vbox);
-        SkillPaneSupplier.loadDefendSkill(Skill_Vbox);
-        SkillPaneSupplier.loadDashSkill(Skill_Vbox);
+        loadSkill();
     }
 
     @FXML
@@ -58,5 +63,31 @@ public class SkillScene {
                 Duration.millis(200), btn);
         tt.setToY(targetY);
         tt.play();
+    }
+
+    private void loadSkill(){
+        for (SkillConfig_Interface skillConfig : SkillConfig.skillsConfig){
+
+            // Ignore Empty skill
+            if(skillConfig.getClass() == EmptySkillConfig.class) continue;
+
+            Skill_Pane controller = loadNewPane();
+            controller.initializeData(
+                    skillConfig.getConfigID(),
+                    skillConfig.getImage()
+            );
+        }
+    }
+
+    private Skill_Pane loadNewPane(){
+        try {
+            FXMLLoader loader = new FXMLLoader(SkillScene.class.getResource("/Game_UI/Icons_Scene/SkillScene/SkillDisplay.fxml"));
+            Node skillNode = loader.load();
+            Skill_Vbox.getChildren().add(skillNode);
+            return loader.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new Skill_Pane();
+        }
     }
 }

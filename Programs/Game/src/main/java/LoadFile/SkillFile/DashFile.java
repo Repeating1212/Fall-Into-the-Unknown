@@ -1,6 +1,6 @@
 package LoadFile.SkillFile;
 
-import Game_Data.DashConfig;
+import Game_Data.Config.DashConfig;
 
 public class DashFile {
     private int cooldownUpgrades = 0;

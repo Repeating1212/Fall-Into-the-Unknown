@@ -1,4 +1,4 @@
-package Game_Data.SkillData;
+package Game_Data.Data;
 
 import LoadFile.DataManager;
 
@@ -31,7 +31,7 @@ public class UpgradeValue {
     }
 
     public double getValue(int currentUpgrade) {
-        if (currentUpgrade >= increment.length) return 0;
+        if (currentUpgrade >= value.length) return 0;
         return value[currentUpgrade];
     }
 

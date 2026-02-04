@@ -1,8 +1,8 @@
 package Game_UI.StartScenes;
 
-import Game_Data.ImageLoader;
+import Game_Data.Supplier.ImageLoader;
 import LoadFile.DataManager;
-import Game_Data.SceneLoader;
+import Game_Data.Supplier.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;

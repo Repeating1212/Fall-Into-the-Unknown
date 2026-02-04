@@ -1,7 +1,7 @@
 package Level.Objects.Concrete_Class;
 
-import Game_Data.ImageLoader;
-import Game_Data.SkillSupplier;
+import Game_Data.Supplier.ImageLoader;
+import Game_Data.Supplier.SkillSupplier;
 import Level.Data.Properties.PlayerState;
 import Level.Objects.Base_Class.ImageObject;
 import Level.Managers.Observer;

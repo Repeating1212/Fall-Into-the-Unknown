@@ -1,22 +1,29 @@
-package Game_Data;
+package Game_Data.Config;
 
-import Game_Data.SkillData.UpgradeData;
-import Game_Data.SkillData.UpgradeValue;
+import Game_Data.Supplier.ImageLoader;
+import Game_Data.Data.UpgradeData;
+import Game_Data.Data.UpgradeValue;
 import Level.Skills.Attacks.AttackArea;
 import Level.Skills.Attacks.AttackSkill;
 import Level.Skills.Attacks.ConeAttackArea;
 import Level.View.AttackVisualize.ConeAttackVisual;
 import LoadFile.DataManager;
 import LoadFile.SkillFile.AttackFile;
+import javafx.scene.image.Image;
 
-public class AttackConfig {
+public class AttackConfig extends SkillConfig_Interface{
 
-    public static final int SKILL_ID = SkillSupplier.ATTACK_SKILL_ID;
+    public static final int SKILL_ID = SkillConfig.ATTACK_SKILL_ID;
+    public static final Image skillImage = ImageLoader.ATTACK_ICON;
+
     public static final int DAMAGE_ID = 1;
     public static final int RANGE_ID = 2;
     public static final int COOLDOWN_ID = 3;
     public static final int ATTACK_ANGLE_ID = 4;
 
+    public AttackConfig(){
+        super(SKILL_ID, skillImage);
+    }
 
     // AttackConfig Animation
     private static final double ENLARGE_DURATION = 0.2;
@@ -92,7 +99,7 @@ public class AttackConfig {
     }
 
 
-    public static AttackSkill getAttack(){
+    public AttackSkill getSkill(){
         AttackFile attackFile = DataManager.getAttackFile();
         double damage = DAMAGE.getValue(attackFile.getDamageUpgrade());
         double cooldown = COOLDOWN.getValue(attackFile.getCooldownUpgrade());
@@ -118,4 +125,5 @@ public class AttackConfig {
 
         return attackSkill;
     }
+
 }

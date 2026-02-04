@@ -1,6 +1,6 @@
 package Level.View;
 
-import Game_Data.ImageLoader;
+import Game_Data.Supplier.ImageLoader;
 import javafx.scene.image.ImageView;
 
 public class PlayerHeartView {

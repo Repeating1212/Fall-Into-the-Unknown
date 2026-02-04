@@ -1,21 +1,13 @@
 package LoadFile;
 
-import Game_Data.SkillSupplier;
+import Game_Data.Config.SkillConfig;
+import Game_Data.Supplier.SkillSupplier;
 
 import java.io.*;
 
 public class GameFile implements Serializable {
     private int coins = 0;
-    private final int[] equipedSkill = new int[]{
-            SkillSupplier.ATTACK_SKILL_ID,
-            SkillSupplier.EMPTY_SKILL_ID,
-            SkillSupplier.EMPTY_SKILL_ID,
-            SkillSupplier.EMPTY_SKILL_ID
-    };
-
-//    private int highScore;
-//    private boolean soundEnabled;
-//    private String playerName;
+    private int[] equipedSkill = SkillConfig.initialSkill();
 
     // Coins
     public int getCoins() {
@@ -33,26 +25,15 @@ public class GameFile implements Serializable {
     // Equips skill
 
     public void setEquip(int skill_id){
-        for (int i = 0; i < equipedSkill.length; i++){
-            if (equipedSkill[i] == SkillSupplier.EMPTY_SKILL_ID) {
-                equipedSkill[i] = skill_id;
-                break;
-            }
-        }
+        equipedSkill = SkillSupplier.setEquip(skill_id, equipedSkill);
     }
 
     public void setUnequip(int skill_id){
-        for (int i = 0; i < equipedSkill.length; i++){
-            if (equipedSkill[i] == skill_id)
-                equipedSkill[i] = SkillSupplier.EMPTY_SKILL_ID;
-        }
+        equipedSkill = SkillSupplier.setUnequip(skill_id, equipedSkill);
     }
 
     public boolean isEquip(int skill_id){
-        for (int j : equipedSkill) {
-            if (j == skill_id) return true;
-        }
-        return false;
+        return SkillSupplier.isEquip(skill_id, equipedSkill);
     }
 
     public int[] getEquipedSkill(){
@@ -60,13 +41,4 @@ public class GameFile implements Serializable {
     }
 
     public int getSkillLength(){ return equipedSkill.length;}
-
-//    public int getHighScore() { return highScore; }
-//    public void setHighScore(int highScore) { this.highScore = highScore; }
-//
-//    public boolean isSoundEnabled() { return soundEnabled; }
-//    public void setSoundEnabled(boolean soundEnabled) { this.soundEnabled = soundEnabled; }
-//
-//    public String getPlayerName() { return playerName; }
-//    public void setPlayerName(String playerName) { this.playerName = playerName; }
 }

@@ -1,7 +1,7 @@
 package Game_UI.GameScenes;
 
 import Game_Data.OverlayController;
-import Game_Data.SceneLoader;
+import Game_Data.Supplier.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 

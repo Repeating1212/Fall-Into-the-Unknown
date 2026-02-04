@@ -1,6 +1,6 @@
 package Level.Controllers;
 
-import Game_Data.ImageLoader;
+import Game_Data.Supplier.ImageLoader;
 import LoadFile.DataManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

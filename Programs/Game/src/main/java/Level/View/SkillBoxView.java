@@ -1,6 +1,6 @@
 package Level.View;
 
-import Game_Data.SkillSupplier;
+import Game_Data.Supplier.SkillSupplier;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;

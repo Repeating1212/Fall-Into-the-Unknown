@@ -1,6 +1,6 @@
 package LoadFile.SkillFile;
 
-public class EmptyFile implements SkillFile{
+public class EmptySkillFile implements SkillFile{
 
     // Handle null condition
 

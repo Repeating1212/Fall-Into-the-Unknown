@@ -1,11 +1,9 @@
 package Game_UI.Store;
 
-import Game_Data.AttackConfig;
-import Game_Data.ImageLoader;
-import Game_Data.SceneLoader;
-import Game_Data.SkillData.UpgradeData;
-import Game_Data.SkillSupplier;
-import Game_UI.Skill_Scene.SkillPaneSupplier;
+import Game_Data.Config.AttackConfig;
+import Game_Data.Supplier.ImageLoader;
+import Game_Data.Supplier.SceneLoader;
+import Game_Data.Data.UpgradeData;
 import LoadFile.DataManager;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -35,7 +33,7 @@ public class StoreScene {
 
         for (UpgradeData data : AttackConfig.upgradeData){
             try {
-                FXMLLoader loader = new FXMLLoader(SkillPaneSupplier.class.getResource("/Game_UI/Icons_Scene/StoreScene/UpgradePane.fxml"));
+                FXMLLoader loader = new FXMLLoader(StoreScene.class.getResource("/Game_UI/Icons_Scene/StoreScene/UpgradePane.fxml"));
                 Node skillNode = loader.load();
                 UpgradesController upgradesController = loader.getController();
                 upgradesController.initializeData(data, coinLabel, upgradeFlowPane);
