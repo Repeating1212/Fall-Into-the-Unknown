@@ -9,7 +9,7 @@ public class BossHealthBar {
 
     public BossHealthBar (ProgressBar bossHealthBar){
         this.bossHealthBar = bossHealthBar;
-        bossHealthBar.setProgress(1.0);
+        updateHealthBar(1.0);
     }
 
     public void updateHealthBar(double progress) {

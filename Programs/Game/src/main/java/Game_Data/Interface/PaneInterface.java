@@ -10,4 +10,9 @@ public abstract class PaneInterface {
         this.fileManager = fileManager;
     }
 
+    public void initializeData(){
+        // Always run after initialize
+        // Override by subclasses
+    }
+
 }

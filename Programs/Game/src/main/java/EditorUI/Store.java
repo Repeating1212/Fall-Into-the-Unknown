@@ -46,18 +46,11 @@ public class Store extends SceneInterface {
 
     // Private Method
 
-    private void returnButtonAnimation(Button btn, double targetY) {
-        TranslateTransition tt = new TranslateTransition(
-                Duration.millis(200), btn);
-        tt.setToY(targetY);
-        tt.play();
-    }
-
     private void loadSkillPane(){
         for (SkillConfig skillConfig : SkillSupplier.getSkillsConfig()){
             for(UpgradeText data: skillConfig.getUpgradeTexts()){
                 try {
-                    FXMLLoader loader = new FXMLLoader(Store.class.getResource("/Game_UI/Icons_Scene/StoreScene/UpgradePane.fxml"));
+                    FXMLLoader loader = new FXMLLoader(Store.class.getResource(SceneLoader.PaneType.STORE_PANE.getPath()));
                     Node skillNode = loader.load();
                     StorePane storePane = loader.getController();
                     storePane.setFileManager(fileManager);
@@ -75,7 +68,7 @@ public class Store extends SceneInterface {
 
             if (upgradeFlowPane.getHeight() < (rootPane.getHeight() - displayPane.getLayoutY())) return;
 
-            double deltaY = event.getDeltaY();
+            double deltaY = event.getDeltaY() * 1.5;
             double currentY = upgradeFlowPane.getTranslateY();
             double newY = currentY + deltaY;
 
@@ -86,5 +79,12 @@ public class Store extends SceneInterface {
             upgradeFlowPane.setTranslateY(newY);
             event.consume();
         });
+    }
+
+    private void returnButtonAnimation(Button btn, double targetY) {
+        TranslateTransition tt = new TranslateTransition(
+                Duration.millis(200), btn);
+        tt.setToY(targetY);
+        tt.play();
     }
 }

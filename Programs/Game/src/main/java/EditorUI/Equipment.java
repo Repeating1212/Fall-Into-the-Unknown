@@ -12,8 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -21,7 +21,8 @@ import java.io.IOException;
 public class Equipment extends SceneInterface {
     @FXML private Pane rootPane;
     @FXML private Button returnButton;
-    @FXML private VBox Skill_Vbox;
+    @FXML private FlowPane flowPane;
+    @FXML private Pane displayPane;
 
     @FXML
     public void initialize() {
@@ -36,6 +37,7 @@ public class Equipment extends SceneInterface {
     @Override
     public void initializeData(){
         loadSkill();
+        setupScrolling();
     }
 
     @FXML
@@ -74,25 +76,27 @@ public class Equipment extends SceneInterface {
         for (SkillConfig skillConfig : SkillSupplier.getSkillsConfig()){
 
             // Ignore Empty skill
-            if(skillConfig.getClass() == EmptySkillConfig.class) continue;
+//            if(skillConfig.getClass() == EmptySkillConfig.class) continue;
 
-            EquipmentPane controller = loadNewPane();
-            controller.initializeData(
+            EquipmentPane controller = loadEquipmentPane();
+            assert controller != null;
+            controller.setData(
                     skillConfig.getConfigID(),
                     skillConfig.getImage()
             );
         }
     }
 
-    private EquipmentPane loadNewPane(){
+    private EquipmentPane loadEquipmentPane(){
         try {
-            FXMLLoader loader = new FXMLLoader(Equipment.class.getResource("/Game_UI/Icons_Scene/SkillScene/SkillDisplay.fxml"));
+            FXMLLoader loader = new FXMLLoader(Equipment.class.getResource(SceneLoader.PaneType.EQUIPMENT_PANE.getPath()));
             Node skillNode = loader.load();
-            Skill_Vbox.getChildren().add(skillNode);
+            flowPane.getChildren().add(skillNode);
 
             Object controller = loader.getController();
             if (controller instanceof PaneInterface) {
                 ((PaneInterface) controller).setFileManager(fileManager);
+                ((PaneInterface) controller).initializeData();
             }
 
             return loader.getController();
@@ -100,5 +104,23 @@ public class Equipment extends SceneInterface {
             e.printStackTrace();
             return new EquipmentPane();
         }
+    }
+
+    private void setupScrolling() {
+        rootPane.setOnScroll(event -> {
+
+            if (flowPane.getHeight() < (rootPane.getHeight() - displayPane.getLayoutY())) return;
+
+            double deltaY = event.getDeltaY() * 1.5;
+            double currentY = flowPane.getTranslateY();
+            double newY = currentY + deltaY;
+
+            // Apply bounds
+            double maxDown = displayPane.getHeight() - flowPane.getHeight(); // Negative value
+            newY = Math.max(maxDown, Math.min(0, newY));
+
+            flowPane.setTranslateY(newY);
+            event.consume();
+        });
     }
 }

@@ -1,10 +1,13 @@
 package Game_Data.Supplier;
 
+import EditorUI.Equipment;
+import EditorUI.EquipmentPane;
 import Game_Data.Interface.OverlayController;
+import Game_Data.Interface.PaneInterface;
 import Game_Data.Interface.SceneInterface;
-import Game_UI.StartScene.GameController1;
 import LoadFile.FileManager;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -14,24 +17,40 @@ import java.io.IOException;
 
 public class SceneLoader {
 
-    // Enum for scene types
     public enum SceneType {
-        SETTING("/Game_UI/GameScene/Setting/Setting.fxml"),
+        // Game UI
+        CHARACTER("/Game_UI/FxmlFile/Character.fxml"),
+        ENCYCLOPEDIA("/Game_UI/FxmlFile/Encyclopedia.fxml"),
+        GAME_DESIGNER("/Game_UI/FxmlFile/GameDesigner.fxml"),
+        GAME("/Game_UI/FxmlFile/GameScene.fxml"),
+        SETTING("/Game_UI/FxmlFile/Setting.fxml"),
+        START("/Game_UI/FxmlFile/StartScene.fxml"),
+        // EditorUI
+        STORE("/EditorUI/FxmlFile/StoreScene.fxml"),
+        EQUIPMENT("/EditorUI/FxmlFile/EquipmentScene.fxml"),
+        // Level
         LOSE("/Level/View/lose-screen.fxml"),
         PAUSE("/Level/View/pause-screen.fxml"),
         WIN("/Level/View/win-screen.fxml"),
-        CHARACTER("/Game_UI/Icons_Scene/CharacterScene/UnknownScene.fxml"),
-        ENCYCLOPEDIA("/Game_UI/Icons_Scene/EncyclopediaScene/UnknownScene.fxml"),
-        STORE("/Game_UI/Icons_Scene/StoreScene/StoreScene.fxml"),
-        SKILL("/Game_UI/Icons_Scene/SkillScene/SkillScene.fxml"),
-        GAME("/Game_UI/GameScene/GameScene/GameScene.fxml"),
-        GAME_DESIGNER("/Game_UI/StartScene/GameDesignerScene/UnknownScene.fxml"),
-        START("/Game_UI/StartScene/StartScene/StartScene.fxml"),
         LEVEL_01("/Level/LevelScene.fxml");
-
         private final String path;
 
         SceneType(String path) {
+            this.path = path;
+        }
+
+        public String getPath() {
+            return path;
+        }
+    }
+
+    public enum PaneType {
+        EQUIPMENT_PANE("/EditorUI/FxmlFile/EquipmentPane.fxml"),
+        STORE_PANE("/EditorUI/FxmlFile/StorePane.fxml");
+
+        private final String path;
+
+        PaneType(String path) {
             this.path = path;
         }
 
@@ -107,19 +126,4 @@ public class SceneLoader {
             e.printStackTrace();
         }
     }
-
-//
-//    public static void switchScene(Pane rootPane, SceneType sceneType) {
-//        try {
-//
-//            FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource(sceneType.getPath()));
-//            Parent newScene = loader.load();
-//            Stage stage = (Stage) rootPane.getScene().getWindow();
-//            stage.setScene(new Scene(newScene));
-//
-//            stage.show();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 }

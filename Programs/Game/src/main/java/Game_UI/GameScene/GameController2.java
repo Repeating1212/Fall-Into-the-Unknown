@@ -81,7 +81,7 @@ public class GameController2 extends SceneInterface {
 
     @FXML
     private void loadSkillScene(){
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.SKILL, fileManager);
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.EQUIPMENT, fileManager);
     }
 
     // Private Method

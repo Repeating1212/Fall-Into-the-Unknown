@@ -18,7 +18,7 @@ public class EquipmentPane extends PaneInterface {
 
     private int skillID;
 
-    public void initializeData(int skillID, Image skillImage){
+    public void setData(int skillID, Image skillImage){
         this.skillID = skillID;
         skillIcon.setImage(skillImage);
         updateText();
