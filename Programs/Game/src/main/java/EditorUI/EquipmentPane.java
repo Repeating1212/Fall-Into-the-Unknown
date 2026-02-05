@@ -1,4 +1,4 @@
-package Game_UI.EquipSkill;
+package EditorUI;
 
 import Game_Data.Interface.PaneInterface;
 import javafx.fxml.FXML;
@@ -8,7 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
-public class Skill_Pane extends PaneInterface {
+public class EquipmentPane extends PaneInterface {
 
     @FXML private Button equipButton;
     @FXML private ImageView skillIcon;

@@ -1,4 +1,4 @@
-package Game_UI.GameScenes;
+package Game_UI.GameScene;
 
 import Game_Data.Interface.OverlayController;
 import Game_Data.Supplier.SceneLoader;

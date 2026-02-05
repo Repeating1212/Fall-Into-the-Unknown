@@ -24,14 +24,14 @@ public class ImageLoader {
     private static final String MAP_PORTAL_Path = "/Picture/Map Components/Portal.png";
     private static final String GAME_BACKGROUND_Path = "/Picture/Map Components/Map_Background.png";
 
-    // GameScene Icon
+    // GameController2 Icon
     private static final String COIN_Path       = "/Picture/Game_Icon/Coin_Image.png";
     private static final String CHARACTER_PATH  = "/Picture/Game_Icon/Character.png";
     private static final String STORE_Path      = "/Picture/Game_Icon/Store.png";
     private static final String SETTING_PATH    = "/Picture/Game_Icon/Setting.png";
     private static final String ENCYCLOPEDIA_PATH = "/Picture/Game_Icon/Encyclopedia.png";
 
-    // StartScene
+    // GameController1
     private static final String STARTSCENE_IMAGE_Path = "/Picture/StartScene/Background.png";
 
     // Level Images

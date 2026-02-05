@@ -1,4 +1,4 @@
-package Game_UI.EquipSkill;
+package EditorUI;
 
 import Game_Data.Config.EmptySkillConfig;
 import Game_Data.Config.SkillConfig;
@@ -18,7 +18,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class SkillScene extends SceneInterface {
+public class Equipment extends SceneInterface {
     @FXML private Pane rootPane;
     @FXML private Button returnButton;
     @FXML private VBox Skill_Vbox;
@@ -76,7 +76,7 @@ public class SkillScene extends SceneInterface {
             // Ignore Empty skill
             if(skillConfig.getClass() == EmptySkillConfig.class) continue;
 
-            Skill_Pane controller = loadNewPane();
+            EquipmentPane controller = loadNewPane();
             controller.initializeData(
                     skillConfig.getConfigID(),
                     skillConfig.getImage()
@@ -84,9 +84,9 @@ public class SkillScene extends SceneInterface {
         }
     }
 
-    private Skill_Pane loadNewPane(){
+    private EquipmentPane loadNewPane(){
         try {
-            FXMLLoader loader = new FXMLLoader(SkillScene.class.getResource("/Game_UI/Icons_Scene/SkillScene/SkillDisplay.fxml"));
+            FXMLLoader loader = new FXMLLoader(Equipment.class.getResource("/Game_UI/Icons_Scene/SkillScene/SkillDisplay.fxml"));
             Node skillNode = loader.load();
             Skill_Vbox.getChildren().add(skillNode);
 
@@ -98,7 +98,7 @@ public class SkillScene extends SceneInterface {
             return loader.getController();
         } catch (IOException e) {
             e.printStackTrace();
-            return new Skill_Pane();
+            return new EquipmentPane();
         }
     }
 }

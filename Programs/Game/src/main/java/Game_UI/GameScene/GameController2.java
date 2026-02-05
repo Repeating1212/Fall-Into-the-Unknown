@@ -1,4 +1,4 @@
-package Game_UI.GameScenes;
+package Game_UI.GameScene;
 
 import Game_Data.Interface.SceneInterface;
 import Game_Data.Supplier.ImageLoader;
@@ -13,7 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-public class GameScene extends SceneInterface {
+public class GameController2 extends SceneInterface {
     @FXML private ImageView Forest, Graveyard, Bridge, Fish_Port, Lake, Mountain, Tower, Dragon, Portal, gameBackground;
     @FXML private ImageView settingView, coinView;
     @FXML private ImageView characterView, encyclopediaView, storeView;

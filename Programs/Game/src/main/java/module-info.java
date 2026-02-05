@@ -9,16 +9,13 @@ module Game {
 
     opens Game_UI to javafx.fxml;
     exports Game_UI;
-    exports Game_UI.Icons_Scene;
-    opens Game_UI.Icons_Scene to javafx.fxml;
-    exports Game_UI.StartScenes;
-    opens Game_UI.StartScenes to javafx.fxml;
-    exports Game_UI.GameScenes;
-    opens Game_UI.GameScenes to javafx.fxml;
-    exports Game_UI.EquipSkill;
-    opens Game_UI.EquipSkill to javafx.fxml;
-    exports Game_UI.Store;
-    opens Game_UI.Store to javafx.fxml;
+    exports Game_UI.StartScene;
+    opens Game_UI.StartScene to javafx.fxml;
+    exports Game_UI.GameScene;
+    opens Game_UI.GameScene to javafx.fxml;
+
+    exports EditorUI;
+    opens EditorUI to javafx.fxml;
 
     exports LoadFile to com.google.gson;
     opens LoadFile to com.google.gson;
@@ -30,6 +27,9 @@ module Game {
     opens Game_Data.Config to com.google.gson, javafx.fxml;
     exports Game_Data.Supplier;
     opens Game_Data.Supplier to com.google.gson, javafx.fxml;
+    exports Game_Data.Interface;
+    opens Game_Data.Interface to com.google.gson, javafx.fxml;
+
 
 
     exports Level.View;
@@ -55,6 +55,5 @@ module Game {
     opens Level.Managers.LevelData to javafx.fxml;
     exports Level.Skills;
     opens Level.Skills to javafx.fxml;
-    exports Game_Data.Interface;
-    opens Game_Data.Interface to com.google.gson, javafx.fxml;
+
 }

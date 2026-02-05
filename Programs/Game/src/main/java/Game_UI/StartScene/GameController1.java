@@ -1,6 +1,5 @@
-package Game_UI.StartScenes;
+package Game_UI.StartScene;
 
-import Game_Data.GameInitialize;
 import Game_Data.Interface.SceneInterface;
 import Game_Data.Supplier.ImageLoader;
 import Game_Data.Supplier.SceneLoader;
@@ -11,7 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class StartScene extends SceneInterface {
+public class GameController1 extends SceneInterface {
 
     @FXML private Pane rootPane;
     @FXML private ImageView fallingGirl;

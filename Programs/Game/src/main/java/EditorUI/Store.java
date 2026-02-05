@@ -1,4 +1,4 @@
-package Game_UI.Store;
+package EditorUI;
 
 import Game_Data.Config.SkillConfig;
 import Game_Data.Interface.SceneInterface;
@@ -19,7 +19,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class StoreScene extends SceneInterface {
+public class Store extends SceneInterface {
 
     @FXML private Pane rootPane;
     @FXML private ImageView coinView, skillPointView;
@@ -57,11 +57,11 @@ public class StoreScene extends SceneInterface {
         for (SkillConfig skillConfig : SkillSupplier.getSkillsConfig()){
             for(UpgradeText data: skillConfig.getUpgradeTexts()){
                 try {
-                    FXMLLoader loader = new FXMLLoader(StoreScene.class.getResource("/Game_UI/Icons_Scene/StoreScene/UpgradePane.fxml"));
+                    FXMLLoader loader = new FXMLLoader(Store.class.getResource("/Game_UI/Icons_Scene/StoreScene/UpgradePane.fxml"));
                     Node skillNode = loader.load();
-                    UpgradesController upgradesController = loader.getController();
-                    upgradesController.setFileManager(fileManager);
-                    upgradesController.initializeData(data, coinLabel, upgradeFlowPane);
+                    StorePane storePane = loader.getController();
+                    storePane.setFileManager(fileManager);
+                    storePane.initializeData(data, coinLabel, upgradeFlowPane);
                     upgradeFlowPane.getChildren().add(skillNode);
                 } catch (IOException e) {
                     e.printStackTrace();

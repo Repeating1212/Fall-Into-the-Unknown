@@ -2,6 +2,7 @@ package Game_Data.Supplier;
 
 import Game_Data.Interface.OverlayController;
 import Game_Data.Interface.SceneInterface;
+import Game_UI.StartScene.GameController1;
 import LoadFile.FileManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,7 @@ public class SceneLoader {
 
     // Enum for scene types
     public enum SceneType {
-        SETTING("/Game_UI/GameScenes/Setting/Setting.fxml"),
+        SETTING("/Game_UI/GameScene/Setting/Setting.fxml"),
         LOSE("/Level/View/lose-screen.fxml"),
         PAUSE("/Level/View/pause-screen.fxml"),
         WIN("/Level/View/win-screen.fxml"),
@@ -23,9 +24,9 @@ public class SceneLoader {
         ENCYCLOPEDIA("/Game_UI/Icons_Scene/EncyclopediaScene/UnknownScene.fxml"),
         STORE("/Game_UI/Icons_Scene/StoreScene/StoreScene.fxml"),
         SKILL("/Game_UI/Icons_Scene/SkillScene/SkillScene.fxml"),
-        GAME("/Game_UI/GameScenes/GameScene/GameScene.fxml"),
-        GAME_DESIGNER("/Game_UI/StartScenes/GameDesignerScene/UnknownScene.fxml"),
-        START("/Game_UI/StartScenes/StartScene/StartScene.fxml"),
+        GAME("/Game_UI/GameScene/GameScene/GameScene.fxml"),
+        GAME_DESIGNER("/Game_UI/StartScene/GameDesignerScene/UnknownScene.fxml"),
+        START("/Game_UI/StartScene/StartScene/StartScene.fxml"),
         LEVEL_01("/Level/LevelScene.fxml");
 
         private final String path;
@@ -80,6 +81,33 @@ public class SceneLoader {
             e.printStackTrace();
         }
     }
+
+    public static void loadInitialScene(Stage primaryStage, SceneType sceneType) {
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource(sceneType.getPath()));
+            Parent root = loader.load();
+
+            // Load File
+            FileManager fileManager = new FileManager();
+            fileManager.loadFile();
+            Object controller = loader.getController();
+            if (controller instanceof SceneInterface) {
+                ((SceneInterface) controller).setFileManager(fileManager);
+                ((SceneInterface) controller).initializeData();
+            }
+
+            // Set up the stage
+            Scene scene = new Scene(root, 1200, 675);
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
+            primaryStage.setTitle("UI Protocol");
+            primaryStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 //
 //    public static void switchScene(Pane rootPane, SceneType sceneType) {
 //        try {

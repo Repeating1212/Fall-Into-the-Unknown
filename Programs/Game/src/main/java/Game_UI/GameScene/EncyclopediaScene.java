@@ -1,12 +1,11 @@
-package Game_UI.Icons_Scene;
+package Game_UI.GameScene;
 
 import Game_Data.Interface.SceneInterface;
 import Game_Data.Supplier.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 
-public class CharacterScene extends SceneInterface {
-
+public class EncyclopediaScene extends SceneInterface {
     @FXML private Pane rootPane;
 
     @FXML

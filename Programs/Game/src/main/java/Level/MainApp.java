@@ -1,5 +1,5 @@
 package Level;
-import Game_UI.StartScenes.StartScene;
+import Game_Data.Supplier.SceneLoader;
 import Level.Controllers.Controller;
 import LoadFile.FileManager;
 import javafx.application.Application;
@@ -14,22 +14,8 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        // Load the FXML files
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("LevelScene.fxml"));
-        Parent root = loader.load();
-
-        // Load file data
-        FileManager fileManager = new FileManager();
-        fileManager.loadFile();
-        Controller controller = loader.getController();
-        controller.setFileManager(fileManager);
-        controller.initializeData();
-
-        // Set up the stage
-        Scene scene = new Scene(root, LevelConfig.MapHeight, LevelConfig.MapWidth);
-        primaryStage.setTitle("Protocol");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        SceneLoader.loadInitialScene(primaryStage, SceneLoader.SceneType.LEVEL_01);
+//        Scene scene = new Scene(root, LevelConfig.MapHeight, LevelConfig.MapWidth);
     }
 
     public static void main(String[] args) {launch(args);}

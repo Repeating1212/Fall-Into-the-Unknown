@@ -1,4 +1,4 @@
-package Game_UI.Store;
+package EditorUI;
 
 import Game_Data.Data.UpgradeValue;
 import Game_Data.Interface.PaneInterface;
@@ -13,7 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
-public class UpgradesController extends PaneInterface {
+public class StorePane extends PaneInterface {
 
     private final int sideLine = 480;
     private Text totalCoin;
