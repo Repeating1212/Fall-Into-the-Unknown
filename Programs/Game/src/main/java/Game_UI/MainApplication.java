@@ -1,6 +1,6 @@
 package Game_UI;
 
-import Game_Data.Supplier.SceneLoader;
+import Data.Supplier.SceneLoader;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

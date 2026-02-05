@@ -1,7 +1,6 @@
-package Game_Data.Supplier;
+package Data.Supplier;
 
-import Game_Data.Config.*;
-import LoadFile.SkillFile.SkillFile;
+import Data.Config.*;
 
 public class SkillConfigList {
 

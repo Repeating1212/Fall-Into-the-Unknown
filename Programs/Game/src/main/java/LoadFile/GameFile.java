@@ -1,6 +1,6 @@
 package LoadFile;
 
-import Game_Data.Supplier.SkillSupplier;
+import Data.Supplier.SkillSupplier;
 
 import java.io.*;
 

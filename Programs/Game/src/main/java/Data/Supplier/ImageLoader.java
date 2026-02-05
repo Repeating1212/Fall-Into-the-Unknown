@@ -1,4 +1,4 @@
-package Game_Data.Supplier;
+package Data.Supplier;
 
 import Level.Data.Config.PlayerConfig;
 import javafx.scene.image.Image;

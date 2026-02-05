@@ -1,19 +1,11 @@
 package Level.Controllers;
 
-import Game_Data.Interface.OverlayController;
-import Game_Data.Interface.SceneInterface;
-import Game_Data.Supplier.SceneLoader;
+import Data.Interface.OverlayController;
+import Data.Supplier.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class LoseController extends OverlayController {
 

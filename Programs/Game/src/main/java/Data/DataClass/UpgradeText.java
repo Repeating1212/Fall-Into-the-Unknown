@@ -1,4 +1,4 @@
-package Game_Data.Data;
+package Data.DataClass;
 
 import javafx.scene.image.Image;
 

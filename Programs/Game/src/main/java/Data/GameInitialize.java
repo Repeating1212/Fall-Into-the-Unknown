@@ -1,4 +1,4 @@
-package Game_Data;
+package Data;
 
 import LoadFile.FileManager;
 

@@ -1,6 +1,6 @@
 package Level.View;
 
-import Game_Data.Supplier.SkillSupplier;
+import Data.Supplier.SkillSupplier;
 import LoadFile.FileManager;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

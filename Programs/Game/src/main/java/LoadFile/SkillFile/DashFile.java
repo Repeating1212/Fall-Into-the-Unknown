@@ -1,8 +1,6 @@
 package LoadFile.SkillFile;
 
-import Game_Data.Config.AttackConfig;
-import Game_Data.Config.DashConfig;
-import Game_Data.Config.SkillConfig;
+import Data.Config.DashConfig;
 
 public class DashFile implements SkillFile {
     private int cooldownUpgrades = 0;

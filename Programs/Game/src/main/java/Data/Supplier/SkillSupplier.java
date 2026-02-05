@@ -1,6 +1,6 @@
-package Game_Data.Supplier;
+package Data.Supplier;
 
-import Game_Data.Config.*;
+import Data.Config.*;
 import Level.Skills.Player.EmptySkill;
 import Level.Skills.Skill;
 import LoadFile.FileManager;

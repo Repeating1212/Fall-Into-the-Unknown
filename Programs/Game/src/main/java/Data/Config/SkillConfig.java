@@ -1,7 +1,6 @@
-package Game_Data.Config;
+package Data.Config;
 
-import Game_Data.Data.UpgradeText;
-import Game_Data.Data.UpgradeValue;
+import Data.DataClass.UpgradeText;
 import Level.Skills.Skill;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.SkillFile;

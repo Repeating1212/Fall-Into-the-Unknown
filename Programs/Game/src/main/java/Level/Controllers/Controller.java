@@ -1,8 +1,8 @@
 package Level.Controllers;
 
 
-import Game_Data.Interface.SceneInterface;
-import Game_Data.Supplier.SkillSupplier;
+import Data.Interface.SceneInterface;
+import Data.Supplier.SkillSupplier;
 import Level.Managers.Level;
 import Level.Managers.Observer;
 import Level.Objects.Concrete_Class.Player;

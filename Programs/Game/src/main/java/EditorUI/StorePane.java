@@ -1,10 +1,10 @@
 package EditorUI;
 
-import Game_Data.Data.UpgradeValue;
-import Game_Data.Interface.PaneInterface;
-import Game_Data.Supplier.ImageLoader;
-import Game_Data.Data.UpgradeText;
-import Game_Data.Supplier.SkillSupplier;
+import Data.DataClass.UpgradeValue;
+import Data.Interface.PaneInterface;
+import Data.Supplier.ImageLoader;
+import Data.DataClass.UpgradeText;
+import Data.Supplier.SkillSupplier;
 import LoadFile.SkillFile.SkillFile;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

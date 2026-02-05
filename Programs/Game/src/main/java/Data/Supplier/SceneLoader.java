@@ -1,13 +1,9 @@
-package Game_Data.Supplier;
+package Data.Supplier;
 
-import EditorUI.Equipment;
-import EditorUI.EquipmentPane;
-import Game_Data.Interface.OverlayController;
-import Game_Data.Interface.PaneInterface;
-import Game_Data.Interface.SceneInterface;
+import Data.Interface.OverlayController;
+import Data.Interface.SceneInterface;
 import LoadFile.FileManager;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;

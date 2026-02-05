@@ -21,14 +21,14 @@ module Game {
     opens LoadFile to com.google.gson;
     opens LoadFile.SkillFile to com.google.gson;
 
-    exports Game_Data;
-    opens Game_Data to com.google.gson, javafx.fxml;
-    exports Game_Data.Config;
-    opens Game_Data.Config to com.google.gson, javafx.fxml;
-    exports Game_Data.Supplier;
-    opens Game_Data.Supplier to com.google.gson, javafx.fxml;
-    exports Game_Data.Interface;
-    opens Game_Data.Interface to com.google.gson, javafx.fxml;
+    exports Data;
+    opens Data to com.google.gson, javafx.fxml;
+    exports Data.Config;
+    opens Data.Config to com.google.gson, javafx.fxml;
+    exports Data.Supplier;
+    opens Data.Supplier to com.google.gson, javafx.fxml;
+    exports Data.Interface;
+    opens Data.Interface to com.google.gson, javafx.fxml;
 
 
 

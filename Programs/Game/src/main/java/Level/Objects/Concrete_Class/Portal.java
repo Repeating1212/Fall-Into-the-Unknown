@@ -1,6 +1,6 @@
 package Level.Objects.Concrete_Class;
 
-import Game_Data.Supplier.ImageLoader;
+import Data.Supplier.ImageLoader;
 import Level.Data.Suppliers.PortalSupplier;
 import Level.Managers.Observer;
 import Level.Objects.Base_Class.ImageObject;

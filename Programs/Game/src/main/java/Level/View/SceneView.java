@@ -1,13 +1,10 @@
 package Level.View;
 
-import Game_Data.Interface.SceneInterface;
-import Game_Data.Supplier.SceneLoader;
+import Data.Supplier.SceneLoader;
 import LoadFile.FileManager;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -17,7 +14,6 @@ import Level.Controllers.PauseController;
 import Level.Objects.Base_Class.DisplayableObject;
 
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class SceneView {

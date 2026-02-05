@@ -28,3 +28,12 @@
     -fx-scale-y: 1.02;
     -fx-transition: all 0.3s ease;
 }
+
+.iconBoard{
+    -fx-border-color: #1A1A1A;
+    -fx-border-width: 5 5 0 5;
+    -fx-border-radius: 18 18 0 0;
+
+    -fx-background-color: #8D8D8D;
+    -fx-background-radius: 20 20 0 0;
+}

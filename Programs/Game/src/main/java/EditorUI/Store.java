@@ -1,11 +1,11 @@
 package EditorUI;
 
-import Game_Data.Config.SkillConfig;
-import Game_Data.Interface.SceneInterface;
-import Game_Data.Supplier.ImageLoader;
-import Game_Data.Supplier.SceneLoader;
-import Game_Data.Data.UpgradeText;
-import Game_Data.Supplier.SkillSupplier;
+import Data.Config.SkillConfig;
+import Data.Interface.SceneInterface;
+import Data.Supplier.ImageLoader;
+import Data.Supplier.SceneLoader;
+import Data.DataClass.UpgradeText;
+import Data.Supplier.SkillSupplier;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

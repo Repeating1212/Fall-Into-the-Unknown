@@ -1,4 +1,4 @@
-package Game_Data.Interface;
+package Data.Interface;
 
 import LoadFile.FileManager;
 import javafx.scene.layout.Pane;

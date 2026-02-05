@@ -1,8 +1,8 @@
 package Level.Controllers;
 
-import Game_Data.Interface.OverlayController;
-import Game_Data.Supplier.ImageLoader;
-import Game_Data.Supplier.SceneLoader;
+import Data.Interface.OverlayController;
+import Data.Supplier.ImageLoader;
+import Data.Supplier.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
