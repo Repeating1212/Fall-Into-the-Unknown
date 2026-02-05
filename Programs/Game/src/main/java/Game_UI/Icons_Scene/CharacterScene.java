@@ -1,10 +1,11 @@
 package Game_UI.Icons_Scene;
 
+import Game_Data.Interface.SceneInterface;
 import Game_Data.Supplier.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 
-public class CharacterScene {
+public class CharacterScene extends SceneInterface {
 
     @FXML private Pane rootPane;
 
@@ -13,6 +14,6 @@ public class CharacterScene {
 
     @FXML
     private void handleReturn() {
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.GAME);
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.GAME, fileManager);
     }
 }

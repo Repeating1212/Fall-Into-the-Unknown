@@ -1,5 +1,5 @@
 .button{
-    -fx-background-radius: 0;
+    -fx-background-radius: 16;
     -fx-font-size: 20;
     -fx-padding: 10 30;
     -fx-background-color: transparent;
@@ -12,14 +12,18 @@
 .button:hover  {
     -fx-background-color: black;
     -fx-text-fill: white;
-    -fx-border-width: 1;
-    -fx-border-color: #1A1A1A;
-    -fx-border-radius: 15;
+    -fx-background-radius: 0;
 }
 
-.displayScreen {
-    -fx-border-radius: 20;
+.displayBoard{
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 3);
+    -fx-border-radius: 18;
     -fx-border-color: #1A1A1A;
     -fx-border-width: 2;
     -fx-background-color: White;
+    -fx-background-radius: 20;
+}
+
+.background{
+    -fx-background-color: #00000033;
 }

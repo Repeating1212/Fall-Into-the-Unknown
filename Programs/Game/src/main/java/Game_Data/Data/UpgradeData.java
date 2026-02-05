@@ -22,18 +22,6 @@ public class UpgradeData {
         this.upgradeValue = updateValue;
     }
 
-    public double getNextUpg() {
-        return upgradeValue.getIncrement();
-    }
-
-    public double getProgress(){
-        return upgradeValue.getProgress();
-    }
-
-    public int getUpgradeState() {
-        return upgradeValue.getCurrentUpgState();
-    }
-
     public Image getSkillImage() {
         return skillImage;
     }
@@ -52,12 +40,22 @@ public class UpgradeData {
         return unit;
     }
 
-    public int getTotalUpgrade(){
-        return upgradeValue.getTotalUpgrade();
+    // Middle Man
+
+    public double getNextUpg(int currentUpgState) {
+        return upgradeValue.getIncrement(currentUpgState);
     }
 
-    public int getCost(){
-        return upgradeValue.getCost();
+    public double getProgress(int currentUpgState){
+        return upgradeValue.getProgress(currentUpgState);
+    }
+
+    public int getCost(int currentUpgState){
+        return upgradeValue.getCost(currentUpgState);
+    }
+
+    public int getTotalUpgrade(){
+        return upgradeValue.getTotalUpgrade();
     }
 
     public int getSkillID(){
@@ -68,11 +66,11 @@ public class UpgradeData {
         return upgradeValue.getUpgradeID();
     }
 
-    public void reloadData(){
-        upgradeValue.reloadData();
+    public boolean isComplete(int currentUpgState){
+        return upgradeValue.isComplete(currentUpgState);
     }
 
-    public boolean isComplete(){
-        return upgradeValue.isComplete();
+    public String getUpgradeText(int currentUpgState) {
+        return currentUpgState + "/" + upgradeValue.getTotalUpgrade();
     }
 }

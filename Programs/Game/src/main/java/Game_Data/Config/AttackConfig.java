@@ -7,7 +7,7 @@ import Level.Skills.Attacks.AttackArea;
 import Level.Skills.Attacks.AttackSkill;
 import Level.Skills.Attacks.ConeAttackArea;
 import Level.View.AttackVisualize.ConeAttackVisual;
-import LoadFile.DataManager;
+import LoadFile.FileManager;
 import LoadFile.SkillFile.AttackFile;
 import javafx.scene.image.Image;
 
@@ -21,7 +21,7 @@ public class AttackConfig extends SkillConfig {
     public static final int ATTACK_ANGLE_ID = 4;
 
     public AttackConfig(int configID){
-        super(skillImage, configID);
+        super(skillImage, configID, AttackFile.class);
     }
 
     // AttackConfig Animation
@@ -89,8 +89,8 @@ public class AttackConfig extends SkillConfig {
     }
 
 
-    public AttackSkill getSkill(){
-        AttackFile attackFile = DataManager.getAttackFile();
+    public AttackSkill getSkill(FileManager fileManager){
+        AttackFile attackFile = fileManager.getAttackFile();
         double damage = DAMAGE.getValue(attackFile.getDamageUpgrade());
         double cooldown = COOLDOWN.getValue(attackFile.getCooldownUpgrade());
         double range = RANGE.getValue(attackFile.getRangeUpgrade());

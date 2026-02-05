@@ -1,5 +1,8 @@
 package Level.View;
 
+import Game_Data.Interface.SceneInterface;
+import Game_Data.Supplier.SceneLoader;
+import LoadFile.FileManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -21,20 +24,24 @@ public class SceneView {
 
     private final Pane rootPane;
     private final Text coinLabel;
+
     private ArrayList<DisplayableObject> objectList = new ArrayList<>();
+    private final FileManager fileManager;
+
     private final BossHealthBar bossHealthView;
     private final PlayerHeartView playerHeartView;
     private final SkillBoxView skillBoxView;
     private final MapView mapView;
 
     public SceneView(Pane rootPane, Text moneyLabel, ImageView[] hearts,
-                     ProgressBar progressBar, ImageView map, SkillBoxView skillBoxView){
+                     ProgressBar progressBar, ImageView map, SkillBoxView skillBoxView, FileManager fileManager){
         this.rootPane = rootPane;
         this.coinLabel = moneyLabel;
         bossHealthView = new BossHealthBar(progressBar);
         playerHeartView = new PlayerHeartView(hearts);
         this.skillBoxView = skillBoxView;
         mapView = new MapView(map);
+        this.fileManager = fileManager;
     }
 
     public void updateObjectsInSceneNew(ArrayList<DisplayableObject> toDisplay) {
@@ -75,49 +82,23 @@ public class SceneView {
     }
 
     public void showWinScreen(int coinValue) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("win-screen.fxml"));
-            Pane winScreen = loader.load();
-            winScreen.setPrefHeight(500);
-            winScreen.setPrefWidth(800);
-            winScreen.setLayoutX(200);
-            winScreen.setLayoutY(85);
-            rootPane.getChildren().add(winScreen);
-            WinController endGameController = loader.getController();
-            endGameController.updateCoinLabel(coinValue);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        WinController winController = SceneLoader.loadOverlayScene(rootPane, SceneLoader.SceneType.WIN, fileManager);
+        assert winController != null;
+        winController.updateCoinLabel(coinValue);
+//            winScreen.setPrefHeight(500);
+//            winScreen.setPrefWidth(800);
+//            winScreen.setLayoutX(200);
+//            winScreen.setLayoutY(85);
     }
 
     public void showLoseScreen() {
-        try {
-            Pane winScreen = FXMLLoader.load(getClass().getResource("lose-screen.fxml"));
-            winScreen.setPrefHeight(500);
-            winScreen.setPrefWidth(800);
-            winScreen.setLayoutX(200);
-            winScreen.setLayoutY(85);
-            rootPane.getChildren().add(winScreen);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        SceneLoader.loadOverlayScene(rootPane, SceneLoader.SceneType.LOSE, fileManager);
     }
 
     public void showPauseScreen(GameTicks gameTicks) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("pause-screen.fxml"));
-            Pane pauseScreen = loader.load();
-            pauseScreen.setPrefHeight(500);
-            pauseScreen.setPrefWidth(800);
-            pauseScreen.setLayoutX(200);
-            pauseScreen.setLayoutY(85);
-            rootPane.getChildren().add(pauseScreen);
-            PauseController pauseGameController = loader.getController();
-            pauseGameController.setData(rootPane, gameTicks);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        PauseController pauseController = SceneLoader.loadOverlayScene(rootPane, SceneLoader.SceneType.PAUSE, fileManager);
+        assert pauseController != null;
+        pauseController.setGameTicks(gameTicks);
     }
 
     public void updateSkillCooldowns(int skillID , double cooldownPercentages){

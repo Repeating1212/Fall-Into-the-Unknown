@@ -2,6 +2,8 @@ package Game_UI.EquipSkill;
 
 import Game_Data.Config.EmptySkillConfig;
 import Game_Data.Config.SkillConfig;
+import Game_Data.Interface.PaneInterface;
+import Game_Data.Interface.SceneInterface;
 import Game_Data.Supplier.SceneLoader;
 import Game_Data.Supplier.SkillSupplier;
 import javafx.animation.TranslateTransition;
@@ -16,7 +18,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class SkillScene {
+public class SkillScene extends SceneInterface {
     @FXML private Pane rootPane;
     @FXML private Button returnButton;
     @FXML private VBox Skill_Vbox;
@@ -29,13 +31,16 @@ public class SkillScene {
         returnButton.setOnMouseExited(e -> {
             returnButtonAnimation(returnButton, 0);
         });
+    }
 
+    @Override
+    public void initializeData(){
         loadSkill();
     }
 
     @FXML
     private void handleReturn() {
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.GAME);
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.GAME, fileManager);
     }
 
     @FXML
@@ -84,6 +89,12 @@ public class SkillScene {
             FXMLLoader loader = new FXMLLoader(SkillScene.class.getResource("/Game_UI/Icons_Scene/SkillScene/SkillDisplay.fxml"));
             Node skillNode = loader.load();
             Skill_Vbox.getChildren().add(skillNode);
+
+            Object controller = loader.getController();
+            if (controller instanceof PaneInterface) {
+                ((PaneInterface) controller).setFileManager(fileManager);
+            }
+
             return loader.getController();
         } catch (IOException e) {
             e.printStackTrace();

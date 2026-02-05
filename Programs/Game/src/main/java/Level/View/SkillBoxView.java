@@ -1,6 +1,7 @@
 package Level.View;
 
 import Game_Data.Supplier.SkillSupplier;
+import LoadFile.FileManager;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -11,16 +12,18 @@ public class SkillBoxView {
     private ImageView[] skillView;
     private StackPane[] skillBackgrounds;
     private Rectangle[] skillCooldowns;
+    private final FileManager fileManager;
 
-    public SkillBoxView (ImageView[] skills, StackPane[] skillBackgrounds, Rectangle[] skillCooldowns){
+    public SkillBoxView (ImageView[] skills, StackPane[] skillBackgrounds, Rectangle[] skillCooldowns, FileManager fileManager){
         this.skillView = skills;
         this.skillBackgrounds = skillBackgrounds;
         this.skillCooldowns = skillCooldowns;
+        this.fileManager = fileManager;
         setSkillImage();
     }
 
     public void setSkillImage(){
-        Image[] images = SkillSupplier.getImages_Level();
+        Image[] images = SkillSupplier.getImages_Level(fileManager);
         for (int i = 0; i < skillView.length; i ++){
             skillView[i].setImage(images[i]);
         }

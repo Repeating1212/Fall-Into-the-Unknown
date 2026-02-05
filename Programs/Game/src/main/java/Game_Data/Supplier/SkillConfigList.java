@@ -1,6 +1,7 @@
 package Game_Data.Supplier;
 
 import Game_Data.Config.*;
+import LoadFile.SkillFile.SkillFile;
 
 public class SkillConfigList {
 
@@ -16,29 +17,26 @@ public class SkillConfigList {
             new DashConfig(DASH_ID),
     };
 
-    protected SkillConfigList(){}
+//    public SkillConfigList(SkillFile[] skillFiles){
+//        for (SkillConfig skillConfig :skillsConfig){
+//            for (SkillFile skillFile : skillFiles){
+//                if (skillConfig.getFileType() == skillFile.getClass()){
+//
+//                }
+//            }
+//        }
+//    }
 
     public SkillConfig[] getSkillsConfig() {
         return skillsConfig;
     }
 
-    public int[] initialSkill(){
-        int attackID = 0;
-        int emptyID = 0;
-        for (SkillConfig skillConfig: skillsConfig){
-            if(skillConfig.getClass() == AttackConfig.class){
-                attackID = skillConfig.getConfigID();
-            }
-            if (skillConfig.getClass() == EmptySkillConfig.class){
-                emptyID = skillConfig.getConfigID();
+    public SkillConfig getSkillConfig(int skillID){
+        for (SkillConfig skillConfig : skillsConfig){
+            if (skillConfig.getConfigID() == skillID){
+                return skillConfig;
             }
         }
-
-        return new int[] {
-                attackID,
-                emptyID,
-                emptyID,
-                emptyID,
-        };
+        return new EmptySkillConfig(EMPTY_SKILL_ID);
     }
 }

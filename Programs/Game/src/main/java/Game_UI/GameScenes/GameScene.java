@@ -1,9 +1,9 @@
 package Game_UI.GameScenes;
 
+import Game_Data.Interface.SceneInterface;
 import Game_Data.Supplier.ImageLoader;
 import Game_Data.Supplier.SceneLoader;
 import Game_Data.Supplier.SkillSupplier;
-import LoadFile.DataManager;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -13,7 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-public class GameScene {
+public class GameScene extends SceneInterface {
     @FXML private ImageView Forest, Graveyard, Bridge, Fish_Port, Lake, Mountain, Tower, Dragon, Portal, gameBackground;
     @FXML private ImageView settingView, coinView;
     @FXML private ImageView characterView, encyclopediaView, storeView;
@@ -32,15 +32,15 @@ public class GameScene {
     public void initialize() {
         levels = new  ImageView[]{Graveyard, Bridge, Fish_Port, Lake, Mountain, Tower, Dragon, Portal};
         skillIcons  = new ImageView[]{skill01, skill02, skill03, skill04};
+        setupSettingIconAnimation();
+    }
 
-        DataManager.loadFile();
+    @Override
+    public void initializeData(){
         initializeImage();
         initializeSkillImage();
-
         for (ImageView level : levels) level.setOpacity(0.5);
-        setupSettingIconAnimation();
-        CoinLabel.setText(String.valueOf(DataManager.getGameFile().getCoins()));
-
+        CoinLabel.setText(String.valueOf(fileManager.getGameFile().getCoins()));
     }
 
     // FXML Method
@@ -56,38 +56,38 @@ public class GameScene {
 
     @FXML
     private void showSetting() {
-        SceneLoader.loadOverlayScene(rootPane, SceneLoader.SceneType.SETTING);
+        SceneLoader.loadOverlayScene(rootPane, SceneLoader.SceneType.SETTING, fileManager);
     }
 
     @FXML
     private void loadCharacterState() {
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.CHARACTER);
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.CHARACTER, fileManager);
     }
 
     @FXML
     private void loadEncyclopedia() {
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.ENCYCLOPEDIA);
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.ENCYCLOPEDIA, fileManager);
     }
 
     @FXML
     private void loadStore() {
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.STORE);
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.STORE, fileManager);
     }
 
     @FXML
     private void loadLevel01() {
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.LEVEL_01);
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.LEVEL_01, fileManager);
     }
 
     @FXML
     private void loadSkillScene(){
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.SKILL);
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.SKILL, fileManager);
     }
 
     // Private Method
 
     private void initializeSkillImage(){
-        Image[] images = SkillSupplier.getImages_UI();
+        Image[] images = SkillSupplier.getImages_UI(fileManager);
         for (int i = 0; i < 4; i++) {
             skillIcons[i].setImage(images[i]);
         }

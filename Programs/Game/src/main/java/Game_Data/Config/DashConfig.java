@@ -3,9 +3,8 @@ package Game_Data.Config;
 import Game_Data.Data.UpgradeData;
 import Game_Data.Data.UpgradeValue;
 import Game_Data.Supplier.ImageLoader;
-import Game_Data.Supplier.SceneLoader;
 import Level.Skills.Player.Dash;
-import LoadFile.DataManager;
+import LoadFile.FileManager;
 import LoadFile.SkillFile.DashFile;
 
 public class DashConfig extends SkillConfig {
@@ -15,7 +14,7 @@ public class DashConfig extends SkillConfig {
     public static final int COOLDOWN_ID = 2;
 
     public DashConfig(int configID){
-        super(ImageLoader.DASH_ICON, configID);
+        super(ImageLoader.DASH_ICON, configID, DashFile.class);
     }
 
     private final UpgradeValue RANGE = new UpgradeValue(
@@ -49,8 +48,8 @@ public class DashConfig extends SkillConfig {
     }
 
 
-    public Dash getSkill(){
-        DashFile dashFile = DataManager.getDashFile();
+    public Dash getSkill(FileManager fileManager){
+        DashFile dashFile = fileManager.getDashFile();
         double range = RANGE.getValue(dashFile.getRangeUpgrades());
         double cooldown = COOLDOWN.getValue(dashFile.getCooldownUpgrades());
         return new Dash(cooldown, range);

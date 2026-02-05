@@ -11,3 +11,16 @@
     -fx-pref-height: 50;
     -fx-pref-width: 100;
 }
+
+.main-button:hover  {
+    -fx-background-color: #404040;
+    -fx-text-fill: white;
+    -fx-border-width: 2;
+    -fx-border-color: #00000080;
+    -fx-border-radius: 10;
+}
+
+
+.darkBackground {
+    -fx-background-color: #00000033;
+}

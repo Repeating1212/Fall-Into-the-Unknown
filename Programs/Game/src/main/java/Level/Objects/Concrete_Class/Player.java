@@ -18,10 +18,10 @@ public class Player extends ImageObject {
     };
 
     // Constructor
-    public Player(Observer observer) {
+    public Player(Observer observer, Skill[] skills) {
         super(PlayerSupplier.getProperty(), ImageLoader.PLAYER_RIGHT, observer);
         this.updateHealth();
-        skills = SkillSupplier.getPlayerSkills();
+        this.skills = skills;
         for(Skill skill : skills){
             skill.initializeData(property, playerState);
         }

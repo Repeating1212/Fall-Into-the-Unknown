@@ -1,6 +1,8 @@
 package Level.Controllers;
 
 
+import Game_Data.Interface.SceneInterface;
+import Game_Data.Supplier.SkillSupplier;
 import Level.Managers.Level;
 import Level.Managers.Observer;
 import Level.Objects.Concrete_Class.Player;
@@ -17,7 +19,7 @@ import javafx.scene.shape.Rectangle;
 import Level.Managers.MainManager;
 import Level.View.* ;
 
-public class Controller {
+public class Controller extends SceneInterface {
 
 
     public javafx.scene.text.Text coinDisplay;
@@ -38,14 +40,18 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        createClass();
-        gameTicks.start();
         rootPane.requestFocus();
 
         // Setup Input
         setupKeyboardInputOnPane();
         rootPane.setOnScroll(this::handleMouseWheel);
         setupMouseInput();
+    }
+
+    @Override
+    public void initializeData(){
+        createClass();
+        gameTicks.start();
     }
 
     private void createClass(){
@@ -56,15 +62,15 @@ public class Controller {
         StackPane[] skillBackgrounds = new StackPane[]{skillBgd1, skillBgd2, skillBgd3, skillBgd4};
 
         // Display Related
-        SkillBoxView skillBoxView = new SkillBoxView(skills, skillBackgrounds, skillCooldowns);
-        sceneView = new SceneView(rootPane, coinDisplay, hearts, bossHealthBar, map, skillBoxView);
+        SkillBoxView skillBoxView = new SkillBoxView(skills, skillBackgrounds, skillCooldowns, fileManager);
+        sceneView = new SceneView(rootPane, coinDisplay, hearts, bossHealthBar, map, skillBoxView, fileManager);
 
         // Data Related
         Level level = new Level(sceneView);
         Observer observer = new Observer(level, sceneView);
 
         // Game update related
-        Player player = new Player(observer);
+        Player player = new Player(observer, SkillSupplier.getPlayerSkills(fileManager));
         playerHandler = new PlayerHandler(skillBoxView, player);
         MainManager mainManager = new MainManager(sceneView, player, level, observer);
         gameTicks = new GameTicks(mainManager, playerHandler);

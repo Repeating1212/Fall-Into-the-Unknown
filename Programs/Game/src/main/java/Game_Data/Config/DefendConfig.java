@@ -4,13 +4,13 @@ import Game_Data.Data.UpgradeData;
 import Game_Data.Data.UpgradeValue;
 import Game_Data.Supplier.ImageLoader;
 import Level.Skills.Player.Defend;
-import LoadFile.DataManager;
+import LoadFile.FileManager;
 import LoadFile.SkillFile.DefendFile;
 
 public class DefendConfig extends SkillConfig {
 
     public DefendConfig(int configID){
-        super(ImageLoader.DEFEND_ICON, configID);
+        super(ImageLoader.DEFEND_ICON, configID, DefendFile.class);
     }
 
     public static final int COOLDOWN_ID = 1;
@@ -47,8 +47,8 @@ public class DefendConfig extends SkillConfig {
         };
     }
 
-    public Defend getSkill() {
-        DefendFile defendFile = DataManager.getDefendFile();
+    public Defend getSkill(FileManager fileManager) {
+        DefendFile defendFile = fileManager.getDefendFile();
         double cooldown = COOLDOWN.getValue(defendFile.getCooldownUpgrades());
         double duration = DURATION.getValue(defendFile.getDurationUpgrade());
 

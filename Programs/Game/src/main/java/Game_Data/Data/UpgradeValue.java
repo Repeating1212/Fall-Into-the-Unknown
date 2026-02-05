@@ -1,7 +1,6 @@
 package Game_Data.Data;
 
 import Game_Data.Supplier.SkillSupplier;
-import LoadFile.DataManager;
 
 public class UpgradeValue {
 
@@ -12,8 +11,6 @@ public class UpgradeValue {
     private final double[] increment;
     private final double[] cost;
 
-    private int currentUpgState;
-
     public UpgradeValue(double[] value, double[] cost, int skillID, int upgradeID){
         this.value = value;
         this.cost = cost;
@@ -23,12 +20,6 @@ public class UpgradeValue {
         for(int i = 0; i < value.length - 1; i++){
             increment[i] = value[i+ 1] - value[i];
         }
-
-        reloadData();
-    }
-
-    public void reloadData(){
-        this.currentUpgState = SkillSupplier.getSkillFile(skillID).getUpgrade(upgradeID);
     }
 
     public double getValue(int currentUpgrade) {
@@ -36,20 +27,16 @@ public class UpgradeValue {
         return value[currentUpgrade];
     }
 
-    public int getCurrentUpgState() {
-        return currentUpgState;
-    }
-
-    public int getCost() {
+    public int getCost(int currentUpgState) {
         return (int) cost[currentUpgState];
     }
 
-    public double getIncrement() {
+    public double getIncrement(int currentUpgState) {
         if (currentUpgState >= increment.length) return 0;
         return increment[currentUpgState];
     }
 
-    public double getProgress(){
+    public double getProgress(int currentUpgState){
         return (double)  currentUpgState / increment.length;
     }
 
@@ -65,7 +52,7 @@ public class UpgradeValue {
         return upgradeID;
     }
 
-    public boolean isComplete(){
+    public boolean isComplete(int currentUpgState){
         return (currentUpgState == increment.length);
     }
 

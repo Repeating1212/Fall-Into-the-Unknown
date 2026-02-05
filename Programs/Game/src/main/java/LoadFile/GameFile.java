@@ -6,7 +6,7 @@ import java.io.*;
 
 public class GameFile implements Serializable {
     private int coins = 0;
-    private int[] equipedSkill = SkillSupplier.getInitialSkill();
+    private int[] equipedSkill = new int[]{1, 0, 0, 0};
 
     // Coins
     public int getCoins() {

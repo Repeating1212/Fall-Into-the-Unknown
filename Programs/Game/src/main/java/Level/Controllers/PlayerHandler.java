@@ -1,6 +1,5 @@
 package Level.Controllers;
 
-import LoadFile.DataManager;
 import Level.Objects.Concrete_Class.Player;
 import Level.View.SkillBoxView;
 
@@ -48,7 +47,7 @@ public class PlayerHandler {
     public void increaseCurrentSkill(){
         if (isPause) return;
 
-        if (currentSkill <  DataManager.getGameFile().getSkillLength() - 1){
+        if (currentSkill <  3){
             currentSkill += 1;
             skillBoxView.updateSkillSelection(currentSkill);
         }

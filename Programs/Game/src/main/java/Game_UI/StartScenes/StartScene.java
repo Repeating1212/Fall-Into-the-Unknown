@@ -1,7 +1,8 @@
 package Game_UI.StartScenes;
 
+import Game_Data.GameInitialize;
+import Game_Data.Interface.SceneInterface;
 import Game_Data.Supplier.ImageLoader;
-import LoadFile.DataManager;
 import Game_Data.Supplier.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class StartScene {
+public class StartScene extends SceneInterface {
 
     @FXML private Pane rootPane;
     @FXML private ImageView fallingGirl;
@@ -22,17 +23,17 @@ public class StartScene {
 
     @FXML
     private void loadGameScene() {
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.GAME);
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.GAME, fileManager);
     }
 
     @FXML
     private void loadGameDesigner() {
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.GAME_DESIGNER);
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.GAME_DESIGNER, fileManager);
     }
 
     @FXML
     public void quitGame(ActionEvent event) {
-        DataManager.saveFile();
+        fileManager.saveFile();
 
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();

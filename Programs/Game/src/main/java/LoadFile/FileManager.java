@@ -1,46 +1,48 @@
 package LoadFile;
 
-import LoadFile.SkillFile.AttackFile;
-import LoadFile.SkillFile.DashFile;
-import LoadFile.SkillFile.DefendFile;
-import LoadFile.SkillFile.SkillFile;
+import LoadFile.SkillFile.*;
 
-public class DataManager {
+public class FileManager {
 
-    private static GameFile currentGameFile;
-    private static AttackFile attackFile;
-    private static DashFile dashFile;
-    private static DefendFile defendFile;
-    private static SkillFile[] skillFiles;
+    private GameFile currentGameFile;
+    private AttackFile attackFile;
+    private DashFile dashFile;
+    private DefendFile defendFile;
+    private SkillFile[] skillFiles;
 
-    public static GameFile getGameFile(){
+    public GameFile getGameFile(){
         return currentGameFile;
     }
 
-    public static AttackFile getAttackFile(){
+    public AttackFile getAttackFile(){
         return attackFile;
     }
 
-    public static DashFile getDashFile(){
+    public DashFile getDashFile(){
         return dashFile;
     }
 
-    public static DefendFile getDefendFile(){
+    public DefendFile getDefendFile(){
         return defendFile;
     }
 
-    public static SkillFile[] getSkillFiles(){
-        return skillFiles;
+    public SkillFile getSkillFiles(Class<? extends SkillFile> classType){
+        for (SkillFile skillFile : skillFiles){
+            if (skillFile.getClass() == classType){
+                return skillFile;
+            }
+        }
+        return new EmptySkillFile();
     }
 
-    public static void saveFile(){
+    public void saveFile(){
         JSONStorage.saveGameFile(currentGameFile);
         JSONStorage.saveAttackFile(attackFile);
         JSONStorage.saveDashFile(dashFile);
         JSONStorage.saveDefendFile(defendFile);
     }
 
-    public static void loadFile(){
+    public void loadFile(){
         if (attackFile == null){
             attackFile = JSONStorage.loadAttackFile();
         }
@@ -53,6 +55,7 @@ public class DataManager {
         skillFiles = new SkillFile[]{
                 attackFile, dashFile, defendFile
         };
+
         // GameFile need to load other file to run
         if (currentGameFile == null){
             currentGameFile = JSONStorage.loadGameFile();

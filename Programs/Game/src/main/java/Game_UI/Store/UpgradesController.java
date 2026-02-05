@@ -1,9 +1,9 @@
 package Game_UI.Store;
 
+import Game_Data.Interface.PaneInterface;
 import Game_Data.Supplier.ImageLoader;
 import Game_Data.Data.UpgradeData;
 import Game_Data.Supplier.SkillSupplier;
-import LoadFile.DataManager;
 import LoadFile.SkillFile.SkillFile;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
-public class UpgradesController {
+public class UpgradesController extends PaneInterface {
 
     private final int sideLine = 480;
     private Text parentCoinLabel;
@@ -46,34 +46,39 @@ public class UpgradesController {
         this.upgradeData = upgradeData;
         this.parentCoinLabel = parentCoinLabel;
         this.upgradeFlowPane = rootPane;
-        reloadData();
+        updateDisplay();
     }
 
     @FXML
     private void handlePurchase(){
-        int coin = DataManager.getGameFile().getCoins();
-        if (coin >= upgradeData.getCost()){
+        SkillFile skillFile = SkillSupplier.getSkillFile(upgradeData.getSkillID(), fileManager);
+        int currentUpgState = skillFile.getUpgrade(upgradeData.getUpgradeID());
+
+        int coin = fileManager.getGameFile().getCoins();
+        if (coin >= upgradeData.getCost(currentUpgState)){
             purchase();
         }
     }
 
     // Private Method
 
-    private void reloadData(){
-        upgradeData.reloadData();
+    private void updateDisplay(){
+
+        SkillFile skillFile = SkillSupplier.getSkillFile(upgradeData.getSkillID(), fileManager);
+        int currentUpgState = skillFile.getUpgrade(upgradeData.getUpgradeID());
 
         skillView.setImage(upgradeData.getSkillImage());
         title.setText(upgradeData.getTitle());
         description.setText(upgradeData.getDescription());
-        currentUpgrade.setText( upgradeData.getUpgradeState() + "/" + upgradeData.getTotalUpgrade());
-        progressBar.setProgress(upgradeData.getProgress());
+        currentUpgrade.setText(upgradeData.getUpgradeText(currentUpgState));
+        progressBar.setProgress(upgradeData.getProgress(currentUpgState));
 
-        if (upgradeData.isComplete()){
+        if (upgradeData.isComplete(currentUpgState)){
             upgradeValue.setText("Completed");
             unit.setText("");
             upgradeType.setText("");
         } else{
-            double incrementValue = upgradeData.getNextUpg();
+            double incrementValue = upgradeData.getNextUpg(currentUpgState);
             if (incrementValue > 0){
                 upgradeValue.setText("+" + incrementValue);
             } else {
@@ -83,20 +88,24 @@ public class UpgradesController {
             upgradeType.setText(upgradeData.getUpgText());
         }
 
-        coinLabel.setText(String.valueOf(upgradeData.getCost()));
-        parentCoinLabel.setText(String.valueOf(DataManager.getGameFile().getCoins()));
+        coinLabel.setText(String.valueOf(upgradeData.getCost(currentUpgState)));
+        parentCoinLabel.setText(String.valueOf(fileManager.getGameFile().getCoins()));
     }
 
 
     private void purchase(){
-        if (upgradeData.isComplete()) return;
-        int cost = upgradeData.getCost();
+
+        SkillFile skillFile = SkillSupplier.getSkillFile(upgradeData.getSkillID(), fileManager);
+        int currentUpgState = skillFile.getUpgrade(upgradeData.getUpgradeID());
+
+        if (upgradeData.isComplete(currentUpgState)) return;
+        int cost = upgradeData.getCost(currentUpgState);
         int skillID = upgradeData.getSkillID();
-        DataManager.getGameFile().reduceCoins(cost);
+        fileManager.getGameFile().reduceCoins(cost);
         System.out.println(upgradeData.getSkillID());
         System.out.println(upgradeData.getTitle());
-        SkillFile file = SkillSupplier.getSkillFile(skillID);
+        SkillFile file = SkillSupplier.getSkillFile(skillID, fileManager);
         file.upgrade(upgradeData.getUpgradeID());
-        reloadData();
+        updateDisplay();
     }
 }
