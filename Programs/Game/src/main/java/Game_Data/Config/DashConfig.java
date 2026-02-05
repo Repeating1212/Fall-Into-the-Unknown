@@ -1,6 +1,6 @@
 package Game_Data.Config;
 
-import Game_Data.Data.UpgradeData;
+import Game_Data.Data.UpgradeText;
 import Game_Data.Data.UpgradeValue;
 import Game_Data.Supplier.ImageLoader;
 import Level.Skills.Player.Dash;
@@ -31,18 +31,18 @@ public class DashConfig extends SkillConfig {
             COOLDOWN_ID
     );
 
-    private final UpgradeData rangeUpg = new UpgradeData(
+    private final UpgradeText rangeUpg = new UpgradeText(
             "Dash", "Increase Range", "Range",
             "", ImageLoader.DASH_ICON, RANGE
     );
 
-    private final UpgradeData cooldownUpg = new UpgradeData(
+    private final UpgradeText cooldownUpg = new UpgradeText(
             "Dash", "Decrease Cooldown", "Cooldown",
             "", ImageLoader.DASH_ICON, COOLDOWN
     );
 
-    public final UpgradeData[] getUpgradeData(){
-        return new UpgradeData[]{
+    public final UpgradeText[] getUpgradeTexts(){
+        return new UpgradeText[]{
                 rangeUpg, cooldownUpg
         };
     }

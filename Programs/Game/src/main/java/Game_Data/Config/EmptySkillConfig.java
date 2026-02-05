@@ -1,6 +1,7 @@
 package Game_Data.Config;
 
-import Game_Data.Data.UpgradeData;
+import Game_Data.Data.UpgradeText;
+import Game_Data.Data.UpgradeValue;
 import Game_Data.Supplier.ImageLoader;
 import Level.Skills.Player.EmptySkill;
 import Level.Skills.Skill;
@@ -17,7 +18,21 @@ public class EmptySkillConfig extends SkillConfig {
         return new EmptySkill();
     }
 
-    public final UpgradeData[] getUpgradeData(){
-        return new UpgradeData[0];
+    public final UpgradeText[] getUpgradeTexts(){
+        return new UpgradeText[0];
     }
+
+    private final UpgradeText sampleText = new UpgradeText(
+            "Empty Skill",
+            "Description",
+            "-",
+            "",
+            ImageLoader.EMPTY_ICON,
+            new UpgradeValue(
+                    null,
+                    null,
+                    configID,
+                    1
+            )
+    );
 }

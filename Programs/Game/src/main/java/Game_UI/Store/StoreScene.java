@@ -4,7 +4,7 @@ import Game_Data.Config.SkillConfig;
 import Game_Data.Interface.SceneInterface;
 import Game_Data.Supplier.ImageLoader;
 import Game_Data.Supplier.SceneLoader;
-import Game_Data.Data.UpgradeData;
+import Game_Data.Data.UpgradeText;
 import Game_Data.Supplier.SkillSupplier;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -17,7 +17,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-import javax.swing.*;
 import java.io.IOException;
 
 public class StoreScene extends SceneInterface {
@@ -56,7 +55,7 @@ public class StoreScene extends SceneInterface {
 
     private void loadSkillPane(){
         for (SkillConfig skillConfig : SkillSupplier.getSkillsConfig()){
-            for(UpgradeData data: skillConfig.getUpgradeData()){
+            for(UpgradeText data: skillConfig.getUpgradeTexts()){
                 try {
                     FXMLLoader loader = new FXMLLoader(StoreScene.class.getResource("/Game_UI/Icons_Scene/StoreScene/UpgradePane.fxml"));
                     Node skillNode = loader.load();

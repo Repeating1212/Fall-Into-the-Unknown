@@ -1,6 +1,6 @@
 package Game_Data.Config;
 
-import Game_Data.Data.UpgradeData;
+import Game_Data.Data.UpgradeText;
 import Game_Data.Data.UpgradeValue;
 import Game_Data.Supplier.ImageLoader;
 import Level.Skills.Player.Defend;
@@ -31,18 +31,18 @@ public class DefendConfig extends SkillConfig {
             DURATION_ID
     );
 
-    private final UpgradeData durationUpg = new UpgradeData(
+    private final UpgradeText durationUpg = new UpgradeText(
             "Defend", "Increase Duration", "Duration",
             "s", ImageLoader.DEFEND_ICON, DURATION
     );
 
-    private final UpgradeData cooldownUpg = new UpgradeData(
+    private final UpgradeText cooldownUpg = new UpgradeText(
             "Defend", "Decrease Cooldown", "Cooldown",
             "s", ImageLoader.DEFEND_ICON, COOLDOWN
     );
 
-    public final UpgradeData[] getUpgradeData(){
-        return new UpgradeData[]{
+    public final UpgradeText[] getUpgradeTexts(){
+        return new UpgradeText[]{
                 durationUpg, cooldownUpg
         };
     }

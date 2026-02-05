@@ -1,7 +1,5 @@
 package Game_Data.Data;
 
-import Game_Data.Supplier.SkillSupplier;
-
 public class UpgradeValue {
 
     private final int skillID;
@@ -12,14 +10,13 @@ public class UpgradeValue {
     private final double[] cost;
 
     public UpgradeValue(double[] value, double[] cost, int skillID, int upgradeID){
-        this.value = value;
-        this.cost = cost;
+        this.value = initializeValue(value);
+        this.cost = initializeCost(cost, this.value);
+        this.increment = initializeIncrement(this.value);
+
         this.skillID = skillID;
         this.upgradeID = upgradeID;
-        this.increment = new double[value.length - 1];
-        for(int i = 0; i < value.length - 1; i++){
-            increment[i] = value[i+ 1] - value[i];
-        }
+
     }
 
     public double getValue(int currentUpgrade) {
@@ -28,6 +25,7 @@ public class UpgradeValue {
     }
 
     public int getCost(int currentUpgState) {
+        if (currentUpgState >= cost.length) return 0;
         return (int) cost[currentUpgState];
     }
 
@@ -37,6 +35,7 @@ public class UpgradeValue {
     }
 
     public double getProgress(int currentUpgState){
+        if (increment.length == 0) return 1.0;
         return (double)  currentUpgState / increment.length;
     }
 
@@ -56,4 +55,30 @@ public class UpgradeValue {
         return (currentUpgState == increment.length);
     }
 
+    // Private Method
+
+    private double[] initializeValue(double[] value){
+        if (value == null) return new double[]{0};
+        if (value.length < 1) return new double[]{0};
+
+        return value;
+    }
+
+    private double[] initializeCost(double[] cost, double[] value){
+        if (cost == null) return new double[]{0};
+        if (cost.length < 1) return new double[]{0};
+        if (cost.length != value.length) return new double[value.length];
+
+        return cost;
+    }
+
+    private double[] initializeIncrement(double[] value){
+        if (value.length == 0) return new double[]{};
+
+        double[] increment = new double[value.length - 1];
+        for(int i = 0; i < increment.length; i++){
+            increment[i] = value[i + 1] - value[i];
+        }
+        return increment;
+    }
 }

@@ -23,6 +23,7 @@ public class MainApp extends Application {
         fileManager.loadFile();
         Controller controller = loader.getController();
         controller.setFileManager(fileManager);
+        controller.initializeData();
 
         // Set up the stage
         Scene scene = new Scene(root, LevelConfig.MapHeight, LevelConfig.MapWidth);

@@ -10,26 +10,12 @@ public class SkillConfigList {
     public static final int DEFEND_ID = 2;
     public static final int DASH_ID = 3;
 
-    private final SkillConfig[] skillsConfig = new SkillConfig[]{
+    public static final SkillConfig[] skillsConfig = new SkillConfig[]{
             new EmptySkillConfig(EMPTY_SKILL_ID),
             new AttackConfig(ATTACK_ID),
             new DefendConfig(DEFEND_ID),
             new DashConfig(DASH_ID),
     };
-
-//    public SkillConfigList(SkillFile[] skillFiles){
-//        for (SkillConfig skillConfig :skillsConfig){
-//            for (SkillFile skillFile : skillFiles){
-//                if (skillConfig.getFileType() == skillFile.getClass()){
-//
-//                }
-//            }
-//        }
-//    }
-
-    public SkillConfig[] getSkillsConfig() {
-        return skillsConfig;
-    }
 
     public SkillConfig getSkillConfig(int skillID){
         for (SkillConfig skillConfig : skillsConfig){

@@ -65,8 +65,6 @@ public class SceneLoader {
             FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource(sceneType.getPath()));
 
             Parent newScene = loader.load();
-            Stage stage = (Stage) rootPane.getScene().getWindow();
-            stage.setScene(new Scene(newScene));
 
             Object controller = loader.getController();
             if (controller instanceof SceneInterface) {
@@ -74,7 +72,10 @@ public class SceneLoader {
                 ((SceneInterface) controller).initializeData();
             }
 
+            Stage stage = (Stage) rootPane.getScene().getWindow();
+            stage.setScene(new Scene(newScene));
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

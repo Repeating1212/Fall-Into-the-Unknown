@@ -1,6 +1,7 @@
 package Game_Data.Config;
 
-import Game_Data.Data.UpgradeData;
+import Game_Data.Data.UpgradeText;
+import Game_Data.Data.UpgradeValue;
 import Level.Skills.Skill;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.SkillFile;
@@ -24,7 +25,7 @@ public abstract class SkillConfig {
 
     public abstract Skill getSkill(FileManager fileManager);
 
-    public abstract UpgradeData[] getUpgradeData();
+    public abstract UpgradeText[] getUpgradeTexts();
 
     public Image getImage(){
         return image;

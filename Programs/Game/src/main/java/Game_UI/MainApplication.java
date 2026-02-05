@@ -21,6 +21,7 @@ public class MainApplication extends Application {
         fileManager.loadFile();
         StartScene controller = loader.getController();
         controller.setFileManager(fileManager);
+        controller.initializeData();
 
         // Set up the stage
         primaryStage.setResizable(false);

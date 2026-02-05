@@ -1,7 +1,7 @@
 package Game_Data.Config;
 
 import Game_Data.Supplier.ImageLoader;
-import Game_Data.Data.UpgradeData;
+import Game_Data.Data.UpgradeText;
 import Game_Data.Data.UpgradeValue;
 import Level.Skills.Attacks.AttackArea;
 import Level.Skills.Attacks.AttackSkill;
@@ -9,11 +9,8 @@ import Level.Skills.Attacks.ConeAttackArea;
 import Level.View.AttackVisualize.ConeAttackVisual;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.AttackFile;
-import javafx.scene.image.Image;
 
 public class AttackConfig extends SkillConfig {
-
-    public static final Image skillImage = ImageLoader.ATTACK_ICON;
 
     public static final int DAMAGE_ID = 1;
     public static final int RANGE_ID = 2;
@@ -21,7 +18,11 @@ public class AttackConfig extends SkillConfig {
     public static final int ATTACK_ANGLE_ID = 4;
 
     public AttackConfig(int configID){
-        super(skillImage, configID, AttackFile.class);
+
+        super(  ImageLoader.ATTACK_ICON,
+                configID,
+                AttackFile.class
+        );
     }
 
     // AttackConfig Animation
@@ -30,71 +31,72 @@ public class AttackConfig extends SkillConfig {
     private static final double TOTAL_ANIMATION_PERIOD = FADE_OUT_DURATION + ENLARGE_DURATION;
     private static final double RIGID_TIME = TOTAL_ANIMATION_PERIOD * 2.0;
 
-    private final UpgradeValue DAMAGE = new UpgradeValue(
+    private final UpgradeValue damageUpgValue = new UpgradeValue(
             new double[]{ 6, 12, 18},
             new double[]{ 2, 4, 4},
             configID,
             DAMAGE_ID
     );
 
-    private final UpgradeValue RANGE = new UpgradeValue(
+    private final UpgradeValue rangeUpgValue = new UpgradeValue(
             new double[]{ 100, 120, 140},
             new double[]{ 4, 4, 4},
             configID,
             RANGE_ID
     );
 
-    private final UpgradeValue COOLDOWN = new UpgradeValue(
+    private final UpgradeValue cooldownUpgValue = new UpgradeValue(
             new double[]{ 2.0, 1.5, 1.0},
             new double[]{ 4, 8, 8},
             configID,
             COOLDOWN_ID
     );
 
-    private final UpgradeValue ATTACK_ANGLE = new UpgradeValue(
+    private final UpgradeValue angleUpgValue = new UpgradeValue(
             new double[]{ 60, 75, 90},
             new double[]{ 4, 8, 8},
             configID,
             ATTACK_ANGLE_ID
     );
 
-    private final UpgradeData damageUpg = new UpgradeData(
+    private final UpgradeText damageUpg = new UpgradeText(
             "Attack", "Increase Damage", "Damage",
-            "", ImageLoader.ATTACK_ICON, DAMAGE
+            "", ImageLoader.ATTACK_ICON, damageUpgValue
     );
 
-    private final UpgradeData rangeUpg = new UpgradeData(
+    private final UpgradeText rangeUpg = new UpgradeText(
             "Attack", "Increase Range", "Range",
-            "", ImageLoader.ATTACK_ICON, RANGE
+            "", ImageLoader.ATTACK_ICON, rangeUpgValue
     );
 
-    private final UpgradeData cooldownUpg = new UpgradeData(
+    private final UpgradeText cooldownUpg = new UpgradeText(
             "Attack", "Decrease Cooldown", "Cooldown",
-            "s", ImageLoader.ATTACK_ICON, COOLDOWN
+            "s", ImageLoader.ATTACK_ICON, cooldownUpgValue
     );
 
-    private final UpgradeData angleUpg = new UpgradeData(
+    private final UpgradeText angleUpg = new UpgradeText(
             "Attack", "Increase Attack Angle", "Attack Angle",
-            "\u00B0", ImageLoader.ATTACK_ICON, ATTACK_ANGLE
+            "\u00B0", ImageLoader.ATTACK_ICON, angleUpgValue
     );
 
     // Public Method
 
-    public final UpgradeData[] upgradeData = new UpgradeData[]{
+    public final UpgradeText[] upgradeTexts = new UpgradeText[]{
             damageUpg, rangeUpg, cooldownUpg, angleUpg
     };
 
-    public final UpgradeData[] getUpgradeData(){
-        return upgradeData;
+    public final UpgradeText[] getUpgradeTexts(){
+        return upgradeTexts;
     }
 
 
     public AttackSkill getSkill(FileManager fileManager){
         AttackFile attackFile = fileManager.getAttackFile();
-        double damage = DAMAGE.getValue(attackFile.getDamageUpgrade());
-        double cooldown = COOLDOWN.getValue(attackFile.getCooldownUpgrade());
-        double range = RANGE.getValue(attackFile.getRangeUpgrade());
-        double areaAngle = ATTACK_ANGLE.getValue(attackFile.getAreaAngleUpgrade());
+
+        double damage = damageUpgValue.getValue(attackFile.getDamageUpgrade());
+        double cooldown = cooldownUpgValue.getValue(attackFile.getCooldownUpgrade());
+        double range = rangeUpgValue.getValue(attackFile.getRangeUpgrade());
+        double areaAngle = angleUpgValue.getValue(attackFile.getAreaAngleUpgrade());
 
         AttackArea attackArea = new ConeAttackArea(
                 range, areaAngle

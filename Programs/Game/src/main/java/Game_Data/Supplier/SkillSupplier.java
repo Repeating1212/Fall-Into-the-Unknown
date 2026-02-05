@@ -88,14 +88,14 @@ public class SkillSupplier {
     }
 
     public static SkillConfig[] getSkillsConfig(){
-        return skillConfigList.getSkillsConfig();
+        return SkillConfigList.skillsConfig;
     }
 
 
     // Private Method
 
     private static Skill getSkill(int skillID, FileManager fileManager){
-        for (SkillConfig skillConfig : skillConfigList.getSkillsConfig()){
+        for (SkillConfig skillConfig : SkillConfigList.skillsConfig){
             if (skillConfig.getConfigID() == skillID){
                 return skillConfig.getSkill(fileManager);
             }

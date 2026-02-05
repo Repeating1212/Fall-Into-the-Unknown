@@ -37,7 +37,7 @@
          <children>
             <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="resourcesBox">
                <children>
-                  <Text fx:id="coinLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                  <Text fx:id="costLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -77,7 +77,7 @@
       </Text>
       <HBox fx:id="hBox" alignment="CENTER_RIGHT" layoutX="293.0" layoutY="102.0" AnchorPane.rightAnchor="20.0">
          <children>
-            <Text fx:id="upgradeValue" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Upgrade Value">
+            <Text fx:id="upgradeValue_Text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Upgrade Value">
                <font>
                   <Font size="14.0" />
                </font>

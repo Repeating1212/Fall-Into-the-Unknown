@@ -2,7 +2,7 @@ package Game_Data.Data;
 
 import javafx.scene.image.Image;
 
-public class UpgradeData {
+public class UpgradeText {
     private final String title;
     private final String description;
     private final String upgradeText;
@@ -11,7 +11,7 @@ public class UpgradeData {
     private final Image skillImage;
     private final UpgradeValue upgradeValue;
 
-    public UpgradeData(String title, String description, String upgradeText,
+    public UpgradeText(String title, String description, String upgradeText,
                        String  unit, Image skillImage,
                        UpgradeValue updateValue){
         this.title = title;
@@ -40,34 +40,8 @@ public class UpgradeData {
         return unit;
     }
 
-    // Middle Man
-
-    public double getNextUpg(int currentUpgState) {
-        return upgradeValue.getIncrement(currentUpgState);
-    }
-
-    public double getProgress(int currentUpgState){
-        return upgradeValue.getProgress(currentUpgState);
-    }
-
-    public int getCost(int currentUpgState){
-        return upgradeValue.getCost(currentUpgState);
-    }
-
-    public int getTotalUpgrade(){
-        return upgradeValue.getTotalUpgrade();
-    }
-
-    public int getSkillID(){
-        return upgradeValue.getSkillID();
-    }
-
-    public int getUpgradeID(){
-        return upgradeValue.getUpgradeID();
-    }
-
-    public boolean isComplete(int currentUpgState){
-        return upgradeValue.isComplete(currentUpgState);
+    public UpgradeValue getUpgradeValue() {
+        return upgradeValue;
     }
 
     public String getUpgradeText(int currentUpgState) {
