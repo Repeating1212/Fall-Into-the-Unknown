@@ -66,12 +66,12 @@ public class GameController2 extends SceneInterface {
 
     @FXML
     private void loadEncyclopedia() {
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.NEW_EQUIPMENT, fileManager);
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.ENCYCLOPEDIA, fileManager);
     }
 
     @FXML
     private void loadStore() {
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.STORE, fileManager);
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.EQUIPMENT, fileManager);
     }
 
     @FXML

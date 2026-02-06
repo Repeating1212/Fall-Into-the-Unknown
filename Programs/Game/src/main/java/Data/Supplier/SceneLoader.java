@@ -2,8 +2,6 @@ package Data.Supplier;
 
 import Data.Interface.OverlayController;
 import Data.Interface.SceneInterface;
-import EditorUI.Temp.NewEquipment;
-import EditorUI.Temp.SkillPane;
 import LoadFile.FileManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,14 +22,14 @@ public class SceneLoader {
         SETTING("/Game_UI/FxmlFile/Setting.fxml"),
         START("/Game_UI/FxmlFile/StartScene.fxml"),
         // EditorUI
-        STORE("/EditorUI/FxmlFile/StoreScene.fxml"),
         EQUIPMENT("/EditorUI/FxmlFile/EquipmentScene.fxml"),
-        NEW_EQUIPMENT("/EditorUI/Temp/EquipmentScene.fxml"),
+        SKILL_MENU("/EditorUI/FxmlFile/SkillMenu.fxml"),
         // Level
         LOSE("/Level/View/lose-screen.fxml"),
         PAUSE("/Level/View/pause-screen.fxml"),
         WIN("/Level/View/win-screen.fxml"),
         LEVEL_01("/Level/LevelScene.fxml");
+
         private final String path;
 
         SceneType(String path) {
@@ -44,10 +42,9 @@ public class SceneLoader {
     }
 
     public enum PaneType {
-        EQUIPMENT_PANE("/EditorUI/FxmlFile/EquipmentPane.fxml"),
-        STORE_PANE("/EditorUI/FxmlFile/StorePane.fxml"),
-        SKILL_PANE("/EditorUI/Temp/SkillPane.fxml"),
-        NEW_EQUIPMENT_PANE("/EditorUI/Temp/EquipmentPane.fxml");
+        SKILL_PANE("/EditorUI/FxmlFile/SkillPane.fxml"),
+        UPGRADE_PANE("/EditorUI/FxmlFile/UpgradePane.fxml"),
+        EQUIPMENT_PANE("/EditorUI/FxmlFile/EquipmentPane.fxml");
 
         private final String path;
 

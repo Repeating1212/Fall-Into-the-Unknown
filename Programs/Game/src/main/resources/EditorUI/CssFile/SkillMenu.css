@@ -1,0 +1,41 @@
+.exitButton{
+    -fx-background-radius: 16;
+    -fx-background-color: #D9D9D9;
+}
+
+.exitButton:hover  {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-background-radius: 0;
+}
+
+/* Header */
+
+.header{
+    -fx-background-color: #1A1A1A;
+    -fx-background-radius: 16 16 0 0;
+}
+
+.header Text{
+    -fx-fill: white;
+    -fx-font-family: Verdana;
+}
+
+.displayBoard{
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 3);
+    -fx-background-color: #E6E6E6;
+    -fx-background-radius: 20;
+}
+
+.background{
+    -fx-background-color: #00000033;
+}
+
+/*Scroll Pane*/
+.scroll-pane .viewport {
+       -fx-background-color: transparent;
+}
+
+.scroll-pane {
+       -fx-background-color: transparent;
+}

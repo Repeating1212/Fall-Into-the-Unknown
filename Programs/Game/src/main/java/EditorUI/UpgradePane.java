@@ -1,54 +1,40 @@
 package EditorUI;
 
+import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
 import Data.Interface.PaneInterface;
 import Data.Supplier.ImageLoader;
-import Data.DataClass.UpgradeText;
 import Data.Supplier.SkillSupplier;
 import LoadFile.SkillFile.SkillFile;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
-public class StorePane extends PaneInterface {
+public class UpgradePane extends PaneInterface {
 
-    private final int sideLine = 480;
-    private Text totalCoin;
-    private Pane upgradeFlowPane;
-
-    @FXML private Pane upgradePane;
-    @FXML private Text title, description, currentUpgrade;
-    @FXML private Text upgradeValue_Text, unit, upgradeType;
+    @FXML private Text title, description;
     @FXML private Text costLabel;
     @FXML private ProgressBar progressBar;
-    @FXML private ImageView skillView, coinView;
-    @FXML private Button upgradeButton;
+    @FXML private ImageView coinView;
 
     private UpgradeText upgradeText;
     private UpgradeValue upgradeValue;
+    private Equipment equipment;
 
     public void initialize(){
         title.setText("Title");
         description.setText("Description");
-        currentUpgrade.setText("0/0");
         progressBar.setProgress(1.0);
-        upgradeValue_Text.setText("0");
-        upgradeType.setText("-");
-        unit.setText("");
         costLabel.setText("0");
 
-        skillView.setImage(ImageLoader.ATTACK_ICON);
         coinView.setImage(ImageLoader.COIN);
     }
 
-    public void initializeData(UpgradeText upgradeText, Text parentCoinLabel, Pane rootPane) {
+    public void initializeData(UpgradeText upgradeText, Equipment equipment) {
         this.upgradeText = upgradeText;
+        this.equipment = equipment;
         this.upgradeValue = upgradeText.getUpgradeValue();
-        this.totalCoin = parentCoinLabel;
-        this.upgradeFlowPane = rootPane;
         updateDisplay();
     }
 
@@ -60,6 +46,7 @@ public class StorePane extends PaneInterface {
         int coin = fileManager.getGameFile().getCoins();
         if (coin >= upgradeValue.getCost(currentUpgState)){
             purchase();
+            equipment.reloadData();
         }
     }
 
@@ -70,30 +57,18 @@ public class StorePane extends PaneInterface {
         SkillFile skillFile = SkillSupplier.getSkillFile(upgradeValue.getSkillID(), fileManager);
         int currentUpgState = skillFile.getUpgrade(upgradeValue.getUpgradeID());
 
-
-        skillView.setImage(upgradeText.getSkillImage());
-        title.setText(upgradeText.getTitle());
-        description.setText(upgradeText.getDescription());
-        currentUpgrade.setText(upgradeText.getUpgradeText(currentUpgState));
+        title.setText(upgradeText.getUpgText());
         progressBar.setProgress(upgradeValue.getProgress(currentUpgState));
 
         if (upgradeValue.isComplete(currentUpgState)){
-            upgradeValue_Text.setText("Completed");
-            unit.setText("");
-            upgradeType.setText("");
+            description.setText("Completed");
         } else{
-            double incrementValue = upgradeValue.getIncrement(currentUpgState);
-            if (incrementValue > 0){
-                upgradeValue_Text.setText("+" + incrementValue);
-            } else {
-                upgradeValue_Text.setText(String.valueOf(incrementValue));
-            }
-            unit.setText(upgradeText.getUnit());
-            upgradeType.setText(upgradeText.getUpgText());
+            description.setText(" "+ upgradeValue.getValue(currentUpgState) + upgradeText.getUnit() +
+                    " ➔ " +
+                    upgradeValue.getValue(currentUpgState + 1) + upgradeText.getUnit());
         }
 
         costLabel.setText(String.valueOf(upgradeValue.getCost(currentUpgState)));
-        totalCoin.setText(String.valueOf(fileManager.getGameFile().getCoins()));
     }
 
 

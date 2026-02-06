@@ -1,45 +1,25 @@
-/* Remove Text area background */
-.text-area .scroll-pane .viewport {
-    -fx-background-color: transparent;
+.upgradePane{
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-border-color: #1A1A1A;
+    -fx-background-radius: 20;
+    -fx-background-color: #F2F2F2;
+    -fx-opacity: 0.8;
 }
 
-.text-area .scroll-pane .content {
-    -fx-background-color: transparent;
-}
-
-.returnButtonNew{
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 0, 0.3, 0, 5);
-    -fx-background-color: #BFBFBF;
-    -fx-background-radius: 30;
-}
-
-.returnButtonNew:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 0, 0.3, 0, 5);
-    -fx-background-color: #FFFFFF;
-    -fx-background-radius: 30;
-}
-
-.shadow{
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0.3, 0, 5);
+.upgradePane Text{
+    -fx-fill: #1A1A1A;
 }
 
 .upgradeButton{
-    -fx-background-radius: 10;
-    -fx-background-color: #D9D9D9;
+    -fx-background-radius: 10 0 0 10;
+    -fx-background-color: #000000;
+    -fx-text-fill: #FFFFFF;
 }
 
 .upgradeButton:hover{
     -fx-background-color: #FFFFFF;
     -fx-effect: dropshadow(gaussian, #FFFFFF, 20, 0.3, 0, 0);
-}
-
-.upgradePane{
-    -fx-border-width: 2;
-    -fx-border-radius: 20;
-    -fx-border-color: transparent;
-    -fx-background-radius: 20;
-    -fx-background-color: #333333;
-    -fx-opacity: 0.8;
 }
 
 .upgradePane:hover{
@@ -62,15 +42,11 @@
     -fx-padding: 10 20;
 }
 
-.resourcesText {
-    -fx-fill: #000000C0;
-}
-
 
 /* Progression Bar */
 
 .rounded-progress-bar {
-    -fx-background-color: #FFFFFF40;
+    -fx-background-color: #00000040;
     -fx-background-radius: 5px;
     -fx-padding: 0;
     -fx-border-width: 0;
@@ -83,7 +59,7 @@
 }
 
 .rounded-progress-bar .bar {
-    -fx-background-color: White;
+    -fx-background-color: #1A1A1A;
     -fx-background-insets: 0;
     -fx-padding: 0;
     /* Top-left, Top-right, Bottom-right, Bottom-left */

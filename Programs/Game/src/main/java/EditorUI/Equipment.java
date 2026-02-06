@@ -1,42 +1,49 @@
 package EditorUI;
 
+import Data.Config.EmptySkillConfig;
 import Data.Config.SkillConfig;
 import Data.Interface.PaneInterface;
 import Data.Interface.SceneInterface;
+import Data.Supplier.ImageLoader;
 import Data.Supplier.SceneLoader;
 import Data.Supplier.SkillSupplier;
-import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.util.Duration;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 public class Equipment extends SceneInterface {
-    @FXML private Pane rootPane;
-    @FXML private Button returnButton;
+    @FXML
+    private Pane rootPane;
+    @FXML private ImageView coinView;
+    @FXML private Text coinLabel;
     @FXML private FlowPane flowPane;
-    @FXML private Pane displayPane;
+    @FXML private HBox hBox;
 
     @FXML
     public void initialize() {
-        returnButton.setOnMouseEntered(e -> {
-            returnButtonAnimation(returnButton, 30);
-        });
-        returnButton.setOnMouseExited(e -> {
-            returnButtonAnimation(returnButton, 0);
-        });
+        coinView.setImage(ImageLoader.COIN);
     }
 
     @Override
     public void initializeData(){
         loadSkill();
-        setupScrolling();
+        loadEquipment();
+        coinLabel.setText(String.valueOf(fileManager.getGameFile().getCoins()));
+    }
+
+    public void reloadData(){
+        flowPane.getChildren().clear();
+        hBox.getChildren().clear();
+        loadSkill();
+        loadEquipment();
+        coinLabel.setText(String.valueOf(fileManager.getGameFile().getCoins()));
     }
 
     @FXML
@@ -44,57 +51,58 @@ public class Equipment extends SceneInterface {
         SceneLoader.switchScene(rootPane, SceneLoader.SceneType.GAME, fileManager);
     }
 
-    @FXML
-    private void skillButton_MouseEnter(MouseEvent event){
-        Button btn = (Button) event.getSource();
-        TranslateTransition tt = new TranslateTransition(
-                Duration.millis(200), btn);
-        tt.setToX(20);
-        tt.play();
-    }
-
-    @FXML
-    private void skillButton_MouseExit(MouseEvent event){
-        Button btn = (Button) event.getSource();
-        TranslateTransition tt = new TranslateTransition(
-                Duration.millis(200), btn);
-        tt.setToX(0);
-        tt.play();
-    }
-
     // Private Method
-
-    private void returnButtonAnimation(Button btn, double targetY) {
-        TranslateTransition tt = new TranslateTransition(
-                Duration.millis(200), btn);
-        tt.setToY(targetY);
-        tt.play();
-    }
 
     private void loadSkill(){
         for (SkillConfig skillConfig : SkillSupplier.getSkillsConfig()){
 
             // Ignore Empty skill
-//            if(skillConfig.getClass() == EmptySkillConfig.class) continue;
+            if(skillConfig.getClass() == EmptySkillConfig.class) continue;
 
-            EquipmentPane controller = loadEquipmentPane();
+            SkillPane controller = loadSkillPane();
             assert controller != null;
-            controller.setData(
-                    skillConfig.CONFIG_ID,
-                    skillConfig.IMAGE
-            );
+            controller.setData(skillConfig, this);
         }
     }
 
-    private EquipmentPane loadEquipmentPane(){
+    private SkillPane loadSkillPane(){
         try {
-            FXMLLoader loader = new FXMLLoader(Equipment.class.getResource(SceneLoader.PaneType.EQUIPMENT_PANE.getPath()));
+            FXMLLoader loader = new FXMLLoader(Equipment.class.getResource(SceneLoader.PaneType.SKILL_PANE.getPath()));
             Node skillNode = loader.load();
             flowPane.getChildren().add(skillNode);
 
             Object controller = loader.getController();
             if (controller instanceof PaneInterface) {
                 ((PaneInterface) controller).setFileManager(fileManager);
+                ((PaneInterface) controller).setRootPane(rootPane);
+                ((PaneInterface) controller).initializeData();
+            }
+
+            return loader.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new SkillPane();
+        }
+    }
+
+    private void loadEquipment(){
+        for (int equipment : fileManager.getGameFile().getEquipedSkill()){
+            EquipmentPane controller = loadEquipmentPane();
+            assert controller != null;
+            controller.setData(equipment);
+        }
+    }
+
+    private EquipmentPane loadEquipmentPane(){
+        try {
+            FXMLLoader loader = new FXMLLoader(Equipment.class.getResource(SceneLoader.PaneType.EQUIPMENT_PANE.getPath()));
+            Node equipmentNode = loader.load();
+            hBox.getChildren().add(equipmentNode);
+
+            Object controller = loader.getController();
+            if (controller instanceof PaneInterface) {
+                ((PaneInterface) controller).setFileManager(fileManager);
+                ((PaneInterface) controller).setRootPane(rootPane);
                 ((PaneInterface) controller).initializeData();
             }
 
@@ -103,23 +111,5 @@ public class Equipment extends SceneInterface {
             e.printStackTrace();
             return new EquipmentPane();
         }
-    }
-
-    private void setupScrolling() {
-        rootPane.setOnScroll(event -> {
-
-            if (flowPane.getHeight() < (rootPane.getHeight() - displayPane.getLayoutY())) return;
-
-            double deltaY = event.getDeltaY() * 1.5;
-            double currentY = flowPane.getTranslateY();
-            double newY = currentY + deltaY;
-
-            // Apply bounds
-            double maxDown = displayPane.getHeight() - flowPane.getHeight(); // Negative value
-            newY = Math.max(maxDown, Math.min(0, newY));
-
-            flowPane.setTranslateY(newY);
-            event.consume();
-        });
     }
 }

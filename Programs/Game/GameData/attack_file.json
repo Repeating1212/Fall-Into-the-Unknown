@@ -1,6 +1,6 @@
 {
   "damageUpgrade": 2,
-  "rangeUpgrade": 0,
-  "cooldownUpgrade": 0,
-  "areaAngleUpgrade": 0
+  "rangeUpgrade": 2,
+  "cooldownUpgrade": 2,
+  "areaAngleUpgrade": 2
 }
