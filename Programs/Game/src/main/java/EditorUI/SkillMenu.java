@@ -23,13 +23,13 @@ public class SkillMenu extends OverlayController {
     @FXML private ImageView skillView;
 
     private int skillID;
-    private Equipment equipment;
+    private EquipmentObserver observer;
     private SkillConfig skillConfig;
 
-    public void setData(SkillConfig skillConfig, Equipment equipment){
+    public void setData(SkillConfig skillConfig, EquipmentObserver observer){
         this.skillID = skillConfig.CONFIG_ID;
         this.skillConfig = skillConfig;
-        this.equipment = equipment;
+        this.observer = observer;
 
         title.setText(skillConfig.NAME);
         skillView.setImage(skillConfig.IMAGE);
@@ -58,11 +58,11 @@ public class SkillMenu extends OverlayController {
 
     private void updateText(){
         if (fileManager.getGameFile().isEquip(skillID)){
-            equipButton.setText("Equip Skill");
-        } else {
             equipButton.setText("Unequip Skill");
+        } else {
+            equipButton.setText("Equip Skill");
         }
-        equipment.reloadData();
+        observer.reloadData();
     }
 
     private void loadUpgrade(){
@@ -73,7 +73,7 @@ public class SkillMenu extends OverlayController {
                 UpgradePane upgradePane = loader.getController();
                 upgradePane.setFileManager(fileManager);
                 upgradePane.setRootPane(rootPane);
-                upgradePane.initializeData(data, equipment);
+                upgradePane.setData(data, observer);
                 vBox.getChildren().add(skillNode);
             } catch (IOException e) {
                 e.printStackTrace();

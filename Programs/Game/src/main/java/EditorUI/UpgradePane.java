@@ -20,7 +20,7 @@ public class UpgradePane extends PaneInterface {
 
     private UpgradeText upgradeText;
     private UpgradeValue upgradeValue;
-    private Equipment equipment;
+    private EquipmentObserver observer;
 
     public void initialize(){
         title.setText("Title");
@@ -31,9 +31,9 @@ public class UpgradePane extends PaneInterface {
         coinView.setImage(ImageLoader.COIN);
     }
 
-    public void initializeData(UpgradeText upgradeText, Equipment equipment) {
+    public void setData(UpgradeText upgradeText, EquipmentObserver observer) {
         this.upgradeText = upgradeText;
-        this.equipment = equipment;
+        this.observer = observer;
         this.upgradeValue = upgradeText.getUpgradeValue();
         updateDisplay();
     }
@@ -46,7 +46,7 @@ public class UpgradePane extends PaneInterface {
         int coin = fileManager.getGameFile().getCoins();
         if (coin >= upgradeValue.getCost(currentUpgState)){
             purchase();
-            equipment.reloadData();
+            observer.reloadData();
         }
     }
 

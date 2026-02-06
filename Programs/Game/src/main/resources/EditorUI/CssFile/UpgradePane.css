@@ -1,3 +1,7 @@
+Text{
+    -fx-font-family: Verdana;
+}
+
 .upgradePane{
     -fx-border-width: 2;
     -fx-border-radius: 20;
@@ -7,25 +11,32 @@
     -fx-opacity: 0.8;
 }
 
+.upgradePane:hover{
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 0, 0.3, 5, 5);
+    -fx-opacity: 1;
+}
+
 .upgradePane Text{
     -fx-fill: #1A1A1A;
 }
+
+/* Upgrade Button */
 
 .upgradeButton{
     -fx-background-radius: 10 0 0 10;
     -fx-background-color: #000000;
     -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14;
 }
 
 .upgradeButton:hover{
+    -fx-border-radius: 12 0 0 12;
+    -fx-border-color: #000000;
     -fx-background-color: #FFFFFF;
-    -fx-effect: dropshadow(gaussian, #FFFFFF, 20, 0.3, 0, 0);
+    -fx-text-fill: #000000;
 }
 
-.upgradePane:hover{
-    -fx-border-color: #FFFFFFC0;
-    -fx-opacity: 1;
-}
+/* Resources */
 
 .resourcesBox{
     -fx-background-color: #FFFFFF40;
@@ -68,4 +79,19 @@
 
 .rounded-progress-bar:filled .bar {
     -fx-background-radius: 5px;
+}
+
+/* Text */
+
+.textTitle{
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+}
+
+.textDescription{
+    -fx-font-size: 14;
+}
+
+.textCoin{
+    -fx-font-size: 18;
 }

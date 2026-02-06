@@ -7,6 +7,7 @@ module Game {
     requires java.desktop;
     requires com.google.gson;
 
+
     opens Game_UI to javafx.fxml;
     exports Game_UI;
     exports Game_UI.StartScene;

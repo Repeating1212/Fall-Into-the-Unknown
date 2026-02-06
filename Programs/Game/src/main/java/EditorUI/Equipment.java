@@ -7,14 +7,17 @@ import Data.Interface.SceneInterface;
 import Data.Supplier.ImageLoader;
 import Data.Supplier.SceneLoader;
 import Data.Supplier.SkillSupplier;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -22,13 +25,17 @@ public class Equipment extends SceneInterface {
     @FXML
     private Pane rootPane;
     @FXML private ImageView coinView;
-    @FXML private Text coinLabel;
+    @FXML private Text coinLabel, equipmentText;
     @FXML private FlowPane flowPane;
     @FXML private HBox hBox;
+    @FXML private Button returnButton;
+
+    private final EquipmentObserver observer = new EquipmentObserver(this);
 
     @FXML
     public void initialize() {
         coinView.setImage(ImageLoader.COIN);
+        initializeAnimation();
     }
 
     @Override
@@ -61,7 +68,7 @@ public class Equipment extends SceneInterface {
 
             SkillPane controller = loadSkillPane();
             assert controller != null;
-            controller.setData(skillConfig, this);
+            controller.setData(skillConfig, observer);
         }
     }
 
@@ -86,11 +93,19 @@ public class Equipment extends SceneInterface {
     }
 
     private void loadEquipment(){
-        for (int equipment : fileManager.getGameFile().getEquipedSkill()){
+        for (int skillID : fileManager.getGameFile().getEquipedSkill()){
+            SkillConfig skillConfig = SkillSupplier.getSkillConfig(skillID);
+            // Ignore if it is Empty Skill
+            if (skillConfig.getClass() == EmptySkillConfig.class) continue;
+
             EquipmentPane controller = loadEquipmentPane();
             assert controller != null;
-            controller.setData(equipment);
+            controller.setData(skillID, observer);
         }
+
+        equipmentText.setText(
+                "Equiment: (" + hBox.getChildren().size() +"/4)"
+        );
     }
 
     private EquipmentPane loadEquipmentPane(){
@@ -111,5 +126,23 @@ public class Equipment extends SceneInterface {
             e.printStackTrace();
             return new EquipmentPane();
         }
+    }
+
+    public void initializeAnimation() {
+        TranslateTransition hoverUp = new TranslateTransition(Duration.millis(200), returnButton);
+        hoverUp.setToY(10);
+
+        TranslateTransition hoverDown = new TranslateTransition(Duration.millis(200), returnButton);
+        hoverDown.setToY(0);
+
+        returnButton.setOnMouseEntered(e -> {
+            hoverDown.stop(); // Stop returning if it's running
+            hoverUp.playFromStart();
+        });
+
+        returnButton.setOnMouseExited(e -> {
+            hoverUp.stop(); // Stop moving up if it's running
+            hoverDown.playFromStart();
+        });
     }
 }

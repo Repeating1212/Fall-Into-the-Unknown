@@ -17,7 +17,7 @@
          <children>
             <AnchorPane prefHeight="120.0" prefWidth="600.0" styleClass="header">
                <children>
-                  <Text fx:id="title" layoutX="132.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title">
+                  <Text fx:id="title" layoutX="132.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Title">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -27,27 +27,27 @@
                         <Image url="@../../Picture/Skill_Icon/Cmp_Attack.png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="description" layoutX="132.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+                  <Text fx:id="description" layoutX="132.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="description" text="Description">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="546.0" layoutY="19.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleReturn" prefHeight="40.0" style="-fx-background-color: #1A1A1A; -fx-text-fill: white;" styleClass="exitButton" text="✕" textAlignment="CENTER">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="544.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleReturn" prefHeight="41.0" prefWidth="41.0" styleClass="exitButton" text="✕" textAlignment="CENTER" AnchorPane.rightAnchor="14.399999999999977">
                      <font>
-                        <Font size="30.0" />
+                        <Font size="36.0" />
                      </font>
                      <padding>
                         <Insets left="5.0" right="5.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="equipButton" layoutX="491.0" layoutY="75.0" mnemonicParsing="false" onAction="#equipSkill" style="-fx-border-color: White; -fx-background-color: transparent; -fx-border-radius: 10;" text="Equip Skill" textFill="WHITE" AnchorPane.rightAnchor="14.600000000000023">
+                  <Button fx:id="equipButton" layoutX="491.0" layoutY="75.0" mnemonicParsing="false" onAction="#equipSkill" styleClass="equipButton" text="Equip Skill" textFill="WHITE" AnchorPane.rightAnchor="15.0">
                      <font>
                         <Font name="Verdana" size="14.0" />
                      </font>
                   </Button>
                </children>
             </AnchorPane>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="463.0" prefWidth="600.0" style="-fx-background-radius: 20; -fx-background-color: transparent;" vbarPolicy="ALWAYS">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="480.0" prefWidth="600.0" style="-fx-background-radius: 20; -fx-background-color: transparent;" vbarPolicy="NEVER">
               <content>
                 <AnchorPane>
                      <children>

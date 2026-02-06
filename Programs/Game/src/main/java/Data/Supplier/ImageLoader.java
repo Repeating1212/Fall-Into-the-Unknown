@@ -1,7 +1,12 @@
 package Data.Supplier;
 
 import Level.Data.Config.PlayerConfig;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 public class ImageLoader {
 
@@ -92,4 +97,25 @@ public class ImageLoader {
     public static final Image COIN_ANIMATION = new Image(ImageLoader.class.getResourceAsStream(COIN_ANIMATION_Path));
 
     public static final Image STARTSCENE_BACKGROUND = new Image(ImageLoader.class.getResourceAsStream(STARTSCENE_IMAGE_Path));
+
+    public static void clipImage(ImageView imageView){
+
+        Rectangle clip = new Rectangle(
+                imageView.getFitWidth(), imageView.getFitHeight()
+        );
+        clip.setArcWidth(20);
+        clip.setArcHeight(20);
+        imageView.setClip(clip);
+
+        // snapshot the rounded image.
+        SnapshotParameters parameters = new SnapshotParameters();
+        parameters.setFill(Color.TRANSPARENT);
+        WritableImage image = imageView.snapshot(parameters, null);
+
+        // remove the rounding clip so that our effect can show through.
+        imageView.setClip(null);
+
+        // store the rounded image in the imageView.
+        imageView.setImage(image);
+    }
 }

@@ -1,63 +1,25 @@
+Text{
+    -fx-font-family: Verdana;
+}
 
 /* Background */
 
 .mainBackground{
-    -fx-background-color: #000000C0;
+    -fx-background-color: #3F3F3F;
 }
 
-.equipmentBackground{
-    -fx-background-color: #FFFFFF1A;
-    -fx-padding: 10 20;
-}
-
-.Text{
+Text{
     -fx-font-family: Verdana;
 }
 
-. skillBackground{
+.skillBackground{
     -fx-background-color: #4D4D4D;
     -fx-background-radius: 10 10 0 0;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0.3, 0, 5);
 }
 
-.skillFlowPane{
-}
-
-
-/* Equipment Pane */
-
-.equipmentPane{
-    -fx-border-width: 2;
-    -fx-border-radius: 18;
-    -fx-border-color: #FFFFFFC0;
-    -fx-background-radius: 20;
-    -fx-background-color: #FFFFFF1A;
-    -fx-padding: 10 20;
-}
-
-.equipmentPane .Text{
-    -fx-font-size: 18;
-    -fx-fill: #FFFFFF;
-}
-
-.equipment.Text{
-    -fx-font-size: 18;
-    -fx-fill: #FFFFFF;
-}
-
-/* Skill Pane */
-.skillPane{
-    -fx-border-width: 2;
-    -fx-border-radius: 18;
-    -fx-border-color: #000000C0;
-    -fx-background-radius: 20;
-    -fx-background-color: #FFFFFF1A;
-    -fx-padding: 10 20;
-}
-
-.skillPane .Text{
-    -fx-font-size: 18;
-    -fx-fill: #FFFFFF;
+.equipmentText{
+    -fx-fill: #E6E6E6;
 }
 
 /* Resources Pane */
@@ -100,19 +62,17 @@
 /* Return Button */
 
 .returnButton{
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 0, 0.3, 0, 5);
-    -fx-background-color: #BFBFBF;
-    -fx-background-radius: 30;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 0, 0.3, 5, 5);
+    -fx-transition: translate-y 0.2s;
+    -fx-background-color: #E6E6E6;
+    -fx-background-radius: 0 0 20 20;
+    -fx-text-fill: #1A1A1A;
+    -fx-padding: 10;
 }
 
 .returnButton:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 0, 0.3, 0, 5);
-    -fx-background-color: #FFFFFF;
-    -fx-background-radius: 30;
-}
-
-.returnButtonText{
-
+    -fx-background-color: #1A1A1A;
+   -fx-text-fill: #E6E6E6;
 }
 
 

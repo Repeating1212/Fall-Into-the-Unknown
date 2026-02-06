@@ -5,6 +5,7 @@ import Data.Interface.PaneInterface;
 import Data.Supplier.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 public class SkillPane extends PaneInterface{
@@ -12,25 +13,28 @@ public class SkillPane extends PaneInterface{
     @FXML private Text skillName;
     @FXML private ImageView skillView;
     @FXML private  Text skillStatus;
+    @FXML private Pane pane;
 
     private int skillID;
     private SkillConfig skillConfig;
-    private Equipment equipment;
+    private EquipmentObserver observer
+            ;
 
-    public void setData(SkillConfig skillConfig, Equipment equipment){
+    public void setData(SkillConfig skillConfig, EquipmentObserver observer){
         this.skillConfig = skillConfig;
-        this.equipment = equipment;
+        this.observer = observer;
         this.skillID = skillConfig.CONFIG_ID;
         skillView.setImage(skillConfig.IMAGE);
         skillName.setText(skillConfig.NAME);
         updateText();
+        handleSelected();
     }
 
     @FXML
     private void loadMenu(){
         SkillMenu skillMenu = SceneLoader.loadOverlayScene(rootPane, SceneLoader.SceneType.SKILL_MENU, fileManager);
         assert skillMenu != null;
-        skillMenu.setData(skillConfig, equipment);
+        skillMenu.setData(skillConfig, observer);
     }
 
     private void updateText(){
@@ -38,6 +42,17 @@ public class SkillPane extends PaneInterface{
             skillStatus.setText("✓ Equipped");
         } else {
             skillStatus.setText("");
+        }
+    }
+
+    private void handleSelected() {
+        int[] equipment = fileManager.getGameFile().getEquipedSkill();
+        for (int skill : equipment){
+            if (skill == skillID){
+                pane.getStyleClass().add("selectedPane");
+                pane.getStyleClass().remove("pane");
+
+            }
         }
     }
 }

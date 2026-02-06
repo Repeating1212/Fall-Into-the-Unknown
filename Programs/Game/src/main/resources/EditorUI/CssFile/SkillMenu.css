@@ -1,12 +1,15 @@
-.exitButton{
-    -fx-background-radius: 16;
-    -fx-background-color: #D9D9D9;
+Text{
+    -fx-font-family: Verdana;
 }
 
-.exitButton:hover  {
-    -fx-background-color: black;
-    -fx-text-fill: white;
-    -fx-background-radius: 0;
+.background{
+    -fx-background-color: #00000066;
+}
+
+.displayBoard{
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 3);
+    -fx-background-color: #E6E6E6;
+    -fx-background-radius: 20;
 }
 
 /* Header */
@@ -21,17 +24,41 @@
     -fx-font-family: Verdana;
 }
 
-.displayBoard{
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 3);
-    -fx-background-color: #E6E6E6;
-    -fx-background-radius: 20;
+/*Equip Button*/
+
+.equipButton{
+    -fx-border-color: #FFFFFF;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
 }
 
-.background{
-    -fx-background-color: #00000033;
+.equipButton:hover{
+    -fx-border-color: transparent;
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
+}
+
+
+/*Exit Button*/
+
+.exitButton{
+    -fx-background-radius: 16;
+    -fx-border-radius: 14;
+    -fx-border-color: #FFFFFF;
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24;
+}
+
+.exitButton:hover  {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
 }
 
 /*Scroll Pane*/
+
 .scroll-pane .viewport {
        -fx-background-color: transparent;
 }
@@ -39,3 +66,15 @@
 .scroll-pane {
        -fx-background-color: transparent;
 }
+
+/* Text */
+
+.title{
+    -fx-font-size: 24;
+}
+
+.description{
+    -fx-font-size: 16;
+}
+
+
