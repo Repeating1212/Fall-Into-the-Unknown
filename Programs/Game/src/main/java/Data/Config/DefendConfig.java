@@ -10,7 +10,7 @@ import LoadFile.SkillFile.DefendFile;
 public class DefendConfig extends SkillConfig {
 
     public DefendConfig(int configID){
-        super(ImageLoader.DEFEND_ICON, configID, DefendFile.class);
+        super(ImageLoader.DEFEND_ICON, configID, DefendFile.class, "Defend");
     }
 
     public static final int COOLDOWN_ID = 1;
@@ -19,7 +19,7 @@ public class DefendConfig extends SkillConfig {
     private final UpgradeValue COOLDOWN = new UpgradeValue(
             new double[]{ 6.0, 5.0, 4.5},
             new double[]{ 2, 4, 4},
-            configID,
+            CONFIG_ID,
             COOLDOWN_ID
 
     );
@@ -27,7 +27,7 @@ public class DefendConfig extends SkillConfig {
     private final UpgradeValue DURATION = new UpgradeValue(
             new double[]{ 1.0, 1.5, 2.0},
             new double[]{ 2, 4, 4},
-            configID,
+            CONFIG_ID,
             DURATION_ID
     );
 

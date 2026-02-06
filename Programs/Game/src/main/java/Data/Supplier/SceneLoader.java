@@ -2,6 +2,8 @@ package Data.Supplier;
 
 import Data.Interface.OverlayController;
 import Data.Interface.SceneInterface;
+import EditorUI.Temp.NewEquipment;
+import EditorUI.Temp.SkillPane;
 import LoadFile.FileManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,6 +26,7 @@ public class SceneLoader {
         // EditorUI
         STORE("/EditorUI/FxmlFile/StoreScene.fxml"),
         EQUIPMENT("/EditorUI/FxmlFile/EquipmentScene.fxml"),
+        NEW_EQUIPMENT("/EditorUI/Temp/EquipmentScene.fxml"),
         // Level
         LOSE("/Level/View/lose-screen.fxml"),
         PAUSE("/Level/View/pause-screen.fxml"),
@@ -42,7 +45,9 @@ public class SceneLoader {
 
     public enum PaneType {
         EQUIPMENT_PANE("/EditorUI/FxmlFile/EquipmentPane.fxml"),
-        STORE_PANE("/EditorUI/FxmlFile/StorePane.fxml");
+        STORE_PANE("/EditorUI/FxmlFile/StorePane.fxml"),
+        SKILL_PANE("/EditorUI/Temp/SkillPane.fxml"),
+        NEW_EQUIPMENT_PANE("/EditorUI/Temp/EquipmentPane.fxml");
 
         private final String path;
 

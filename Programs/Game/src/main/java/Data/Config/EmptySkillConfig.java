@@ -11,7 +11,7 @@ import LoadFile.SkillFile.EmptySkillFile;
 public class EmptySkillConfig extends SkillConfig {
 
     public EmptySkillConfig(int configID){
-        super(ImageLoader.EMPTY_ICON, configID, EmptySkillFile.class);
+        super(ImageLoader.EMPTY_ICON, configID, EmptySkillFile.class, "Empty Skill");
     }
 
     public Skill getSkill(FileManager fileManager){
@@ -31,7 +31,7 @@ public class EmptySkillConfig extends SkillConfig {
             new UpgradeValue(
                     null,
                     null,
-                    configID,
+                    CONFIG_ID,
                     1
             )
     );

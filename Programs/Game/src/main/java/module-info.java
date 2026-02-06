@@ -16,6 +16,8 @@ module Game {
 
     exports EditorUI;
     opens EditorUI to javafx.fxml;
+    exports EditorUI.Temp to javafx.fxml;
+    opens EditorUI.Temp to javafx.fxml;
 
     exports LoadFile to com.google.gson;
     opens LoadFile to com.google.gson;

@@ -15,13 +15,4 @@ public class SkillConfigList {
             new DefendConfig(DEFEND_ID),
             new DashConfig(DASH_ID),
     };
-
-    public SkillConfig getSkillConfig(int skillID){
-        for (SkillConfig skillConfig : skillsConfig){
-            if (skillConfig.getConfigID() == skillID){
-                return skillConfig;
-            }
-        }
-        return new EmptySkillConfig(EMPTY_SKILL_ID);
-    }
 }

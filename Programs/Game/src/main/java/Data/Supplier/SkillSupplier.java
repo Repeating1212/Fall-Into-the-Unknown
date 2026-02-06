@@ -37,6 +37,16 @@ public class SkillSupplier {
         return returnImage;
     }
 
+    public static SkillConfig getSkillConfig(int skillID){
+        for (SkillConfig skillConfig : SkillConfigList.skillsConfig){
+            if (skillConfig.CONFIG_ID == skillID){
+                return skillConfig;
+            }
+        }
+        return new EmptySkillConfig(SkillConfigList.EMPTY_SKILL_ID);
+    }
+
+
     public static Image[] getImages_Level(FileManager fileManager){
         Image[] skillImages = ImageLoader.SKILL_ICONS_LEVEL;
         Image[] returnImage = new Image[4];
@@ -96,7 +106,7 @@ public class SkillSupplier {
 
     private static Skill getSkill(int skillID, FileManager fileManager){
         for (SkillConfig skillConfig : SkillConfigList.skillsConfig){
-            if (skillConfig.getConfigID() == skillID){
+            if (skillConfig.CONFIG_ID == skillID){
                 return skillConfig.getSkill(fileManager);
             }
         }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="245.0" spacing="20.0" styleClass="equipmentPane" stylesheets="@EquipmentScene.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditorUI.Temp.EquipmentPane">
+   <children>
+      <ImageView fx:id="equipmentView" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Picture/Skill_Icon/Cmp_Attack.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="equipmentText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text" text="Skill Name" />
+   </children>
+</HBox>

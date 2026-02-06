@@ -14,20 +14,25 @@ public class DashConfig extends SkillConfig {
     public static final int COOLDOWN_ID = 2;
 
     public DashConfig(int configID){
-        super(ImageLoader.DASH_ICON, configID, DashFile.class);
+        super(
+                ImageLoader.DASH_ICON,
+                configID,
+                DashFile.class,
+                "Dash"
+        );
     }
 
     private final UpgradeValue RANGE = new UpgradeValue(
             new double[]{ 150, 225, 300},
             new double[]{ 2, 4, 4},
-            configID,
+            CONFIG_ID,
             RANGE_ID
     );
 
     private final UpgradeValue COOLDOWN = new UpgradeValue(
             new double[]{ 5, 4, 3},
             new double[]{ 2, 4, 4},
-            configID,
+            CONFIG_ID,
             COOLDOWN_ID
     );
 

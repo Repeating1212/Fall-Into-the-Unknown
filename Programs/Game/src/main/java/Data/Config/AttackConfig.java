@@ -21,7 +21,8 @@ public class AttackConfig extends SkillConfig {
 
         super(  ImageLoader.ATTACK_ICON,
                 configID,
-                AttackFile.class
+                AttackFile.class,
+                "Attack"
         );
     }
 
@@ -34,28 +35,28 @@ public class AttackConfig extends SkillConfig {
     private final UpgradeValue damageUpgValue = new UpgradeValue(
             new double[]{ 6, 12, 18},
             new double[]{ 2, 4, 4},
-            configID,
+            CONFIG_ID,
             DAMAGE_ID
     );
 
     private final UpgradeValue rangeUpgValue = new UpgradeValue(
             new double[]{ 100, 120, 140},
             new double[]{ 4, 4, 4},
-            configID,
+            CONFIG_ID,
             RANGE_ID
     );
 
     private final UpgradeValue cooldownUpgValue = new UpgradeValue(
             new double[]{ 2.0, 1.5, 1.0},
             new double[]{ 4, 8, 8},
-            configID,
+            CONFIG_ID,
             COOLDOWN_ID
     );
 
     private final UpgradeValue angleUpgValue = new UpgradeValue(
             new double[]{ 60, 75, 90},
             new double[]{ 4, 8, 8},
-            configID,
+            CONFIG_ID,
             ATTACK_ANGLE_ID
     );
 

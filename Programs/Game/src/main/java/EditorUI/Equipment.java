@@ -80,8 +80,8 @@ public class Equipment extends SceneInterface {
             EquipmentPane controller = loadEquipmentPane();
             assert controller != null;
             controller.setData(
-                    skillConfig.getConfigID(),
-                    skillConfig.getImage()
+                    skillConfig.CONFIG_ID,
+                    skillConfig.IMAGE
             );
         }
     }
