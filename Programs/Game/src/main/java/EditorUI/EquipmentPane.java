@@ -2,12 +2,10 @@ package EditorUI;
 
 import Data.Config.SkillConfig;
 import Data.Interface.PaneInterface;
-import Data.Supplier.ImageLoader;
 import Data.Supplier.SceneLoader;
 import Data.Supplier.SkillSupplier;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 public class EquipmentPane extends PaneInterface {
@@ -23,7 +21,7 @@ public class EquipmentPane extends PaneInterface {
         this.skillConfig = SkillSupplier.getSkillConfig(skillID);
 
         equipmentText.setText(skillConfig.NAME);
-        equipmentView.setImage(skillConfig.IMAGE);
+        equipmentView.setImage(skillConfig.UI_IMAGE);
 //        ImageLoader.clipImage(equipmentView);
     }
 

@@ -32,7 +32,7 @@ public class SkillMenu extends OverlayController {
         this.observer = observer;
 
         title.setText(skillConfig.NAME);
-        skillView.setImage(skillConfig.IMAGE);
+        skillView.setImage(skillConfig.UI_IMAGE);
         description.setText(skillConfig.NAME);
         updateText();
         loadUpgrade();

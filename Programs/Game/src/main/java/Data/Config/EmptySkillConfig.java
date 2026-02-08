@@ -11,7 +11,11 @@ import LoadFile.SkillFile.EmptySkillFile;
 public class EmptySkillConfig extends SkillConfig {
 
     public EmptySkillConfig(){
-        super(ImageLoader.EMPTY_ICON, EmptySkillFile.class, "Empty Skill");
+        super(
+                ImageLoader.EMPTY_ICON,
+                ImageLoader.EMPTY_ICON,
+                EmptySkillFile.class,
+                "Empty Skill");
     }
 
     public Skill getSkill(FileManager fileManager){

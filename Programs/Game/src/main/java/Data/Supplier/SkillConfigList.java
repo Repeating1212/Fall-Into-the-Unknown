@@ -9,8 +9,9 @@ public class SkillConfigList {
     private final SkillConfig[] skillsConfig = new SkillConfig[]{
             emptySkillConfig, // Empty skill must always be first
             new AttackConfig(),
-            new DefendConfig(),
             new DashConfig(),
+            new DefendConfig(),
+
     };
 
     public SkillConfigList(){

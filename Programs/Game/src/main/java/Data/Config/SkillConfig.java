@@ -9,12 +9,14 @@ import javafx.scene.image.Image;
 public abstract class SkillConfig {
 
     protected int configID;
-    public final Image IMAGE;
+    public final Image UI_IMAGE;
+    public final Image LEVEL_IMAGE;
     public final String NAME;
     protected final Class<? extends SkillFile> fileType;
 
-    public SkillConfig(Image IMAGE, Class<? extends SkillFile> skillFile, String NAME){
-        this.IMAGE = IMAGE;
+    public SkillConfig(Image IMAGE, Image LEVEL_IMAGE, Class<? extends SkillFile> skillFile, String NAME){
+        this.UI_IMAGE = IMAGE;
+        this.LEVEL_IMAGE = LEVEL_IMAGE;
         this.fileType = skillFile;
         this.NAME = NAME;
     }

@@ -93,7 +93,7 @@ public class Equipment extends SceneInterface {
     }
 
     private void loadEquipment(){
-        for (int skillID : fileManager.getGameFile().getEquipedSkill()){
+        for (int skillID : fileManager.getGameFile().getEquipment()){
             SkillConfig skillConfig = SkillSupplier.getSkillConfig(skillID);
             // Ignore if it is Empty Skill
             if (skillConfig.getClass() == EmptySkillConfig.class) continue;

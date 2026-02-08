@@ -10,31 +10,30 @@ import javafx.scene.image.Image;
 
 public class SkillSupplier {
 
-    private static final int TOTAL_SKILL = 4;
     private static final SkillConfigList skillConfigList = new SkillConfigList();
-    private static final int EMPTY_SKILL_ID = skillConfigList.getEmptySkill().getConfigID();
 
     public static Skill[] getPlayerSkills(FileManager fileManager){
-        int[] equipedSkill = fileManager.getGameFile().getEquipedSkill();
+        int[] equipment = fileManager.getGameFile().getEquipment();
 
-        Skill[] skills = new Skill[equipedSkill.length];
-        for (int i = 0; i < equipedSkill.length; i++){
-            skills[i] = SkillSupplier.getSkill(equipedSkill[i], fileManager);
+        Skill[] skills = new Skill[equipment.length];
+        for (int i = 0; i < equipment.length; i++){
+            skills[i] = SkillSupplier.getSkill(equipment[i], fileManager);
         }
         return skills;
     }
 
     public static Image[] getImages_UI(FileManager fileManager){
-        Image[] skillImages = ImageLoader.SKILL_ICONS_UI;
         Image[] returnImage = new Image[4];
-        int[] equipedSkill = fileManager.getGameFile().getEquipedSkill();
-        for (int i = 0; i < equipedSkill.length; i++) {
-            for (int j = 0; j < TOTAL_SKILL; j ++){
-                if(equipedSkill[i] == j){
-                    returnImage[i] = skillImages[j];
+        int[] equipment = fileManager.getGameFile().getEquipment();
+
+        for (int i = 0; i < equipment.length; i ++){
+            for (SkillConfig skillConfig : skillConfigList.getSkillsConfig()){
+                if (skillConfig.getConfigID() == equipment[i]){
+                    returnImage[i] = skillConfig.UI_IMAGE;
                 }
             }
         }
+
         return returnImage;
     }
 
@@ -49,16 +48,17 @@ public class SkillSupplier {
 
 
     public static Image[] getImages_Level(FileManager fileManager){
-        Image[] skillImages = ImageLoader.SKILL_ICONS_LEVEL;
         Image[] returnImage = new Image[4];
-        int[] equipedSkill = fileManager.getGameFile().getEquipedSkill();
-        for (int i = 0; i < equipedSkill.length; i++) {
-            for (int j = 0; j < TOTAL_SKILL; j ++){
-                if(equipedSkill[i] == j){
-                    returnImage[i] = skillImages[j];
+        int[] equipment = fileManager.getGameFile().getEquipment();
+
+        for (int i = 0; i < equipment.length; i ++){
+            for (SkillConfig skillConfig : skillConfigList.getSkillsConfig()){
+                if (skillConfig.getConfigID() == equipment[i]){
+                    returnImage[i] = skillConfig.LEVEL_IMAGE;
                 }
             }
         }
+
         return returnImage;
     }
 
@@ -102,10 +102,6 @@ public class SkillSupplier {
             if (j == skill_id) return true;
         }
         return false;
-    }
-
-    public static int getEmptySkillId(){
-        return EMPTY_SKILL_ID;
     }
 
 

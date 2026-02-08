@@ -10,7 +10,10 @@ import LoadFile.SkillFile.DefendFile;
 public class DefendConfig extends SkillConfig {
 
     public DefendConfig(){
-        super(ImageLoader.DEFEND_ICON, DefendFile.class, "Defend");
+        super(ImageLoader.DEFEND_ICON,
+                ImageLoader.DEFEND_ICON,
+                DefendFile.class,
+                "Defend");
     }
 
     public static final int COOLDOWN_ID = 1;

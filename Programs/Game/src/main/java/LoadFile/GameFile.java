@@ -1,13 +1,12 @@
 package LoadFile;
 
-import Data.Supplier.SkillConfigList;
 import Data.Supplier.SkillSupplier;
 
 import java.io.*;
 
 public class GameFile implements Serializable {
     private int coins = 0;
-    private int[] equipedSkill = new int[]{1, 0, 0, 0};
+    private int[] equipment = new int[]{1, 0, 0, 0};
 
     // Coins
     public int getCoins() {
@@ -25,23 +24,21 @@ public class GameFile implements Serializable {
     // Equips skill
 
     public void setEquip(int skill_id){
-        equipedSkill = SkillSupplier.setEquip(skill_id, equipedSkill);
+        equipment = SkillSupplier.setEquip(skill_id, equipment);
     }
 
     public void setUnequip(int skill_id){
-        equipedSkill = SkillSupplier.setUnequip(skill_id, equipedSkill);
-        equipedSkill = rearrangeList(equipedSkill);
+        equipment = SkillSupplier.setUnequip(skill_id, equipment);
+        equipment = rearrangeList(equipment);
     }
 
     public boolean isEquip(int skill_id){
-        return SkillSupplier.isEquip(skill_id, equipedSkill);
+        return SkillSupplier.isEquip(skill_id, equipment);
     }
 
-    public int[] getEquipedSkill(){
-        return equipedSkill;
+    public int[] getEquipment(){
+        return equipment;
     }
-
-    public int getSkillLength(){ return equipedSkill.length;}
 
     // Private method
 

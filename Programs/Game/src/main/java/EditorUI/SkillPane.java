@@ -24,7 +24,7 @@ public class SkillPane extends PaneInterface{
         this.skillConfig = skillConfig;
         this.observer = observer;
         this.skillID = skillConfig.getConfigID();
-        skillView.setImage(skillConfig.IMAGE);
+        skillView.setImage(skillConfig.UI_IMAGE);
         skillName.setText(skillConfig.NAME);
         updateText();
         handleSelected();
@@ -46,7 +46,7 @@ public class SkillPane extends PaneInterface{
     }
 
     private void handleSelected() {
-        int[] equipment = fileManager.getGameFile().getEquipedSkill();
+        int[] equipment = fileManager.getGameFile().getEquipment();
         for (int skill : equipment){
             if (skill == skillID){
                 pane.getStyleClass().add("selectedPane");

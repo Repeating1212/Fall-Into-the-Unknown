@@ -16,6 +16,7 @@ public class DashConfig extends SkillConfig {
     public DashConfig(){
         super(
                 ImageLoader.DASH_ICON,
+                ImageLoader.CMP_DASH_ICON,
                 DashFile.class,
                 "Dash"
         );

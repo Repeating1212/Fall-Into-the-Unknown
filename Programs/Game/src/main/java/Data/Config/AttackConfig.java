@@ -20,6 +20,7 @@ public class AttackConfig extends SkillConfig {
     public AttackConfig(){
 
         super(  ImageLoader.ATTACK_ICON,
+                ImageLoader.ATTACK_ICON,
                 AttackFile.class,
                 "Attack"
         );
