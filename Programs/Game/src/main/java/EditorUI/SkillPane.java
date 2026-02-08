@@ -23,7 +23,7 @@ public class SkillPane extends PaneInterface{
     public void setData(SkillConfig skillConfig, EquipmentObserver observer){
         this.skillConfig = skillConfig;
         this.observer = observer;
-        this.skillID = skillConfig.CONFIG_ID;
+        this.skillID = skillConfig.getConfigID();
         skillView.setImage(skillConfig.IMAGE);
         skillName.setText(skillConfig.NAME);
         updateText();

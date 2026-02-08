@@ -1,5 +1,6 @@
 package LoadFile;
 
+import Data.Supplier.SkillConfigList;
 import Data.Supplier.SkillSupplier;
 
 import java.io.*;
@@ -29,6 +30,7 @@ public class GameFile implements Serializable {
 
     public void setUnequip(int skill_id){
         equipedSkill = SkillSupplier.setUnequip(skill_id, equipedSkill);
+        equipedSkill = rearrangeList(equipedSkill);
     }
 
     public boolean isEquip(int skill_id){
@@ -40,4 +42,21 @@ public class GameFile implements Serializable {
     }
 
     public int getSkillLength(){ return equipedSkill.length;}
+
+    // Private method
+
+    private int[] rearrangeList(int[] list) {
+        int[] result = new int[list.length];
+        int index = 0;
+
+        // Move non-zeros to front
+        for (int skill : list) {
+            if (skill != 0) {
+                result[index++] = skill;
+            }
+        }
+        // Remaining positions will be 0 (default int value)
+
+        return result;
+    }
 }

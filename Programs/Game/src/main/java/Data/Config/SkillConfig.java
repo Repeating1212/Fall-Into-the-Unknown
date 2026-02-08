@@ -8,14 +8,13 @@ import javafx.scene.image.Image;
 
 public abstract class SkillConfig {
 
-    public final int CONFIG_ID;
+    protected int configID;
     public final Image IMAGE;
     public final String NAME;
     protected final Class<? extends SkillFile> fileType;
 
-    public SkillConfig(Image IMAGE, int configID, Class<? extends SkillFile> skillFile, String NAME){
+    public SkillConfig(Image IMAGE, Class<? extends SkillFile> skillFile, String NAME){
         this.IMAGE = IMAGE;
-        this.CONFIG_ID = configID;
         this.fileType = skillFile;
         this.NAME = NAME;
     }
@@ -26,5 +25,13 @@ public abstract class SkillConfig {
 
     public Class<? extends SkillFile> getFileType() {
         return fileType;
+    }
+
+    public int getConfigID(){
+        return configID;
+    }
+
+    public void setConfigID(int configID){
+        this.configID = configID;
     }
 }

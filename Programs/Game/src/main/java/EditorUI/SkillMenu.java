@@ -27,7 +27,7 @@ public class SkillMenu extends OverlayController {
     private SkillConfig skillConfig;
 
     public void setData(SkillConfig skillConfig, EquipmentObserver observer){
-        this.skillID = skillConfig.CONFIG_ID;
+        this.skillID = skillConfig.getConfigID();
         this.skillConfig = skillConfig;
         this.observer = observer;
 

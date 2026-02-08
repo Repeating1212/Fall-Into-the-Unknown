@@ -10,6 +10,8 @@ public class FileManager {
     private DefendFile defendFile;
     private SkillFile[] skillFiles;
 
+    // Get File
+
     public GameFile getGameFile(){
         return currentGameFile;
     }
@@ -34,6 +36,8 @@ public class FileManager {
         }
         return new EmptySkillFile();
     }
+
+    // Save & Load
 
     public void saveFile(){
         JSONStorage.saveGameFile(currentGameFile);
