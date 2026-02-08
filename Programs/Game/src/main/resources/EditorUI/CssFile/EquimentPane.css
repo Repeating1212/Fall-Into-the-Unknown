@@ -15,6 +15,6 @@
 }
 
 .equipmentPane:hover {
-      -fx-scale-x: 1.10;
-      -fx-scale-y: 1.10;
+      -fx-scale-x: 1.15;
+      -fx-scale-y: 1.15;
 }

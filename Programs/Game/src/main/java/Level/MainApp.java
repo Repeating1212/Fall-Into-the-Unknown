@@ -1,5 +1,5 @@
 package Level;
-import Data.Supplier.SceneLoader;
+import Data.Loader.SceneLoader;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

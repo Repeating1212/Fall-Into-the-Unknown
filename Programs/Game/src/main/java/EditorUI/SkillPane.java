@@ -2,7 +2,8 @@ package EditorUI;
 
 import Data.Config.SkillConfig;
 import Data.Interface.PaneInterface;
-import Data.Supplier.SceneLoader;
+import Data.Loader.ImageLoader;
+import Data.Loader.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -25,6 +26,7 @@ public class SkillPane extends PaneInterface{
         this.observer = observer;
         this.skillID = skillConfig.getConfigID();
         skillView.setImage(skillConfig.UI_IMAGE);
+        ImageLoader.clipImage(skillView);
         skillName.setText(skillConfig.NAME);
         updateText();
         handleSelected();
@@ -51,7 +53,6 @@ public class SkillPane extends PaneInterface{
             if (skill == skillID){
                 pane.getStyleClass().add("selectedPane");
                 pane.getStyleClass().remove("pane");
-
             }
         }
     }

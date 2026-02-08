@@ -1,6 +1,6 @@
 package Level.View;
 
-import Data.Supplier.SceneLoader;
+import Data.Loader.SceneLoader;
 import LoadFile.FileManager;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;

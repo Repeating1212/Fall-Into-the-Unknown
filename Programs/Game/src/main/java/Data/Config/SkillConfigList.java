@@ -1,6 +1,4 @@
-package Data.Supplier;
-
-import Data.Config.*;
+package Data.Config;
 
 public class SkillConfigList {
 

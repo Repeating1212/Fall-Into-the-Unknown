@@ -1,7 +1,7 @@
 package Game_UI.StartScene;
 
 import Data.Interface.SceneInterface;
-import Data.Supplier.SceneLoader;
+import Data.Loader.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 

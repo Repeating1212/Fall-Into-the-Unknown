@@ -1,6 +1,6 @@
 package Data.Config;
 
-import Data.Supplier.ImageLoader;
+import Data.Loader.ImageLoader;
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
 import Level.Skills.Attacks.AttackArea;

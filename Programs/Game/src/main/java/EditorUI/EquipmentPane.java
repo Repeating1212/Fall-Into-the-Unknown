@@ -2,7 +2,8 @@ package EditorUI;
 
 import Data.Config.SkillConfig;
 import Data.Interface.PaneInterface;
-import Data.Supplier.SceneLoader;
+import Data.Loader.ImageLoader;
+import Data.Loader.SceneLoader;
 import Data.Supplier.SkillSupplier;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -22,7 +23,7 @@ public class EquipmentPane extends PaneInterface {
 
         equipmentText.setText(skillConfig.NAME);
         equipmentView.setImage(skillConfig.UI_IMAGE);
-//        ImageLoader.clipImage(equipmentView);
+        ImageLoader.clipImage(equipmentView);
     }
 
     @FXML

@@ -1,8 +1,8 @@
 package Game_UI.StartScene;
 
 import Data.Interface.SceneInterface;
-import Data.Supplier.ImageLoader;
-import Data.Supplier.SceneLoader;
+import Data.Loader.ImageLoader;
+import Data.Loader.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;

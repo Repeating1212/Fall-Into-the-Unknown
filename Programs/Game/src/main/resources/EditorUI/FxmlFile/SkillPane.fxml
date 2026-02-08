@@ -12,7 +12,7 @@
    <children>
       <StackPane layoutX="11.0" layoutY="18.0" styleClass="imagePane">
          <children>
-            <ImageView fx:id="skillView" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="skillView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Picture/Skill_Icon/Cmp_Attack.png" />
                </image>

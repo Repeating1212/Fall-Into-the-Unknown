@@ -1,5 +1,6 @@
-package Data.Supplier;
+package Data.Loader;
 
+import Data.Supplier.SkillSupplier;
 import Level.Data.Config.PlayerConfig;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
@@ -58,12 +59,6 @@ public class ImageLoader {
     public static final Image DASH_ICON = new Image(SkillSupplier.class.getResourceAsStream(DASH_ICON_Path));
     public static final Image CMP_DASH_ICON = new Image(SkillSupplier.class.getResourceAsStream(CMP_DASH_ICON_Path));
     public static final Image EMPTY_ICON = new Image(SkillSupplier.class.getResourceAsStream(EMPTY_ICON_Path));
-    public static final Image[] SKILL_ICONS_UI = new Image[]{
-            EMPTY_ICON, ATTACK_ICON, DEFEND_ICON, DASH_ICON
-    };
-    public static final Image[] SKILL_ICONS_LEVEL = new Image[]{
-            EMPTY_ICON, ATTACK_ICON, DEFEND_ICON, CMP_DASH_ICON
-    };
 
 
     public static final Image FOREST = new Image(SkillSupplier.class.getResourceAsStream(FOREST_Path));
@@ -99,7 +94,6 @@ public class ImageLoader {
     public static final Image STARTSCENE_BACKGROUND = new Image(ImageLoader.class.getResourceAsStream(STARTSCENE_IMAGE_Path));
 
     public static void clipImage(ImageView imageView){
-
         Rectangle clip = new Rectangle(
                 imageView.getFitWidth(), imageView.getFitHeight()
         );
@@ -107,15 +101,16 @@ public class ImageLoader {
         clip.setArcHeight(20);
         imageView.setClip(clip);
 
-        // snapshot the rounded image.
-        SnapshotParameters parameters = new SnapshotParameters();
-        parameters.setFill(Color.TRANSPARENT);
-        WritableImage image = imageView.snapshot(parameters, null);
-
-        // remove the rounding clip so that our effect can show through.
-        imageView.setClip(null);
-
-        // store the rounded image in the imageView.
-        imageView.setImage(image);
+//        // snapshot the rounded image.
+//        SnapshotParameters parameters = new SnapshotParameters();
+//        parameters.setFill(Color.TRANSPARENT);
+//        WritableImage image = imageView.snapshot(parameters, null);
+//        imageView.setClip(null);
+//        imageView.setImage(image);
     }
+
+    public static void unclipImage(ImageView imageView){
+        imageView.setClip(null);
+    }
+
 }

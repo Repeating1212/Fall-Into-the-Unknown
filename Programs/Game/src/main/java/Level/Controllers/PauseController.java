@@ -1,7 +1,7 @@
 package Level.Controllers;
 
 import Data.Interface.OverlayController;
-import Data.Supplier.SceneLoader;
+import Data.Loader.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;

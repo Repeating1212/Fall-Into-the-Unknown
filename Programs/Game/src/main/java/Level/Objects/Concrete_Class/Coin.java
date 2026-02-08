@@ -1,6 +1,6 @@
 package Level.Objects.Concrete_Class;
 
-import Data.Supplier.ImageLoader;
+import Data.Loader.ImageLoader;
 import Level.Data.Config.CoinConfig;
 import Level.Data.Properties.Property;
 import Level.Data.Suppliers.CoinSupplier;

@@ -25,7 +25,6 @@ Text{
     -fx-background-color: #E6E6E6;
     -fx-background-radius: 6;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 0, 0.3, 5, 5);
-
 }
 
 .pane:hover {
@@ -35,13 +34,10 @@ Text{
 
 /* Image Pane */
 .imagePane{
-    -fx-background-color: #1A1A1A;
-    -fx-background-radius: 5;
+    -fx-background-color: #1A1A1ACC;
+    -fx-background-radius: 12;
     -fx-padding: 3;
 }
-
-
-
 
 .skillName{
     -fx-font-size: 18;

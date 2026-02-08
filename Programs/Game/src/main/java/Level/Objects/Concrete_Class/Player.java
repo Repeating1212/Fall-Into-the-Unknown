@@ -1,6 +1,6 @@
 package Level.Objects.Concrete_Class;
 
-import Data.Supplier.ImageLoader;
+import Data.Loader.ImageLoader;
 import Level.Data.Properties.PlayerState;
 import Level.Objects.Base_Class.ImageObject;
 import Level.Managers.Observer;

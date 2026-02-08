@@ -3,7 +3,7 @@ package EditorUI;
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
 import Data.Interface.PaneInterface;
-import Data.Supplier.ImageLoader;
+import Data.Loader.ImageLoader;
 import Data.Supplier.SkillSupplier;
 import LoadFile.SkillFile.SkillFile;
 import javafx.fxml.FXML;

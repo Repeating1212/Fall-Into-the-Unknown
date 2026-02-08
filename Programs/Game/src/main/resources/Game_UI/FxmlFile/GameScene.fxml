@@ -71,22 +71,22 @@
             </HBox>
             <HBox alignment="BOTTOM_CENTER" prefWidth="200.0" spacing="10.0">
                <children>
-                  <ImageView fx:id="skill01" fitWidth="70.0" onMouseClicked="#loadSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+                  <ImageView fx:id="skill01" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#loadSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                      <image>
                         <Image url="@../../Picture/Skill_Icon/Empty_Skill.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="skill02" fitWidth="70.0" onMouseClicked="#loadSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+                  <ImageView fx:id="skill02" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#loadSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                      <image>
                         <Image url="@../../Picture/Skill_Icon/Empty_Skill.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="skill03" fitWidth="70.0" onMouseClicked="#loadSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+                  <ImageView fx:id="skill03" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#loadSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                      <image>
                         <Image url="@../../Picture/Skill_Icon/Empty_Skill.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="skill04" fitWidth="70.0" onMouseClicked="#loadSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+                  <ImageView fx:id="skill04" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#loadSkillScene" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                      <image>
                         <Image url="@../../Picture/Skill_Icon/Empty_Skill.png" />
                      </image>
