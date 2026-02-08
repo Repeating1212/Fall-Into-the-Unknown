@@ -1,0 +1,97 @@
+Text{
+    -fx-font-family: Verdana;
+}
+
+.upgradePane{
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-border-color: #1A1A1A;
+    -fx-background-radius: 20;
+    -fx-background-color: #F2F2F2;
+    -fx-opacity: 0.8;
+}
+
+.upgradePane:hover{
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 0, 0.3, 5, 5);
+    -fx-opacity: 1;
+}
+
+.upgradePane Text{
+    -fx-fill: #1A1A1A;
+}
+
+/* Upgrade Button */
+
+.upgradeButton{
+    -fx-background-radius: 10 0 0 10;
+    -fx-background-color: #000000;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14;
+}
+
+.upgradeButton:hover{
+    -fx-border-radius: 12 0 0 12;
+    -fx-border-color: #000000;
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
+}
+
+/* Resources */
+
+.resourcesBox{
+    -fx-background-color: #FFFFFF40;
+    -fx-background-radius: 10;
+    -fx-padding:5 10;
+}
+
+.resourcesPane{
+    -fx-border-width: 2;
+    -fx-border-radius: 0 0 18 18;
+    -fx-border-color: #000000C0;
+    -fx-background-radius: 0 0 20 20;
+    -fx-background-color: #D9D9D9;
+    -fx-padding: 10 20;
+}
+
+
+/* Progression Bar */
+
+.rounded-progress-bar {
+    -fx-background-color: #00000040;
+    -fx-background-radius: 5px;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+
+.rounded-progress-bar .track {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.rounded-progress-bar .bar {
+    -fx-background-color: #1A1A1A;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    /* Top-left, Top-right, Bottom-right, Bottom-left */
+    -fx-background-radius: 5px 0 0 5px;
+}
+
+.rounded-progress-bar:filled .bar {
+    -fx-background-radius: 5px;
+}
+
+/* Text */
+
+.textTitle{
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+}
+
+.textDescription{
+    -fx-font-size: 14;
+}
+
+.textCoin{
+    -fx-font-size: 18;
+}

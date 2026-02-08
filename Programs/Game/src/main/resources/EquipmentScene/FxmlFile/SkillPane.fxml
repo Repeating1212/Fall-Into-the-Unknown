@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#loadMenu" prefHeight="125.0" prefWidth="320.0" styleClass="pane" stylesheets="@../CssFile/SkillPane.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game_UI.EquipmentScene.SkillPane">
+   <children>
+      <StackPane layoutX="11.0" layoutY="18.0" styleClass="imagePane">
+         <children>
+            <ImageView fx:id="skillView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Picture/Skill_Icon/Cmp_Attack.png" />
+               </image>
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
+            </ImageView>
+         </children>
+      </StackPane>
+      <Text fx:id="skillName" layoutX="110.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="skillName" text="Skill Name" wrappingWidth="174.45855712890625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="skillStatus" layoutX="106.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="skillDescription" text="✓ Equipped">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

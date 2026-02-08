@@ -1,0 +1,31 @@
+.main-button {
+    -fx-pref-height: 100;
+    -fx-pref-width: 275;
+    -fx-font-size: 24px;
+    -fx-background-radius: 15;
+    -fx-font-family: Verdana;
+
+    -fx-background-color: #1A1A1A;
+    -fx-text-fill: #E6E6E6;
+
+    -fx-border-width: 2;
+    -fx-border-color: #E6E6E6;
+    -fx-border-radius: 13;
+}
+
+.main-button:hover  {
+    -fx-text-fill: #1A1A1A;
+    -fx-background-color: #E6E6E6;
+}
+
+Text{
+    -fx-font-family: Verdana;
+}
+
+.title{
+    -fx-font-size: 48;
+}
+
+.subtitle{
+    -fx-font-size: 24;
+}
