@@ -24,7 +24,14 @@ Text{
 .pane{
     -fx-background-color: #E6E6E6;
     -fx-background-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-radius: 4;
+    -fx-border-color: #1A1A1A;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 0, 0.3, 5, 5);
+}
+
+.pane Text{
+    -fx-fill: #000000;
 }
 
 .pane:hover {
@@ -34,7 +41,7 @@ Text{
 
 /* Image Pane */
 .imagePane{
-    -fx-background-color: #1A1A1ACC;
+    -fx-background-color: #1A1A1A;
     -fx-background-radius: 12;
     -fx-padding: 3;
 }

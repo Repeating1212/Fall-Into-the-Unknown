@@ -5,7 +5,7 @@ Text{
 /* Background */
 
 .mainBackground{
-    -fx-background-color: #3F3F3F;
+    -fx-background-color: #1A1A1A;
 }
 
 Text{
@@ -13,9 +13,11 @@ Text{
 }
 
 .skillBackground{
-    -fx-background-color: #4D4D4D;
+    -fx-background-color: transparent;
     -fx-background-radius: 10 10 0 0;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0.3, 0, 5);
+    -fx-border-color: #E6E6E6;
+    -fx-border-width: 1 1 0 1;
+    -fx-border-radius: 10 10 0 0;
 }
 
 .equipmentText{
@@ -37,28 +39,6 @@ Text{
     -fx-fill: #000000C0;
 }
 
-/* Button */
-
-.next.moveButton{
-    -fx-background-radius: 0 10 10 0;
-}
-
-.previous.moveButton{
-    -fx-background-radius: 10 0 0 10;
-}
-
-.moveButton{
-    -fx-font-size: 16;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 0, 0.3, 0, 5);
-    -fx-pref-width: 100;
-}
-
-.moveButton:hover{
-    -fx-background-color: #333333;
-    -fx-effect: dropshadow(gaussian, #FFFFFF33, 0, 0.3, 0, 5);
-    -fx-text-fill: #FFFFFF;
-}
-
 /* Return Button */
 
 .returnButton{
@@ -72,6 +52,8 @@ Text{
 
 .returnButton:hover {
     -fx-background-color: #1A1A1A;
+    -fx-border-radius: 0 0 18 18;
+    -fx-border-color: #E6E6E6;
    -fx-text-fill: #E6E6E6;
 }
 

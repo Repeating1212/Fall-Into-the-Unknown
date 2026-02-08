@@ -43,7 +43,7 @@ public class SkillPane extends PaneInterface{
         if (fileManager.getGameFile().isEquip(skillID)){
             skillStatus.setText("✓ Equipped");
         } else {
-            skillStatus.setText("");
+            skillStatus.setText("✕ Unequipped");
         }
     }
 

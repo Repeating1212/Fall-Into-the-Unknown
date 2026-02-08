@@ -3,9 +3,9 @@
 .equipmentPane{
     -fx-border-width: 2;
     -fx-border-radius: 18;
-    -fx-border-color: #FFFFFFC0;
+    -fx-border-color: #FFFFFFCC;
     -fx-background-radius: 20;
-    -fx-background-color: #FFFFFF1A;
+    -fx-background-color: #FFFFFF26;
     -fx-padding: 10 20;
 }
 
