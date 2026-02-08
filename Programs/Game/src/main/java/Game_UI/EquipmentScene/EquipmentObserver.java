@@ -1,4 +1,4 @@
-package EditorUI;
+package Game_UI.EquipmentScene;
 
 public class EquipmentObserver {
 

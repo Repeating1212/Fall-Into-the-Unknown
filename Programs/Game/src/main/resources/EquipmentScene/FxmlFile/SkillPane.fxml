@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#loadMenu" prefHeight="125.0" prefWidth="320.0" styleClass="pane" stylesheets="@../CssFile/SkillPane.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditorUI.SkillPane">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#loadMenu" prefHeight="125.0" prefWidth="320.0" styleClass="pane" stylesheets="@../CssFile/SkillPane.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game_UI.EquipmentScene.SkillPane">
    <children>
       <StackPane layoutX="11.0" layoutY="18.0" styleClass="imagePane">
          <children>

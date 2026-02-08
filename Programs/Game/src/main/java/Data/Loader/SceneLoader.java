@@ -22,8 +22,8 @@ public class SceneLoader {
         SETTING("/Game_UI/FxmlFile/Setting.fxml"),
         START("/Game_UI/FxmlFile/StartScene.fxml"),
         // EditorUI
-        EQUIPMENT("/EditorUI/FxmlFile/EquipmentScene.fxml"),
-        SKILL_MENU("/EditorUI/FxmlFile/SkillMenu.fxml"),
+        EQUIPMENT("/EquipmentScene/FxmlFile/EquipmentScene.fxml"),
+        SKILL_MENU("/EquipmentScene/FxmlFile/SkillMenu.fxml"),
         // Level
         LOSE("/Level/View/lose-screen.fxml"),
         PAUSE("/Level/View/pause-screen.fxml"),
@@ -42,9 +42,9 @@ public class SceneLoader {
     }
 
     public enum PaneType {
-        SKILL_PANE("/EditorUI/FxmlFile/SkillPane.fxml"),
-        UPGRADE_PANE("/EditorUI/FxmlFile/UpgradePane.fxml"),
-        EQUIPMENT_PANE("/EditorUI/FxmlFile/EquipmentPane.fxml");
+        SKILL_PANE("/EquipmentScene/FxmlFile/SkillPane.fxml"),
+        UPGRADE_PANE("/EquipmentScene/FxmlFile/UpgradePane.fxml"),
+        EQUIPMENT_PANE("/EquipmentScene/FxmlFile/EquipmentPane.fxml");
 
         private final String path;
 

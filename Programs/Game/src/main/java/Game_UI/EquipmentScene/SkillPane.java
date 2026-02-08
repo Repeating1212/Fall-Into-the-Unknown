@@ -1,4 +1,4 @@
-package EditorUI;
+package Game_UI.EquipmentScene;
 
 import Data.Config.SkillConfig;
 import Data.Interface.PaneInterface;

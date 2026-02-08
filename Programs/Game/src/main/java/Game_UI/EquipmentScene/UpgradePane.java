@@ -1,4 +1,4 @@
-package EditorUI;
+package Game_UI.EquipmentScene;
 
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;

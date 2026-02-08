@@ -1,4 +1,4 @@
-package EditorUI;
+package Game_UI.EquipmentScene;
 
 import Data.Config.EmptySkillConfig;
 import Data.Config.SkillConfig;
@@ -128,7 +128,7 @@ public class Equipment extends SceneInterface {
         }
     }
 
-    public void initializeAnimation() {
+    private void initializeAnimation() {
         TranslateTransition hoverUp = new TranslateTransition(Duration.millis(200), returnButton);
         hoverUp.setToY(10);
 
