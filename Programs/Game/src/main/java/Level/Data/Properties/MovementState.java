@@ -1,5 +1,7 @@
 package Level.Data.Properties;
 
+import Level.Data.Data.Vector2D;
+
 public class MovementState {
     // Movement states
     private double speed;

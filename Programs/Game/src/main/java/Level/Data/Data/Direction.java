@@ -1,4 +1,4 @@
-package Level.Data.Properties;
+package Level.Data.Data;
 
 public enum Direction {
     NONE(0, 0),

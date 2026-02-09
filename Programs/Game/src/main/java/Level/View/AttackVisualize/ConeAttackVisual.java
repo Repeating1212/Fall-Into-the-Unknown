@@ -4,7 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
-import Level.Data.Properties.Vector2D;
+import Level.Data.Data.Vector2D;
 import Level.Data.Properties.Position;
 
 public class ConeAttackVisual extends AttackVisual {

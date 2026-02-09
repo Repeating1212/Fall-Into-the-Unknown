@@ -48,14 +48,10 @@ public class HitBox {
     }
 
     protected boolean isTouch(HitBox other) {
-        double distanceX = Math.abs(position.getX() - other.position.getX());
-        double distanceY = Math.abs(position.getY() - other.position.getY());
-
-        double requiredX = (width + other.getWidth()) / 2.0;
-        double requiredY = (height + other.getHeight()) / 2.0;
-
-        return (distanceX <= requiredX + TOUCH_TOLERANCE &&
-                distanceY <= requiredY + TOUCH_TOLERANCE);
+        return  -TOUCH_TOLERANCE + position.getX() < other.position.getX() + other.getWidth() &&
+                TOUCH_TOLERANCE + position.getX() + width > other.position.getX() &&
+                -TOUCH_TOLERANCE + position.getY() < other.position.getY() + other.getHeight() &&
+                TOUCH_TOLERANCE + position.getY() + height > other.position.getY();
     }
 
     protected boolean isBlocked(ArrayList<HitBox> others){

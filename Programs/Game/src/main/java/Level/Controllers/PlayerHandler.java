@@ -1,6 +1,6 @@
 package Level.Controllers;
 
-import Level.Data.Properties.Direction;
+import Level.Data.Data.Direction;
 import Level.Objects.Concrete_Class.Player;
 import Level.View.SkillBoxView;
 

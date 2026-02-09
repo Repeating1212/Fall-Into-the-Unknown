@@ -1,4 +1,6 @@
-package Level.Data.Properties;
+package Level.Data.Data;
+
+import Level.Data.Properties.Position;
 
 public class Vector2D {
     private double x;

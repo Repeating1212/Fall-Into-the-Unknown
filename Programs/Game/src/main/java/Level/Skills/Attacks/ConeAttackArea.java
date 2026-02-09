@@ -2,7 +2,7 @@ package Level.Skills.Attacks;
 
 import Level.Data.Properties.Position;
 import Level.Data.Properties.Property;
-import Level.Data.Properties.Vector2D;
+import Level.Data.Data.Vector2D;
 
 public class ConeAttackArea implements AttackArea {
     private final double RADIUS;
