@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="edb78842-bbff-4930-b30e-52b1c3398edc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Controllers/GameTicks.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Controllers/GameTicks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Controllers/LoseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Controllers/LoseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Controllers/PauseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Controllers/PauseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Controllers/PlayerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Controllers/PlayerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Controllers/WinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Controllers/WinController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Config/CoinConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Config/CoinConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Config/GuardConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Config/GuardConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Config/PlayerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Config/PlayerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Config/PortalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Config/PortalConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Config/StakeConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Config/StakeConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Properties/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Properties/Direction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Properties/Health.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Properties/Health.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Properties/HitBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Properties/HitBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Properties/MovementState.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Properties/MovementState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Properties/PlayerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Properties/PlayerState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Properties/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Properties/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Properties/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Properties/Property.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Suppliers/ArcSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Suppliers/ArcSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Suppliers/CoinSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Suppliers/CoinSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Suppliers/GuardSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Suppliers/GuardSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Suppliers/PlayerSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Suppliers/PlayerSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Suppliers/PortalSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Suppliers/PortalSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Data/Suppliers/StakeSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Data/Suppliers/StakeSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Managers/CoinManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Managers/CoinManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Managers/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Managers/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Managers/LevelData/LevelConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Managers/LevelData/LevelConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Managers/LevelData/LevelSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Managers/LevelData/LevelSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Managers/MainManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Managers/MainManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Managers/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Managers/Observer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Objects/Base_Class/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Objects/Base_Class/Boss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Objects/Base_Class/DisplayableObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Objects/Base_Class/DisplayableObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Objects/Base_Class/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Objects/Base_Class/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Objects/Base_Class/ImageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Objects/Base_Class/ImageObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Objects/Concrete_Class/Coin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Objects/Concrete_Class/Coin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Objects/Concrete_Class/Guard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Objects/Concrete_Class/Guard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Objects/Concrete_Class/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Objects/Concrete_Class/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Objects/Concrete_Class/Portal.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Objects/Concrete_Class/Portal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Objects/Concrete_Class/Stake.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Objects/Concrete_Class/Stake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Skills/Attacks/AttackArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Skills/Attacks/AttackArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Skills/Attacks/AttackSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Skills/Attacks/AttackSkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Skills/Attacks/CircleAttackArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Skills/Attacks/CircleAttackArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Skills/Attacks/ConeAttackArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Skills/Attacks/ConeAttackArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Skills/Attacks/Vector2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Skills/Attacks/Vector2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Skills/Boss/GuardMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Skills/Boss/GuardMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Skills/Player/Dash.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Skills/Player/Dash.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Skills/Player/Defend.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Skills/Player/Defend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Skills/Player/EmptySkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Skills/Player/EmptySkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Skills/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Skills/Skill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/Skills/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/Skills/Timer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/View/AttackVisualize/AttackVisual.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/View/AttackVisualize/AttackVisual.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/View/AttackVisualize/ConeAttackVisual.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/View/AttackVisualize/ConeAttackVisual.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/View/BossHealthBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/View/BossHealthBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/View/MapView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/View/MapView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/View/PlayerHeartView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/View/PlayerHeartView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/View/SceneView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/View/SceneView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/java/Lvl_Sample/View/SkillBoxView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/java/Level/View/SkillBoxView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/resources/Lvl_Sample/LevelScene.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/resources/Level/LevelScene.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/resources/Lvl_Sample/LevelScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/resources/Level/LevelScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/resources/Lvl_Sample/View/lose-screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/resources/Level/View/lose-screen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/resources/Lvl_Sample/View/pause-screen.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/resources/Level/View/pause-screen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/resources/Lvl_Sample/View/pause-screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/resources/Level/View/pause-screen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/resources/Lvl_Sample/View/win-lose-screen.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/resources/Level/View/win-lose-screen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Game/src/main/resources/Lvl_Sample/View/win-screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Game/src/main/resources/Level/View/win-screen.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Repeating1212&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Repeating1212/Summer_Game_Development_GH.git&quot;,
+    &quot;accountId&quot;: &quot;74e638df-2bc0-42d9-b2a5-d2c38746ee7a&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="39QUZNNNlSYldVbprDnz70Mnhbp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/level01-implementation&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Khoo Zj/Desktop/Folder/Fld02 - Non-Education/Prog01 - Self Application/Summer_Game_Development_GH/Programs/Level_1/src/main/resources&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Khoo Zj\Desktop\Folder\Fld02 - Non-Education\Prog01 - Self Application\Summer_Game_Development_GH\Programs\Level_1\src\main\resources" />
+      <recent name="C:\Users\Khoo Zj\Desktop\Folder\Fld02 - Non-Education\Prog01 - Self Application\Summer_Game_Development_GH\Programs\Level_1\src\main\java" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="edb78842-bbff-4930-b30e-52b1c3398edc" name="Changes" comment="" />
+      <created>1770627842899</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1770627842899</updated>
+    </task>
+    <servers />
+  </component>
+</project>

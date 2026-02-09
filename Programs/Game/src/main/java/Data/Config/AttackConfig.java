@@ -3,10 +3,10 @@ package Data.Config;
 import Data.Loader.ImageLoader;
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
-import Lvl_Sample.Skills.Attacks.AttackArea;
-import Lvl_Sample.Skills.Attacks.AttackSkill;
-import Lvl_Sample.Skills.Attacks.ConeAttackArea;
-import Lvl_Sample.View.AttackVisualize.ConeAttackVisual;
+import Level.Skills.Attacks.AttackArea;
+import Level.Skills.Attacks.AttackSkill;
+import Level.Skills.Attacks.ConeAttackArea;
+import Level.View.AttackVisualize.ConeAttackVisual;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.AttackFile;
 
