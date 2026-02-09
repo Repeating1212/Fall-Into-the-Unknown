@@ -15,7 +15,9 @@ public class LevelSupplier {
             displayableObjects.add(player.getAttackVisual());
         }
         displayableObjects.add(boss);
-        displayableObjects.add(boss.getAttackVisual());
+        if (boss.getAttackVisual() != null){
+            displayableObjects.add(boss.getAttackVisual());
+        }
 
         return displayableObjects;
     }

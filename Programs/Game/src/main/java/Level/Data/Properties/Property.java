@@ -33,6 +33,8 @@ public class Property {
         return hitBox.isCollide(other.hitBox);
     }
 
+    public boolean isTouch(Property other) {return hitBox.isTouch(other.hitBox);}
+
     public boolean isCollide (ArrayList<Property> others) {
         ArrayList<HitBox> othersHitBox = getHitBoxArray(others);
         return hitBox.isCollide(othersHitBox);

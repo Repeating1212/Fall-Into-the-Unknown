@@ -9,6 +9,6 @@ public class MapView {
 
     public MapView (ImageView map){
         this.map = map;
-        this.map.setImage(ImageLoader.LEVEL01_MAP);
+        this.map.setImage(ImageLoader.L01_MAP);
     }
 }

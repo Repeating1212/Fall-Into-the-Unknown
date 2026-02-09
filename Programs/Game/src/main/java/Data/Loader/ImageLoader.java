@@ -47,6 +47,9 @@ public class ImageLoader {
     private static final String HEART_FULL_Path     = "/Picture/Level_Picture/HeartFull.png";
     private static final String HEART_EMPTY_Path    = "/Picture/Level_Picture/HeartEmpty.png";
 
+    // EnemyImage
+    private static final String L01_RAT_Path = "/Picture/Level_Picture/Enemy/Rat.png";
+
 
 
     // Getter Method
@@ -83,10 +86,12 @@ public class ImageLoader {
     public static final Image PORTAL = new Image(PlayerConfig.class.getResourceAsStream(PORTAL_Path));
 
 
-    public static final Image LEVEL01_MAP = new Image(ImageLoader.class.getResourceAsStream(LEVEL01_MAP_Path));
+    public static final Image L01_MAP = new Image(ImageLoader.class.getResourceAsStream(LEVEL01_MAP_Path));
     public static final Image HEART_FULL = new Image(ImageLoader.class.getResourceAsStream(HEART_FULL_Path));
     public static final Image HEART_EMPTY = new Image(ImageLoader.class.getResourceAsStream(HEART_EMPTY_Path));
     public static final Image COIN_ANIMATION = new Image(ImageLoader.class.getResourceAsStream(COIN_ANIMATION_Path));
+
+    public static final Image L01_RAT = new Image(ImageLoader.class.getResourceAsStream(L01_RAT_Path));
 
     public static final Image STARTSCENE_BACKGROUND = new Image(ImageLoader.class.getResourceAsStream(STARTSCENE_IMAGE_Path));
 

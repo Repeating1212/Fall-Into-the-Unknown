@@ -1,13 +1,10 @@
 package Level.Managers;
 
-import Level.Objects.Concrete_Class.Player;
+import Level.Objects.Concrete_Class.*;
 import javafx.scene.shape.Rectangle;
 import Level.Managers.LevelData.LevelSupplier;
 import Level.Objects.Base_Class.Boss;
 import Level.Objects.Base_Class.GameObject;
-import Level.Objects.Concrete_Class.Coin;
-import Level.Objects.Concrete_Class.Guard;
-import Level.Objects.Concrete_Class.Portal;
 import Level.View.SceneView;
 
 import java.util.ArrayList;
@@ -34,7 +31,7 @@ public class MainManager {
         this.coinManager = new CoinManager(level);
 
         this.player = player;
-        boss = new Guard(player, observer);
+        boss = new Rat(player, observer);
         portal = new Portal(observer);
         observer.setPlayer(player);
 

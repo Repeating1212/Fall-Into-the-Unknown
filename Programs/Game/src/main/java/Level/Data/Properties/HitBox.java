@@ -10,10 +10,10 @@ public class HitBox {
     private final int width;
     private final int height;
     private final Position position;
-    private final boolean isBlockMovement; // True is unable to pass through the object, boss etc
+    private final boolean isBlockMovement; // True when object unable to pass through, wall etc
+    private final double TOUCH_TOLERANCE = 3;
 
     private Rectangle debugView;
-
 
     public HitBox(int width, int height, Position position, Boolean isBlockMovement){
         this.height = height;
@@ -45,6 +45,17 @@ public class HitBox {
                 position.getX() + width > other.position.getX() &&
                 position.getY() < other.position.getY() + other.getHeight() &&
                 position.getY() + height > other.position.getY();
+    }
+
+    protected boolean isTouch(HitBox other) {
+        double distanceX = Math.abs(position.getX() - other.position.getX());
+        double distanceY = Math.abs(position.getY() - other.position.getY());
+
+        double requiredX = (width + other.getWidth()) / 2.0;
+        double requiredY = (height + other.getHeight()) / 2.0;
+
+        return (distanceX <= requiredX + TOUCH_TOLERANCE &&
+                distanceY <= requiredY + TOUCH_TOLERANCE);
     }
 
     protected boolean isBlocked(ArrayList<HitBox> others){

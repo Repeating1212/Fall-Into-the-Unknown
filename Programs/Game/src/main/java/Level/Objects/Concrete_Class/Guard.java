@@ -15,7 +15,7 @@ public class Guard extends Boss {
     private final double ATTACK_OFFSET = GuardConfig.ATTACK_DISTANCE_OFFSET;
 
     public Guard(GameObject enemy, Observer observer) {
-        super(GuardSupplier.getProperty(), ImageLoader.STAKE,
+        super(GuardSupplier.getProperty(), ImageLoader.L01_RAT,
                 enemy, observer);
         this.attackSkill = GuardSupplier.getAttackBehaviour();
         this.attackSkill.initializeData(property, null);
@@ -25,7 +25,6 @@ public class Guard extends Boss {
 
     @Override
     public void update(double deltaTime) {
-//        GuardMove.directTowardPlayer(enemy.getProperty(), this.property);
         property.pointTo(enemy.getProperty());
         super.update(deltaTime);
         updateSpritePosition();
@@ -36,6 +35,14 @@ public class Guard extends Boss {
     public AttackVisual getAttackVisual(){
         return attackSkill.getAttackVisual();
     }
+
+    @Override
+    public void updateSpritePosition(){
+        if (property.isMovingLeft()) sprite.setScaleX(1);
+        else if (property.isMovingRight()) sprite.setScaleX(-1);
+        super.updateSpritePosition();
+    }
+
 
     // Private Method
 
