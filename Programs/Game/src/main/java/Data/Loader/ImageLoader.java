@@ -16,26 +16,26 @@ public class ImageLoader {
     private static final String EMPTY_ICON_Path     = "/Picture/Skill_Icon/Empty_Skill.png";
 
     // Map components
-    private static final String FOREST_Path     = "/Picture/Map Components/Forest.png";
-    private static final String GRAVEYARD_Path  = "/Picture/Map Components/Graveyard.png";
-    private static final String BRIDGE_Path     = "/Picture/Map Components/Bridge.png";
-    private static final String FISH_PORT_Path  = "/Picture/Map Components/Fish_Port.png";
-    private static final String LAKE_Path       = "/Picture/Map Components/Lake.png";
-    private static final String MOUNTAIN_Path   = "/Picture/Map Components/Mountain.png";
-    private static final String TOWER_Path      = "/Picture/Map Components/Tower.png";
-    private static final String DRAGON_Path     = "/Picture/Map Components/Dragon.png";
-    private static final String MAP_PORTAL_Path = "/Picture/Map Components/Portal.png";
-    private static final String GAME_BACKGROUND_Path = "/Picture/Map Components/Map_Background.png";
+    private static final String FOREST_Path     = "/Picture/UI_Picture/Map Components/Forest.png";
+    private static final String GRAVEYARD_Path  = "/Picture/UI_Picture/Map Components/Graveyard.png";
+    private static final String BRIDGE_Path     = "/Picture/UI_Picture/Map Components/Bridge.png";
+    private static final String FISH_PORT_Path  = "/Picture/UI_Picture/Map Components/Fish_Port.png";
+    private static final String LAKE_Path       = "/Picture/UI_Picture/Map Components/Lake.png";
+    private static final String MOUNTAIN_Path   = "/Picture/UI_Picture/Map Components/Mountain.png";
+    private static final String TOWER_Path      = "/Picture/UI_Picture/Map Components/Tower.png";
+    private static final String DRAGON_Path     = "/Picture/UI_Picture/Map Components/Dragon.png";
+    private static final String MAP_PORTAL_Path = "/Picture/UI_Picture/Map Components/Portal.png";
+    private static final String GAME_BACKGROUND_Path = "/Picture/UI_Picture/Map Components/Map_Background.png";
 
     // GameController2 Icon
-    private static final String COIN_Path       = "/Picture/Game_Icon/Coin_Image.png";
-    private static final String CHARACTER_PATH  = "/Picture/Game_Icon/Character.png";
-    private static final String STORE_Path      = "/Picture/Game_Icon/Store.png";
-    private static final String SETTING_PATH    = "/Picture/Game_Icon/Setting.png";
-    private static final String ENCYCLOPEDIA_PATH = "/Picture/Game_Icon/Encyclopedia.png";
+    private static final String COIN_Path       = "/Picture/UI_Picture/Game_Icon/Coin_Image.png";
+    private static final String CHARACTER_PATH  = "/Picture/UI_Picture/Game_Icon/Character.png";
+    private static final String STORE_Path      = "/Picture/UI_Picture/Game_Icon/Store.png";
+    private static final String SETTING_PATH    = "/Picture/UI_Picture/Game_Icon/Setting.png";
+    private static final String ENCYCLOPEDIA_PATH = "/Picture/UI_Picture/Game_Icon/Encyclopedia.png";
 
     // GameController1
-    private static final String STARTSCENE_IMAGE_Path = "/Picture/StartScene/Background.png";
+    private static final String STARTSCENE_IMAGE_Path = "/Picture/UI_Picture/StartScene/Background.png";
 
     // Level Images
     private static final String COIN_ANIMATION_Path = "/Picture/Level_Picture/Coin_Animation.gif";
