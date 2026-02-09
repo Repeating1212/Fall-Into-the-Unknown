@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPane" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Lvl_Sample.Controllers.Controller">
+   <children>
+      <AnchorPane prefHeight="675.0" prefWidth="1200.0">
+         <children>
+            <ImageView fx:id="map" fitHeight="675.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="600.0" layoutY="15.0" text="Boss Health" />
+            <ProgressBar fx:id="bossHealthBar" layoutX="331.0" layoutY="37.0" prefHeight="15.0" prefWidth="600.0" progress="0.5" />
+            <HBox fx:id="healthBar" alignment="CENTER" layoutX="533.0" layoutY="598.0">
+               <children>
+                  <ImageView fx:id="heart1" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Picture/Level_Picture/HeartFull.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="heart2" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Picture/Level_Picture/HeartFull.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="heart3" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Picture/Level_Picture/HeartFull.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="heart4" fitHeight="25.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Picture/Level_Picture/HeartFull.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="heart5" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Picture/Level_Picture/HeartFull.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="heart6" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Picture/Level_Picture/HeartFull.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="heart7" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Picture/Level_Picture/HeartFull.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="heart8" fitHeight="25.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Picture/Level_Picture/HeartFull.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="545.0" layoutY="624.0">
+               <children>
+                  <StackPane fx:id="skillBgd1" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <children>
+                        <ImageView fx:id="skill1" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Picture/Skill_Icon/Empty_Skill.png" />
+                           </image>
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </ImageView>
+                        <Rectangle fx:id="skillCooldown1" height="40.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.4;" width="40.0">
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </Rectangle>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </StackPane>
+                  <StackPane fx:id="skillBgd2" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;">
+                     <children>
+                        <ImageView fx:id="skill2" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Picture/Skill_Icon/Empty_Skill.png" />
+                           </image>
+                        </ImageView>
+                        <Rectangle fx:id="skillCooldown2" height="40.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.4;" width="40.0" />
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </StackPane>
+                  <StackPane fx:id="skillBgd3" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;">
+                     <children>
+                        <ImageView fx:id="skill3" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Picture/Skill_Icon/Empty_Skill.png" />
+                           </image>
+                        </ImageView>
+                        <Rectangle fx:id="skillCooldown3" height="40.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.4;" width="40.0" />
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </StackPane>
+                  <StackPane fx:id="skillBgd4" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: black;">
+                     <children>
+                        <ImageView fx:id="skill4" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Picture/Skill_Icon/Empty_Skill.png" />
+                           </image>
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </ImageView>
+                        <Rectangle fx:id="skillCooldown4" height="40.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.4;" width="40.0" />
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </StackPane>
+               </children>
+            </HBox>
+            <HBox layoutX="14.0" layoutY="15.0" prefHeight="0.0" prefWidth="50.0">
+               <children>
+                  <ImageView fitHeight="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Picture/Game_Icon/Coin_Image.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="8.0" top="1.0" />
+                     </HBox.margin>
+                  </ImageView>
+                   <Text fx:id="coinDisplay" text="0" />
+               </children>
+            </HBox>
+            <Button layoutX="1084.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleResume" stylesheets="@LevelScene.css" text="Pause Game" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

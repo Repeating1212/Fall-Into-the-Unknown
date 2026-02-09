@@ -31,29 +31,29 @@ module Game {
 
 
 
-    exports Level.View;
-    opens Level.View to javafx.fxml;
-    exports Level.Data.Properties;
-    opens Level.Data.Properties to javafx.fxml;
-    exports Level.Objects.Concrete_Class;
-    opens Level.Objects.Concrete_Class to javafx.fxml;
-    exports Level.Data.Config;
-    opens Level to javafx.fxml;
-    exports Level.Controllers;
-    opens Level.Controllers to javafx.fxml;
-    exports Level;
-    exports Level.Managers;
-    opens Level.Managers to javafx.fxml;
-    exports Level.Objects.Base_Class;
-    opens Level.Objects.Base_Class to javafx.fxml;
-    exports Level.Skills.Attacks;
-    opens Level.Skills.Attacks to javafx.fxml;
-    exports Level.View.AttackVisualize;
-    opens Level.View.AttackVisualize to javafx.fxml;
-    exports Level.Managers.LevelData;
-    opens Level.Managers.LevelData to javafx.fxml;
-    exports Level.Skills;
-    opens Level.Skills to javafx.fxml;
+    exports Lvl_Sample.View;
+    opens Lvl_Sample.View to javafx.fxml;
+    exports Lvl_Sample.Data.Properties;
+    opens Lvl_Sample.Data.Properties to javafx.fxml;
+    exports Lvl_Sample.Objects.Concrete_Class;
+    opens Lvl_Sample.Objects.Concrete_Class to javafx.fxml;
+    exports Lvl_Sample.Data.Config;
+    opens Lvl_Sample to javafx.fxml;
+    exports Lvl_Sample.Controllers;
+    opens Lvl_Sample.Controllers to javafx.fxml;
+    exports Lvl_Sample;
+    exports Lvl_Sample.Managers;
+    opens Lvl_Sample.Managers to javafx.fxml;
+    exports Lvl_Sample.Objects.Base_Class;
+    opens Lvl_Sample.Objects.Base_Class to javafx.fxml;
+    exports Lvl_Sample.Skills.Attacks;
+    opens Lvl_Sample.Skills.Attacks to javafx.fxml;
+    exports Lvl_Sample.View.AttackVisualize;
+    opens Lvl_Sample.View.AttackVisualize to javafx.fxml;
+    exports Lvl_Sample.Managers.LevelData;
+    opens Lvl_Sample.Managers.LevelData to javafx.fxml;
+    exports Lvl_Sample.Skills;
+    opens Lvl_Sample.Skills to javafx.fxml;
     exports Data.Loader;
     opens Data.Loader to com.google.gson, javafx.fxml;
 

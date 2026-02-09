@@ -1,0 +1,11 @@
+package Lvl_Sample.Data.Config;
+
+public class CoinConfig {
+    public static final int HEIGHT = 20;
+    public static final int WIDTH = 20;
+    public static final int SPEED = 0;
+    public static final boolean IS_BLOCKABLE = false;
+
+    public static final int RANDOMIZE_SPAWN_MIN = -100;
+    public static final int RANDOMIZE_SPAWN_MAX = 100;
+}

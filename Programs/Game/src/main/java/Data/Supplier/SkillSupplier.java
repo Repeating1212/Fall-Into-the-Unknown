@@ -1,8 +1,8 @@
 package Data.Supplier;
 
 import Data.Config.*;
-import Level.Skills.Player.EmptySkill;
-import Level.Skills.Skill;
+import Lvl_Sample.Skills.Player.EmptySkill;
+import Lvl_Sample.Skills.Skill;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.EmptySkillFile;
 import LoadFile.SkillFile.SkillFile;
@@ -63,7 +63,6 @@ public class SkillSupplier {
     }
 
     public static SkillFile getSkillFile(int skillID, FileManager fileManager) {
-
         for (SkillConfig skillConfig : skillConfigList.getSkillsConfig()){
             if(skillConfig.getConfigID() == skillID){
                 return fileManager.getSkillFiles(skillConfig.getFileType());

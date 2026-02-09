@@ -25,10 +25,10 @@ public class SceneLoader {
         EQUIPMENT("/EquipmentScene/FxmlFile/EquipmentScene.fxml"),
         SKILL_MENU("/EquipmentScene/FxmlFile/SkillMenu.fxml"),
         // Level
-        LOSE("/Level/View/lose-screen.fxml"),
-        PAUSE("/Level/View/pause-screen.fxml"),
-        WIN("/Level/View/win-screen.fxml"),
-        LEVEL_01("/Level/LevelScene.fxml");
+        LOSE("/Lvl_Sample/View/lose-screen.fxml"),
+        PAUSE("/Lvl_Sample/View/pause-screen.fxml"),
+        WIN("/Lvl_Sample/View/win-screen.fxml"),
+        LEVEL_01("/Lvl_Sample/LevelScene.fxml");
 
         private final String path;
 

@@ -3,7 +3,7 @@ package Data.Config;
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
 import Data.Loader.ImageLoader;
-import Level.Skills.Player.Dash;
+import Lvl_Sample.Skills.Player.Dash;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.DashFile;
 
@@ -20,30 +20,32 @@ public class DashConfig extends SkillConfig {
                 DashFile.class,
                 "Dash"
         );
+
+        this.upgradeValues = new UpgradeValue[]{
+                rangeUpgValue, cooldownUpgValue
+        };
     }
 
-    private final UpgradeValue RANGE = new UpgradeValue(
+    private final UpgradeValue rangeUpgValue = new UpgradeValue(
             new double[]{ 150, 225, 300},
             new double[]{ 2, 4, 4},
-            configID,
             RANGE_ID
     );
 
-    private final UpgradeValue COOLDOWN = new UpgradeValue(
+    private final UpgradeValue cooldownUpgValue = new UpgradeValue(
             new double[]{ 5, 4, 3},
             new double[]{ 2, 4, 4},
-            configID,
             COOLDOWN_ID
     );
 
     private final UpgradeText rangeUpg = new UpgradeText(
             "Dash", "Increase Range", "Range",
-            "", ImageLoader.DASH_ICON, RANGE
+            "", ImageLoader.DASH_ICON, rangeUpgValue
     );
 
     private final UpgradeText cooldownUpg = new UpgradeText(
             "Dash", "Decrease Cooldown", "Cooldown",
-            "", ImageLoader.DASH_ICON, COOLDOWN
+            "", ImageLoader.DASH_ICON, cooldownUpgValue
     );
 
     public final UpgradeText[] getUpgradeTexts(){
@@ -55,8 +57,8 @@ public class DashConfig extends SkillConfig {
 
     public Dash getSkill(FileManager fileManager){
         DashFile dashFile = fileManager.getDashFile();
-        double range = RANGE.getValue(dashFile.getRangeUpgrades());
-        double cooldown = COOLDOWN.getValue(dashFile.getCooldownUpgrades());
+        double range = rangeUpgValue.getValue(dashFile.getRangeUpgrades());
+        double cooldown = cooldownUpgValue.getValue(dashFile.getCooldownUpgrades());
         return new Dash(cooldown, range);
     }
 }

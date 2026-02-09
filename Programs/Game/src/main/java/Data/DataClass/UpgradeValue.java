@@ -2,21 +2,22 @@ package Data.DataClass;
 
 public class UpgradeValue {
 
-    private final int skillID;
+    private int skillID;
     private final int upgradeID;
 
     private final double[] value;
     private final double[] increment;
     private final double[] cost;
 
-    public UpgradeValue(double[] value, double[] cost, int skillID, int upgradeID){
+    public UpgradeValue(double[] value, double[] cost, int upgradeID){
         this.value = initializeValue(value);
         this.cost = initializeCost(cost, this.value);
         this.increment = initializeIncrement(this.value);
-
-        this.skillID = skillID;
         this.upgradeID = upgradeID;
+    }
 
+    public void setSkillID(int skillID){
+        this.skillID = skillID;
     }
 
     public double getValue(int currentUpgrade) {
