@@ -15,7 +15,6 @@ public class MainManager {
     // Minor Manager
     private final Level level;
     private final Observer observer;
-    private final CoinManager coinManager;
     // Objects
     private final Player player;
     private final Boss boss ;
@@ -28,7 +27,6 @@ public class MainManager {
         this.level = level;
         this.sceneView = sceneView;
         this.observer = observer;
-        this.coinManager = new CoinManager(level);
 
         this.player = player;
         boss = new Rat(observer);
@@ -55,13 +53,8 @@ public class MainManager {
             gameRunning = false;
 
         }
-        else if (rewardState && !isEnd()) {
-            coinManager.handleCoinCollection();
-            sceneView.setMoneyValue(coinManager.getMoneyValue());
-
-        }
         else if(rewardState && isEnd()){
-            sceneView.showWinScreen(coinManager.getMoneyValue());
+            sceneView.showWinScreen(5);
             rewardState = false;
             gameRunning = false;
         }
@@ -71,7 +64,6 @@ public class MainManager {
 
     private void handleWinCondition(){
         closeBoss();
-        spawnCoin();
         spawnPortal();
     }
 
@@ -79,12 +71,6 @@ public class MainManager {
         level.removeDisplay(boss);
         level.removeDisplay(boss.getAttackVisual());
         level.removeObjects(boss);
-    }
-
-    private void spawnCoin(){
-        ArrayList<Coin> coins = coinManager.spawnCoins(boss.getProperty(), observer);
-        level.addDisplay(new ArrayList<>(coins));
-        level.addObjects(new ArrayList<>(coins));
     }
 
     private boolean isVictory(){
