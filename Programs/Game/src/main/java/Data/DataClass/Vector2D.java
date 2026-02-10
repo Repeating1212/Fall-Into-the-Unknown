@@ -1,6 +1,6 @@
 package Data.DataClass;
 
-import BaseLevel.Properties.Position;
+import Level.BaseLevel.Properties.Position;
 
 public class Vector2D {
     private double x;

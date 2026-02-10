@@ -3,10 +3,10 @@ package Data.Config;
 import Data.Loader.ImageLoader;
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
-import BaseLevel.Objects.Class_Base.AttackArea;
-import BaseLevel.Skills.AttackSkill;
-import BaseLevel.Objects.Class_Concrete.ConeAttackArea;
-import BaseLevel.View.AttackVisualize.ConeAttackVisual;
+import Level.BaseLevel.Objects.Class_Base.AttackArea;
+import Level.BaseLevel.Skills.AttackSkill;
+import Level.BaseLevel.Objects.Class_Concrete.ConeAttackArea;
+import Level.BaseLevel.View.AttackVisualize.ConeAttackVisual;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.AttackFile;
 
@@ -118,7 +118,8 @@ public class AttackConfig extends SkillConfig {
                 attackArea,
                 damage,
                 cooldown,
-                ENLARGE_DURATION
+                ENLARGE_DURATION,
+                TOTAL_ANIMATION_PERIOD
         );
 
         return attackSkill;

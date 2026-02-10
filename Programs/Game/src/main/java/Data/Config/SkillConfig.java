@@ -2,7 +2,7 @@ package Data.Config;
 
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
-import BaseLevel.Skills.Skill;
+import Level.BaseLevel.Skills.Skill;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.SkillFile;
 import javafx.scene.image.Image;

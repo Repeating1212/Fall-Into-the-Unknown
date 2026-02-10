@@ -3,7 +3,7 @@ package Data.Config;
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
 import Data.Loader.ImageLoader;
-import BaseLevel.Skills.Defend;
+import Level.BaseLevel.Skills.Defend;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.DefendFile;
 
