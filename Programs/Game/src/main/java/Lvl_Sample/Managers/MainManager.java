@@ -29,16 +29,13 @@ public class MainManager extends Updater {
     // Private Method
 
     private void closeBoss(){
-        levelData.removeDisplay(boss);
-        levelData.removeDisplay(boss.getAttackVisual());
+        boss.removeDisplay();
         levelData.removeObjects(boss);
+
     }
-
-
 
     private void spawnPortal(){
         portal.setPosition(boss.getX(), boss.getY());
-        levelData.addDisplay(portal);
         levelData.addObjects(portal);
     }
 

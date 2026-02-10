@@ -1,6 +1,7 @@
 package Lvl_Sample.Enemy;
 
 import Data.Loader.ImageLoader;
+import Lvl_Sample.Behaviour.GroundSlap;
 import Lvl_Sample.Managers.Observer;
 import BaseLevel.Objects.Class_Base.Boss;
 import Lvl_Sample.Data.Config.GuardConfig;
@@ -10,12 +11,15 @@ import BaseLevel.View.AttackVisualize.AttackVisual;
 public class Guard extends Boss {
 
 //    private final AttackSkill attackSkill;
+    private final GroundSlap groundSlap;
     private final double ATTACK_OFFSET = GuardConfig.ATTACK_DISTANCE_OFFSET;
 
     public Guard(Observer observer) {
         super(GuardSupplier.getProperty(), ImageLoader.STAKE, observer);
-//        this.attackSkill = GuardSupplier.getAttackBehaviour();
-//        this.attackSkill.initializeData(property, null);
+        this.groundSlap = GuardSupplier.getGroundSlap();
+        groundSlap.initializeData(property);
+        observer.addDisplayableObject(this);
+        observer.addDisplayableObject(groundSlap.getAttackVisual());
     }
 
     // Override Method
@@ -25,13 +29,7 @@ public class Guard extends Boss {
         property.pointTo(observer.getEnemy().getProperty());
         super.update(deltaTime);
         updateSpritePosition();
-//        handleAttack(deltaTime);
-    }
-
-    @Override
-    public AttackVisual getAttackVisual(){
-        return  null;
-//        return attackSkill.getAttackVisual();
+        handleAttack(deltaTime);
     }
 
     @Override
@@ -41,14 +39,19 @@ public class Guard extends Boss {
         super.updateSpritePosition();
     }
 
+    @Override
+    public void removeDisplay(){
+        observer.removeDisplayableObject(groundSlap.getAttackVisual());
+    }
+
 
     // Private Method
 
-//    private void handleAttack(double deltaTime){
-//        if (isNearEnemy()) attackSkill.activate(observer.getEnemy().getCenterPos());
-//        attackSkill.handleRigid();
-//        attackSkill.update(deltaTime, observer);
-//    }
+    private void handleAttack(double deltaTime){
+        if (isNearEnemy()) groundSlap.activate(observer.getEnemy().getCenterPos());
+        groundSlap.handleRigid();
+        groundSlap.update(deltaTime, observer);
+    }
 
     private boolean isNearEnemy(){
         double horizontalDistance = Math.abs(property.getX() - observer.getEnemy().getX());

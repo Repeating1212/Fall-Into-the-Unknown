@@ -16,7 +16,7 @@ public abstract class Updater {
     // Objects
     protected final Player player;
     protected final Boss boss ;
-    protected final Portal portal;
+    protected Portal portal;
     // GameState
     protected boolean rewardState = false;
     protected boolean gameRunning = true;
@@ -28,10 +28,7 @@ public abstract class Updater {
         this.observer = observer;
         this.boss = levelSupplier.getBoss(observer);
 
-        portal = new Portal(observer);
-
         levelData.addObjects(levelSupplier.getObjects(player, boss));
-        levelData.addDisplay(levelSupplier.getDisplayObjects(player, boss));
     }
 
     public void updateObjects(double deltaTime){
@@ -63,6 +60,8 @@ public abstract class Updater {
 
     private void checkGameCondition() {
         if(isVictory() && ! rewardState){
+            portal = new Portal(observer, boss.getProperty());
+            levelData.addObjects(portal);
             handleWinCondition();
             rewardState = true;
         }

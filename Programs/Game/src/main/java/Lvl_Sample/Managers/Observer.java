@@ -1,6 +1,7 @@
 package Lvl_Sample.Managers;
 
 import BaseLevel.Manager.LevelData;
+import BaseLevel.Objects.Class_Base.DisplayableObject;
 import BaseLevel.Properties.Property;
 import BaseLevel.Objects.Class_Base.GameObject;
 import BaseLevel.Objects.Class_Concrete.Player;
@@ -63,5 +64,15 @@ public class Observer {
 
     public GameObject getEnemy(){
         return enemy;
+    }
+
+    public void addDisplayableObject(DisplayableObject displayableObject){
+        if (displayableObject == null) return;
+        levelData.addDisplay(displayableObject);
+    }
+
+    public void removeDisplayableObject(DisplayableObject displayableObject){
+        if (displayableObject == null) return;
+        levelData.removeDisplay(displayableObject);
     }
 }

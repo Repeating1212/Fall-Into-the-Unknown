@@ -19,7 +19,7 @@ public class GuardConfig {
     // AttackConfig Animation
     public static final double FADE_OUT_DURATION = 0.3;
     public static final double ENLARGE_DURATION = 1.5;
-    public static final double TOTAL_ANIMATION_PERIOD = FADE_OUT_DURATION + ENLARGE_DURATION;
+    public static final double TOTAL_ANIMATION_PERIOD = (FADE_OUT_DURATION + ENLARGE_DURATION);
     // AttackConfig time-related
     public static final double INITIAL_ATTACK_COOLDOWN = 3.0;
     public static final double ATTACK_RIGID_TIME = TOTAL_ANIMATION_PERIOD * 1.2;

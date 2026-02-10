@@ -4,8 +4,8 @@ import BaseLevel.Objects.Config.PortalConfig;
 import BaseLevel.Properties.*;
 
 public class PortalSupplier {
-    public static Property getProperty(){
-        Position playerPosition =  new Position();
+    public static Property getProperty(Property property){
+        Position playerPosition = property.duplicatePosition();
         HitBox hitBox = new HitBox(PortalConfig.WIDTH, PortalConfig.HEIGHT, playerPosition, PortalConfig.IS_BLOCKABLE);
         MovementState movementState = new MovementState(PortalConfig.SPEED);
         Health health = new Health(PortalConfig.MAXIMUM_HEALTH);

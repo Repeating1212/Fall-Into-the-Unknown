@@ -1,6 +1,7 @@
 package Lvl_Sample.Data.Suppliers;
 
 import BaseLevel.Skills.AttackSkill;
+import Lvl_Sample.Behaviour.GroundSlap;
 import Lvl_Sample.Data.Config.GuardConfig;
 import BaseLevel.Properties.*;
 import BaseLevel.Objects.Class_Base.AttackArea;
@@ -20,10 +21,10 @@ public class GuardSupplier {
         return new Health(GuardConfig.MAXIMUM_HEALTH);
     }
 
-    public static AttackSkill getAttackBehaviour(){
+    public static GroundSlap getGroundSlap(){
         AttackArea attackArea = new ConeAttackArea(GuardConfig.INITIAL_ATTACK_RANGE, GuardConfig.ATTACK_AREA_ANGLE);
         ConeAttackVisual attackVisual = new ConeAttackVisual(GuardConfig.INITIAL_ATTACK_RANGE, GuardConfig.ATTACK_AREA_ANGLE, GuardConfig.ENLARGE_DURATION, GuardConfig.FADE_OUT_DURATION);
 
-        return new AttackSkill(attackVisual, GuardConfig.ATTACK_RIGID_TIME, attackArea, GuardConfig.INITIAL_DAMAGE, GuardConfig.INITIAL_ATTACK_COOLDOWN, GuardConfig.ENLARGE_DURATION);
+        return new GroundSlap(attackVisual, GuardConfig.ATTACK_RIGID_TIME, attackArea, GuardConfig.INITIAL_DAMAGE, GuardConfig.INITIAL_ATTACK_COOLDOWN, GuardConfig.ENLARGE_DURATION);
     }
 }

@@ -23,6 +23,8 @@ public class Player extends ImageObject {
             skill.initializeData(property, playerState);
         }
         this.updateHealth();
+
+        observer.addDisplayableObject(getAttackVisual());
     }
 
     // Update player position
@@ -67,7 +69,12 @@ public class Player extends ImageObject {
 
         super.updateSpritePosition();
         handleInvincibilityAnimation();
+    }
 
+    @Override
+    public void removeDisplay(){
+        super.removeDisplay();
+        observer.removeDisplayableObject(getAttackVisual());
     }
 
     // Private Method
@@ -83,8 +90,7 @@ public class Player extends ImageObject {
     public AttackVisual getAttackVisual() {
         for (Skill skill: skills){
             if (skill.getClass() == AttackSkill.class){
-                AttackSkill attackSkill = (AttackSkill) skill;
-                return attackSkill.getAttackVisual();
+                return ((AttackSkill) skill).getAttackVisual();
             }
         }
         return null;

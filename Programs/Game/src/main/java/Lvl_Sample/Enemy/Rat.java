@@ -39,9 +39,4 @@ public class Rat extends Boss {
     private void handleAttack(double deltaTime){
         meleeAttack.update(property, observer.getEnemy(), deltaTime);
     }
-
-    @Override
-    public AttackVisual getAttackVisual() {
-        return null;
-    }
 }

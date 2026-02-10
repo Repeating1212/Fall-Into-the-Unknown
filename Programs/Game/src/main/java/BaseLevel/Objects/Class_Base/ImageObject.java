@@ -14,12 +14,18 @@ public abstract class ImageObject extends GameObject {
         this.property = property;
         createSprite(image);
         updateSpritePosition();
+
+        observer.addDisplayableObject(this);
     }
 
     protected void updateSpritePosition() {
         sprite.setX(property.getX());
         sprite.setY(property.getY());
         property.resetDebugHitBox();
+    }
+
+    public void removeDisplay(){
+        observer.removeDisplayableObject(this);
     }
 
     // Private Method

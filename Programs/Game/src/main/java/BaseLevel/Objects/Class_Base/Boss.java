@@ -36,8 +36,4 @@ public abstract class Boss extends ImageObject {
         }
         return false;
     }
-
-    // Abstract class
-
-    public abstract AttackVisual getAttackVisual();
 }
