@@ -1,4 +1,4 @@
-package Level.Skills.Attacks;//package level.Workers.Behaviour.Attacks;
+package Level.Player.Skills.Attacks;//package level.Workers.Behaviour.Attacks;
 //
 //import level.Storage.Data.HitBox;
 //import level.Storage.Data.Position;

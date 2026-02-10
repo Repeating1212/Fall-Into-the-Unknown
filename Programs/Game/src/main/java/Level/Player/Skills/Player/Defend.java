@@ -1,11 +1,11 @@
-package Level.Skills.Player;
+package Level.Player.Skills.Player;
 
 import Level.Data.Properties.Position;
 import Level.Data.Properties.Property;
 import Level.Managers.Observer;
-import Level.Data.Properties.PlayerState;
-import Level.Skills.Skill;
-import Level.Skills.Timer;
+import Level.Player.PlayerState;
+import Level.Player.Skills.Skill;
+import Level.Player.Skills.Timer;
 
 public class Defend implements Skill {
 

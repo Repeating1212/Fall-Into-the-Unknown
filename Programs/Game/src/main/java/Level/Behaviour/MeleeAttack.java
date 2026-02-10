@@ -1,9 +1,8 @@
 package Level.Behaviour;
 
 import Level.Data.Properties.Property;
-import Level.Managers.Observer;
 import Level.Objects.Base_Class.GameObject;
-import Level.Skills.Timer;
+import Level.Player.Skills.Timer;
 
 public class MeleeAttack {
 
@@ -19,13 +18,15 @@ public class MeleeAttack {
 
     public void update(Property property, GameObject enemy, double deltaTime){
         if (property.isTouch(enemy.getProperty()) && timer.isEnd()){
-            enemy.takeDamage(Damage);
+            boolean damaged = enemy.takeDamage(Damage);
             timer.setPending();
+
+            if (damaged) handleRigid(property);
         }
         timer.update(deltaTime);
     }
 
-    public void handleRigid(Property property){
+    private void handleRigid(Property property){
         if (timer.isPending()){
             property.pauseMovement(AttackRigid);
             timer.start();

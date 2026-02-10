@@ -1,8 +1,8 @@
 package Data.Supplier;
 
 import Data.Config.*;
-import Level.Skills.Player.EmptySkill;
-import Level.Skills.Skill;
+import Level.Player.Skills.Player.EmptySkill;
+import Level.Player.Skills.Skill;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.EmptySkillFile;
 import LoadFile.SkillFile.SkillFile;

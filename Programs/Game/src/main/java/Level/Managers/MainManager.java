@@ -31,9 +31,10 @@ public class MainManager {
         this.coinManager = new CoinManager(level);
 
         this.player = player;
-        boss = new Rat(player, observer);
+        boss = new Rat(observer);
         portal = new Portal(observer);
         observer.setPlayer(player);
+        observer.setEnemy(player);
 
         level.addObjects(LevelSupplier.getObjects(player, boss));
         level.addDisplay(LevelSupplier.getDisplayObjects(player, boss));

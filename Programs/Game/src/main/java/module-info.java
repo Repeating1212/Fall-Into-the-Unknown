@@ -46,17 +46,19 @@ module Game {
     opens Level.Managers to javafx.fxml;
     exports Level.Objects.Base_Class;
     opens Level.Objects.Base_Class to javafx.fxml;
-    exports Level.Skills.Attacks;
-    opens Level.Skills.Attacks to javafx.fxml;
+    exports Level.Player.Skills.Attacks;
+    opens Level.Player.Skills.Attacks to javafx.fxml;
     exports Level.View.AttackVisualize;
     opens Level.View.AttackVisualize to javafx.fxml;
     exports Level.Managers.LevelData;
     opens Level.Managers.LevelData to javafx.fxml;
-    exports Level.Skills;
-    opens Level.Skills to javafx.fxml;
+    exports Level.Player.Skills;
+    opens Level.Player.Skills to javafx.fxml;
     exports Data.Loader;
     opens Data.Loader to com.google.gson, javafx.fxml;
     exports Level.Data.Data;
     opens Level.Data.Data to javafx.fxml;
+    exports Level.Player;
+    opens Level.Player to javafx.fxml;
 
 }

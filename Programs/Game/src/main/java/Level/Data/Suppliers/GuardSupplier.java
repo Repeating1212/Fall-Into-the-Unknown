@@ -1,10 +1,10 @@
 package Level.Data.Suppliers;
 
-import Level.Skills.Attacks.AttackSkill;
+import Level.Player.Skills.Attacks.AttackSkill;
 import Level.Data.Config.GuardConfig;
 import Level.Data.Properties.*;
-import Level.Skills.Attacks.AttackArea;
-import Level.Skills.Attacks.ConeAttackArea;
+import Level.Player.Skills.Attacks.AttackArea;
+import Level.Player.Skills.Attacks.ConeAttackArea;
 import Level.View.AttackVisualize.ConeAttackVisual;
 
 public class GuardSupplier {

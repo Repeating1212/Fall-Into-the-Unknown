@@ -1,9 +1,9 @@
-package Level.Skills.Player;
+package Level.Player.Skills.Player;
 
-import Level.Data.Properties.PlayerState;
+import Level.Player.PlayerState;
 import Level.Managers.Observer;
-import Level.Skills.Skill;
-import Level.Skills.Timer;
+import Level.Player.Skills.Skill;
+import Level.Player.Skills.Timer;
 import Level.Data.Properties.Property;
 import Level.Data.Properties.Position;
 

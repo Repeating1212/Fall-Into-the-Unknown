@@ -1,4 +1,4 @@
-package Level.Skills.Attacks;
+package Level.Player.Skills.Attacks;
 
 import Level.Data.Properties.*;
 

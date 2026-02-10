@@ -8,15 +8,15 @@ import Level.Data.Suppliers.RatSupplier;
 import Level.Managers.Observer;
 import Level.Objects.Base_Class.Boss;
 import Level.Objects.Base_Class.GameObject;
+import Level.Objects.Base_Class.ImageObject;
 import Level.View.AttackVisualize.AttackVisual;
 
 public class Rat extends Boss {
 
     private final MeleeAttack meleeAttack;
 
-    public Rat(GameObject enemy, Observer observer) {
-        super(RatSupplier.getProperty(), ImageLoader.L01_RAT,
-                enemy, observer);
+    public Rat(Observer observer) {
+        super(RatSupplier.getProperty(), ImageLoader.L01_RAT, observer);
         this.meleeAttack = RatSupplier.getMeleeAttack();
     }
 
@@ -24,15 +24,10 @@ public class Rat extends Boss {
 
     @Override
     public void update(double deltaTime) {
-        property.pointTo(enemy.getProperty());
+        property.pointTo(observer.getEnemy().getProperty());
         super.update(deltaTime);
         updateSpritePosition();
         handleAttack(deltaTime);
-    }
-
-    @Override
-    public AttackVisual getAttackVisual(){
-        return null;
     }
 
     @Override
@@ -46,7 +41,11 @@ public class Rat extends Boss {
     // Private Method
 
     private void handleAttack(double deltaTime){
-        meleeAttack.update(property, enemy, deltaTime);
-        meleeAttack.handleRigid(property);
+        meleeAttack.update(property, observer.getEnemy(), deltaTime);
+    }
+
+    @Override
+    public AttackVisual getAttackVisual() {
+        return null;
     }
 }

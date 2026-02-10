@@ -3,8 +3,8 @@ package Data.Config;
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
 import Data.Loader.ImageLoader;
-import Level.Skills.Player.EmptySkill;
-import Level.Skills.Skill;
+import Level.Player.Skills.Player.EmptySkill;
+import Level.Player.Skills.Skill;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.EmptySkillFile;
 

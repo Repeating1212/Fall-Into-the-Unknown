@@ -1,6 +1,6 @@
-package Level.Skills;
+package Level.Player.Skills;
 
-import Level.Data.Properties.PlayerState;
+import Level.Player.PlayerState;
 import Level.Data.Properties.Position;
 import Level.Data.Properties.Property;
 import Level.Managers.Observer;

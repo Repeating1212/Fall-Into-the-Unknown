@@ -42,6 +42,7 @@ public class ImageLoader {
     private static final String STAKE_Path          = "/Picture/Level_Picture/Character/Stake.png";
     private static final String PLAYER_LEFT_Path    = "/Picture/Level_Picture/Character/Character_Left.png";
     private static final String PLAYER_RIGHT_Path   = "/Picture/Level_Picture/Character/Character_Right.png";
+    private static final String PLAYER_INVINCIBILITY_Path = "/Picture/Level_Picture/Character/Invincibility Animation.gif";
     private static final String PORTAL_Path         = "/Picture/Level_Picture/Character/Portal.png";
     private static final String LEVEL01_MAP_Path    = "/Picture/Level_Picture/map.png";
     private static final String HEART_FULL_Path     = "/Picture/Level_Picture/HeartFull.png";
@@ -83,6 +84,7 @@ public class ImageLoader {
     public static final Image STAKE = new Image(ImageLoader.class.getResourceAsStream(STAKE_Path));
     public static final Image PLAYER_LEFT = new Image(PlayerConfig.class.getResourceAsStream(PLAYER_LEFT_Path));
     public static final Image PLAYER_RIGHT =  new Image(PlayerConfig.class.getResourceAsStream(PLAYER_RIGHT_Path));
+    public static final Image PLAYER_INVINCIBILITY =  new Image(PlayerConfig.class.getResourceAsStream(PLAYER_INVINCIBILITY_Path));
     public static final Image PORTAL = new Image(PlayerConfig.class.getResourceAsStream(PORTAL_Path));
 
 

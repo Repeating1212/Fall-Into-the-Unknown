@@ -8,11 +8,9 @@ import Level.View.AttackVisualize.AttackVisual;
 public abstract class Boss extends ImageObject {
 
     protected boolean isDefeated = false;
-    protected GameObject enemy;
 
-    public Boss(Property property, Image image, GameObject enemy, Observer observer){
+    public Boss(Property property, Image image, Observer observer){
         super(property, image, observer);
-        this.enemy = enemy;
     }
 
     public void defeat() {
@@ -37,10 +35,6 @@ public abstract class Boss extends ImageObject {
             return true;
         }
         return false;
-    }
-
-    public void getEnemy(GameObject enemy){
-        this.enemy = enemy;
     }
 
     // Abstract class

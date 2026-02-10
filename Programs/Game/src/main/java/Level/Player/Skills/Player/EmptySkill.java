@@ -1,10 +1,10 @@
-package Level.Skills.Player;
+package Level.Player.Skills.Player;
 
-import Level.Data.Properties.PlayerState;
+import Level.Player.PlayerState;
 import Level.Data.Properties.Position;
 import Level.Data.Properties.Property;
 import Level.Managers.Observer;
-import Level.Skills.Skill;
+import Level.Player.Skills.Skill;
 
 public class EmptySkill implements Skill {
 

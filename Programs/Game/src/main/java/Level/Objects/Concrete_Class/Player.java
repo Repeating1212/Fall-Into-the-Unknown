@@ -1,35 +1,38 @@
 package Level.Objects.Concrete_Class;
 
 import Data.Loader.ImageLoader;
-import Level.Data.Properties.PlayerState;
+import Level.Data.Config.PlayerConfig;
+import Level.Player.PlayerState;
 import Level.Objects.Base_Class.ImageObject;
 import Level.Managers.Observer;
-import Level.Skills.Player.EmptySkill;
-import Level.Skills.Skill;
+import Level.Player.Skills.Player.EmptySkill;
+import Level.Player.Skills.Skill;
+import Level.Player.Skills.Timer;
 import Level.View.AttackVisualize.AttackVisual;
 import Level.Data.Suppliers.PlayerSupplier;
-import Level.Skills.Attacks.AttackSkill;
+import Level.Player.Skills.Attacks.AttackSkill;
+import javafx.scene.image.ImageView;
 
 public class Player extends ImageObject {
-    private final PlayerState playerState = new PlayerState();
-    private Skill[] skills = new Skill[]{
-            new EmptySkill(), new EmptySkill(), new EmptySkill(), new EmptySkill()
-    };
+    private final PlayerState playerState;
+    private final Skill[] skills;
 
     // Constructor
     public Player(Observer observer, Skill[] skills) {
-        super(PlayerSupplier.getProperty(), ImageLoader.PLAYER_RIGHT, observer);
-        this.updateHealth();
+        super(PlayerSupplier.getProperty(), ImageLoader.PLAYER_LEFT, observer);
         this.skills = skills;
+        this.playerState = new PlayerState(PlayerConfig.INVINCIBILITY_PERIOD);
         for(Skill skill : skills){
             skill.initializeData(property, playerState);
         }
+        this.updateHealth();
     }
 
     // Update player position
     public void update(double deltaTime) {
         super.update(deltaTime);
         updateSpritePosition();
+        playerState.update(deltaTime);
         for(Skill skill : skills){
             skill.handleRigid();
             skill.update(deltaTime, observer);
@@ -50,17 +53,24 @@ public class Player extends ImageObject {
     }
 
     @Override
-    public void takeDamage(double damage){
-        if(! playerState.isDefend()){
+    public boolean takeDamage(double damage){
+        if(playerState.isDamageable()){
             super.takeDamage(damage);
+            playerState.setDamaged();
+            return true;
         }
+
+        return false;
     }
 
     @Override
     public void updateSpritePosition(){
-        if (property.isMovingLeft()) sprite.setImage(ImageLoader.PLAYER_LEFT);
-        else if (property.isMovingRight()) sprite.setImage(ImageLoader.PLAYER_RIGHT);
+        if (property.isMovingLeft()) sprite.setScaleX(1);
+        else if (property.isMovingRight()) sprite.setScaleX(-1);
+
         super.updateSpritePosition();
+        handleInvincibilityAnimation();
+
     }
 
     // Private Method
@@ -81,5 +91,17 @@ public class Player extends ImageObject {
             }
         }
         return null;
+    }
+
+    // Private Method
+
+    private  void handleInvincibilityAnimation(){
+        if (playerState == null) return;
+
+        if(playerState.isInvincibility()) {
+            sprite.setImage(ImageLoader.PLAYER_INVINCIBILITY);
+        } else{
+            sprite.setImage(ImageLoader.PLAYER_LEFT);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package Level.Skills;
+package Level.Player.Skills;
 
 public class Timer {
 

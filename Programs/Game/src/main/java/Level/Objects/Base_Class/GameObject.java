@@ -67,9 +67,10 @@ public abstract class GameObject implements DisplayableObject{
 
     // Health Related
 
-    public void takeDamage(double damage) {
+    public boolean takeDamage(double damage) {
         property.reduceHealth(damage);
         updateHealth();
+        return true;
     }
 
     public int getHealth() {

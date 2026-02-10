@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class Observer {
 
     private Property player;
+    private GameObject enemy;
     private final SceneView sceneView;
     private final Level level;
 
@@ -21,6 +22,10 @@ public class Observer {
 
     protected void setPlayer(Player player){
         this.player = player.getProperty();
+    }
+
+    protected void setEnemy(GameObject enemy){
+        this.enemy = enemy;
     }
 
     // Get by GameObjects
@@ -53,5 +58,9 @@ public class Observer {
 
     public void updatePlayerHeartView(int heart){
         sceneView.updatePlayerHeartView(heart);
+    }
+
+    public GameObject getEnemy(){
+        return enemy;
     }
 }

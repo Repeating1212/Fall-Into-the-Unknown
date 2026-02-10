@@ -1,12 +1,12 @@
-package Level.Skills.Attacks;
+package Level.Player.Skills.Attacks;
 
-import Level.Data.Properties.PlayerState;
+import Level.Player.PlayerState;
 import Level.Managers.Observer;
 import Level.Objects.Base_Class.GameObject;
 import Level.Data.Properties.Property;
 import Level.Data.Properties.Position;
-import Level.Skills.Skill;
-import Level.Skills.Timer;
+import Level.Player.Skills.Skill;
+import Level.Player.Skills.Timer;
 import Level.View.AttackVisualize.AttackVisual;
 
 import java.util.ArrayList;
