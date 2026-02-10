@@ -1,0 +1,12 @@
+package Lvl_Sample.Managers;
+
+import BaseLevel.Objects.Class_Base.Boss;
+import Lvl_Sample.Enemy.Rat;
+import BaseLevel.Manager.LevelSupplier;
+
+public class LvlSupplier_Sample extends LevelSupplier {
+
+    public Boss getBoss(Observer observer){
+        return new Rat(observer);
+    }
+}

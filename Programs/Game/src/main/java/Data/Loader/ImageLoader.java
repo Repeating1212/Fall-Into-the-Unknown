@@ -1,7 +1,7 @@
 package Data.Loader;
 
 import Data.Supplier.SkillSupplier;
-import Level.Data.Config.PlayerConfig;
+import BaseLevel.Objects.Config.PlayerConfig;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
@@ -37,7 +37,7 @@ public class ImageLoader {
     // GameController1
     private static final String STARTSCENE_IMAGE_Path = "/Picture/UI_Picture/StartScene/Background.png";
 
-    // Level Images
+    // LevelData Images
     private static final String COIN_ANIMATION_Path = "/Picture/Level_Picture/Coin_Animation.gif";
     private static final String STAKE_Path          = "/Picture/Level_Picture/Character/Stake.png";
     private static final String PLAYER_LEFT_Path    = "/Picture/Level_Picture/Character/Character_Left.png";

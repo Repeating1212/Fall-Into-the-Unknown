@@ -7,7 +7,6 @@ module Game {
     requires java.desktop;
     requires com.google.gson;
 
-
     opens Game_UI to javafx.fxml;
     exports Game_UI;
     exports Game_UI.StartScene;
@@ -31,34 +30,33 @@ module Game {
 
 
 
-    exports Level.View;
-    opens Level.View to javafx.fxml;
-    exports Level.Data.Properties;
-    opens Level.Data.Properties to javafx.fxml;
-    exports Level.Objects.Concrete_Class;
-    opens Level.Objects.Concrete_Class to javafx.fxml;
-    exports Level.Data.Config;
-    opens Level to javafx.fxml;
-    exports Level.Controllers;
-    opens Level.Controllers to javafx.fxml;
-    exports Level;
-    exports Level.Managers;
-    opens Level.Managers to javafx.fxml;
-    exports Level.Objects.Base_Class;
-    opens Level.Objects.Base_Class to javafx.fxml;
-    exports Level.Player.Skills.Attacks;
-    opens Level.Player.Skills.Attacks to javafx.fxml;
-    exports Level.View.AttackVisualize;
-    opens Level.View.AttackVisualize to javafx.fxml;
-    exports Level.Managers.LevelData;
-    opens Level.Managers.LevelData to javafx.fxml;
-    exports Level.Player.Skills;
-    opens Level.Player.Skills to javafx.fxml;
+    exports BaseLevel.View;
+    opens BaseLevel.View to javafx.fxml;
+    exports BaseLevel.Properties;
+    opens BaseLevel.Properties to javafx.fxml;
+    exports Lvl_Sample.Enemy;
+    opens Lvl_Sample.Enemy to javafx.fxml;
+    exports Lvl_Sample.Data.Config;
+    opens Lvl_Sample to javafx.fxml;
+    exports BaseLevel.Controllers;
+    opens BaseLevel.Controllers to javafx.fxml;
+    exports Lvl_Sample;
+    exports Lvl_Sample.Managers;
+    opens Lvl_Sample.Managers to javafx.fxml;
+    exports BaseLevel.View.AttackVisualize;
+    opens BaseLevel.View.AttackVisualize to javafx.fxml;
+    exports BaseLevel.Skills;
+    opens BaseLevel.Skills to javafx.fxml;
     exports Data.Loader;
     opens Data.Loader to com.google.gson, javafx.fxml;
-    exports Level.Data.Data;
-    opens Level.Data.Data to javafx.fxml;
-    exports Level.Player;
-    opens Level.Player to javafx.fxml;
+    exports BaseLevel.Manager;
+    opens BaseLevel.Manager to javafx.fxml;
+    exports BaseLevel.Objects.Config;
+    exports BaseLevel.Objects.Class_Base;
+    opens BaseLevel.Objects.Class_Base to javafx.fxml;
+    exports BaseLevel.Objects.Class_Concrete;
+    opens BaseLevel.Objects.Class_Concrete to javafx.fxml;
+    exports Data.DataClass;
+    opens Data.DataClass to com.google.gson, javafx.fxml;
 
 }

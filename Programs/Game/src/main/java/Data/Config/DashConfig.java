@@ -3,7 +3,7 @@ package Data.Config;
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
 import Data.Loader.ImageLoader;
-import Level.Player.Skills.Player.Dash;
+import BaseLevel.Skills.Dash;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.DashFile;
 
