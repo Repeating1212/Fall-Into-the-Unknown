@@ -54,5 +54,7 @@ module Game {
     opens Level.Lvl_Sample.Launcher to javafx.fxml;
     exports Level.Lvl_Sample.Enemy.Object;
     opens Level.Lvl_Sample.Enemy.Object to javafx.fxml;
+    exports Level.BaseLevel.Objects;
+    opens Level.BaseLevel.Objects to javafx.fxml;
 
 }

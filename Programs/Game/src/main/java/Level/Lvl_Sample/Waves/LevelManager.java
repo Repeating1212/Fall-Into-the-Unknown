@@ -2,12 +2,8 @@ package Level.Lvl_Sample.Waves;
 
 import Data.DataClass.ArrayData;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
-import Level.BaseLevel.Objects.Class_Concrete.Player;
+import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.View.SceneView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class LevelManager implements Updater{
 

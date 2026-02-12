@@ -4,8 +4,8 @@ import Data.Loader.ImageLoader;
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
 import Level.BaseLevel.Objects.Class_Base.AttackArea;
-import Level.BaseLevel.Skills.AttackSkill;
-import Level.BaseLevel.Objects.Class_Concrete.ConeAttackArea;
+import Level.BaseLevel.Skills.Attack;
+import Level.BaseLevel.Skills.ConeAttackArea;
 import Level.BaseLevel.View.AttackVisualize.ConeAttackVisual;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.AttackFile;
@@ -96,7 +96,7 @@ public class AttackConfig extends SkillConfig {
     }
 
 
-    public AttackSkill getSkill(FileManager fileManager){
+    public Attack getSkill(FileManager fileManager){
         AttackFile attackFile = fileManager.getAttackFile();
 
         double damage = damageUpgValue.getValue(attackFile.getDamageUpgrade());
@@ -112,7 +112,7 @@ public class AttackConfig extends SkillConfig {
                 range, areaAngle, ENLARGE_DURATION, FADE_OUT_DURATION
         );
 
-        AttackSkill attackSkill = new AttackSkill(
+        Attack attackSkill = new Attack(
                 attackVisual,
                 AttackConfig.RIGID_TIME,
                 attackArea,

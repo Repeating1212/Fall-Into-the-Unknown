@@ -11,7 +11,7 @@ import Level.BaseLevel.View.AttackVisualize.AttackVisual;
 
 import java.util.ArrayList;
 
-public class AttackSkill implements Skill {
+public class Attack implements Skill {
 
     private final double ATTACK_DAMAGE;
     private final double ATTACK_RIGID_TIME;
@@ -28,8 +28,8 @@ public class AttackSkill implements Skill {
     private ArrayList<GameObject> targetEntity = new ArrayList<GameObject>();
 
 
-    public AttackSkill(AttackVisual attackVisual, double attackRigidTime, AttackArea attackArea, double attackDamage,
-                       double cooldown, double enlargeTime, double animationPeriod){
+    public Attack(AttackVisual attackVisual, double attackRigidTime, AttackArea attackArea, double attackDamage,
+                  double cooldown, double enlargeTime, double animationPeriod){
         this.attackVisual = attackVisual;
         this.attackArea = attackArea;
         this.ATTACK_RIGID_TIME = attackRigidTime;

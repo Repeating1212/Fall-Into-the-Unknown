@@ -4,7 +4,7 @@ import Data.DataClass.ArrayData;
 import Level.BaseLevel.Properties.Position;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
-import Level.BaseLevel.Objects.Class_Concrete.Player;
+import Level.BaseLevel.Objects.Player;
 
 
 import java.util.ArrayList;

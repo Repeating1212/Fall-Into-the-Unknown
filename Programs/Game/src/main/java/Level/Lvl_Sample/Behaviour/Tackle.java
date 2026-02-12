@@ -1,6 +1,6 @@
 package Level.Lvl_Sample.Behaviour;
 
-import Level.BaseLevel.Objects.Class_Concrete.Player;
+import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Data.DataClass.Timer;

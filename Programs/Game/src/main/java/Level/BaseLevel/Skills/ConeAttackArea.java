@@ -1,4 +1,4 @@
-package Level.BaseLevel.Objects.Class_Concrete;
+package Level.BaseLevel.Skills;
 
 import Level.BaseLevel.Objects.Class_Base.AttackArea;
 import Level.BaseLevel.Properties.Position;

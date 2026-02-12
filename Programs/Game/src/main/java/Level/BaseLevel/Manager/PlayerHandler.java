@@ -1,6 +1,6 @@
 package Level.BaseLevel.Manager;
 
-import Level.BaseLevel.Objects.Class_Concrete.Player;
+import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.View.SkillBoxView;
 
 public class PlayerHandler {

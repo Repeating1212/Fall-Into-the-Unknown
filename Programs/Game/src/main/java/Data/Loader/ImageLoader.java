@@ -1,7 +1,7 @@
 package Data.Loader;
 
 import Data.Supplier.SkillSupplier;
-import Level.BaseLevel.Objects.Config.PlayerConfig;
+import Level.BaseLevel.Objects.PlayerConfig;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;

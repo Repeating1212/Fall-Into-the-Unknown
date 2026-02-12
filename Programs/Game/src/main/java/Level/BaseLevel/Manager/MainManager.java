@@ -4,26 +4,21 @@ import Data.DataClass.ArrayData;
 import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Objects.Class_Base.Boss;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
-import Level.BaseLevel.Objects.Class_Concrete.Player;
-import Level.BaseLevel.Objects.Class_Concrete.Portal;
+import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.View.SceneView;
 import Level.Lvl_Sample.Enemy.Object.Guard;
 import Level.Lvl_Sample.Waves.Updater;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class MainManager implements Updater {
 
     private final SceneView sceneView;
-    private final LevelSupplier levelSupplier = new LevelSupplier();
     // Objects
     private final Player player;
     private final Boss boss ;
-    private Portal portal;
     // GameState
-    private boolean rewardState = false;
     private boolean gameRunning = true;
     // ObjectList
     private final ArrayData<GameObject> gameObj = new ArrayData();
@@ -57,27 +52,17 @@ public class MainManager implements Updater {
         return (player.isDead() && gameRunning);
     }
 
-    protected boolean isEnd(){
-        return (portal.isDead() && gameRunning);
-    }
-
     // Private Method
 
     private void checkGameCondition() {
-        if(isVictory() && ! rewardState){
-            portal = new Portal(boss.getProperty());
-            gameObj.add(portal);
-            rewardState = true;
+        if(isVictory() && ! isLose()){
+            sceneView.showWinScreen(5);
+            gameRunning = false;
         }
         else if(isLose()){
             sceneView.showLoseScreen();
             gameRunning = false;
 
-        }
-        else if(rewardState && isEnd()){
-            sceneView.showWinScreen(5);
-            rewardState = false;
-            gameRunning = false;
         }
     }
 

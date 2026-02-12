@@ -1,4 +1,4 @@
-package Level.BaseLevel.Objects.Config;
+package Level.BaseLevel.Objects;
 
 import Level.BaseLevel.Properties.*;
 

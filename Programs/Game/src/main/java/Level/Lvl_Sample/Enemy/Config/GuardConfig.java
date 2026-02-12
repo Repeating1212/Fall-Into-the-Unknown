@@ -1,7 +1,7 @@
 package Level.Lvl_Sample.Enemy.Config;
 
 import Level.BaseLevel.Objects.Class_Base.AttackArea;
-import Level.BaseLevel.Objects.Class_Concrete.ConeAttackArea;
+import Level.BaseLevel.Skills.ConeAttackArea;
 import Level.BaseLevel.Properties.*;
 import Level.BaseLevel.View.AttackVisualize.ConeAttackVisual;
 import Level.Lvl_Sample.Behaviour.GroundSlap;

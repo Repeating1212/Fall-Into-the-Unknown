@@ -4,7 +4,7 @@ import Data.DataClass.ArrayData;
 import Data.DataClass.Timer;
 import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
-import Level.BaseLevel.Objects.Class_Concrete.Player;
+import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.SceneView;
 import Level.Lvl_Sample.Enemy.Object.Rat;

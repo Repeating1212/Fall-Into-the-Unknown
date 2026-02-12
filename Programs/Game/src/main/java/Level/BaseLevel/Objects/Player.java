@@ -1,10 +1,9 @@
-package Level.BaseLevel.Objects.Class_Concrete;
+package Level.BaseLevel.Objects;
 
 import Level.BaseLevel.Objects.Class_Base.ImageObject;
 import Data.Loader.ImageLoader;
-import Level.BaseLevel.Objects.Config.PlayerConfig;
 import Level.BaseLevel.Properties.PlayerState;
-import Level.BaseLevel.Skills.AttackSkill;
+import Level.BaseLevel.Skills.Attack;
 import Level.BaseLevel.View.AttackVisualize.AttackVisual;
 import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Skills.Skill;
@@ -96,8 +95,8 @@ public class Player extends ImageObject {
 
     private AttackVisual getAttackVisual(){
         for (Skill skill : skills){
-            if (skill.getClass() == AttackSkill.class){
-                return ((AttackSkill) skill).getAttackVisual();
+            if (skill.getClass() == Attack.class){
+                return ((Attack) skill).getAttackVisual();
             }
         }
         return null;
