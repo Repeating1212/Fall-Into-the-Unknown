@@ -1,6 +1,6 @@
 package Level.Lvl_Sample.Managers;
 
-import Level.BaseLevel.Manager.LevelData;
+import Data.DataClass.ArrayData;
 import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
@@ -14,12 +14,20 @@ public class Observer {
 
     private Property player;
     private GameObject enemy;
+    private ArrayData<GameObject> gameObj;
+    private ArrayData<DisplayableObject> displayObj;
     private final SceneView sceneView;
-    private final LevelData levelData;
 
-    public Observer(LevelData levelData, SceneView sceneView){
-        this.levelData = levelData;
+    public Observer(SceneView sceneView){
         this.sceneView = sceneView;
+    }
+
+    protected void setGameObj(ArrayData<GameObject> gameObj){
+        this.gameObj = gameObj;
+    }
+
+    protected void setDisplayObj(ArrayData<DisplayableObject> displayObj) {
+        this.displayObj = displayObj;
     }
 
     protected void setPlayer(Player player){
@@ -34,14 +42,20 @@ public class Observer {
 
     public ArrayList<Property> getObjectProperties() {
         ArrayList<Property> properties = new ArrayList<>();
-        for (GameObject gameObject : levelData.getGameObjects()) {
+        for (GameObject gameObject : gameObj.get()) {
             properties.add(gameObject.getProperty());
         }
         return properties;
     }
 
     public ArrayList<GameObject> getLivingEntities() {
-        return levelData.getHealthObj();
+        ArrayList<GameObject> healthObj = new ArrayList<>(gameObj.get());
+        for (GameObject gameObject : gameObj.get()){
+            if (gameObject.isHealthNull()){
+                healthObj.remove(gameObject);
+            }
+        }
+        return healthObj;
     }
 
     public Property getPlayerProperty() {
@@ -68,11 +82,11 @@ public class Observer {
 
     public void addDisplayableObject(DisplayableObject displayableObject){
         if (displayableObject == null) return;
-        levelData.addDisplay(displayableObject);
+        displayObj.add(displayableObject);
     }
 
     public void removeDisplayableObject(DisplayableObject displayableObject){
         if (displayableObject == null) return;
-        levelData.removeDisplay(displayableObject);
+        displayObj.remove(displayableObject);
     }
 }

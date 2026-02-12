@@ -5,7 +5,6 @@ import Level.BaseLevel.Manager.GameTicks;
 import Level.BaseLevel.Manager.PlayerHandler;
 import Data.Interface.SceneInterface;
 import Data.Supplier.SkillSupplier;
-import Level.BaseLevel.Manager.LevelData;
 import Level.Lvl_Sample.Managers.MainManager;
 import Level.Lvl_Sample.Managers.Observer;
 import Level.BaseLevel.Objects.Class_Concrete.Player;
@@ -68,13 +67,12 @@ public class LevelController extends SceneInterface {
         sceneView = new SceneView(rootPane, coinDisplay, hearts, bossHealthBar, map, skillBoxView, fileManager);
 
         // Data Related
-        LevelData levelData = new LevelData(sceneView);
-        Observer observer = new Observer(levelData, sceneView);
+        Observer observer = new Observer(sceneView);
 
         // Game update related
         Player player = new Player(observer, SkillSupplier.getPlayerSkills(fileManager));
         playerHandler = new PlayerHandler(skillBoxView, player);
-        MainManager mainManager = new MainManager(sceneView, player, levelData, observer);
+        MainManager mainManager = new MainManager(sceneView, player, observer);
         gameTicks = new GameTicks(mainManager, playerHandler);
     }
 

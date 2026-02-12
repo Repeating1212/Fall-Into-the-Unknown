@@ -1,7 +1,6 @@
 package Level.Lvl_Sample.Managers;
 
-import Level.BaseLevel.Manager.LevelData;
-import Level.BaseLevel.Manager.LevelSupplier;
+import Data.DataClass.ArrayData;
 import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Objects.Class_Base.Boss;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
@@ -14,40 +13,43 @@ import java.util.ArrayList;
 
 public class MainManager {
 
-    protected final SceneView sceneView;
+    private final SceneView sceneView;
     private final LvlSupplier_Sample levelSupplier = new LvlSupplier_Sample();
     // Minor Manager
-    protected final LevelData levelData;
-    protected final Observer observer;
+    private final Observer observer;
     // Objects
-    protected final Player player;
-    protected final Boss boss ;
-    protected Portal portal;
+    private final Player player;
+    private final Boss boss ;
+    private Portal portal;
     // GameState
-    protected boolean rewardState = false;
-    protected boolean gameRunning = true;
+    private boolean rewardState = false;
+    private boolean gameRunning = true;
+    // ObjectList
+    private final ArrayData<DisplayableObject> displayObj = new ArrayData();
+    private final ArrayData<GameObject> gameObj = new ArrayData();
 
-
-    public MainManager(SceneView sceneView, Player player, LevelData levelData, Observer observer){
-        this.levelData = levelData;
+    public MainManager(SceneView sceneView, Player player, Observer observer){
         this.player = player;
         this.sceneView = sceneView;
         this.observer = observer;
         this.boss = levelSupplier.getBoss(observer);
 
-        levelData.addObjects(levelSupplier.getObjects(player, boss));
-        levelData.addObjects(levelSupplier.getEnemyWave(observer));
-        levelData.displayObjects();
+        displayObj.add(player, boss);
+        gameObj.add(player, boss);
 
         observer.setPlayer(player);
         observer.setEnemy(player);
+
+        display(displayObj.get());
+        observer.setGameObj(gameObj);
+        observer.setDisplayObj(displayObj);
     }
 
     public void updateObjects(double deltaTime){
         if(!gameRunning) return;
         checkGameCondition();
 
-        for (GameObject gameObject : levelData.getGameObjects()){
+        for (GameObject gameObject : gameObj.get()){
             gameObject.update(deltaTime);
         }
         removeDead();
@@ -70,8 +72,8 @@ public class MainManager {
     private void checkGameCondition() {
         if(isVictory() && ! rewardState){
             portal = new Portal(observer, boss.getProperty());
-            levelData.addObjects(portal);
-            levelData.addDisplay(portal);
+            gameObj.add(portal);
+            displayObj.add(portal);
             rewardState = true;
         }
         else if(isLose()){
@@ -89,26 +91,39 @@ public class MainManager {
     private void removeDead() {
         ArrayList<GameObject> toRemove = new ArrayList<>();
 
-        for (GameObject gameObject : levelData.getGameObjects()) {
+        for (GameObject gameObject : gameObj.get()) {
             if (!gameObject.isHealthNull() && gameObject.isDead()) {
                 toRemove.add(gameObject);
             }
         }
 
-        levelData.removeObjects(toRemove);
+        gameObj.remove(toRemove);
 
-        ArrayList<DisplayableObject> toDisappear = new ArrayList<>();
-        for (GameObject gameObject : toRemove){
-            toDisappear.addAll(gameObject.getRelatedSprite());
-        }
-        levelData.removeDisplay(toDisappear);
+        removeDisplay(new ArrayList<DisplayableObject>(toRemove));
     }
 
+    private void display(ArrayList<DisplayableObject> arrayList){
+        ArrayList<DisplayableObject> toDisplay = new ArrayList<>();
+        for (DisplayableObject object : arrayList){
+            toDisplay.addAll(object.getRelatedSprite());
+        }
+        displayObj.add(toDisplay); // Ignore repeated object
+        sceneView.updateObjects(displayObj.get());
+    }
+
+    private void removeDisplay(ArrayList<DisplayableObject> arrayList){
+        ArrayList<DisplayableObject> toRemove = new ArrayList<>();
+        for (DisplayableObject object : arrayList){
+            toRemove.addAll(object.getRelatedSprite());
+        }
+        displayObj.remove(toRemove); // Ignore repeated object
+        sceneView.updateObjects(displayObj.get());
+    }
 
     private void addHitBoxDebug(){
         // For Debug purpose
         ArrayList<Rectangle> rectangles = new ArrayList<>();
-        for (GameObject object : levelData.getGameObjects()) {
+        for (GameObject object : gameObj.get()) {
             rectangles.add(object.getProperty().getDebugHitBox());
             object.getProperty().showDebugHitBox();
         }

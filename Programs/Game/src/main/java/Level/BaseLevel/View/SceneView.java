@@ -40,7 +40,7 @@ public class SceneView {
         this.fileManager = fileManager;
     }
 
-    public void updateObjectsInSceneNew(ArrayList<DisplayableObject> toDisplay) {
+    public void updateObjects(ArrayList<DisplayableObject> toDisplay) {
         if (toDisplay == null) return;
 
         // Remove node that shouldn't be there anymore
