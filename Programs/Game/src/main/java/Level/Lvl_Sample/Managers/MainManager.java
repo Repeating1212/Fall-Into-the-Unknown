@@ -6,6 +6,7 @@ import Level.BaseLevel.Objects.Class_Base.Boss;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Class_Concrete.Player;
 import Level.BaseLevel.Objects.Class_Concrete.Portal;
+import Level.BaseLevel.View.AttackVisualize.AttackVisual;
 import Level.BaseLevel.View.SceneView;
 import javafx.scene.shape.Rectangle;
 
@@ -25,7 +26,6 @@ public class MainManager {
     private boolean rewardState = false;
     private boolean gameRunning = true;
     // ObjectList
-    private final ArrayData<DisplayableObject> displayObj = new ArrayData();
     private final ArrayData<GameObject> gameObj = new ArrayData();
 
     public MainManager(SceneView sceneView, Player player){
@@ -33,29 +33,21 @@ public class MainManager {
         this.sceneView = sceneView;
         this.boss = levelSupplier.getBoss(observer);
 
-        displayObj.add(player, boss);
         gameObj.add(player, boss);
+        handleDisplay();
 
         observer.setPlayer(player);
-
-        display(displayObj.get());
         observer.setGameObj(gameObj);
-        observer.setDisplayObj(displayObj);
     }
 
     public void updateObjects(double deltaTime){
         if(!gameRunning) return;
         checkGameCondition();
-
         for (GameObject gameObject : gameObj.get()){
             gameObject.update(deltaTime, observer);
         }
         removeDead();
-
-        sceneView.updateObjects(displayObj.get());
-        sceneView.updatePlayerHeartView(player.getHealth());
-        displaySkillCooldown();
-        sceneView.updateBossHealthBar(boss.getHealthPercentage());
+        handleDisplay();
     }
 
     protected boolean isVictory(){
@@ -76,7 +68,6 @@ public class MainManager {
         if(isVictory() && ! rewardState){
             portal = new Portal(observer, boss.getProperty());
             gameObj.add(portal);
-            displayObj.add(portal);
             rewardState = true;
         }
         else if(isLose()){
@@ -101,26 +92,6 @@ public class MainManager {
         }
 
         gameObj.remove(toRemove);
-
-        removeDisplay(new ArrayList<DisplayableObject>(toRemove));
-    }
-
-    private void display(ArrayList<DisplayableObject> arrayList){
-        ArrayList<DisplayableObject> toDisplay = new ArrayList<>();
-        for (DisplayableObject object : arrayList){
-            toDisplay.addAll(object.getRelatedSprite());
-        }
-        displayObj.add(toDisplay); // Ignore repeated object
-        sceneView.updateObjects(displayObj.get());
-    }
-
-    private void removeDisplay(ArrayList<DisplayableObject> arrayList){
-        ArrayList<DisplayableObject> toRemove = new ArrayList<>();
-        for (DisplayableObject object : arrayList){
-            toRemove.addAll(object.getRelatedSprite());
-        }
-        displayObj.remove(toRemove); // Ignore repeated object
-        sceneView.updateObjects(displayObj.get());
     }
 
     private void displaySkillCooldown(){
@@ -129,6 +100,22 @@ public class MainManager {
             sceneView.updateSkillCooldowns(i ,cooldowns[i]);
         }
     }
+
+    private void handleDisplay(){
+
+        ArrayData<DisplayableObject> toDisplay = new ArrayData<>();
+
+        for (GameObject object : gameObj.get()){
+            toDisplay.add(object.getRelatedSprite());
+        }
+
+        sceneView.updateObjects(toDisplay.get());
+        sceneView.updatePlayerHeartView(player.getHealth());
+        displaySkillCooldown();
+        sceneView.updateBossHealthBar(boss.getHealthPercentage());
+    }
+
+    // Debug usage
 
     private void addHitBoxDebug(){
         // For Debug purpose

@@ -1,11 +1,14 @@
 package Level.Lvl_Sample.Enemy.Object;
 
 import Data.Loader.ImageLoader;
+import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.Lvl_Sample.Behaviour.GroundSlap;
 import Level.Lvl_Sample.Managers.Observer;
 import Level.BaseLevel.Objects.Class_Base.Boss;
 import Level.Lvl_Sample.Enemy.Config.GuardConfig;
+
+import java.util.ArrayList;
 
 public class Guard extends Boss {
 
@@ -16,7 +19,6 @@ public class Guard extends Boss {
         super(GuardConfig.getProperty(), ImageLoader.STAKE, observer);
         this.groundSlap = GuardConfig.getGroundSlap();
         groundSlap.initializeData(property);
-        displays.add(groundSlap.getAttackVisual());
     }
 
     // Override Method
@@ -27,6 +29,12 @@ public class Guard extends Boss {
         super.update(deltaTime, observer);
         updateSpritePosition();
         handleAttack(deltaTime, observer);
+
+        if(groundSlap.getAttackVisual().isActive()){
+            relatedDisplay.add(groundSlap.getAttackVisual());
+        } else {
+            relatedDisplay.remove(groundSlap.getAttackVisual());
+        }
     }
 
     @Override

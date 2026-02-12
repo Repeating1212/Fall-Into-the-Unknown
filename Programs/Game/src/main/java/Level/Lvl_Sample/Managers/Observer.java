@@ -13,17 +13,9 @@ public class Observer {
 
     private Player player;
     private ArrayData<GameObject> gameObj;
-    private ArrayData<DisplayableObject> displayObj;
-
-    public Observer(){
-    }
 
     protected void setGameObj(ArrayData<GameObject> gameObj){
         this.gameObj = gameObj;
-    }
-
-    protected void setDisplayObj(ArrayData<DisplayableObject> displayObj) {
-        this.displayObj = displayObj;
     }
 
     protected void setPlayer(Player player){
@@ -32,7 +24,7 @@ public class Observer {
 
     // Get by GameObjects
 
-    public ArrayList<Property> getObjectProperties() {
+    public ArrayList<Property> getGameObjPrt() {
         ArrayList<Property> properties = new ArrayList<>();
         for (GameObject gameObject : gameObj.get()) {
             properties.add(gameObject.getProperty());
@@ -40,7 +32,7 @@ public class Observer {
         return properties;
     }
 
-    public ArrayList<GameObject> getLivingEntities() {
+    public ArrayList<GameObject> getHealthObj() {
         ArrayList<GameObject> healthObj = new ArrayList<>(gameObj.get());
         for (GameObject gameObject : gameObj.get()){
             if (gameObject.isHealthNull()){
@@ -54,15 +46,5 @@ public class Observer {
 
     public GameObject getPlayer(){
         return player;
-    }
-
-    public void addDisplayableObject(DisplayableObject displayableObject){
-        if (displayableObject == null) return;
-        displayObj.add(displayableObject);
-    }
-
-    public void removeDisplayableObject(DisplayableObject displayableObject){
-        if (displayableObject == null) return;
-        displayObj.remove(displayableObject);
     }
 }

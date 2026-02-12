@@ -56,7 +56,7 @@ public class GroundSlap {
     }
 
     public void update(double deltaTime, Observer observer) {
-        this.targetEntity = getTargets(observer.getLivingEntities());
+        this.targetEntity = getTargets(observer.getHealthObj());
 
         enlargeTimer.update(deltaTime);
         cooldown.update(deltaTime);
@@ -79,6 +79,7 @@ public class GroundSlap {
     }
 
     // Private Method
+
     private void handlePendingAttack() {
         if (enlargeTimer.isPending()) {
             enlargeTimer.start();
@@ -113,12 +114,9 @@ public class GroundSlap {
     }
 
     private void handleAnimation(Observer observer){
-        if (animationTimer.isPending()){
+        if (animationTimer.isPending()) {
             animationTimer.start();
             attackVisual.activate(new Position(owner.getCenterX(), owner.getCenterY()), destinationPos);
-            observer.addDisplayableObject(attackVisual);
-        }else if (animationTimer.isEnd()) {
-            observer.removeDisplayableObject(attackVisual);
         }
     }
 }

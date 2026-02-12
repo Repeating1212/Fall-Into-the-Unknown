@@ -57,7 +57,7 @@ public class AttackSkill implements Skill {
     }
 
     public void update(double deltaTime, Observer observer){
-        this.targetEntity = getTargets(observer.getLivingEntities());
+        this.targetEntity = getTargets(observer.getHealthObj());
 
         enlargeTimer.update(deltaTime);
         cooldown.update(deltaTime);
@@ -119,11 +119,7 @@ public class AttackSkill implements Skill {
     private void handleAnimation(Observer observer){
         if (animationTimer.isPending()){
             animationTimer.start();
-            observer.addDisplayableObject(attackVisual);
             attackVisual.activate(new Position(owner.getCenterX(), owner.getCenterY()), destinationPos);
-        }
-        else if (animationTimer.isEnd()){
-            observer.removeDisplayableObject(attackVisual);
         }
     }
 }

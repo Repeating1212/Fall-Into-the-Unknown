@@ -1,5 +1,6 @@
 package Level.BaseLevel.Objects.Class_Base;
 
+import Data.DataClass.ArrayData;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.Properties.Position;
 
@@ -7,12 +8,11 @@ import javafx.scene.Node;
 import Level.Lvl_Sample.Managers.Observer;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public abstract class GameObject implements DisplayableObject {
 
     protected Property property;
-    protected ArrayList<DisplayableObject> displays = new ArrayList<>();
+    protected ArrayData<DisplayableObject> relatedDisplay = new ArrayData<>();
 
     public static final double MapX = 0;
     public static final double MapY = 0;
@@ -21,14 +21,14 @@ public abstract class GameObject implements DisplayableObject {
 
     public GameObject(Property property){
         this.property = property;
-        displays.add(this);
+        relatedDisplay.add(this);
     }
 
     // Base Method
 
     public void update(double deltaTime, Observer observer){
         property.updateMovement(deltaTime);
-        property.move(observer.getObjectProperties());
+        property.move(observer.getGameObjPrt());
         checkBoundaries(MapX, MapY , MapHeight, MapWidth);
     }
 
@@ -37,7 +37,7 @@ public abstract class GameObject implements DisplayableObject {
     }
 
     public ArrayList<DisplayableObject> getRelatedSprite(){
-        return displays;
+        return relatedDisplay.get();
     };
 
     // Data Class Getter
@@ -80,7 +80,6 @@ public abstract class GameObject implements DisplayableObject {
 
     public boolean takeDamage(double damage) {
         property.reduceHealth(damage);
-        updateHealth();
         return true;
     }
 
@@ -95,11 +94,6 @@ public abstract class GameObject implements DisplayableObject {
     public boolean isHealthNull() {return property.isHealthNull();}
 
     // Override by subclass
-
-    protected void updateHealth(){
-        if (isHealthNull()) return;
-        // Override in Subclass
-    };
 
     public double getHealthPercentage(){
         return property.getHealthPercentage();

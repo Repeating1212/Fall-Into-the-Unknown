@@ -32,25 +32,15 @@ public class ConeAttackVisual extends AttackVisual {
     @Override
     public Node getSprite() { return arc; }
 
-    @Override
-    public ArrayList<DisplayableObject> getRelatedSprite(){
-        ArrayList<DisplayableObject> temp = new ArrayList<>();
-        temp.add(this);
-        return temp;
-    }
-
     public void activate(Position startPos, Position endPos) {
         // Position the arc center
         arc.setCenterX(startPos.getX());
         arc.setCenterY(startPos.getY());
         arc.setStartAngle(calculateAngle(startPos, endPos));
-
-        // Reset state
-        currentRadius = 0.0;
         arc.setRadiusX(0);
         arc.setRadiusY(0);
-        arc.setVisible(true);
-        arc.setOpacity(1.0);
+
+        // Reset state
         isActive = true;
         elapsedTime = 0;
     }
@@ -76,14 +66,19 @@ public class ConeAttackVisual extends AttackVisual {
             double opacity = 1.0 - fadeProgress;
             arc.setOpacity(opacity);
 
-            // Optional: Pulsing effect
+            // Pulsing effect
             double pulseScale = 1.0 + 0.05 * Math.sin(fadeProgress * Math.PI * 4);
             arc.setScaleX(pulseScale);
             arc.setScaleY(pulseScale);
         }
         else {
-            deactivateArc();
+            arc.setOpacity(1.0);
+            isActive = false;
         }
+    }
+
+    public boolean isActive(){
+        return isActive;
     }
 
     // Private Method
@@ -91,10 +86,9 @@ public class ConeAttackVisual extends AttackVisual {
     private void initializeArc() {
         arc.setLength(ARC_ANGLE);
         arc.setType(ArcType.ROUND);
-        arc.setFill(Color.rgb(255, 0, 0, 0.3)); // Semi-transparent red
+        arc.setFill(Color.rgb(255, 0, 0, 0.3));
         arc.setStroke(Color.RED);
         arc.setStrokeWidth(2);
-        arc.setVisible(false);
     }
 
     private double calculateAngle(Position currentPos, Position destinationPos){
@@ -102,14 +96,5 @@ public class ConeAttackVisual extends AttackVisual {
         Vector2D temp = attackVector.normalize();
         double dirAngle = temp.getAngleDegrees();
         return (dirAngle - arc.getLength()/2);
-    }
-
-    private void deactivateArc() {
-        arc.setVisible(false);
-        arc.setOpacity(1.0);
-        arc.setRadiusX(0); // Reset radius for next activation
-        arc.setRadiusY(0);
-        currentRadius = 0.0;
-        isActive = false;
     }
 }

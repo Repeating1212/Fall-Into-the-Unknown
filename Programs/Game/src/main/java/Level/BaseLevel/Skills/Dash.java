@@ -44,7 +44,7 @@ public class Dash implements Skill {
         cooldownSystem.update(deltaTime);
         if (pendingDash){
             Position limitedPos = limitDashRange(owner, destination);
-            owner.move(limitedPos, observer.getObjectProperties());
+            owner.move(limitedPos, observer.getGameObjPrt());
             cooldownSystem.start();
             pendingDash = false;
         }

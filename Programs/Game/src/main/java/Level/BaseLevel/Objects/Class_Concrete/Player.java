@@ -21,7 +21,6 @@ public class Player extends ImageObject {
         for(Skill skill : skills){
             skill.initializeData(property, playerState);
         }
-        this.updateHealth();
         this.initializeDisplays();
     }
 
@@ -34,12 +33,30 @@ public class Player extends ImageObject {
             skill.handleRigid();
             skill.update(deltaTime, observer);
         }
+
+        if (getAttackVisual() != null){
+            if (getAttackVisual().isActive()){
+                relatedDisplay.add(getAttackVisual());
+            } else{
+                relatedDisplay.remove(getAttackVisual());
+            }
+        }
     }
 
     public void activateSkill(int skillID, double mouseX, double mouseY){
         if(skillID > skills.length) return;
         skills[skillID].activate(mouseX, mouseY);
     }
+
+    public double[] getSkillCooldown(){
+        double[] cooldowns = new double[skills.length];
+        for (int i = 0; i < skills.length; i++){
+            cooldowns[i] = skills[i].getCooldownPercentage();
+        }
+        return cooldowns;
+    }
+
+    // Override Method
 
     @Override
     public boolean takeDamage(double damage){
@@ -60,19 +77,11 @@ public class Player extends ImageObject {
         handleInvincibilityAnimation();
     }
 
-    public double[] getSkillCooldown(){
-        double[] cooldowns = new double[skills.length];
-        for (int i = 0; i < skills.length; i++){
-            cooldowns[i] = skills[i].getCooldownPercentage();
-        }
-        return cooldowns;
-    }
-
     // Private Method
 
     private void initializeDisplays(){
         AttackVisual attackVisual = getAttackVisual();
-        if (attackVisual != null) displays.add(attackVisual);
+        if (attackVisual != null) relatedDisplay.add(attackVisual);
     }
 
     private  void handleInvincibilityAnimation(){
