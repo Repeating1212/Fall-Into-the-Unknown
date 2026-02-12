@@ -1,7 +1,7 @@
 package Level.Lvl_Sample.Enemy.Config;
 
 import Level.BaseLevel.Properties.*;
-import Level.Lvl_Sample.Behaviour.MeleeAttack;
+import Level.Lvl_Sample.Behaviour.Tackle;
 
 public class RatConfig {
     public static final int HEIGHT = 30;
@@ -19,18 +19,18 @@ public class RatConfig {
     // Supplier
 
     public static Property getProperty(){
-        Position guardPosition =  new Position(RatConfig.INITIAL_X, RatConfig.INITIAL_Y);
-        HitBox guardHitBox = new HitBox(RatConfig.WIDTH, RatConfig.HEIGHT, guardPosition, RatConfig.IS_BLOCKABLE);
-        MovementState guardMovementState = new MovementState(RatConfig.SPEED);
+        Position position =  new Position(RatConfig.INITIAL_X, RatConfig.INITIAL_Y);
+        HitBox hitBox = new HitBox(RatConfig.WIDTH, RatConfig.HEIGHT, position, RatConfig.IS_BLOCKABLE);
+        MovementState movementState = new MovementState(RatConfig.SPEED);
         Health guardHeart = new Health(RatConfig.MAXIMUM_HEALTH);
-        return new Property(guardHitBox, guardMovementState, guardHeart);
+        return new Property(hitBox, movementState, guardHeart);
     }
 
     public static Health getHealth(){
         return new Health(RatConfig.MAXIMUM_HEALTH);
     }
 
-    public static MeleeAttack getMeleeAttack(){
-        return new MeleeAttack(RatConfig.DAMAGE, RatConfig.ATTACK_RIGID);
+    public static Tackle getTackle(){
+        return new Tackle(RatConfig.DAMAGE, RatConfig.ATTACK_RIGID);
     }
 }

@@ -100,6 +100,7 @@ public class Position {
     }
 
     // Private Method
+
     private int randomRange(int min, int max) {
         Random random = new Random();
         return min + random.nextInt(max - min);

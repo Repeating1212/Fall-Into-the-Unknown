@@ -3,10 +3,9 @@ package Level.Lvl_Sample.Waves;
 import Data.DataClass.ArrayData;
 import Data.DataClass.Timer;
 import Level.BaseLevel.Manager.Observer;
-import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Class_Concrete.Player;
-import Level.BaseLevel.Objects.Class_Concrete.Portal;
+import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.SceneView;
 import Level.Lvl_Sample.Enemy.Object.Rat;
 
@@ -32,7 +31,7 @@ public class Wave1  extends LevelManager implements Updater{
 
         if (waveTimer.isEnd() && currentWave < TOTAL_WAVE){
             waveTimer.start();
-            gameObj.add(getEnemies());
+            spawnEnemies();
             currentWave ++;
         }
 
@@ -61,14 +60,22 @@ public class Wave1  extends LevelManager implements Updater{
 
     // Private Method
 
-    private ArrayList<GameObject> getEnemies(){
-        ArrayList<GameObject> enemies = new ArrayList<>();
+    private void spawnEnemies(){
         Random random = new Random();
         int num =  random.nextInt(2,5);
         for (int i = 0; i < num; i++){
-            enemies.add(new Rat());
+            ArrayList<Property> properties = getProperties(gameObj);
+            Rat rat = new Rat(properties);
+            gameObj.add(rat);
         }
-        return enemies;
+    }
+
+    private ArrayList<Property> getProperties(ArrayData<GameObject> gameObjects){
+        ArrayList<Property> properties = new ArrayList<>();
+        for (GameObject gameObject : gameObjects.get()){
+            properties.add(gameObject.getProperty());
+        }
+        return properties;
     }
 
 }

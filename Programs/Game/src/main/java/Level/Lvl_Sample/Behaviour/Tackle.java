@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MeleeAttack {
+public class Tackle {
 
     private final double Damage;
     private final double AttackRigid;
@@ -19,7 +19,7 @@ public class MeleeAttack {
             Player.class
     );
 
-    public MeleeAttack(double damage, double attackRigid){
+    public Tackle(double damage, double attackRigid){
         this.Damage = damage;
         this.AttackRigid = attackRigid;
         this.timer = new Timer(attackRigid);

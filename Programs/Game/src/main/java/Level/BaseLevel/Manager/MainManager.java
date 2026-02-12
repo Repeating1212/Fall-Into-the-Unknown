@@ -33,7 +33,6 @@ public class MainManager implements Updater {
         this.sceneView = sceneView;
         this.boss = new Guard();
 
-        gameObj.add(levelSupplier.getEnemyWave());
         gameObj.add(player, boss);
         handleDisplay();
     }

@@ -41,6 +41,7 @@ public class HitBox {
     }
 
     protected boolean isCollide (HitBox other) {
+        if (this == other) return false;
         return position.getX() < other.position.getX() + other.getWidth() &&
                 position.getX() + width > other.position.getX() &&
                 position.getY() < other.position.getY() + other.getHeight() &&
@@ -67,7 +68,7 @@ public class HitBox {
     protected boolean isCollide (ArrayList<HitBox> others){
         if (others == null) return false;
         for (HitBox other : others){
-            if (other == this )continue;
+            if (other == this ) continue;
             if (isCollide(other)) return true;
         }
         return false;
