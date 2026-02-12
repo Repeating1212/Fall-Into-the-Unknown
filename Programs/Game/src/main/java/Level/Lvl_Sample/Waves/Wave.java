@@ -8,7 +8,7 @@ import Level.BaseLevel.View.SceneView;
 
 import java.util.ArrayList;
 
-public abstract class Wave {
+public abstract class Wave implements Updater{
 
     protected final Player player;
     protected final SceneView sceneView;

@@ -5,6 +5,10 @@ import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Class_Concrete.Player;
 import Level.BaseLevel.View.SceneView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class LevelManager implements Updater{
 
     protected final Player player;
@@ -12,41 +16,45 @@ public class LevelManager implements Updater{
     protected final ArrayData<GameObject> gameObj = new ArrayData();
     protected boolean gamePause = false;
 
-    private final Wave1 wave1;
-    private final Wave2 wave2;
     private int currentWave = 0;
+
+    private Wave[] waves;
 
     public LevelManager(SceneView sceneView, Player player){
         this.player = player;
         this.sceneView = sceneView;
         gameObj.add(player);
 
-        this.wave1 = new Wave1(sceneView, player);
-        this.wave2 = new Wave2(sceneView, player);
+        waves = new Wave[]{
+                new Wave1(sceneView, player),
+                new Wave1(sceneView, player)
+        };
+
+        System.out.println(waves.length);
     }
 
     public void updateObjects(double deltaTime){
-
         if (gamePause) return;
 
-        if (currentWave == 0){
-            wave1.updateObjects(deltaTime);
-        } else {
-            wave2.updateObjects(deltaTime);
-        }
+        waves[currentWave].updateObjects(deltaTime);
+        if(waves[currentWave].isComplete()) currentWave ++;
 
-        if (wave1.isComplete() && currentWave == 0){
-            currentWave ++;
-        } else if (wave2.isComplete() && currentWave == 1){
-            System.out.println("Win");
+        gamePause = handleWinLose();
+    }
+
+    // Private Method
+
+    private boolean handleWinLose(){
+        if (currentWave >= waves.length){
             sceneView.showWinScreen(5);
-            gamePause = true;
+            return true;
+        }
+        if (waves[currentWave].isLose()){
+            sceneView.showLoseScreen();
+            return true;
         }
 
-        if (wave1.isLose() || wave2.isLose()){
-            sceneView.showLoseScreen();
-            gamePause = true;
-        }
+        return false;
     }
 
 }
