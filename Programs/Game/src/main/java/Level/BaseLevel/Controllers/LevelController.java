@@ -66,13 +66,10 @@ public class LevelController extends SceneInterface {
         SkillBoxView skillBoxView = new SkillBoxView(skills, skillBackgrounds, skillCooldowns, fileManager);
         sceneView = new SceneView(rootPane, coinDisplay, hearts, bossHealthBar, map, skillBoxView, fileManager);
 
-        // Data Related
-        Observer observer = new Observer(sceneView);
-
         // Game update related
-        Player player = new Player(observer, SkillSupplier.getPlayerSkills(fileManager));
+        Player player = new Player(SkillSupplier.getPlayerSkills(fileManager));
         playerHandler = new PlayerHandler(skillBoxView, player);
-        MainManager mainManager = new MainManager(sceneView, player, observer);
+        MainManager mainManager = new MainManager(sceneView, player);
         gameTicks = new GameTicks(mainManager, playerHandler);
     }
 

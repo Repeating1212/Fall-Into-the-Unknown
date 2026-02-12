@@ -16,7 +16,7 @@ public class MainManager {
     private final SceneView sceneView;
     private final LvlSupplier_Sample levelSupplier = new LvlSupplier_Sample();
     // Minor Manager
-    private final Observer observer;
+    private final Observer observer = new Observer();
     // Objects
     private final Player player;
     private final Boss boss ;
@@ -28,17 +28,15 @@ public class MainManager {
     private final ArrayData<DisplayableObject> displayObj = new ArrayData();
     private final ArrayData<GameObject> gameObj = new ArrayData();
 
-    public MainManager(SceneView sceneView, Player player, Observer observer){
+    public MainManager(SceneView sceneView, Player player){
         this.player = player;
         this.sceneView = sceneView;
-        this.observer = observer;
         this.boss = levelSupplier.getBoss(observer);
 
         displayObj.add(player, boss);
         gameObj.add(player, boss);
 
         observer.setPlayer(player);
-        observer.setEnemy(player);
 
         display(displayObj.get());
         observer.setGameObj(gameObj);
@@ -50,9 +48,14 @@ public class MainManager {
         checkGameCondition();
 
         for (GameObject gameObject : gameObj.get()){
-            gameObject.update(deltaTime);
+            gameObject.update(deltaTime, observer);
         }
         removeDead();
+
+        sceneView.updateObjects(displayObj.get());
+        sceneView.updatePlayerHeartView(player.getHealth());
+        displaySkillCooldown();
+        sceneView.updateBossHealthBar(boss.getHealthPercentage());
     }
 
     protected boolean isVictory(){
@@ -118,6 +121,13 @@ public class MainManager {
         }
         displayObj.remove(toRemove); // Ignore repeated object
         sceneView.updateObjects(displayObj.get());
+    }
+
+    private void displaySkillCooldown(){
+        double[] cooldowns = player.getSkillCooldown();
+        for (int i = 0; i < cooldowns.length; i++){
+            sceneView.updateSkillCooldowns(i ,cooldowns[i]);
+        }
     }
 
     private void addHitBoxDebug(){

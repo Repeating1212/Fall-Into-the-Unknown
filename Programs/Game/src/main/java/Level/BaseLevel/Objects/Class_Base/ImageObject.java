@@ -11,8 +11,8 @@ import java.util.ArrayList;
 public abstract class ImageObject extends GameObject {
     protected ImageView sprite = new ImageView();
 
-    public ImageObject(Property property, Image image, Observer observer){
-        super(property, observer);
+    public ImageObject(Property property, Image image){
+        super(property);
         this.property = property;
         createSprite(image);
         updateSpritePosition();

@@ -15,12 +15,7 @@ public class Stake extends ImageObject {
 
     // Constructor
     public Stake(Observer observer) {
-        super( StakeConfig.getProperty(), ImageLoader.STAKE, observer);
-    }
-
-    @Override
-    protected void updateHealth(){
-        observer.updateBossHealthBar(property.getHealthPercentage());
+        super( StakeConfig.getProperty(), ImageLoader.STAKE);
     }
 
     public void defeat() {

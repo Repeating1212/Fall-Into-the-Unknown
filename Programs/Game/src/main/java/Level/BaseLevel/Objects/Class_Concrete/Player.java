@@ -14,8 +14,8 @@ public class Player extends ImageObject {
     private final Skill[] skills;
 
     // Constructor
-    public Player(Observer observer, Skill[] skills) {
-        super(PlayerConfig.getProperty(), ImageLoader.PLAYER_LEFT, observer);
+    public Player(Skill[] skills) {
+        super(PlayerConfig.getProperty(), ImageLoader.PLAYER_LEFT);
         this.skills = skills;
         this.playerState = new PlayerState(PlayerConfig.INVINCIBILITY_PERIOD);
         for(Skill skill : skills){
@@ -26,27 +26,19 @@ public class Player extends ImageObject {
     }
 
     // Update player position
-    public void update(double deltaTime) {
-        super.update(deltaTime);
+    public void update(double deltaTime, Observer observer) {
+        super.update(deltaTime, observer);
         updateSpritePosition();
         playerState.update(deltaTime);
         for(Skill skill : skills){
             skill.handleRigid();
             skill.update(deltaTime, observer);
         }
-        displaySkillCooldown();
     }
 
     public void activateSkill(int skillID, double mouseX, double mouseY){
         if(skillID > skills.length) return;
         skills[skillID].activate(mouseX, mouseY);
-    }
-
-    // Override Method
-
-    @Override
-    protected void updateHealth(){
-        observer.updatePlayerHeartView(property.getCurrentHealth());
     }
 
     @Override
@@ -68,13 +60,15 @@ public class Player extends ImageObject {
         handleInvincibilityAnimation();
     }
 
-    // Private Method
-
-    private void displaySkillCooldown(){
-        for (int i = 0; i < skills.length; i ++){
-            observer.updateSkillCooldowns(i, skills[i].getCooldownPercentage());
+    public double[] getSkillCooldown(){
+        double[] cooldowns = new double[skills.length];
+        for (int i = 0; i < skills.length; i++){
+            cooldowns[i] = skills[i].getCooldownPercentage();
         }
+        return cooldowns;
     }
+
+    // Private Method
 
     private void initializeDisplays(){
         AttackVisual attackVisual = getAttackVisual();

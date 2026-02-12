@@ -10,11 +10,6 @@ public class Portal extends ImageObject {
 
     public Portal(Observer observer, Property property){
         super(PortalConfig.getProperty(property),
-                ImageLoader.PORTAL,
-                observer);
+                ImageLoader.PORTAL);
     }
-
-    public void updateHealth(){}
-
-
 }

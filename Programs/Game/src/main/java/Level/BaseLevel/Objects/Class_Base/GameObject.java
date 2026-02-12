@@ -7,11 +7,11 @@ import javafx.scene.Node;
 import Level.Lvl_Sample.Managers.Observer;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public abstract class GameObject implements DisplayableObject {
 
     protected Property property;
-    protected final Observer observer;
     protected ArrayList<DisplayableObject> displays = new ArrayList<>();
 
     public static final double MapX = 0;
@@ -19,15 +19,14 @@ public abstract class GameObject implements DisplayableObject {
     public static final double MapHeight = 1200;
     public static final double MapWidth = 675;
 
-    public GameObject(Property property, Observer observer){
+    public GameObject(Property property){
         this.property = property;
-        this.observer = observer;
         displays.add(this);
     }
 
     // Base Method
 
-    public void update(double deltaTime){
+    public void update(double deltaTime, Observer observer){
         property.updateMovement(deltaTime);
         property.move(observer.getObjectProperties());
         checkBoundaries(MapX, MapY , MapHeight, MapWidth);
@@ -101,6 +100,10 @@ public abstract class GameObject implements DisplayableObject {
         if (isHealthNull()) return;
         // Override in Subclass
     };
+
+    public double getHealthPercentage(){
+        return property.getHealthPercentage();
+    }
 
     public abstract Node getSprite();
 }

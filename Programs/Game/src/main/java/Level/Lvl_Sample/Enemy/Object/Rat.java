@@ -1,7 +1,6 @@
 package Level.Lvl_Sample.Enemy.Object;
 
 import Data.Loader.ImageLoader;
-import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Class_Base.ImageObject;
 import Level.Lvl_Sample.Behaviour.MeleeAttack;
 import Level.Lvl_Sample.Enemy.Config.RatConfig;
@@ -11,8 +10,8 @@ public class Rat extends ImageObject {
 
     private final MeleeAttack meleeAttack;
 
-    public Rat(Observer observer) {
-        super(RatConfig.getProperty(), ImageLoader.L01_RAT, observer);
+    public Rat() {
+        super(RatConfig.getProperty(), ImageLoader.L01_RAT);
         this.meleeAttack = RatConfig.getMeleeAttack();
         property.spawnNearBoundary();
     }
@@ -20,11 +19,11 @@ public class Rat extends ImageObject {
     // Override Method
 
     @Override
-    public void update(double deltaTime) {
-        super.update(deltaTime);
-        property.pointTo(observer.getEnemy().getProperty());
+    public void update(double deltaTime, Observer observer) {
+        super.update(deltaTime, observer);
+        property.pointTo(observer.getPlayer().getProperty());
         updateSpritePosition();
-        handleAttack(deltaTime);
+        handleAttack(deltaTime, observer);
     }
 
     @Override
@@ -36,7 +35,7 @@ public class Rat extends ImageObject {
 
     // Private Method
 
-    private void handleAttack(double deltaTime){
-        meleeAttack.update(property, observer.getEnemy(), deltaTime);
+    private void handleAttack(double deltaTime, Observer observer){
+        meleeAttack.update(property, observer.getPlayer(), deltaTime);
     }
 }

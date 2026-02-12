@@ -17,7 +17,7 @@ public class LvlSupplier_Sample extends LevelSupplier {
     public ArrayList<GameObject> getEnemyWave(Observer observer){
         ArrayList<GameObject> enemies = new ArrayList<>();
         for (int i = 0; i <= 3; i++){
-            enemies.add(new Rat(observer));
+            enemies.add(new Rat());
         }
         return enemies;
     }

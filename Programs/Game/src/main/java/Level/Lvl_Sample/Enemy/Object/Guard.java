@@ -1,14 +1,11 @@
 package Level.Lvl_Sample.Enemy.Object;
 
 import Data.Loader.ImageLoader;
-import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
-import Level.BaseLevel.View.AttackVisualize.AttackVisual;
+import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.Lvl_Sample.Behaviour.GroundSlap;
 import Level.Lvl_Sample.Managers.Observer;
 import Level.BaseLevel.Objects.Class_Base.Boss;
 import Level.Lvl_Sample.Enemy.Config.GuardConfig;
-
-import java.util.ArrayList;
 
 public class Guard extends Boss {
 
@@ -25,11 +22,11 @@ public class Guard extends Boss {
     // Override Method
 
     @Override
-    public void update(double deltaTime) {
-        property.pointTo(observer.getEnemy().getProperty());
-        super.update(deltaTime);
+    public void update(double deltaTime, Observer observer) {
+        property.pointTo(observer.getPlayer().getProperty());
+        super.update(deltaTime, observer);
         updateSpritePosition();
-        handleAttack(deltaTime);
+        handleAttack(deltaTime, observer);
     }
 
     @Override
@@ -41,15 +38,15 @@ public class Guard extends Boss {
 
     // Private Method
 
-    private void handleAttack(double deltaTime){
-        if (isNearEnemy()) groundSlap.activate(observer.getEnemy().getCenterPos());
+    private void handleAttack(double deltaTime, Observer observer){
+        if (isNearEnemy(observer.getPlayer())) groundSlap.activate(observer.getPlayer().getCenterPos());
         groundSlap.handleRigid();
         groundSlap.update(deltaTime, observer);
     }
 
-    private boolean isNearEnemy(){
-        double horizontalDistance = Math.abs(property.getX() - observer.getEnemy().getX());
-        double verticalDistance = Math.abs(property.getY() - observer.getEnemy().getY());
+    private boolean isNearEnemy(GameObject enemy){
+        double horizontalDistance = Math.abs(property.getX() - enemy.getX());
+        double verticalDistance = Math.abs(property.getY() - enemy.getY());
         return ( horizontalDistance < ATTACK_OFFSET &&
                 verticalDistance < ATTACK_OFFSET);
     }

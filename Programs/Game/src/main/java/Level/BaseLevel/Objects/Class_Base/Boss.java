@@ -9,7 +9,7 @@ public abstract class Boss extends ImageObject {
     protected boolean isDefeated = false;
 
     public Boss(Property property, Image image, Observer observer){
-        super(property, image, observer);
+        super(property, image);
     }
 
     public void defeat() {
@@ -21,11 +21,6 @@ public abstract class Boss extends ImageObject {
 
     public boolean isDefeated() {
         return isDefeated;
-    }
-
-    @Override
-    protected void updateHealth(){
-        observer.updateBossHealthBar(property.getHealthPercentage());
     }
 
     public boolean checkAlive(){

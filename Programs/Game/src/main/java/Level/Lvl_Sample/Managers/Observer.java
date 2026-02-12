@@ -5,21 +5,17 @@ import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Class_Concrete.Player;
-import Level.BaseLevel.View.SceneView;
 
 
 import java.util.ArrayList;
 
 public class Observer {
 
-    private Property player;
-    private GameObject enemy;
+    private Player player;
     private ArrayData<GameObject> gameObj;
     private ArrayData<DisplayableObject> displayObj;
-    private final SceneView sceneView;
 
-    public Observer(SceneView sceneView){
-        this.sceneView = sceneView;
+    public Observer(){
     }
 
     protected void setGameObj(ArrayData<GameObject> gameObj){
@@ -31,11 +27,7 @@ public class Observer {
     }
 
     protected void setPlayer(Player player){
-        this.player = player.getProperty();
-    }
-
-    protected void setEnemy(GameObject enemy){
-        this.enemy = enemy;
+        this.player = player;
     }
 
     // Get by GameObjects
@@ -57,27 +49,11 @@ public class Observer {
         }
         return healthObj;
     }
-
-    public Property getPlayerProperty() {
-        return player;
-    }
     
     // Display Related
 
-    public void updateBossHealthBar(double progress){
-        sceneView.updateBossHealthBar(progress);
-    }
-
-    public void updateSkillCooldowns(int skillID , double cooldownPercentages){
-        sceneView.updateSkillCooldowns(skillID ,cooldownPercentages);
-    }
-
-    public void updatePlayerHeartView(int heart){
-        sceneView.updatePlayerHeartView(heart);
-    }
-
-    public GameObject getEnemy(){
-        return enemy;
+    public GameObject getPlayer(){
+        return player;
     }
 
     public void addDisplayableObject(DisplayableObject displayableObject){
