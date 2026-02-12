@@ -1,30 +1,109 @@
 package Level.Lvl_Sample.Managers;
 
 import Level.BaseLevel.Manager.LevelData;
-import Level.BaseLevel.Manager.Updater;
-import Level.BaseLevel.Objects.Class_Concrete.Player;
-import javafx.scene.shape.Rectangle;
+import Level.BaseLevel.Manager.LevelSupplier;
+import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
+import Level.BaseLevel.Objects.Class_Base.Boss;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
+import Level.BaseLevel.Objects.Class_Concrete.Player;
+import Level.BaseLevel.Objects.Class_Concrete.Portal;
 import Level.BaseLevel.View.SceneView;
+import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 
-public class MainManager extends Updater {
+public class MainManager {
+
+    protected final SceneView sceneView;
+    private final LvlSupplier_Sample levelSupplier = new LvlSupplier_Sample();
+    // Minor Manager
+    protected final LevelData levelData;
+    protected final Observer observer;
+    // Objects
+    protected final Player player;
+    protected final Boss boss ;
+    protected Portal portal;
+    // GameState
+    protected boolean rewardState = false;
+    protected boolean gameRunning = true;
+
 
     public MainManager(SceneView sceneView, Player player, LevelData levelData, Observer observer){
-        super(sceneView, player, levelData, observer, new LvlSupplier_Sample());
+        this.levelData = levelData;
+        this.player = player;
+        this.sceneView = sceneView;
+        this.observer = observer;
+        this.boss = levelSupplier.getBoss(observer);
+
+        levelData.addObjects(levelSupplier.getObjects(player, boss));
+        levelData.addObjects(levelSupplier.getEnemyWave(observer));
+        levelData.displayObjects();
+
         observer.setPlayer(player);
         observer.setEnemy(player);
     }
 
-    // Override Method
+    public void updateObjects(double deltaTime){
+        if(!gameRunning) return;
+        checkGameCondition();
 
-    @Override
-    protected void handleWinCondition(){
-        // Empty
+        for (GameObject gameObject : levelData.getGameObjects()){
+            gameObject.update(deltaTime);
+        }
+        removeDead();
+    }
+
+    protected boolean isVictory(){
+        return (player.isAlive() && boss.isDead() && gameRunning);
+    }
+
+    protected boolean isLose(){
+        return (player.isDead() && gameRunning);
+    }
+
+    protected boolean isEnd(){
+        return (portal.isDead() && gameRunning);
     }
 
     // Private Method
+
+    private void checkGameCondition() {
+        if(isVictory() && ! rewardState){
+            portal = new Portal(observer, boss.getProperty());
+            levelData.addObjects(portal);
+            levelData.addDisplay(portal);
+            rewardState = true;
+        }
+        else if(isLose()){
+            sceneView.showLoseScreen();
+            gameRunning = false;
+
+        }
+        else if(rewardState && isEnd()){
+            sceneView.showWinScreen(5);
+            rewardState = false;
+            gameRunning = false;
+        }
+    }
+
+    private void removeDead() {
+        ArrayList<GameObject> toRemove = new ArrayList<>();
+
+        for (GameObject gameObject : levelData.getGameObjects()) {
+            if (!gameObject.isHealthNull() && gameObject.isDead()) {
+                toRemove.add(gameObject);
+            }
+        }
+
+        levelData.removeObjects(toRemove);
+
+        ArrayList<DisplayableObject> toDisappear = new ArrayList<>();
+        for (GameObject gameObject : toRemove){
+            toDisappear.addAll(gameObject.getRelatedSprite());
+        }
+        levelData.removeDisplay(toDisappear);
+    }
+
 
     private void addHitBoxDebug(){
         // For Debug purpose

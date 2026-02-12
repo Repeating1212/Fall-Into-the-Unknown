@@ -6,6 +6,7 @@ import Level.BaseLevel.Manager.PlayerHandler;
 import Data.Interface.SceneInterface;
 import Data.Supplier.SkillSupplier;
 import Level.BaseLevel.Manager.LevelData;
+import Level.Lvl_Sample.Managers.MainManager;
 import Level.Lvl_Sample.Managers.Observer;
 import Level.BaseLevel.Objects.Class_Concrete.Player;
 import javafx.fxml.FXML;
@@ -18,7 +19,6 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
-import Level.Lvl_Sample.Managers.MainManager;
 import Level.BaseLevel.View.* ;
 
 public class LevelController extends SceneInterface {

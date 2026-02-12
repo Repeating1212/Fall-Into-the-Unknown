@@ -1,7 +1,7 @@
 package Level.BaseLevel.Manager;
 
-import javafx.animation.AnimationTimer;
 import Level.Lvl_Sample.Managers.MainManager;
+import javafx.animation.AnimationTimer;
 
 public class GameTicks {
 
