@@ -32,6 +32,11 @@ public class ArrayData<T> {
         return arrayList;
     }
 
+    public int length(){
+        return arrayList.size();
+    }
+
+
     // Private method
 
     private <T> void addToList(ArrayList<T> toAdd, ArrayList<T> beAdded) {

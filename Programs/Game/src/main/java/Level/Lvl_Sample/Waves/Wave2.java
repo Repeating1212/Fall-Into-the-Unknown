@@ -12,7 +12,7 @@ import Level.Lvl_Sample.Enemy.Object.Rat;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Wave1  extends Wave implements Updater{
+public class Wave2 extends Wave implements Updater{
 
     private final int TOTAL_WAVE = 1;
     private final int WAVE_DURATION = 5;
@@ -22,7 +22,7 @@ public class Wave1  extends Wave implements Updater{
     private double progress;
 
 
-    public Wave1(SceneView sceneView, Player player){
+    public Wave2(SceneView sceneView, Player player){
         super(sceneView, player);
     }
 

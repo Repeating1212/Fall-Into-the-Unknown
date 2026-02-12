@@ -7,6 +7,7 @@ import Data.Interface.SceneInterface;
 import Data.Supplier.SkillSupplier;
 import Level.BaseLevel.Manager.MainManager;
 import Level.BaseLevel.Objects.Class_Concrete.Player;
+import Level.Lvl_Sample.Waves.LevelManager;
 import Level.Lvl_Sample.Waves.Updater;
 import Level.Lvl_Sample.Waves.Wave1;
 import javafx.fxml.FXML;
@@ -70,7 +71,7 @@ public class LevelController extends SceneInterface {
         // Game update related
         Player player = new Player(SkillSupplier.getPlayerSkills(fileManager));
         playerHandler = new PlayerHandler(skillBoxView, player);
-        Updater mainManager = new Wave1(sceneView, player);
+        Updater mainManager = new LevelManager(sceneView, player);
         gameTicks = new GameTicks(mainManager, playerHandler);
     }
 

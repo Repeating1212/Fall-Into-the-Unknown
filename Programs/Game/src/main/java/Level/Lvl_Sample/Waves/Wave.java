@@ -1,0 +1,61 @@
+package Level.Lvl_Sample.Waves;
+
+import Data.DataClass.ArrayData;
+import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
+import Level.BaseLevel.Objects.Class_Base.GameObject;
+import Level.BaseLevel.Objects.Class_Concrete.Player;
+import Level.BaseLevel.View.SceneView;
+
+import java.util.ArrayList;
+
+public abstract class Wave {
+
+    protected final Player player;
+    protected final SceneView sceneView;
+    protected final ArrayData<GameObject> gameObj = new ArrayData();
+
+    public Wave(SceneView sceneView, Player player){
+        this.player = player;
+        this.sceneView = sceneView;
+        gameObj.add(player);
+    }
+
+    protected void removeDead() {
+        ArrayList<GameObject> toRemove = new ArrayList<>();
+
+        for (GameObject gameObject : gameObj.get()) {
+            if (!gameObject.isHealthNull() && gameObject.isDead()) {
+                toRemove.add(gameObject);
+            }
+        }
+
+        gameObj.remove(toRemove);
+    }
+
+    protected void handleDisplay(double progression){
+
+        ArrayData<DisplayableObject> toDisplay = new ArrayData<>();
+
+        for (GameObject object : gameObj.get()){
+            toDisplay.add(object.getRelatedSprite());
+        }
+
+        sceneView.updateObjects(toDisplay.get());
+        sceneView.updatePlayerHeartView(player.getHealth());
+        displaySkillCooldown();
+        sceneView.updateBossHealthBar(progression);
+    }
+
+    protected void displaySkillCooldown(){
+        double[] cooldowns = player.getSkillCooldown();
+        for (int i = 0; i < cooldowns.length; i++){
+            sceneView.updateSkillCooldowns(i ,cooldowns[i]);
+        }
+    }
+
+    public abstract boolean isComplete();
+
+    public boolean isLose(){
+        return player.isDead();
+    }
+}
