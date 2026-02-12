@@ -6,7 +6,7 @@ import Level.BaseLevel.Properties.Position;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.AttackVisualize.AttackVisual;
 import Data.DataClass.Timer;
-import Level.Lvl_Sample.Managers.Observer;
+import Level.BaseLevel.Manager.Observer;
 
 import java.util.ArrayList;
 

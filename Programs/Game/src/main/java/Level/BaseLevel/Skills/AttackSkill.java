@@ -3,7 +3,7 @@ package Level.BaseLevel.Skills;
 import Level.BaseLevel.Objects.Class_Base.AttackArea;
 import Data.DataClass.Timer;
 import Level.BaseLevel.Properties.PlayerState;
-import Level.Lvl_Sample.Managers.Observer;
+import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.Properties.Position;

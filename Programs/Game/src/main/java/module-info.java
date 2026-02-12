@@ -37,8 +37,6 @@ module Game {
     exports Level.BaseLevel.Properties;
     opens Level.BaseLevel.Properties to javafx.fxml;
     exports Level.Lvl_Sample.Enemy.Config;
-    exports Level.Lvl_Sample.Managers;
-    opens Level.Lvl_Sample.Managers to javafx.fxml;
     exports Level.BaseLevel.View.AttackVisualize;
     opens Level.BaseLevel.View.AttackVisualize to javafx.fxml;
     exports Level.BaseLevel.Skills;

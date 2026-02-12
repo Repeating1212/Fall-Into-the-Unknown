@@ -2,13 +2,13 @@ package Level.BaseLevel.Objects.Class_Base;
 
 import javafx.scene.image.Image;
 import Level.BaseLevel.Properties.Property;
-import Level.Lvl_Sample.Managers.Observer;
+import Level.BaseLevel.Manager.Observer;
 
 public abstract class Boss extends ImageObject {
 
     protected boolean isDefeated = false;
 
-    public Boss(Property property, Image image, Observer observer){
+    public Boss(Property property, Image image){
         super(property, image);
     }
 

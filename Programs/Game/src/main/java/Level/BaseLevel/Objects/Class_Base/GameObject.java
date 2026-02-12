@@ -5,7 +5,7 @@ import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.Properties.Position;
 
 import javafx.scene.Node;
-import Level.Lvl_Sample.Managers.Observer;
+import Level.BaseLevel.Manager.Observer;
 
 import java.util.ArrayList;
 

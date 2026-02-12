@@ -4,11 +4,11 @@ import Level.BaseLevel.Objects.Class_Base.ImageObject;
 import Level.BaseLevel.Objects.Config.PortalConfig;
 import Level.BaseLevel.Properties.Property;
 import Data.Loader.ImageLoader;
-import Level.Lvl_Sample.Managers.Observer;
+import Level.BaseLevel.Manager.Observer;
 
 public class Portal extends ImageObject {
 
-    public Portal(Observer observer, Property property){
+    public Portal(Property property){
         super(PortalConfig.getProperty(property),
                 ImageLoader.PORTAL);
     }

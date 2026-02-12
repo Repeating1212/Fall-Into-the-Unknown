@@ -4,7 +4,7 @@ import Data.Loader.ImageLoader;
 import Level.BaseLevel.Objects.Class_Base.ImageObject;
 import Level.Lvl_Sample.Behaviour.MeleeAttack;
 import Level.Lvl_Sample.Enemy.Config.RatConfig;
-import Level.Lvl_Sample.Managers.Observer;
+import Level.BaseLevel.Manager.Observer;
 
 public class Rat extends ImageObject {
 
@@ -21,7 +21,7 @@ public class Rat extends ImageObject {
     @Override
     public void update(double deltaTime, Observer observer) {
         super.update(deltaTime, observer);
-        property.pointTo(observer.getPlayer().getProperty());
+        property.pointTo(observer.getPlayerPosition());
         updateSpritePosition();
         handleAttack(deltaTime, observer);
     }
@@ -36,6 +36,6 @@ public class Rat extends ImageObject {
     // Private Method
 
     private void handleAttack(double deltaTime, Observer observer){
-        meleeAttack.update(property, observer.getPlayer(), deltaTime);
+        meleeAttack.update(property, observer.getHealthObj(), deltaTime);
     }
 }

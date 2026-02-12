@@ -5,9 +5,10 @@ import Level.BaseLevel.Manager.GameTicks;
 import Level.BaseLevel.Manager.PlayerHandler;
 import Data.Interface.SceneInterface;
 import Data.Supplier.SkillSupplier;
-import Level.Lvl_Sample.Managers.MainManager;
-import Level.Lvl_Sample.Managers.Observer;
+import Level.BaseLevel.Manager.MainManager;
 import Level.BaseLevel.Objects.Class_Concrete.Player;
+import Level.Lvl_Sample.Waves.Updater;
+import Level.Lvl_Sample.Waves.Wave1;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -69,7 +70,7 @@ public class LevelController extends SceneInterface {
         // Game update related
         Player player = new Player(SkillSupplier.getPlayerSkills(fileManager));
         playerHandler = new PlayerHandler(skillBoxView, player);
-        MainManager mainManager = new MainManager(sceneView, player);
+        Updater mainManager = new Wave1(sceneView, player);
         gameTicks = new GameTicks(mainManager, playerHandler);
     }
 

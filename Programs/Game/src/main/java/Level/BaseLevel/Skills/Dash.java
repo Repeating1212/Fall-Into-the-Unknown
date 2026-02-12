@@ -2,7 +2,7 @@ package Level.BaseLevel.Skills;
 
 import Data.DataClass.Timer;
 import Level.BaseLevel.Properties.PlayerState;
-import Level.Lvl_Sample.Managers.Observer;
+import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.Properties.Position;
 

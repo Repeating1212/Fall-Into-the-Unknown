@@ -1,4 +1,4 @@
-package Level.Lvl_Sample.Managers;
+package Level.BaseLevel.Manager;
 
 import Data.DataClass.ArrayData;
 import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
@@ -6,18 +6,18 @@ import Level.BaseLevel.Objects.Class_Base.Boss;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Class_Concrete.Player;
 import Level.BaseLevel.Objects.Class_Concrete.Portal;
-import Level.BaseLevel.View.AttackVisualize.AttackVisual;
 import Level.BaseLevel.View.SceneView;
+import Level.Lvl_Sample.Enemy.Object.Guard;
+import Level.Lvl_Sample.Waves.Updater;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class MainManager {
+public class MainManager implements Updater {
 
     private final SceneView sceneView;
-    private final LvlSupplier_Sample levelSupplier = new LvlSupplier_Sample();
-    // Minor Manager
-    private final Observer observer = new Observer();
+    private final LevelSupplier levelSupplier = new LevelSupplier();
     // Objects
     private final Player player;
     private final Boss boss ;
@@ -31,17 +31,17 @@ public class MainManager {
     public MainManager(SceneView sceneView, Player player){
         this.player = player;
         this.sceneView = sceneView;
-        this.boss = levelSupplier.getBoss(observer);
+        this.boss = new Guard();
 
+        gameObj.add(levelSupplier.getEnemyWave());
         gameObj.add(player, boss);
         handleDisplay();
-
-        observer.setPlayer(player);
-        observer.setGameObj(gameObj);
     }
 
     public void updateObjects(double deltaTime){
         if(!gameRunning) return;
+
+        Observer observer = new Observer(player, gameObj);
         checkGameCondition();
         for (GameObject gameObject : gameObj.get()){
             gameObject.update(deltaTime, observer);
@@ -66,7 +66,7 @@ public class MainManager {
 
     private void checkGameCondition() {
         if(isVictory() && ! rewardState){
-            portal = new Portal(observer, boss.getProperty());
+            portal = new Portal(boss.getProperty());
             gameObj.add(portal);
             rewardState = true;
         }

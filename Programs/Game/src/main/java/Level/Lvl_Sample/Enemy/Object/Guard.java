@@ -1,22 +1,19 @@
 package Level.Lvl_Sample.Enemy.Object;
 
 import Data.Loader.ImageLoader;
-import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.Lvl_Sample.Behaviour.GroundSlap;
-import Level.Lvl_Sample.Managers.Observer;
+import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Objects.Class_Base.Boss;
 import Level.Lvl_Sample.Enemy.Config.GuardConfig;
-
-import java.util.ArrayList;
 
 public class Guard extends Boss {
 
     private final GroundSlap groundSlap;
     private final double ATTACK_OFFSET = GuardConfig.ATTACK_DISTANCE_OFFSET;
 
-    public Guard(Observer observer) {
-        super(GuardConfig.getProperty(), ImageLoader.STAKE, observer);
+    public Guard() {
+        super(GuardConfig.getProperty(), ImageLoader.STAKE);
         this.groundSlap = GuardConfig.getGroundSlap();
         groundSlap.initializeData(property);
     }
@@ -25,7 +22,7 @@ public class Guard extends Boss {
 
     @Override
     public void update(double deltaTime, Observer observer) {
-        property.pointTo(observer.getPlayer().getProperty());
+        property.pointTo(observer.getPlayerPosition());
         super.update(deltaTime, observer);
         updateSpritePosition();
         handleAttack(deltaTime, observer);

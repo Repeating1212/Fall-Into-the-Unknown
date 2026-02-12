@@ -3,7 +3,7 @@ package Level.BaseLevel.Skills;
 import Level.BaseLevel.Properties.PlayerState;
 import Level.BaseLevel.Properties.Position;
 import Level.BaseLevel.Properties.Property;
-import Level.Lvl_Sample.Managers.Observer;
+import Level.BaseLevel.Manager.Observer;
 
 public interface Skill {
 

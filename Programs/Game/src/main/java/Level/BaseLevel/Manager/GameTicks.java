@@ -1,19 +1,19 @@
 package Level.BaseLevel.Manager;
 
-import Level.Lvl_Sample.Managers.MainManager;
+import Level.Lvl_Sample.Waves.Updater;
 import javafx.animation.AnimationTimer;
 
 public class GameTicks {
 
     private AnimationTimer gameLoop;
 
-    private final MainManager manager;
+    private final Updater manager;
     private final PlayerHandler inputHandle;
 
     private long lastUpdateTime = 0;
     private boolean isRunning = false;
 
-    public GameTicks(MainManager mainManager, PlayerHandler playerHandler) {
+    public GameTicks(Updater mainManager, PlayerHandler playerHandler) {
         manager = mainManager;
         inputHandle = playerHandler;
     }

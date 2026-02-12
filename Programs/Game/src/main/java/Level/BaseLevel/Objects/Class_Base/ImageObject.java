@@ -4,9 +4,6 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import Level.BaseLevel.Properties.Property;
-import Level.Lvl_Sample.Managers.Observer;
-
-import java.util.ArrayList;
 
 public abstract class ImageObject extends GameObject {
     protected ImageView sprite = new ImageView();

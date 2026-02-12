@@ -1,7 +1,7 @@
-package Level.Lvl_Sample.Managers;
+package Level.BaseLevel.Manager;
 
 import Data.DataClass.ArrayData;
-import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
+import Level.BaseLevel.Properties.Position;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Class_Concrete.Player;
@@ -11,15 +11,13 @@ import java.util.ArrayList;
 
 public class Observer {
 
-    private Player player;
-    private ArrayData<GameObject> gameObj;
+    private final Player player;
+    private final ArrayData<GameObject> gameObj;
 
-    protected void setGameObj(ArrayData<GameObject> gameObj){
-        this.gameObj = gameObj;
-    }
-
-    protected void setPlayer(Player player){
+    public Observer(Player player, ArrayData<GameObject> gameObjects){
+        this.gameObj = gameObjects;
         this.player = player;
+
     }
 
     // Get by GameObjects
@@ -41,10 +39,12 @@ public class Observer {
         }
         return healthObj;
     }
-    
-    // Display Related
 
     public GameObject getPlayer(){
         return player;
+    }
+
+    public Position getPlayerPosition(){
+        return player.getProperty().duplicatePosition();
     }
 }

@@ -6,7 +6,7 @@ import Level.BaseLevel.Objects.Config.PlayerConfig;
 import Level.BaseLevel.Properties.PlayerState;
 import Level.BaseLevel.Skills.AttackSkill;
 import Level.BaseLevel.View.AttackVisualize.AttackVisual;
-import Level.Lvl_Sample.Managers.Observer;
+import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Skills.Skill;
 
 public class Player extends ImageObject {
