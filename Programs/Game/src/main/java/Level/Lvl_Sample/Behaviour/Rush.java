@@ -1,46 +1,49 @@
 package Level.Lvl_Sample.Behaviour;
 
 import Data.DataClass.Timer;
+import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Properties.Property;
 
 import Level.BaseLevel.View.AttackVisualize.RectangleAttackVisual;
+
+import java.util.ArrayList;
 
 public class Rush {
 
     private final double RANGE;
     private final double SPEED_INCREMENT;
+    private final double DAMAGE;
 
     private Timer cooldown;
+    private Timer rigid;
     private RectangleAttackVisual attackVisual;
+
+    private boolean pendingRush = false;
     private double currentRush;
     private double totalRush;
 
     private Property owner;
 
-    public Rush(double range, double cooldown, double speedIncrement, Property owner){
+    public Rush(double range, double cooldown, double damage, double speedIncrement, Property owner, double rushRigid){
         this.RANGE = range;
         this.SPEED_INCREMENT = speedIncrement;
+        this.DAMAGE = damage;
+
         this.cooldown = new Timer(cooldown);
+        this.rigid = new Timer(rushRigid);
         this.owner = owner;
         this.attackVisual = new RectangleAttackVisual(range, owner.getHeight());
     }
 
-    public void activate(){
-        if (cooldown.isDeactive()){
-            cooldown.setPending();
-            owner.speedMultiply(SPEED_INCREMENT);
-            currentRush = 0;
-            totalRush = (RANGE / owner.getSpeed());
-            owner.setDirectable(false);
-            attackVisual.activate(owner.getCenterPos(), owner.getDirection());
-        }
-    }
-
-    public void update(double deltaTime){
+    public void update(double deltaTime, ArrayList<GameObject> healthObj){
         cooldown.update(deltaTime);
-        currentRush ++;
-        handleComplete();
+        rigid.update(deltaTime);
+
+
         handleActivate();
+        handleRigid();
+        handleRush(healthObj);
+        handleComplete();
     }
 
     public RectangleAttackVisual getAttackVisual(){
@@ -48,23 +51,57 @@ public class Rush {
     }
 
     public boolean isRunning(){
-        return (cooldown.isPending());
+        return (rigid.isTicking() || cooldown.isPending());
     }
-
 
     // Private Method
 
-    private void handleComplete(){
-        if (cooldown.isPending() && currentRush >= totalRush){
-            cooldown.start();
-            owner.speedDivide(SPEED_INCREMENT);
-            owner.setDirectable(true);
+    private void handleActivate(){
+        if (rigid.isDeactive() && cooldown.isDeactive() && !pendingRush){
+            rigid.start();
+            owner.setPauseMovement(true);
+            owner.setDirectable(false);
+            pendingRush = true;
+
+            attackVisual.activate(owner.getCenterPos(), owner.getDirection());
         }
     }
 
-    private void handleActivate(){
-        if (cooldown.isDeactive()){
-            activate();
+    private void handleRigid(){
+        if (rigid.isEnd() && cooldown.isDeactive() && pendingRush ){
+            pendingRush = false;
+            cooldown.setPending();
+
+            owner.setPauseMovement(false);
+            owner.speedMultiply(SPEED_INCREMENT);
+
+            currentRush = 0;
+            totalRush = (RANGE / owner.getSpeed());
+        }
+    }
+
+    private void handleRush(ArrayList<GameObject> healthObj){
+        if (!pendingRush && cooldown.isPending() &&
+                currentRush < totalRush && rigid.isDeactive()){
+
+            currentRush ++;
+            for (GameObject object: healthObj){
+                if (owner.isTouch(object.getProperty())){
+                    if (object.getProperty() == owner) continue;
+                    object.takeDamage(DAMAGE);
+                }
+            }
+        }
+    }
+
+
+    private void handleComplete(){
+        if (!pendingRush && cooldown.isPending() &&
+                currentRush >= totalRush && rigid.isDeactive()){
+
+            cooldown.start();
+            owner.speedDivide(SPEED_INCREMENT);
+            owner.setDirectable(true);
         }
     }
 }

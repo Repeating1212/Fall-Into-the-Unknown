@@ -22,6 +22,7 @@ public class SlimeWhiteConfig {
     public static final double RUSH_COOLDOWN = 5;
     public static final double RUSH_RANGE = 300;
     public static final double RUSH_SPEED_MULTIPLY = 3.0;
+    public static final double RUSH_RIGID = 2.0;
 
     // Supplier
 
@@ -47,6 +48,6 @@ public class SlimeWhiteConfig {
     }
 
     public static Rush getRush(Property owner){
-        return new Rush(RUSH_RANGE, RUSH_COOLDOWN, RUSH_SPEED_MULTIPLY, owner);
+        return new Rush(RUSH_RANGE, RUSH_COOLDOWN, DAMAGE, RUSH_SPEED_MULTIPLY, owner, RUSH_RIGID);
     }
 }

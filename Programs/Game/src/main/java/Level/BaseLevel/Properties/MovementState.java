@@ -10,6 +10,7 @@ public class MovementState {
     private double speedMultiply = 1;
 
     private double pauseMovementTimer = 0;
+    private boolean pauseMovement = false;
     private boolean directable = true;
 
 
@@ -27,6 +28,9 @@ public class MovementState {
 
     protected double[] calculateMovement() {
         if (pauseMovementTimer > 0){
+            return new double[] {0, 0};
+        }
+        if (pauseMovement){
             return new double[] {0, 0};
         }
         double movementX = deltaX * SPEED * speedMultiply;
@@ -76,5 +80,9 @@ public class MovementState {
     protected double getDirection(){
         Vector2D vector2D = new Vector2D(deltaX, deltaY);
         return vector2D.getAngleDegrees();
+    }
+
+    protected void setPauseMovement(boolean pauseMovement){
+        this.pauseMovement = pauseMovement;
     }
 }

@@ -6,6 +6,7 @@ import Level.BaseLevel.Objects.Class_Base.ImageObject;
 import Level.BaseLevel.Properties.Position;
 import Level.BaseLevel.Properties.Property;
 import Level.Lvl_Sample.Behaviour.Rush;
+import Level.Lvl_Sample.Behaviour.Tackle;
 import Level.Lvl_Sample.Enemy.Config.SlimeGreyConfig;
 import Level.Lvl_Sample.Enemy.Config.SlimeWhiteConfig;
 
@@ -48,7 +49,7 @@ public class SlimeWhite extends ImageObject {
 
         if (isAlive()){
             property.pointTo(observer.getPlayerPosition());
-            rush.update(deltaTime);
+            rush.update(deltaTime, observer.getHealthObj());
             if(rush.isRunning()){
                 relatedDisplay.add(rush.getAttackVisual());
             } else {

@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class Wave2 extends Wave implements Updater{
 
-    private final int TOTAL_WAVE = 1;
+    private final int TOTAL_WAVE = 3;
     private final int WAVE_DURATION = 5;
 
 //    private ArrayData<SlimeGrey> slimeGreys = new ArrayData<>();
@@ -78,8 +78,7 @@ public class Wave2 extends Wave implements Updater{
 
     private void spawnEnemies(){
         Random random = new Random();
-        int num = 1;
-//        int num =  random.nextInt(2,5);
+        int num =  random.nextInt(2,5);
         for (int i = 0; i < num; i++){
             SlimeWhite slimeWhite = new SlimeWhite(getProperties(gameObj));
 //            slimeGreys.add(slimeWhite);

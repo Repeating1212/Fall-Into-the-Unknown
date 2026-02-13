@@ -93,6 +93,9 @@ public class Property {
         return movementState.getDirection();
     }
 
+    public void setPauseMovement(boolean pauseMovement){
+        movementState.setPauseMovement(pauseMovement);
+    }
 
     public void pointTo(Property destination){
         movementState.pointTo(destination.position, this.position);
