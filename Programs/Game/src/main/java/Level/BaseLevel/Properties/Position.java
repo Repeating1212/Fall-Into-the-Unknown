@@ -69,33 +69,40 @@ public class Position {
         }
     }
 
-    protected void spawnNearBoundary(HitBox hitBox) {
+    protected void spawnNearBoundary(HitBox hitBox, ArrayList<HitBox> others) {
         int MAP_WIDTH = 1200;
         int MAP_HEIGHT = 675;
         int OFFSET = 10;
         int objWidth = hitBox.getWidth();
         int objHeight = hitBox.getHeight();
+        int MAX_ATTEMPTS = 100;
 
-        Random random = new Random();
-        int edge = random.nextInt(4);
+        for (int attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+            Random random = new Random();
+            int edge = random.nextInt(4);
 
-        switch (edge) {
-            case 0: // Top
-                x = randomRange(OFFSET, MAP_WIDTH - objWidth - OFFSET);
-                y = OFFSET;
-                break;
-            case 1: // Right
-                x = MAP_WIDTH - objWidth - OFFSET;
-                y = randomRange(OFFSET, MAP_HEIGHT - objHeight - OFFSET);
-                break;
-            case 2: // Bottom
-                x = randomRange(OFFSET, MAP_WIDTH - objWidth - OFFSET);
-                y = MAP_HEIGHT - objHeight - OFFSET;
-                break;
-            case 3: // Left
-                x = OFFSET;
-                y = randomRange(OFFSET, MAP_HEIGHT - objHeight - OFFSET);
-                break;
+            switch (edge) {
+                case 0: // Top
+                    x = randomRange(OFFSET, MAP_WIDTH - objWidth - OFFSET);
+                    y = OFFSET;
+                    break;
+                case 1: // Right
+                    x = MAP_WIDTH - objWidth - OFFSET;
+                    y = randomRange(OFFSET, MAP_HEIGHT - objHeight - OFFSET);
+                    break;
+                case 2: // Bottom
+                    x = randomRange(OFFSET, MAP_WIDTH - objWidth - OFFSET);
+                    y = MAP_HEIGHT - objHeight - OFFSET;
+                    break;
+                case 3: // Left
+                    x = OFFSET;
+                    y = randomRange(OFFSET, MAP_HEIGHT - objHeight - OFFSET);
+                    break;
+            }
+
+            if (! hitBox.isCollide(others)){
+                return;
+            }
         }
     }
 
@@ -139,7 +146,7 @@ public class Position {
         }
 
         // No suitable position
-        spawnNearBoundary(self);
+        spawnNearBoundary(self, others);
     }
 
     // Private Method

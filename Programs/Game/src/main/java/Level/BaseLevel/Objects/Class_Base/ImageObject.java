@@ -28,7 +28,9 @@ public abstract class ImageObject extends GameObject {
     @Override
     public void update(double deltaTime, Observer observer){
         super.update(deltaTime, observer);
-        updateSpritePosition();
+        if ( property.isAlive() ) {
+            updateSpritePosition();
+        }
     }
 
     // Private Method

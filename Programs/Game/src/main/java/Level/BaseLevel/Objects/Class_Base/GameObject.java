@@ -28,10 +28,12 @@ public abstract class GameObject implements DisplayableObject {
     // Base Method
 
     public void update(double deltaTime, Observer observer){
-        property.updateMovement(deltaTime);
-        property.move(observer.getGameObjPrt());
-        checkBoundaries(MapX, MapY , MapHeight, MapWidth);
         toRemove = removeCondition();
+        checkBoundaries(MapX, MapY , MapHeight, MapWidth);
+        if (property.isAlive()){
+            property.updateMovement(deltaTime);
+            property.move(observer.getGameObjPrt());
+        }
     }
 
     protected void checkBoundaries(double minX, double minY, double maxX, double maxY) {
@@ -61,6 +63,8 @@ public abstract class GameObject implements DisplayableObject {
     public double getX() { return property.getX(); }
 
     public double getY() { return property.getY(); }
+
+    public Position duplicatePosition(){return property.duplicatePosition();}
 
     // Hitbox related
 

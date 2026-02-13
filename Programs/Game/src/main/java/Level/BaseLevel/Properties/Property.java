@@ -120,8 +120,8 @@ public class Property {
         return new Position(position.getX(), position.getY());
     }
 
-    public void spawnNearBoundary(){
-        position.spawnNearBoundary(this.hitBox);
+    public void spawnNearBoundary(ArrayList<Property> properties){
+        position.spawnNearBoundary(this.hitBox, getHitBoxArray(properties));
     }
 
     public void spawnNearBy(ArrayList<Property> others, Position destination){

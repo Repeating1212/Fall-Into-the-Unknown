@@ -43,9 +43,10 @@ public class Wave2 extends Wave implements Updater{
 
         waveTimer.update(deltaTime);
         spawnSlime();
-        removeObject();
+
 
         handleDisplay(1 - progress);
+        removeObject(); // Always last method
     }
 
     // Override Method
@@ -96,12 +97,13 @@ public class Wave2 extends Wave implements Updater{
         ArrayData<SlimeGrey> temp = new ArrayData<>();
         temp.add(slimeGreys.get());
 
-        for (SlimeGrey slimeGrey : temp.get()){
-            if (slimeGrey.spawnable() && slimeGrey.isDead()){
+        for (SlimeGrey parent : temp.get()){
+            if (parent.spawnable()){
                 for (int i = 0; i < 3; i ++){
-                    SlimeGrey slime = new SlimeGrey(getProperties(gameObj), slimeGrey.getSize() - 1, slimeGrey.getProperty().duplicatePosition());
-                    slimeGreys.add(slime);
-                    gameObj.add(slime);
+                    SlimeGrey child = new SlimeGrey(getProperties(gameObj), parent.getSize() - 1, parent.duplicatePosition());
+                    slimeGreys.add(child);
+                    gameObj.add(child);
+                    parent.setSpawned();
                 }
             }
 

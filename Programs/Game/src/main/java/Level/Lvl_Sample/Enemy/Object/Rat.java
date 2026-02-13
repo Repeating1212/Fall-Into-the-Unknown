@@ -16,9 +16,7 @@ public class Rat extends ImageObject {
     public Rat(ArrayList<Property> properties) {
         super(RatConfig.getProperty(), ImageLoader.L01_RAT);
         this.tackle = RatConfig.getTackle();
-        do {
-            property.spawnNearBoundary();
-        } while (property.isCollide(properties));
+        property.spawnNearBoundary(properties);
 
     }
 
