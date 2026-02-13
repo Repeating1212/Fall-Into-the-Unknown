@@ -89,6 +89,11 @@ public class Property {
         movementState.setDirectable(directable);
     }
 
+    public double getDirection(){
+        return movementState.getDirection();
+    }
+
+
     public void pointTo(Property destination){
         movementState.pointTo(destination.position, this.position);
     }

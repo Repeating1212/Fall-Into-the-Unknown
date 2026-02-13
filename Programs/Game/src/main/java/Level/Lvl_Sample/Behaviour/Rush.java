@@ -2,13 +2,16 @@ package Level.Lvl_Sample.Behaviour;
 
 import Data.DataClass.Timer;
 import Level.BaseLevel.Properties.Property;
+import Level.BaseLevel.View.AttackVisualize.AttackVisual;
+import Level.BaseLevel.View.AttackVisualize.RectangleAttackVisual;
 
 public class Rush {
 
     private final double RANGE;
     private final double SPEED_INCREMENT;
-    private Timer cooldown;
 
+    private Timer cooldown;
+    private RectangleAttackVisual attackVisual;
     private double currentRush;
     private double totalRush;
 
@@ -19,6 +22,7 @@ public class Rush {
         this.SPEED_INCREMENT = speedIncrement;
         this.cooldown = new Timer(cooldown);
         this.owner = owner;
+        this.attackVisual = new RectangleAttackVisual(range, owner.getHeight(), 3, 0);
     }
 
     public void activate(){
@@ -28,15 +32,22 @@ public class Rush {
             currentRush = 0;
             totalRush = (RANGE / owner.getSpeed());
             owner.setDirectable(false);
+            attackVisual.activate(owner.getCenterPos(), owner.getDirection());
         }
     }
 
     public void update(double deltaTime){
         cooldown.update(deltaTime);
+        attackVisual.update(deltaTime);
         currentRush ++;
         handleComplete();
         handleActivate();
     }
+
+    public RectangleAttackVisual getAttackVisual(){
+        return attackVisual;
+    }
+
 
     // Private Method
 
@@ -45,7 +56,6 @@ public class Rush {
             cooldown.start();
             owner.speedDivide(SPEED_INCREMENT);
             owner.setDirectable(true);
-            System.out.println(owner.getSpeed());
         }
     }
 

@@ -30,12 +30,20 @@ public class Vector2D {
 
     // Get angle in radians
     public double getAngle() {
-        return Math.atan2(- y, x);
+        return Math.atan2(y, x);
     }
 
     // Get angle in degrees
     public double getAngleDegrees() {
         return Math.toDegrees(getAngle());
+    }
+
+    public static Vector2D fromAngle(double degrees) {
+        double radians = Math.toRadians(degrees);
+        return new Vector2D(
+                Math.cos(radians),
+                -Math.sin(radians)  // Negative because JavaFX Y increases downward
+        );
     }
 
     public double getX() { return x; }

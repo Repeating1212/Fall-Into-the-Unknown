@@ -95,6 +95,6 @@ public class ConeAttackVisual extends AttackVisual {
         Vector2D attackVector = Vector2D.getAttackVector(currentPos, destinationPos);
         Vector2D temp = attackVector.normalize();
         double dirAngle = temp.getAngleDegrees();
-        return (dirAngle - arc.getLength()/2);
+        return (- dirAngle - arc.getLength()/2); // dirAngle is opposite
     }
 }

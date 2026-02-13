@@ -72,4 +72,9 @@ public class MovementState {
             this.deltaY = movementY;
         }
     }
+
+    protected double getDirection(){
+        Vector2D vector2D = new Vector2D(deltaX, deltaY);
+        return vector2D.getAngleDegrees();
+    }
 }

@@ -29,7 +29,7 @@ public class SlimeWhite extends ImageObject {
                 SlimeWhiteConfig.DEAD_DURATION);
         this.size = size;
         this.rush = SlimeWhiteConfig.getRush(this.property);
-        property.spawnNearBoundary(properties);
+//        property.spawnNearBoundary(properties);
     }
 
     // Spawned slime
@@ -49,7 +49,14 @@ public class SlimeWhite extends ImageObject {
         if (isAlive()){
             property.pointTo(observer.getPlayerPosition());
             rush.update(deltaTime);
+            if(rush.getAttackVisual().isActive()){
+                relatedDisplay.add(rush.getAttackVisual());
+            } else {
+//                relatedDisplay.remove(rush.getAttackVisual());
+            }
         }
+
+
     }
 
     public int getSize(){
