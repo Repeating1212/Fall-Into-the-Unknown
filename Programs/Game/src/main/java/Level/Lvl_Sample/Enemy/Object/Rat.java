@@ -26,17 +26,9 @@ public class Rat extends ImageObject {
 
     @Override
     public void update(double deltaTime, Observer observer) {
-        super.update(deltaTime, observer);
         property.pointTo(observer.getPlayerPosition());
-        updateSpritePosition();
+        super.update(deltaTime, observer);
         handleAttack(deltaTime, observer);
-    }
-
-    @Override
-    public void updateSpritePosition(){
-        if (property.isMovingLeft()) sprite.setScaleX(1);
-        else if (property.isMovingRight()) sprite.setScaleX(-1);
-        super.updateSpritePosition();
     }
 
     // Private Method

@@ -13,6 +13,7 @@ public abstract class GameObject implements DisplayableObject {
 
     protected Property property;
     protected ArrayData<DisplayableObject> relatedDisplay = new ArrayData<>();
+    protected boolean toRemove = false; // To remove from screen and updates
 
     public static final double MapX = 0;
     public static final double MapY = 0;
@@ -30,6 +31,7 @@ public abstract class GameObject implements DisplayableObject {
         property.updateMovement(deltaTime);
         property.move(observer.getGameObjPrt());
         checkBoundaries(MapX, MapY , MapHeight, MapWidth);
+        toRemove = removeCondition();
     }
 
     protected void checkBoundaries(double minX, double minY, double maxX, double maxY) {
@@ -40,9 +42,19 @@ public abstract class GameObject implements DisplayableObject {
         return relatedDisplay.get();
     };
 
+    // Allow Override
+
+    protected boolean removeCondition(){
+        return (!property.isHealthNull() && property.isDead());
+    }
+
     // Data Class Getter
 
     public Property getProperty(){return property;}
+
+    // Condition Getter
+
+    public boolean toRemove(){return toRemove;}
 
     // Position related
 

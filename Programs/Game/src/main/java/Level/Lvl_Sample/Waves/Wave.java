@@ -20,11 +20,11 @@ public abstract class Wave implements Updater{
         gameObj.add(player);
     }
 
-    protected void removeDead() {
+    protected void removeObject() {
         ArrayList<GameObject> toRemove = new ArrayList<>();
 
         for (GameObject gameObject : gameObj.get()) {
-            if (!gameObject.isHealthNull() && gameObject.isDead()) {
+            if (gameObject.toRemove()) {
                 toRemove.add(gameObject);
             }
         }

@@ -42,12 +42,8 @@ module Game {
     exports Level.BaseLevel.Skills;
     opens Level.BaseLevel.Skills to javafx.fxml;
     exports Level.BaseLevel.Manager;
-    opens Level.BaseLevel.Manager to javafx.fxml;
-    exports Level.BaseLevel.Objects.Config;
     exports Level.BaseLevel.Objects.Class_Base;
     opens Level.BaseLevel.Objects.Class_Base to javafx.fxml;
-    exports Level.BaseLevel.Objects.Class_Concrete;
-    opens Level.BaseLevel.Objects.Class_Concrete to javafx.fxml;
     exports Data.DataClass;
     opens Data.DataClass to com.google.gson, javafx.fxml;
     exports Level.Lvl_Sample.Launcher;

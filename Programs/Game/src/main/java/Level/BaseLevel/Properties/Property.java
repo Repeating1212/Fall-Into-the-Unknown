@@ -124,6 +124,10 @@ public class Property {
         position.spawnNearBoundary(this.hitBox);
     }
 
+    public void spawnNearBy(ArrayList<Property> others, Position destination){
+        position.spawnNearBy(this.hitBox, getHitBoxArray(others), destination);
+    }
+
     // Health
 
     public void reduceHealth(double damage) {

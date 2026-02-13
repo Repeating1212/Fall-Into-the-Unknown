@@ -24,7 +24,6 @@ public class Guard extends Boss {
     public void update(double deltaTime, Observer observer) {
         property.pointTo(observer.getPlayerPosition());
         super.update(deltaTime, observer);
-        updateSpritePosition();
         handleAttack(deltaTime, observer);
 
         if(groundSlap.getAttackVisual().isActive()){
@@ -32,13 +31,6 @@ public class Guard extends Boss {
         } else {
             relatedDisplay.remove(groundSlap.getAttackVisual());
         }
-    }
-
-    @Override
-    public void updateSpritePosition(){
-        if (property.isMovingLeft()) sprite.setScaleX(1);
-        else if (property.isMovingRight()) sprite.setScaleX(-1);
-        super.updateSpritePosition();
     }
 
     // Private Method

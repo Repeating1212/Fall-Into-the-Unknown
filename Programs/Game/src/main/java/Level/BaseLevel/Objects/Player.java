@@ -25,9 +25,12 @@ public class Player extends ImageObject {
 
     // Update player position
     public void update(double deltaTime, Observer observer) {
+
         super.update(deltaTime, observer);
-        updateSpritePosition();
+        handleInvincibilityAnimation();
+
         playerState.update(deltaTime);
+
         for(Skill skill : skills){
             skill.handleRigid();
             skill.update(deltaTime, observer);
@@ -65,15 +68,6 @@ public class Player extends ImageObject {
             return true;
         }
         return false;
-    }
-
-    @Override
-    public void updateSpritePosition(){
-        if (property.isMovingLeft()) sprite.setScaleX(1);
-        else if (property.isMovingRight()) sprite.setScaleX(-1);
-
-        super.updateSpritePosition();
-        handleInvincibilityAnimation();
     }
 
     // Private Method

@@ -1,5 +1,6 @@
 package Level.BaseLevel.Objects.Class_Base;
 
+import Level.BaseLevel.Manager.Observer;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,9 +17,18 @@ public abstract class ImageObject extends GameObject {
     }
 
     protected void updateSpritePosition() {
+        if (property.isMovingLeft()) sprite.setScaleX(1);
+        else if (property.isMovingRight()) sprite.setScaleX(-1);
+
         sprite.setX(property.getX());
         sprite.setY(property.getY());
         property.resetDebugHitBox();
+    }
+
+    @Override
+    public void update(double deltaTime, Observer observer){
+        super.update(deltaTime, observer);
+        updateSpritePosition();
     }
 
     // Private Method

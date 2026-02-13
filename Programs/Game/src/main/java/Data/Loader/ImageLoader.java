@@ -50,6 +50,10 @@ public class ImageLoader {
 
     // EnemyImage
     private static final String L01_RAT_Path = "/Picture/Level_Picture/Enemy/Rat.png";
+    private static final String L01_SLIME_GREY_Path = "/Picture/Level_Picture/Enemy/Slime Grey.png";
+    private static final String L01_SLIME_WHITE_Path = "/Picture/Level_Picture/Enemy/Slime White.png";
+    private static final String L01_SLIME_KING_Path = "/Picture/Level_Picture/Enemy/Slime King.png";
+
 
 
 
@@ -94,6 +98,9 @@ public class ImageLoader {
     public static final Image COIN_ANIMATION = new Image(ImageLoader.class.getResourceAsStream(COIN_ANIMATION_Path));
 
     public static final Image L01_RAT = new Image(ImageLoader.class.getResourceAsStream(L01_RAT_Path));
+    public static final Image L01_SLIME_GREY = new Image(ImageLoader.class.getResourceAsStream(L01_SLIME_GREY_Path));
+    public static final Image L01_SLIME_WHITE = new Image(ImageLoader.class.getResourceAsStream(L01_SLIME_WHITE_Path));
+    public static final Image L01_SLIME_KING = new Image(ImageLoader.class.getResourceAsStream(L01_SLIME_KING_Path));
 
     public static final Image STARTSCENE_BACKGROUND = new Image(ImageLoader.class.getResourceAsStream(STARTSCENE_IMAGE_Path));
 

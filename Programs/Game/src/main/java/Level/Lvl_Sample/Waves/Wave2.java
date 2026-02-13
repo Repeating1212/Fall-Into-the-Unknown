@@ -7,7 +7,7 @@ import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.SceneView;
-import Level.Lvl_Sample.Enemy.Object.Rat;
+import Level.Lvl_Sample.Enemy.Object.SlimeGrey;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,6 +17,7 @@ public class Wave2 extends Wave implements Updater{
     private final int TOTAL_WAVE = 2;
     private final int WAVE_DURATION = 5;
 
+    private ArrayData<SlimeGrey> slimeGreys = new ArrayData<>();
     private int currentWave = 0;
     private Timer waveTimer = new Timer(WAVE_DURATION);
     private double progress;
@@ -41,8 +42,9 @@ public class Wave2 extends Wave implements Updater{
         }
 
         waveTimer.update(deltaTime);
+        spawnSlime();
+        removeObject();
 
-        removeDead();
         handleDisplay(1 - progress);
     }
 
@@ -55,15 +57,30 @@ public class Wave2 extends Wave implements Updater{
                 progress >= 1;
     }
 
+    @Override
+    protected void removeObject(){
+        ArrayList<GameObject> toRemove = new ArrayList<>();
+
+        for (GameObject gameObject : gameObj.get()) {
+            if (gameObject.toRemove()) {
+                toRemove.add(gameObject);
+                if (gameObject.getClass() == SlimeGrey.class){
+                    slimeGreys.remove((SlimeGrey) gameObject);
+                }
+            }
+        }
+        gameObj.remove(toRemove);
+    }
+
     // Private Method
 
     private void spawnEnemies(){
         Random random = new Random();
         int num =  random.nextInt(2,5);
         for (int i = 0; i < num; i++){
-            ArrayList<Property> properties = getProperties(gameObj);
-            Rat rat = new Rat(properties);
-            gameObj.add(rat);
+            SlimeGrey slimeGrey = new SlimeGrey(getProperties(gameObj));
+            slimeGreys.add(slimeGrey);
+            gameObj.add(slimeGrey);
         }
     }
 
@@ -73,5 +90,21 @@ public class Wave2 extends Wave implements Updater{
             properties.add(gameObject.getProperty());
         }
         return properties;
+    }
+
+    private void spawnSlime(){
+        ArrayData<SlimeGrey> temp = new ArrayData<>();
+        temp.add(slimeGreys.get());
+
+        for (SlimeGrey slimeGrey : temp.get()){
+            if (slimeGrey.spawnable() && slimeGrey.isDead()){
+                for (int i = 0; i < 3; i ++){
+                    SlimeGrey slime = new SlimeGrey(getProperties(gameObj), slimeGrey.getSize() - 1, slimeGrey.getProperty().duplicatePosition());
+                    slimeGreys.add(slime);
+                    gameObj.add(slime);
+                }
+            }
+
+        }
     }
 }

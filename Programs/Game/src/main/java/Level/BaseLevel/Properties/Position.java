@@ -99,6 +99,49 @@ public class Position {
         }
     }
 
+    protected void spawnNearBy(HitBox self, ArrayList<HitBox> others, Position targetPosition) {
+        int MAX_ATTEMPTS = 100;
+        int SEARCH_RADIUS = 50;
+        int MAP_WIDTH = 1200;
+        int MAP_HEIGHT = 675;
+        int OFFSET = 10;
+
+        Random random = new Random();
+
+        // If not collided
+        this.x = targetPosition.getX();
+        this.y = targetPosition.getY();
+        if (!self.isCollide(others)) {
+            return;
+        }
+
+        //If collided
+        for (int attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+            // Random angle and distance
+            double angle = random.nextDouble() * 2 * Math.PI;
+            double distance = random.nextDouble() * SEARCH_RADIUS;
+
+            // Calculate new position
+            double newX = targetPosition.getX() + Math.cos(angle) * distance;
+            double newY = targetPosition.getY() + Math.sin(angle) * distance;
+
+            // Keep within map bounds
+            newX = Math.max(OFFSET, Math.min(MAP_WIDTH - self.getWidth() - OFFSET, newX));
+            newY = Math.max(OFFSET, Math.min(MAP_HEIGHT - self.getHeight() - OFFSET, newY));
+
+            // Try this position
+            this.x = newX;
+            this.y = newY;
+
+            if (!self.isCollide(others)) {
+                return; // Found a valid position!
+            }
+        }
+
+        // No suitable position
+        spawnNearBoundary(self);
+    }
+
     // Private Method
 
     private int randomRange(int min, int max) {

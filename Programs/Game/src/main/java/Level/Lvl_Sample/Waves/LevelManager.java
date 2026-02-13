@@ -22,11 +22,9 @@ public class LevelManager implements Updater{
         gameObj.add(player);
 
         waves = new Wave[]{
-                new Wave1(sceneView, player),
-                new Wave1(sceneView, player)
+//                new Wave1(sceneView, player),
+                new Wave2(sceneView, player)
         };
-
-        System.out.println(waves.length);
     }
 
     public void updateObjects(double deltaTime){

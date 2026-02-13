@@ -17,7 +17,6 @@ public class Observer {
     public Observer(Player player, ArrayData<GameObject> gameObjects){
         this.gameObj = gameObjects;
         this.player = player;
-
     }
 
     // Get by GameObjects

@@ -42,7 +42,7 @@ public class Wave1  extends Wave implements Updater{
 
         waveTimer.update(deltaTime);
 
-        removeDead();
+        removeObject();
         handleDisplay(1 - progress);
     }
 
