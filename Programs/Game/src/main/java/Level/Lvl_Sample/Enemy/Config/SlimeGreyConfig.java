@@ -15,7 +15,6 @@ public class SlimeGreyConfig {
 
     public static final double DAMAGE = 2;
     public static final double ATTACK_RIGID = 2.5;
-
     public static final double DEAD_DURATION = 1.0;
 
     // Supplier

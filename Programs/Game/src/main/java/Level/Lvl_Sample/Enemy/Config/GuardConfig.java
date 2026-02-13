@@ -29,6 +29,9 @@ public class GuardConfig {
     public static final double TOTAL_ANIMATION_PERIOD = (FADE_OUT_DURATION + ENLARGE_DURATION);
     public static final double ATTACK_RIGID_TIME = TOTAL_ANIMATION_PERIOD * 1.2;
 
+    public static final double DEAD_DURATION = 2.0;
+
+
     // Supplier
 
     public static Property getProperty(){

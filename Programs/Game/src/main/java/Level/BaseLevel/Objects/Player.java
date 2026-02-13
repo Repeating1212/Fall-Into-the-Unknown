@@ -14,7 +14,7 @@ public class Player extends ImageObject {
 
     // Constructor
     public Player(Skill[] skills) {
-        super(PlayerConfig.getProperty(), ImageLoader.PLAYER_LEFT);
+        super(PlayerConfig.getProperty(), ImageLoader.PLAYER_LEFT, PlayerConfig.DEAD_DURATION);
         this.skills = skills;
         this.playerState = new PlayerState(PlayerConfig.INVINCIBILITY_PERIOD);
         for(Skill skill : skills){

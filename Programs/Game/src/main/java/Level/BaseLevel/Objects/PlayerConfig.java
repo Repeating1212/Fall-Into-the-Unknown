@@ -11,6 +11,7 @@ public class PlayerConfig {
     public static final boolean IS_BLOCKABLE = true;
 
     public static final double INVINCIBILITY_PERIOD = 2.5;
+    public static final double DEAD_DURATION = 2.0;
 
     public static final int MAXIMUM_HEALTH = 8;
 

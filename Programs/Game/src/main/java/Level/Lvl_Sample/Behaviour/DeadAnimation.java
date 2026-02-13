@@ -1,6 +1,5 @@
 package Level.Lvl_Sample.Behaviour;
 
-import Data.DataClass.Timer;
 import javafx.animation.*;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;

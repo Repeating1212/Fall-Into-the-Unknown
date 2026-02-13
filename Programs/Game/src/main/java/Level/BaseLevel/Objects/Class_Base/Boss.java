@@ -8,8 +8,8 @@ public abstract class Boss extends ImageObject {
 
     protected boolean isDefeated = false;
 
-    public Boss(Property property, Image image){
-        super(property, image);
+    public Boss(Property property, Image image, double deadDuration){
+        super(property, image, deadDuration);
     }
 
     public void defeat() {

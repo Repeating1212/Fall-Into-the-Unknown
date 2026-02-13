@@ -15,7 +15,6 @@ public class SlimeGrey extends ImageObject {
 
     private final int size;
 
-    private DeadAnimation deadAnimation = new DeadAnimation(sprite, SlimeGreyConfig.DEAD_DURATION);
     private Tackle tackle;
     private boolean isSpawned = false;
 
@@ -25,7 +24,9 @@ public class SlimeGrey extends ImageObject {
 
     // Default slime
     public SlimeGrey(ArrayList<Property> properties, int size){
-        super(SlimeGreyConfig.getProperty(size), ImageLoader.L01_SLIME_GREY);
+        super(SlimeGreyConfig.getProperty(size),
+                ImageLoader.L01_SLIME_GREY,
+                SlimeGreyConfig.DEAD_DURATION);
         this.size = size;
         this.tackle = SlimeGreyConfig.getTackle(size);
         property.spawnNearBoundary(properties);
@@ -33,7 +34,9 @@ public class SlimeGrey extends ImageObject {
 
     // Spawned slime
     public SlimeGrey (ArrayList<Property> properties, int size, Position destination){
-        super(SlimeGreyConfig.getProperty(size), ImageLoader.L01_SLIME_GREY);
+        super(SlimeGreyConfig.getProperty(size),
+                ImageLoader.L01_SLIME_GREY,
+                SlimeGreyConfig.DEAD_DURATION);
         this.size = size;
         this.tackle = SlimeGreyConfig.getTackle(size);
         property.spawnNearBy(properties , destination);

@@ -13,7 +13,7 @@ public class Guard extends Boss {
     private final double ATTACK_OFFSET = GuardConfig.ATTACK_DISTANCE_OFFSET;
 
     public Guard() {
-        super(GuardConfig.getProperty(), ImageLoader.STAKE);
+        super(GuardConfig.getProperty(), ImageLoader.STAKE, GuardConfig.DEAD_DURATION);
         this.groundSlap = GuardConfig.getGroundSlap();
         groundSlap.initializeData(property);
     }

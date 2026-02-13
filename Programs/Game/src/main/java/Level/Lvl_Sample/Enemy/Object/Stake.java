@@ -15,7 +15,7 @@ public class Stake extends ImageObject {
 
     // Constructor
     public Stake() {
-        super( StakeConfig.getProperty(), ImageLoader.STAKE);
+        super( StakeConfig.getProperty(), ImageLoader.STAKE, StakeConfig.DEAD_DURATION);
     }
 
     public void defeat() {

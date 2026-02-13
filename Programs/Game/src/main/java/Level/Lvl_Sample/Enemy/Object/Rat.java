@@ -14,7 +14,7 @@ public class Rat extends ImageObject {
     private final Tackle tackle;
 
     public Rat(ArrayList<Property> properties) {
-        super(RatConfig.getProperty(), ImageLoader.L01_RAT);
+        super(RatConfig.getProperty(), ImageLoader.L01_RAT, RatConfig.DEAD_DURATION);
         this.tackle = RatConfig.getTackle();
         property.spawnNearBoundary(properties);
 

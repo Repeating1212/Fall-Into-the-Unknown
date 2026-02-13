@@ -12,6 +12,8 @@ public class StakeConfig {
     public static final boolean IS_BLOCKABLE = true;
 
     public static final int INITIAL_HEALTH = 20;
+    public static final int DEAD_DURATION = 20;
+
 
     // Supplier
 
