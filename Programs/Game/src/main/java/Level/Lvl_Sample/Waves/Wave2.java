@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class Wave2 extends Wave implements Updater{
 
-    private final int TOTAL_WAVE = 2;
+    private final int TOTAL_WAVE = 1;
     private final int WAVE_DURATION = 5;
 
 //    private ArrayData<SlimeGrey> slimeGreys = new ArrayData<>();

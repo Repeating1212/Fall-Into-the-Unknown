@@ -7,9 +7,9 @@ import Level.Lvl_Sample.Behaviour.Tackle;
 public class SlimeWhiteConfig {
     public static final int HEIGHT_Mul = 10;
     public static final int WIDTH_Mul = 15;
-    public static final int SPEED = 0;
-    public static final int INITIAL_X = 200;
-    public static final int INITIAL_Y = 600;
+    public static final int SPEED = 2;
+    public static final int INITIAL_X = 0;
+    public static final int INITIAL_Y = 0;
     public static final boolean IS_BLOCKABLE = true;
 
     public static final int MAXIMUM_HEALTH = 10;

@@ -2,7 +2,7 @@ package Level.Lvl_Sample.Behaviour;
 
 import Data.DataClass.Timer;
 import Level.BaseLevel.Properties.Property;
-import Level.BaseLevel.View.AttackVisualize.AttackVisual;
+
 import Level.BaseLevel.View.AttackVisualize.RectangleAttackVisual;
 
 public class Rush {
@@ -22,7 +22,7 @@ public class Rush {
         this.SPEED_INCREMENT = speedIncrement;
         this.cooldown = new Timer(cooldown);
         this.owner = owner;
-        this.attackVisual = new RectangleAttackVisual(range, owner.getHeight(), 3, 0);
+        this.attackVisual = new RectangleAttackVisual(range, owner.getHeight());
     }
 
     public void activate(){
@@ -38,7 +38,6 @@ public class Rush {
 
     public void update(double deltaTime){
         cooldown.update(deltaTime);
-        attackVisual.update(deltaTime);
         currentRush ++;
         handleComplete();
         handleActivate();
@@ -46,6 +45,10 @@ public class Rush {
 
     public RectangleAttackVisual getAttackVisual(){
         return attackVisual;
+    }
+
+    public boolean isRunning(){
+        return (cooldown.isPending());
     }
 
 
