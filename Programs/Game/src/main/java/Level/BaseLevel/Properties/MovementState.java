@@ -4,18 +4,21 @@ import Data.DataClass.Vector2D;
 
 public class MovementState {
     // Movement states
-    private double speed;
-    private double pauseMovementTimer = 0;
-
-    // New private value
+    private final double SPEED;
     private double deltaX = 0;
     private double deltaY = 0;
+    private double speedMultiply = 1;
 
-    public MovementState (double speed){
-        this.speed = speed;
+    private double pauseMovementTimer = 0;
+    private boolean directable = true;
+
+
+
+    public MovementState (double SPEED){
+        this.SPEED = SPEED;
     }
 
-    protected double getSpeed(){ return speed;}
+    protected double getSpeed(){ return SPEED * speedMultiply;}
 
     protected boolean isMovingLeft() {return deltaX < 0;}
     protected boolean isMovingRight() {return deltaX > 0;}
@@ -26,17 +29,25 @@ public class MovementState {
         if (pauseMovementTimer > 0){
             return new double[] {0, 0};
         }
-        double movementX = deltaX * speed;
-        double movementY = deltaY * speed;
+        double movementX = deltaX * SPEED * speedMultiply;
+        double movementY = deltaY * SPEED * speedMultiply;
         return new double[] {movementX, movementY};
     }
 
-    protected void setSpeed(double speed) {
-        this.speed = speed;
+    protected void speedMultiply(double speedPercentage) {
+        this.speedMultiply *= speedPercentage;
+    }
+
+    protected void speedDivide(double speedPercentage) {
+        this.speedMultiply /= speedPercentage;
     }
 
     protected void pauseMovement (double deltaTime){
         pauseMovementTimer = deltaTime;
+    }
+
+    protected void setDirectable(boolean directable){
+        this.directable = directable;
     }
 
     protected void update(double deltaTime){
@@ -46,14 +57,19 @@ public class MovementState {
     }
 
     protected void pointTo(Position destination, Position self){
-        Vector2D vector = Vector2D.getAttackVector(self, destination);
-        vector = vector.normalize();
-        deltaX = vector.getX();
-        deltaY = vector.getY();
+        if (directable) {
+            Vector2D vector = Vector2D.getAttackVector(self, destination);
+            vector = vector.normalize();
+            deltaX = vector.getX();
+            deltaY = vector.getY();
+        }
+
     }
 
     protected void setMovement(double movementX, double movementY){
-        this.deltaX = movementX;
-        this.deltaY = movementY;
+        if (directable){
+            this.deltaX = movementX;
+            this.deltaY = movementY;
+        }
     }
 }

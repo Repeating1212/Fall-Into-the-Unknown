@@ -5,39 +5,40 @@ import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Objects.Class_Base.ImageObject;
 import Level.BaseLevel.Properties.Position;
 import Level.BaseLevel.Properties.Property;
-import Level.Lvl_Sample.Behaviour.Tackle;
+import Level.Lvl_Sample.Behaviour.Rush;
 import Level.Lvl_Sample.Enemy.Config.SlimeGreyConfig;
+import Level.Lvl_Sample.Enemy.Config.SlimeWhiteConfig;
 
 import java.util.ArrayList;
 
-public class SlimeGrey extends ImageObject {
+public class SlimeWhite extends ImageObject {
 
     private final int size;
 
-    private Tackle tackle;
     private boolean isSpawned = false;
+    private Rush rush;
 
-    public SlimeGrey(ArrayList<Property> properties) {
+    public SlimeWhite(ArrayList<Property> properties) {
         this(properties, 2); // Default size
     }
 
     // Default slime
-    public SlimeGrey(ArrayList<Property> properties, int size){
-        super(SlimeGreyConfig.getProperty(size),
-                ImageLoader.L01_SLIME_GREY,
-                SlimeGreyConfig.DEAD_DURATION);
+    public SlimeWhite(ArrayList<Property> properties, int size){
+        super(SlimeWhiteConfig.getProperty(size),
+                ImageLoader.L01_SLIME_WHITE,
+                SlimeWhiteConfig.DEAD_DURATION);
         this.size = size;
-        this.tackle = SlimeGreyConfig.getTackle(size);
+        this.rush = SlimeWhiteConfig.getRush(this.property);
         property.spawnNearBoundary(properties);
     }
 
     // Spawned slime
-    public SlimeGrey (ArrayList<Property> properties, int size, Position destination){
+    public SlimeWhite(ArrayList<Property> properties, int size, Position destination){
         super(SlimeGreyConfig.getProperty(size),
-                ImageLoader.L01_SLIME_GREY,
-                SlimeGreyConfig.DEAD_DURATION);
+                ImageLoader.L01_SLIME_WHITE,
+                SlimeWhiteConfig.DEAD_DURATION);
         this.size = size;
-        this.tackle = SlimeGreyConfig.getTackle(size);
+        this.rush = SlimeWhiteConfig.getRush(this.property);
         property.spawnNearBy(properties , destination);
     }
 
@@ -47,7 +48,7 @@ public class SlimeGrey extends ImageObject {
 
         if (isAlive()){
             property.pointTo(observer.getPlayerPosition());
-            tackle.update(this.property, observer.getHealthObj(), deltaTime);
+            rush.update(deltaTime);
         }
     }
 

@@ -8,6 +8,7 @@ import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.SceneView;
 import Level.Lvl_Sample.Enemy.Object.SlimeGrey;
+import Level.Lvl_Sample.Enemy.Object.SlimeWhite;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,7 +18,7 @@ public class Wave2 extends Wave implements Updater{
     private final int TOTAL_WAVE = 2;
     private final int WAVE_DURATION = 5;
 
-    private ArrayData<SlimeGrey> slimeGreys = new ArrayData<>();
+//    private ArrayData<SlimeGrey> slimeGreys = new ArrayData<>();
     private int currentWave = 0;
     private Timer waveTimer = new Timer(WAVE_DURATION);
     private double progress;
@@ -42,7 +43,7 @@ public class Wave2 extends Wave implements Updater{
         }
 
         waveTimer.update(deltaTime);
-        spawnSlime();
+//        spawnSlime();
 
 
         handleDisplay(1 - progress);
@@ -65,9 +66,9 @@ public class Wave2 extends Wave implements Updater{
         for (GameObject gameObject : gameObj.get()) {
             if (gameObject.toRemove()) {
                 toRemove.add(gameObject);
-                if (gameObject.getClass() == SlimeGrey.class){
-                    slimeGreys.remove((SlimeGrey) gameObject);
-                }
+//                if (gameObject.getClass() == SlimeGrey.class){
+//                    slimeGreys.remove((SlimeGrey) gameObject);
+//                }
             }
         }
         gameObj.remove(toRemove);
@@ -77,11 +78,12 @@ public class Wave2 extends Wave implements Updater{
 
     private void spawnEnemies(){
         Random random = new Random();
-        int num =  random.nextInt(2,5);
+        int num = 1;
+//        int num =  random.nextInt(2,5);
         for (int i = 0; i < num; i++){
-            SlimeGrey slimeGrey = new SlimeGrey(getProperties(gameObj));
-            slimeGreys.add(slimeGrey);
-            gameObj.add(slimeGrey);
+            SlimeWhite slimeWhite = new SlimeWhite(getProperties(gameObj));
+//            slimeGreys.add(slimeWhite);
+            gameObj.add(slimeWhite);
         }
     }
 
@@ -93,20 +95,20 @@ public class Wave2 extends Wave implements Updater{
         return properties;
     }
 
-    private void spawnSlime(){
-        ArrayData<SlimeGrey> temp = new ArrayData<>();
-        temp.add(slimeGreys.get());
-
-        for (SlimeGrey parent : temp.get()){
-            if (parent.spawnable()){
-                for (int i = 0; i < 3; i ++){
-                    SlimeGrey child = new SlimeGrey(getProperties(gameObj), parent.getSize() - 1, parent.duplicatePosition());
-                    slimeGreys.add(child);
-                    gameObj.add(child);
-                    parent.setSpawned();
-                }
-            }
-
-        }
-    }
+//    private void spawnSlime(){
+//        ArrayData<SlimeGrey> temp = new ArrayData<>();
+//        temp.add(slimeGreys.get());
+//
+//        for (SlimeGrey parent : temp.get()){
+//            if (parent.spawnable()){
+//                for (int i = 0; i < 3; i ++){
+//                    SlimeGrey child = new SlimeGrey(getProperties(gameObj), parent.getSize() - 1, parent.duplicatePosition());
+//                    slimeGreys.add(child);
+//                    gameObj.add(child);
+//                    parent.setSpawned();
+//                }
+//            }
+//
+//        }
+//    }
 }

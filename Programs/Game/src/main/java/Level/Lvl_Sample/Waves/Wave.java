@@ -56,6 +56,6 @@ public abstract class Wave implements Updater{
     public abstract boolean isComplete();
 
     public boolean isLose(){
-        return player.isDead();
+        return player.toRemove();
     }
 }

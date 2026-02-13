@@ -70,11 +70,23 @@ public class Property {
 
     public double getSpeed() { return  movementState.getSpeed();}
 
+    public void speedMultiply(double multiplication){
+        movementState.speedMultiply(multiplication);
+    }
+
+    public void speedDivide(double division){
+        movementState.speedDivide(division);
+    }
+
     public boolean isMovingLeft() {return movementState.isMovingLeft();}
     public boolean isMovingRight() {return movementState.isMovingRight();}
 
     public void setMovement(double movementX, double movementY){
         movementState.setMovement(movementX, movementY);
+    }
+
+    public void setDirectable(boolean directable){
+        movementState.setDirectable(directable);
     }
 
     public void pointTo(Property destination){
