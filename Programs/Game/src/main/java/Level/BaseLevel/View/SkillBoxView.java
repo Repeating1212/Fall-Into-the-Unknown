@@ -12,17 +12,15 @@ public class SkillBoxView {
     private ImageView[] skillView;
     private StackPane[] skillBackgrounds;
     private Rectangle[] skillCooldowns;
-    private final FileManager fileManager;
 
     public SkillBoxView (ImageView[] skills, StackPane[] skillBackgrounds, Rectangle[] skillCooldowns, FileManager fileManager){
         this.skillView = skills;
         this.skillBackgrounds = skillBackgrounds;
         this.skillCooldowns = skillCooldowns;
-        this.fileManager = fileManager;
-        setSkillImage();
+        setSkillImage(fileManager);
     }
 
-    public void setSkillImage(){
+    public void setSkillImage(FileManager fileManager){
         Image[] images = SkillSupplier.getImages_Level(fileManager);
         for (int i = 0; i < skillView.length; i ++){
             skillView[i].setImage(images[i]);

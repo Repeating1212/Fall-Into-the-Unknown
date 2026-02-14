@@ -10,7 +10,7 @@ public class LevelManager implements Updater{
     protected final Player player;
     protected final SceneView sceneView;
     protected final ArrayData<GameObject> gameObj = new ArrayData();
-    protected boolean gamePause = false;
+    protected boolean gameEnd = false;
 
     private int currentWave = 0;
 
@@ -28,12 +28,12 @@ public class LevelManager implements Updater{
     }
 
     public void updateObjects(double deltaTime){
-        if (gamePause) return;
+        if (gameEnd) return;
 
         waves[currentWave].updateObjects(deltaTime);
-        gamePause = handleWinLose();
+        gameEnd = handleWinLose();
 
-        if (gamePause) return;
+        if (gameEnd) return;
         handleNextWave();
     }
 

@@ -5,6 +5,7 @@ import LoadFile.FileManager;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -18,8 +19,7 @@ import java.util.ArrayList;
 
 public class SceneView {
 
-    private final Pane rootPane;
-    private final Text coinLabel;
+    private final Pane rootPane, spritePane;
 
     private ArrayList<DisplayableObject> objectList = new ArrayList<>();
     private final FileManager fileManager;
@@ -29,15 +29,18 @@ public class SceneView {
     private final SkillBoxView skillBoxView;
     private final MapView mapView;
 
-    public SceneView(Pane rootPane, Text moneyLabel, ImageView[] hearts,
-                     ProgressBar progressBar, ImageView map, SkillBoxView skillBoxView, FileManager fileManager){
+    public SceneView(Pane rootPane, Pane spritePane, ImageView[] hearts,
+                     ProgressBar progressBar, ImageView map,
+                     ImageView[] skills, StackPane[] skillBackgrounds, Rectangle[] skillCooldowns,
+                     FileManager fileManager){
         this.rootPane = rootPane;
-        this.coinLabel = moneyLabel;
+        this.spritePane = spritePane;
+        this.fileManager = fileManager;
+
         bossHealthView = new BossHealthBar(progressBar);
         playerHeartView = new PlayerHeartView(hearts);
-        this.skillBoxView = skillBoxView;
+        skillBoxView = new SkillBoxView(skills, skillBackgrounds, skillCooldowns, fileManager);
         mapView = new MapView(map);
-        this.fileManager = fileManager;
     }
 
     public void updateObjects(ArrayList<DisplayableObject> toDisplay) {
@@ -46,14 +49,14 @@ public class SceneView {
         // Remove node that shouldn't be there anymore
         for (DisplayableObject object : objectList){
             if (! toDisplay.contains(object)) {
-                rootPane.getChildren().removeAll(object.getSprite());
+                spritePane.getChildren().removeAll(object.getSprite());
             }
         }
 
         // Add new sprites that aren't already present
         for (DisplayableObject object : toDisplay){
             if(! objectList.contains(object)){
-                rootPane.getChildren().addAll(object.getSprite());
+                spritePane.getChildren().addAll(object.getSprite());
             }
         }
 
@@ -63,8 +66,8 @@ public class SceneView {
 
     public void addDebugHitBox(ArrayList<Rectangle> debugHitBox){
         for (Rectangle rectangle : debugHitBox){
-            if (! rootPane.getChildren().contains(rectangle)) {
-                rootPane.getChildren().add(rectangle);
+            if (! spritePane.getChildren().contains(rectangle)) {
+                spritePane.getChildren().add(rectangle);
             }
         }
     }
@@ -84,6 +87,11 @@ public class SceneView {
         assert pauseController != null;
         pauseController.setGameTicks(gameTicks);
     }
+
+    public SkillBoxView getSkillBoxView(){
+        return skillBoxView;
+    }
+
 
 
     // Middle Man
@@ -110,6 +118,6 @@ public class SceneView {
         rectangle.setFill(Color.rgb(255, 0, 0, 0.3));
         rectangle.setStroke(Color.RED);
         rectangle.setStrokeWidth(2);
-        rootPane.getChildren().add(rectangle);
+        spritePane.getChildren().add(rectangle);
     }
 }

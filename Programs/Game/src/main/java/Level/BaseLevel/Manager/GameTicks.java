@@ -1,5 +1,8 @@
 package Level.BaseLevel.Manager;
 
+import Level.BaseLevel.Objects.Player;
+import Level.BaseLevel.View.SceneView;
+import Level.Lvl_Sample.Waves.LevelManager;
 import Level.Lvl_Sample.Waves.Updater;
 import javafx.animation.AnimationTimer;
 
@@ -8,14 +11,14 @@ public class GameTicks {
     private AnimationTimer gameLoop;
 
     private final Updater manager;
-    private final PlayerHandler inputHandle;
+    private final InputHandler inputHandler;
 
     private long lastUpdateTime = 0;
     private boolean isRunning = false;
 
-    public GameTicks(Updater mainManager, PlayerHandler playerHandler) {
-        manager = mainManager;
-        inputHandle = playerHandler;
+    public GameTicks(SceneView sceneView, Player player, InputHandler inputHandler) {
+        this.manager = new LevelManager(sceneView, player);
+        this.inputHandler = inputHandler;
     }
 
     public void start() {
@@ -36,6 +39,7 @@ public class GameTicks {
 
                 double deltaTime = (now - lastUpdateTime) / 1_000_000_000.0;
                 lastUpdateTime = now;
+                inputHandler.updateInput();
                 manager.updateObjects(deltaTime);
             }
         };
@@ -46,13 +50,11 @@ public class GameTicks {
         if (gameLoop == null) return;
         if (isRunning){
             isRunning = false;
-            inputHandle.setPause();
             lastUpdateTime = 0; // Reset when paused
             gameLoop.stop();
 
         } else{
             isRunning = true;
-            inputHandle.setContinue();
             lastUpdateTime = 0; // Reset when paused
             gameLoop.start();
 

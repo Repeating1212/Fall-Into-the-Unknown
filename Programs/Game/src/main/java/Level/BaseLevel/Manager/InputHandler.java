@@ -1,88 +1,77 @@
 package Level.BaseLevel.Manager;
 
 import Level.BaseLevel.Objects.Player;
+import Level.BaseLevel.View.SceneView;
 import Level.BaseLevel.View.SkillBoxView;
 
-public class PlayerHandler {
+public class InputHandler {
 
     private final SkillBoxView skillBoxView;
 
     private final Player player;
-    private int currentSkill = 0;
-    private boolean isPause = false;
+    private int previousSkill = 0;
+    private int nextSkill = previousSkill;
 
     private boolean movingUp = false;
     private boolean movingDown = false;
     private boolean movingLeft = false;
     private boolean movingRight = false;
 
-    public PlayerHandler (SkillBoxView skillBoxView, Player player){
+    private boolean pendingSkill = false;
+    private int activateSkillID;
+    private double mouseX;
+    private double mouseY;
+
+    public InputHandler(SceneView sceneView, Player player){
         this.player = player;
-        this.skillBoxView = skillBoxView;
-        skillBoxView.updateSkillSelection(currentSkill);
+        this.skillBoxView = sceneView.getSkillBoxView();
+        skillBoxView.updateSkillSelection(previousSkill);
     }
 
     public void moveUp(boolean isMove){
-        if (isPause) return;
-
         movingUp = isMove;
-        updateMovement();
     }
     public void moveDown(boolean isMove){
-        if (isPause) return;
-
         movingDown = isMove;
-        updateMovement();
     }
     public void moveLeft(boolean isMove){
-        if (isPause) return;
-
         movingLeft = isMove;
-        updateMovement();
     }
     public void moveRight(boolean isMove){
-        if (isPause) return;
-
         movingRight = isMove;
-        updateMovement();
     }
 
     public void skillActivate(double mouseX, double mouseY){
-        if (isPause) return;
-
-        player.activateSkill(currentSkill, mouseX, mouseY);
+        if (!pendingSkill){
+            pendingSkill = true;
+            activateSkillID = previousSkill;
+            this.mouseX = mouseX;
+            this.mouseY = mouseY;
+        }
     }
 
     public void increaseCurrentSkill(){
-        if (isPause) return;
-
-        if (currentSkill <  3){
-            currentSkill += 1;
-            skillBoxView.updateSkillSelection(currentSkill);
+        if (previousSkill <  3){
+            nextSkill = previousSkill + 1;
         }
     }
 
     public void decreaseCurrentSkill(){
-        if (isPause) return;
-
-        if(currentSkill > 0) {
-            currentSkill -= 1;
-            skillBoxView.updateSkillSelection(currentSkill);
+        if(previousSkill > 0) {
+            nextSkill = previousSkill - 1;
         }
     }
 
-    public void setPause(){
-        isPause = true;
-        // Pause movement
-        movingUp = false;
-        movingDown = false;
-        movingRight = false;
-        movingLeft = false;
+    public void updateInput(){
         updateMovement();
-    }
-
-    public void setContinue(){
-        isPause = false;
+        if (nextSkill != previousSkill){
+            skillBoxView.updateSkillSelection(nextSkill);
+            previousSkill = nextSkill;
+        }
+        if (pendingSkill){
+            player.activateSkill(activateSkillID, mouseX, mouseY);
+            pendingSkill = false;
+        }
     }
 
     // Private Method

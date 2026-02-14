@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="rootPane" prefHeight="675.0" prefWidth="1200.0" stylesheets="@../CssFile/LevelScene.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Level.BaseLevel.Controllers.LevelController">
    <children>
+      <ImageView fx:id="map" fitHeight="675.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane fx:id="spritePane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane prefHeight="675.0" prefWidth="1200.0">
          <children>
-            <ImageView fx:id="map" fitHeight="675.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" />
             <Label layoutX="600.0" layoutY="15.0" text="Boss Health" />
             <ProgressBar fx:id="bossHealthBar" layoutX="331.0" layoutY="37.0" prefHeight="15.0" prefWidth="600.0" progress="0.5" />
             <HBox fx:id="healthBar" alignment="CENTER" layoutX="533.0" layoutY="598.0">
@@ -163,19 +163,6 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </StackPane>
-               </children>
-            </HBox>
-            <HBox layoutX="14.0" layoutY="15.0" prefHeight="0.0" prefWidth="50.0">
-               <children>
-                  <ImageView fitHeight="15.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Picture/UI_Picture/Game_Icon/Coin_Image.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets right="8.0" top="1.0" />
-                     </HBox.margin>
-                  </ImageView>
-                   <Text fx:id="coinDisplay" text="0" />
                </children>
             </HBox>
             <Button layoutX="1084.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleResume" text="Pause Game" />

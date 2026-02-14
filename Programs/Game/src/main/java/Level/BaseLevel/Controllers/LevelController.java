@@ -2,13 +2,10 @@ package Level.BaseLevel.Controllers;
 
 
 import Level.BaseLevel.Manager.GameTicks;
-import Level.BaseLevel.Manager.PlayerHandler;
+import Level.BaseLevel.Manager.InputHandler;
 import Data.Interface.SceneInterface;
 import Data.Supplier.SkillSupplier;
-import Level.BaseLevel.Manager.MainManager;
 import Level.BaseLevel.Objects.Player;
-import Level.Lvl_Sample.Waves.LevelManager;
-import Level.Lvl_Sample.Waves.Updater;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -16,6 +13,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
@@ -23,8 +21,6 @@ import Level.BaseLevel.View.* ;
 
 public class LevelController extends SceneInterface {
 
-
-    public javafx.scene.text.Text coinDisplay;
     // Nodes
     @FXML private ImageView heart1, heart2, heart3, heart4, heart5, heart6, heart7, heart8;
     @FXML private ImageView skill1, skill2, skill3, skill4;
@@ -32,10 +28,11 @@ public class LevelController extends SceneInterface {
     @FXML private ProgressBar bossHealthBar;
     @FXML private ImageView map;
     @FXML private Rectangle skillCooldown1, skillCooldown2, skillCooldown3, skillCooldown4;
+    @FXML private AnchorPane spritePane;
 
     private SceneView sceneView;
     private GameTicks gameTicks;
-    private PlayerHandler playerHandler;
+    private InputHandler inputHandler;
 
     @FXML private Pane rootPane;
 
@@ -52,26 +49,28 @@ public class LevelController extends SceneInterface {
 
     @Override
     public void initializeData(){
+        // Run after receive fileManger
         createClass();
         gameTicks.start();
     }
 
-    private void createClass(){
+    // Private method
 
+    private void createClass(){
         ImageView[] hearts = new ImageView[]{heart1, heart2, heart3, heart4, heart5, heart6, heart7, heart8};
         ImageView[] skills = new ImageView[]{skill1, skill2, skill3, skill4};
         Rectangle[] skillCooldowns = new Rectangle[] {skillCooldown1, skillCooldown2, skillCooldown3, skillCooldown4};
         StackPane[] skillBackgrounds = new StackPane[]{skillBgd1, skillBgd2, skillBgd3, skillBgd4};
 
         // Display Related
-        SkillBoxView skillBoxView = new SkillBoxView(skills, skillBackgrounds, skillCooldowns, fileManager);
-        sceneView = new SceneView(rootPane, coinDisplay, hearts, bossHealthBar, map, skillBoxView, fileManager);
+        sceneView = new SceneView(rootPane, spritePane, hearts, bossHealthBar, map,
+                skills, skillBackgrounds, skillCooldowns,
+                fileManager);
 
         // Game update related
         Player player = new Player(SkillSupplier.getPlayerSkills(fileManager));
-        playerHandler = new PlayerHandler(skillBoxView, player);
-        Updater mainManager = new LevelManager(sceneView, player);
-        gameTicks = new GameTicks(mainManager, playerHandler);
+        this.inputHandler = new InputHandler(sceneView, player);
+        gameTicks = new GameTicks(sceneView, player, inputHandler);
     }
 
     private void setupMouseInput() {
@@ -87,7 +86,7 @@ public class LevelController extends SceneInterface {
         // Convert mouse coordinates to scene coordinates
         double mouseX = event.getX();
         double mouseY = event.getY();
-        playerHandler.skillActivate(mouseX, mouseY);
+        inputHandler.skillActivate(mouseX, mouseY);
     }
 
     private void setupKeyboardInputOnPane() {
@@ -95,10 +94,10 @@ public class LevelController extends SceneInterface {
             KeyCode key = event.getCode();
 
             switch (key) {
-                case W -> playerHandler.moveUp(true);
-                case A -> playerHandler.moveLeft(true);
-                case S -> playerHandler.moveDown(true);
-                case D -> playerHandler.moveRight(true);
+                case W -> inputHandler.moveUp(true);
+                case A -> inputHandler.moveLeft(true);
+                case S -> inputHandler.moveDown(true);
+                case D -> inputHandler.moveRight(true);
             }
         });
 
@@ -106,10 +105,10 @@ public class LevelController extends SceneInterface {
             KeyCode key = event.getCode();
 
             switch (key) {
-                case W -> playerHandler.moveUp(false);
-                case A -> playerHandler.moveLeft(false);
-                case S -> playerHandler.moveDown(false);
-                case D -> playerHandler.moveRight(false);
+                case W -> inputHandler.moveUp(false);
+                case A -> inputHandler.moveLeft(false);
+                case S -> inputHandler.moveDown(false);
+                case D -> inputHandler.moveRight(false);
             }
         });
     }
@@ -119,10 +118,10 @@ public class LevelController extends SceneInterface {
 
         if (deltaY > 0) {
             // Scroll UP - previous skill
-            playerHandler.decreaseCurrentSkill();
+            inputHandler.decreaseCurrentSkill();
         } else if (deltaY < 0) {
             // Scroll DOWN - next skill
-            playerHandler.increaseCurrentSkill();
+            inputHandler.increaseCurrentSkill();
         }
 
         event.consume(); // Prevent default behavior
