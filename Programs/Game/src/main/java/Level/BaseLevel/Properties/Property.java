@@ -1,5 +1,6 @@
 package Level.BaseLevel.Properties;
 
+import Data.DataClass.Vector2D;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
@@ -92,6 +93,8 @@ public class Property {
     public double getDirection(){
         return movementState.getDirection();
     }
+
+    public Vector2D getVector() {return movementState.getVector();}
 
     public void setPauseMovement(boolean pauseMovement){
         movementState.setPauseMovement(pauseMovement);

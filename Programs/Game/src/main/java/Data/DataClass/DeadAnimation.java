@@ -37,4 +37,8 @@ public class DeadAnimation {
         return isActivated &&
                 animation.getStatus() == Animation.Status.STOPPED;
     }
+
+    public boolean isDeactive() {
+        return ! isActivated;
+    }
 }

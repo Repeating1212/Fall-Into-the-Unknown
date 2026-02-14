@@ -5,7 +5,7 @@ import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Objects.Class_Base.ImageObject;
 import Level.BaseLevel.Properties.Position;
 import Level.BaseLevel.Properties.Property;
-import Level.Lvl_Sample.Behaviour.Tackle;
+import Level.Lvl_Sample.Behaviour.Behaviour;
 import Level.Lvl_Sample.Enemy.Config.SlimeGreyConfig;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class SlimeGrey extends ImageObject {
 
     private final int size;
 
-    private Tackle tackle;
+    private Behaviour tackle;
     private boolean isSpawned = false;
 
     public SlimeGrey(ArrayList<Property> properties) {

@@ -82,6 +82,10 @@ public class MovementState {
         return vector2D.getAngleDegrees();
     }
 
+    protected Vector2D getVector(){
+        return new Vector2D(deltaX, deltaY);
+    }
+
     protected void setPauseMovement(boolean pauseMovement){
         this.pauseMovement = pauseMovement;
     }

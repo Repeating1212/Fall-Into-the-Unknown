@@ -46,4 +46,8 @@ public class SlimeWhiteConfig {
     public static Rush getRush(Property owner){
         return new Rush(RUSH_RANGE, RUSH_COOLDOWN, DAMAGE, RUSH_SPEED_MULTIPLY, owner, RUSH_RIGID);
     }
+
+    public static Tackle getTackle(Property owner, int size){
+        return new Tackle(size, ATTACK_RIGID, owner);
+    }
 }

@@ -6,6 +6,7 @@ import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Objects.Class_Base.ImageObject;
 import Level.BaseLevel.Properties.Property;
+import Level.Lvl_Sample.Behaviour.Behaviour;
 import Level.Lvl_Sample.Behaviour.Rush;
 import Level.Lvl_Sample.Enemy.Config.SlimeWhiteConfig;
 
@@ -15,8 +16,7 @@ public class SlimeWhite extends ImageObject {
 
     private final int size;
 
-    private boolean isSpawned = false;
-    private Rush rush;
+    private Behaviour[] behaviours;
 
     public SlimeWhite(ArrayList<Property> properties) {
         this(properties, 2); // Default size
@@ -28,7 +28,10 @@ public class SlimeWhite extends ImageObject {
                 ImageLoader.L01_SLIME_WHITE,
                 SlimeWhiteConfig.DEAD_DURATION);
         this.size = size;
-        this.rush = SlimeWhiteConfig.getRush(this.property);
+        behaviours = new Behaviour[]{
+                SlimeWhiteConfig.getRush(this.property),
+                SlimeWhiteConfig.getTackle(this.property, size)
+        };
         property.spawnNearBoundary(properties);
     }
 
@@ -38,28 +41,24 @@ public class SlimeWhite extends ImageObject {
 
         if (isAlive()){
             property.pointTo(observer.getPlayerPosition());
-            rush.update(deltaTime, observer);
+            for (Behaviour behaviour: behaviours){
+                behaviour.update(deltaTime, observer);
+            }
         }
     }
 
     @Override
     public ArrayData<DisplayableObject> reloadDisplay(){
         ArrayData<DisplayableObject> display = super.reloadDisplay();
-        if(rush.isRunning()) display.add(rush.getVisual());
+        for (Behaviour behaviour: behaviours){
+            if(behaviour.isRunning() && deadAnimation.isDeactive()){
+                display.add(behaviour.getVisual());
+            }
+        }
         return display;
     }
 
     public int getSize(){
         return size;
-    }
-
-    public boolean spawnable(){
-        return (size > 1 &&
-                ! isSpawned &&
-                deadAnimation.isEnd());
-    }
-
-    public void setSpawned(){
-        isSpawned = true;
     }
 }
