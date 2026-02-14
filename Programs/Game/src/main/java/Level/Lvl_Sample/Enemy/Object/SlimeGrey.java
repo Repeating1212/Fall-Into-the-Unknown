@@ -9,6 +9,7 @@ import Level.Lvl_Sample.Behaviour.Tackle;
 import Level.Lvl_Sample.Enemy.Config.SlimeGreyConfig;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class SlimeGrey extends ImageObject {
 
@@ -63,5 +64,10 @@ public class SlimeGrey extends ImageObject {
 
     public void setSpawned(){
         isSpawned = true;
+    }
+
+    public int getSpawnNum(){
+        Random random = new Random();
+        return random.nextInt(SlimeGreyConfig.MIN_SPAWN, SlimeGreyConfig.MAX_SPAWN);
     }
 }

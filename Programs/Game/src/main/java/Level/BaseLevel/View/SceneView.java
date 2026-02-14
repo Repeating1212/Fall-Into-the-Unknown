@@ -69,22 +69,10 @@ public class SceneView {
         }
     }
 
-    public void setMoneyValue(int money){
-        coinLabel.setText(String.valueOf(money));
-    }
-
-    public SkillBoxView getSkillBoxView(){
-        return skillBoxView;
-    }
-
     public void showWinScreen(int coinValue) {
         WinController winController = SceneLoader.loadOverlayScene(rootPane, SceneLoader.SceneType.WIN, fileManager);
         assert winController != null;
         winController.updateCoinLabel(coinValue);
-//            winScreen.setPrefHeight(500);
-//            winScreen.setPrefWidth(800);
-//            winScreen.setLayoutX(200);
-//            winScreen.setLayoutY(85);
     }
 
     public void showLoseScreen() {
@@ -97,9 +85,7 @@ public class SceneView {
         pauseController.setGameTicks(gameTicks);
     }
 
-    public void updateSkillCooldowns(int skillID , double cooldownPercentages){
-        skillBoxView.updateSkillCooldowns(skillID ,cooldownPercentages);
-    }
+
     // Middle Man
 
     public void updateBossHealthBar(double progress){
@@ -108,6 +94,10 @@ public class SceneView {
 
     public void updatePlayerHeartView(int heart){
         playerHeartView.updatePlayerHeartView(heart);
+    }
+
+    public void updateSkillCooldowns(double[] cooldownPercentages){
+        skillBoxView.updateSkillCooldowns(cooldownPercentages);
     }
 
     public void addRectangle(){

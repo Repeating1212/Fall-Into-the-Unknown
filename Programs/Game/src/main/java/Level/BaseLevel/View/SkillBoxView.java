@@ -45,4 +45,12 @@ public class SkillBoxView {
         if (skillID < 0 || skillID > 3) return;
         skillCooldowns[skillID].setWidth(cooldownPercentages * skillView[skillID].getFitWidth());
     }
+
+    public void updateSkillCooldowns(double[] cooldownPercentages){
+        if (cooldownPercentages.length > 4) return;
+        for (int i = 0; i < cooldownPercentages.length; i++){
+            skillCooldowns[i].setWidth(cooldownPercentages[i] * skillView[i].getFitWidth());
+        }
+    }
+
 }

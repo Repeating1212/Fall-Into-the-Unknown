@@ -31,15 +31,16 @@ public class LevelManager implements Updater{
         if (gamePause) return;
 
         waves[currentWave].updateObjects(deltaTime);
-        if(waves[currentWave].isComplete()) currentWave ++;
-
         gamePause = handleWinLose();
+
+        if (gamePause) return;
+        handleNextWave();
     }
 
     // Private Method
 
     private boolean handleWinLose(){
-        if (currentWave >= waves.length){
+        if (currentWave == waves.length -1 && waves[currentWave].isComplete()){
             sceneView.showWinScreen(5);
             return true;
         }
@@ -49,6 +50,13 @@ public class LevelManager implements Updater{
         }
 
         return false;
+    }
+
+    private void handleNextWave(){
+        if (waves[currentWave].isComplete()){
+            currentWave ++;
+            waves[currentWave].setGameObj( waves[currentWave -1].getGameObj() );
+        }
     }
 
 }

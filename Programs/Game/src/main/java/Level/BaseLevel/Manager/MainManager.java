@@ -78,13 +78,6 @@ public class MainManager implements Updater {
         gameObj.remove(toRemove);
     }
 
-    private void displaySkillCooldown(){
-        double[] cooldowns = player.getSkillCooldown();
-        for (int i = 0; i < cooldowns.length; i++){
-            sceneView.updateSkillCooldowns(i ,cooldowns[i]);
-        }
-    }
-
     private void handleDisplay(){
 
         ArrayData<DisplayableObject> toDisplay = new ArrayData<>();
@@ -95,7 +88,7 @@ public class MainManager implements Updater {
 
         sceneView.updateObjects(toDisplay.get());
         sceneView.updatePlayerHeartView(player.getHealth());
-        displaySkillCooldown();
+        sceneView.updateSkillCooldowns(player.getSkillCooldown());
         sceneView.updateBossHealthBar(boss.getHealthPercentage());
     }
 
