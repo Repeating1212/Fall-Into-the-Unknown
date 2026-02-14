@@ -1,6 +1,8 @@
 package Level.Lvl_Sample.Behaviour;
 
 import Data.DataClass.Timer;
+import Level.BaseLevel.Manager.Observer;
+import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Properties.Property;
 
@@ -8,7 +10,7 @@ import Level.BaseLevel.View.AttackVisualize.RectangleAttackVisual;
 
 import java.util.ArrayList;
 
-public class Rush {
+public class Rush implements Behaviour{
 
     private final double RANGE;
     private final double SPEED_INCREMENT;
@@ -16,7 +18,9 @@ public class Rush {
 
     private Timer cooldown;
     private Timer rigid;
+
     private RectangleAttackVisual attackVisual;
+    private ArrayList<DisplayableObject> visualObjects = new ArrayList<>();
 
     private boolean pendingRush = false;
     private double currentRush;
@@ -33,23 +37,27 @@ public class Rush {
         this.rigid = new Timer(rushRigid);
         this.owner = owner;
         this.attackVisual = new RectangleAttackVisual(range, owner.getHeight());
+        visualObjects.add(attackVisual);
     }
 
-    public void update(double deltaTime, GameObject player){
+    @Override
+    public void update(double deltaTime, Observer observer){
         cooldown.update(deltaTime);
         rigid.update(deltaTime);
 
 
         handleActivate();
         handleRigid();
-        handleRush(player);
+        handleRush(observer.getPlayer());
         handleComplete();
     }
 
-    public RectangleAttackVisual getAttackVisual(){
-        return attackVisual;
+    @Override
+    public ArrayList<DisplayableObject> getVisual(){
+        return visualObjects;
     }
 
+    @Override
     public boolean isRunning(){
         return (rigid.isTicking() || cooldown.isPending());
     }

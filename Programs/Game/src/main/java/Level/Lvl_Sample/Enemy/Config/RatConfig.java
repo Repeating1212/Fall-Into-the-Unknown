@@ -32,7 +32,7 @@ public class RatConfig {
         return new Health(RatConfig.MAXIMUM_HEALTH);
     }
 
-    public static Tackle getTackle(){
-        return new Tackle(RatConfig.DAMAGE, RatConfig.ATTACK_RIGID);
+    public static Tackle getTackle(Property owner){
+        return new Tackle(RatConfig.DAMAGE, RatConfig.ATTACK_RIGID, owner);
     }
 }

@@ -42,9 +42,9 @@ public class GuardConfig {
         return new Property(guardHitBox, guardMovementState, guardHeart);
     }
 
-    public static GroundSlap getGroundSlap(){
+    public static GroundSlap getGroundSlap(Property owner){
         AttackArea attackArea = new ConeAttackArea(GuardConfig.ATTACK_RANGE, GuardConfig.ATTACK_AREA_ANGLE);
         ConeAttackVisual attackVisual = new ConeAttackVisual(GuardConfig.ATTACK_RANGE, GuardConfig.ATTACK_AREA_ANGLE, GuardConfig.ENLARGE_DURATION, GuardConfig.FADE_OUT_DURATION);
-        return new GroundSlap(attackVisual, GuardConfig.ATTACK_RIGID_TIME, attackArea, GuardConfig.DAMAGE, GuardConfig.ATTACK_COOLDOWN, GuardConfig.ENLARGE_DURATION, GuardConfig.TOTAL_ANIMATION_PERIOD);
+        return new GroundSlap(attackVisual, GuardConfig.ATTACK_RIGID_TIME, attackArea, GuardConfig.DAMAGE, GuardConfig.ATTACK_COOLDOWN, GuardConfig.ENLARGE_DURATION, GuardConfig.TOTAL_ANIMATION_PERIOD, ATTACK_DISTANCE_OFFSET, owner);
     }
 }

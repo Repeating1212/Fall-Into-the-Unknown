@@ -14,8 +14,7 @@ import java.util.Random;
 
 public class Wave2 extends Wave implements Updater{
 
-    private final static int TOTAL_WAVE = 3;
-    private final int WAVE_DURATION = 5;
+    private final static int TOTAL_WAVE = 1;
 
 
     public Wave2(SceneView sceneView, Player player){

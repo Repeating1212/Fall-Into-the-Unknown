@@ -28,7 +28,7 @@ public class SlimeGrey extends ImageObject {
                 ImageLoader.L01_SLIME_GREY,
                 SlimeGreyConfig.DEAD_DURATION);
         this.size = size;
-        this.tackle = SlimeGreyConfig.getTackle(size);
+        this.tackle = SlimeGreyConfig.getTackle(size, this.property);
         property.spawnNearBoundary(properties);
     }
 
@@ -38,7 +38,7 @@ public class SlimeGrey extends ImageObject {
                 ImageLoader.L01_SLIME_GREY,
                 SlimeGreyConfig.DEAD_DURATION);
         this.size = size;
-        this.tackle = SlimeGreyConfig.getTackle(size);
+        this.tackle = SlimeGreyConfig.getTackle(size, this.property);
         property.spawnNearBy(properties , destination);
     }
 
@@ -48,7 +48,7 @@ public class SlimeGrey extends ImageObject {
 
         if (isAlive()){
             property.pointTo(observer.getPlayerPosition());
-            tackle.update(this.property, observer.getHealthObj(), deltaTime);
+            tackle.update(deltaTime, observer);
         }
     }
 

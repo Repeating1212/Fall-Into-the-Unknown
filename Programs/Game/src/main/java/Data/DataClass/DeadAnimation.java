@@ -1,4 +1,4 @@
-package Level.Lvl_Sample.Behaviour;
+package Data.DataClass;
 
 import javafx.animation.*;
 import javafx.scene.image.ImageView;

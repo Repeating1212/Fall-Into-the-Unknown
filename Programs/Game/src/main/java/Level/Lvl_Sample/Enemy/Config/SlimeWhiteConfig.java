@@ -43,10 +43,6 @@ public class SlimeWhiteConfig {
         return new Health(SlimeWhiteConfig.MAXIMUM_HEALTH);
     }
 
-    public static Tackle getTackle(int size){
-        return new Tackle(size, SlimeWhiteConfig.ATTACK_RIGID);
-    }
-
     public static Rush getRush(Property owner){
         return new Rush(RUSH_RANGE, RUSH_COOLDOWN, DAMAGE, RUSH_SPEED_MULTIPLY, owner, RUSH_RIGID);
     }

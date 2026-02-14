@@ -1,19 +1,23 @@
 package Level.Lvl_Sample.Behaviour;
 
 import Level.BaseLevel.Objects.Class_Base.AttackArea;
+import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
+import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.Properties.Position;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.AttackVisualize.AttackVisual;
 import Data.DataClass.Timer;
 import Level.BaseLevel.Manager.Observer;
+import Level.Lvl_Sample.Enemy.Config.GuardConfig;
 
 import java.util.ArrayList;
 
-public class GroundSlap {
+public class GroundSlap implements Behaviour{
 
     private final double ATTACK_DAMAGE;
     private final double ATTACK_RIGID_TIME;
+    private final double ATTACK_OFFSET;
 
     private final AttackVisual attackVisual;
     private final AttackArea attackArea;
@@ -24,64 +28,62 @@ public class GroundSlap {
 
     // private value
     private Position destinationPos = new Position();
-    private ArrayList<GameObject> targetEntity = new ArrayList<GameObject>();
 
 
     public GroundSlap(AttackVisual attackVisual, double attackRigidTime, AttackArea attackArea, double attackDamage,
-                      double cooldown, double enlargeTime, double animationPeriod) {
+                      double cooldown, double enlargeTime, double animationPeriod, double attackOffset, Property owner) {
         this.attackVisual = attackVisual;
         this.attackArea = attackArea;
         this.ATTACK_RIGID_TIME = attackRigidTime;
         this.ATTACK_DAMAGE = attackDamage;
+        this.ATTACK_OFFSET = attackOffset;
 
         this.cooldown = new Timer(cooldown);
         this.enlargeTimer = new Timer(enlargeTime);
         this.animationTimer = new Timer(animationPeriod);
-    }
-
-    public void initializeData(Property owner) {
         this.owner = owner;
     }
 
-    public void activate(double positionX, double positionY) {
-        activate(new Position(positionX, positionY));
-    }
-
-    public void activate(Position destinationPos) {
-        if (cooldown.isDeactive() && enlargeTimer.isDeactive()) {
-            this.destinationPos = destinationPos;
-            enlargeTimer.setPending();
-            animationTimer.setPending();
-        }
-    }
-
+    @Override
     public void update(double deltaTime, Observer observer) {
-        this.targetEntity = getTargets(observer.getHealthObj());
-
         enlargeTimer.update(deltaTime);
         cooldown.update(deltaTime);
         animationTimer.update(deltaTime);
         attackVisual.update(deltaTime);
 
+        handleActivate(observer.getPlayer());
         handlePendingAttack();
-        handleDamaging();
-        handleAnimation(observer);
+        handleDamaging(observer.getHealthObj());
+        handleAnimation();
     }
 
-    public void handleRigid() {
-        if (enlargeTimer.isPending()) {
-            owner.pauseMovement(ATTACK_RIGID_TIME);
-        }
+
+    @Override
+    public ArrayList<DisplayableObject> getVisual(){
+        ArrayList<DisplayableObject> temp = new ArrayList<>();
+        temp.add(attackVisual);
+        return temp;
     }
 
-    public AttackVisual getAttackVisual(){
-        return attackVisual;
+    @Override
+    public boolean isRunning(){
+        return animationTimer.isTicking();
     }
 
     // Private Method
 
+    private void handleActivate(GameObject player) {
+        if (cooldown.isDeactive() && enlargeTimer.isDeactive() &&
+                isNearEnemy(player)) {
+            this.destinationPos = player.getCenterPos();
+            enlargeTimer.setPending();
+            animationTimer.setPending();
+        }
+    }
+
     private void handlePendingAttack() {
         if (enlargeTimer.isPending()) {
+            owner.pauseMovement(ATTACK_RIGID_TIME);
             enlargeTimer.start();
             cooldown.setPending();
             attackVisual.activate(new Position(owner.getCenterX(), owner.getCenterY()), destinationPos);
@@ -89,34 +91,29 @@ public class GroundSlap {
         }
     }
 
-    private void handleDamaging() {
+    private void handleDamaging(ArrayList<GameObject> healthObj) {
         if (enlargeTimer.isEnd() && cooldown.isPending()) {
-            attack(targetEntity);
+            for (GameObject entity : healthObj) {
+                if (entity.getProperty() == owner) continue;
+                if (attackArea.isHitBoxInArea(entity.getProperty())) {
+                    entity.takeDamage(ATTACK_DAMAGE);
+                }
+            }
             cooldown.start();
         }
     }
 
-    private ArrayList<GameObject> getTargets(ArrayList<GameObject> healthObj) {
-        ArrayList<GameObject> targets = new ArrayList<>();
-        for (GameObject entity : healthObj) {
-            if (entity.getProperty() == owner) continue;
-            targets.add(entity);
-        }
-        return targets;
-    }
-
-    private void attack(ArrayList<GameObject> targets) {
-        for (GameObject entity : targets) {
-            if (attackArea.isHitBoxInArea(entity.getProperty())) {
-                entity.takeDamage(ATTACK_DAMAGE);
-            }
-        }
-    }
-
-    private void handleAnimation(Observer observer){
+    private void handleAnimation(){
         if (animationTimer.isPending()) {
             animationTimer.start();
             attackVisual.activate(new Position(owner.getCenterX(), owner.getCenterY()), destinationPos);
         }
+    }
+
+    private boolean isNearEnemy(GameObject enemy){
+        double horizontalDistance = Math.abs(owner.getX() - enemy.getX());
+            double verticalDistance = Math.abs(owner.getY() - enemy.getY());
+        return ( horizontalDistance < ATTACK_OFFSET &&
+                verticalDistance < ATTACK_OFFSET);
     }
 }

@@ -15,9 +15,8 @@ public class Rat extends ImageObject {
 
     public Rat(ArrayList<Property> properties) {
         super(RatConfig.getProperty(), ImageLoader.L01_RAT, RatConfig.DEAD_DURATION);
-        this.tackle = RatConfig.getTackle();
+        this.tackle = RatConfig.getTackle(this.property);
         property.spawnNearBoundary(properties);
-
     }
 
     // Override Method
@@ -32,6 +31,6 @@ public class Rat extends ImageObject {
     // Private Method
 
     private void handleAttack(double deltaTime, Observer observer){
-        tackle.update(property, observer.getHealthObj(), deltaTime);
+        tackle.update(deltaTime, observer);
     }
 }

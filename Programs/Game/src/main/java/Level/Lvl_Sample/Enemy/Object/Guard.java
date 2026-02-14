@@ -14,8 +14,7 @@ public class Guard extends Boss {
 
     public Guard() {
         super(GuardConfig.getProperty(), ImageLoader.STAKE, GuardConfig.DEAD_DURATION);
-        this.groundSlap = GuardConfig.getGroundSlap();
-        groundSlap.initializeData(property);
+        this.groundSlap = GuardConfig.getGroundSlap(this.property);
     }
 
     // Override Method
@@ -24,27 +23,12 @@ public class Guard extends Boss {
     public void update(double deltaTime, Observer observer) {
         property.pointTo(observer.getPlayerPosition());
         super.update(deltaTime, observer);
-        handleAttack(deltaTime, observer);
-
-        if(groundSlap.getAttackVisual().isActive()){
-            relatedDisplay.add(groundSlap.getAttackVisual());
-        } else {
-            relatedDisplay.remove(groundSlap.getAttackVisual());
-        }
-    }
-
-    // Private Method
-
-    private void handleAttack(double deltaTime, Observer observer){
-        if (isNearEnemy(observer.getPlayer())) groundSlap.activate(observer.getPlayer().getCenterPos());
-        groundSlap.handleRigid();
         groundSlap.update(deltaTime, observer);
-    }
 
-    private boolean isNearEnemy(GameObject enemy){
-        double horizontalDistance = Math.abs(property.getX() - enemy.getX());
-        double verticalDistance = Math.abs(property.getY() - enemy.getY());
-        return ( horizontalDistance < ATTACK_OFFSET &&
-                verticalDistance < ATTACK_OFFSET);
+        if(groundSlap.isRunning()){
+            relatedDisplay.add(groundSlap.getVisual());
+        } else {
+            relatedDisplay.remove(groundSlap.getVisual());
+        }
     }
 }

@@ -1,7 +1,7 @@
 package Level.BaseLevel.Objects.Class_Base;
 
 import Level.BaseLevel.Manager.Observer;
-import Level.Lvl_Sample.Behaviour.DeadAnimation;
+import Data.DataClass.DeadAnimation;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

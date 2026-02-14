@@ -40,7 +40,7 @@ public class SlimeGreyConfig {
         return new Health(SlimeGreyConfig.MAXIMUM_HEALTH);
     }
 
-    public static Tackle getTackle(int size){
-        return new Tackle(size, SlimeGreyConfig.ATTACK_RIGID);
+    public static Tackle getTackle(int size, Property owner){
+        return new Tackle(size, SlimeGreyConfig.ATTACK_RIGID, owner);
     }
 }
