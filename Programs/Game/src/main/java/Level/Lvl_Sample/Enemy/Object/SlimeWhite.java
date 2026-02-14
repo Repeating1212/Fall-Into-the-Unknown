@@ -1,13 +1,12 @@
 package Level.Lvl_Sample.Enemy.Object;
 
+import Data.DataClass.ArrayData;
 import Data.Loader.ImageLoader;
 import Level.BaseLevel.Manager.Observer;
+import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Objects.Class_Base.ImageObject;
-import Level.BaseLevel.Properties.Position;
 import Level.BaseLevel.Properties.Property;
 import Level.Lvl_Sample.Behaviour.Rush;
-import Level.Lvl_Sample.Behaviour.Tackle;
-import Level.Lvl_Sample.Enemy.Config.SlimeGreyConfig;
 import Level.Lvl_Sample.Enemy.Config.SlimeWhiteConfig;
 
 import java.util.ArrayList;
@@ -33,16 +32,6 @@ public class SlimeWhite extends ImageObject {
         property.spawnNearBoundary(properties);
     }
 
-    // Spawned slime
-    public SlimeWhite(ArrayList<Property> properties, int size, Position destination){
-        super(SlimeGreyConfig.getProperty(size),
-                ImageLoader.L01_SLIME_WHITE,
-                SlimeWhiteConfig.DEAD_DURATION);
-        this.size = size;
-        this.rush = SlimeWhiteConfig.getRush(this.property);
-        property.spawnNearBy(properties , destination);
-    }
-
     @Override
     public void update(double deltaTime, Observer observer){
         super.update(deltaTime, observer);
@@ -50,14 +39,14 @@ public class SlimeWhite extends ImageObject {
         if (isAlive()){
             property.pointTo(observer.getPlayerPosition());
             rush.update(deltaTime, observer);
-            if(rush.isRunning()){
-                relatedDisplay.add(rush.getVisual());
-            } else {
-                relatedDisplay.remove(rush.getVisual());
-            }
         }
+    }
 
-
+    @Override
+    public ArrayData<DisplayableObject> reloadDisplay(){
+        ArrayData<DisplayableObject> display = super.reloadDisplay();
+        if(rush.isRunning()) display.add(rush.getVisual());
+        return display;
     }
 
     public int getSize(){

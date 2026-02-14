@@ -1,10 +1,11 @@
 package Level.BaseLevel.Objects;
 
+import Data.DataClass.ArrayData;
+import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Objects.Class_Base.ImageObject;
 import Data.Loader.ImageLoader;
 import Level.BaseLevel.Properties.PlayerState;
 import Level.BaseLevel.Skills.Attack;
-import Level.BaseLevel.View.AttackVisualize.AttackVisual;
 import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Skills.Skill;
 
@@ -20,30 +21,32 @@ public class Player extends ImageObject {
         for(Skill skill : skills){
             skill.initializeData(property, playerState);
         }
-        this.initializeDisplays();
     }
 
-    // Update player position
+    @Override
     public void update(double deltaTime, Observer observer) {
 
-        super.update(deltaTime, observer);
         handleInvincibilityAnimation();
-
         playerState.update(deltaTime);
-
         for(Skill skill : skills){
             skill.handleRigid();
             skill.update(deltaTime, observer);
         }
 
-        if (getAttackVisual() != null){
-            if (getAttackVisual().isActive()){
-                relatedDisplay.add(getAttackVisual());
-            } else{
-                relatedDisplay.remove(getAttackVisual());
+        super.update(deltaTime, observer); // Add skill visualize
+    }
+
+    @Override
+    public ArrayData<DisplayableObject> reloadDisplay(){
+        ArrayData<DisplayableObject> returnArray = super.reloadDisplay();
+        if (getAttackVisual() != null && getAttackSkill() != null){
+            if (getAttackSkill().isRunning()){
+                returnArray.add(getAttackVisual());
             }
         }
+        return returnArray;
     }
+
 
     public void activateSkill(int skillID, double mouseX, double mouseY){
         if(skillID > skills.length) return;
@@ -72,11 +75,6 @@ public class Player extends ImageObject {
 
     // Private Method
 
-    private void initializeDisplays(){
-        AttackVisual attackVisual = getAttackVisual();
-        if (attackVisual != null) relatedDisplay.add(attackVisual);
-    }
-
     private  void handleInvincibilityAnimation(){
         if (playerState == null) return;
 
@@ -87,10 +85,19 @@ public class Player extends ImageObject {
         }
     }
 
-    private AttackVisual getAttackVisual(){
+    private DisplayableObject getAttackVisual(){
         for (Skill skill : skills){
             if (skill.getClass() == Attack.class){
-                return ((Attack) skill).getAttackVisual();
+                return ((Attack) skill).getVisual();
+            }
+        }
+        return null;
+    }
+
+    private Attack getAttackSkill(){
+        for (Skill skill : skills){
+            if (skill.getClass() == Attack.class){
+                return ((Attack) skill);
             }
         }
         return null;

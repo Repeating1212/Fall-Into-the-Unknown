@@ -39,7 +39,7 @@ public class AttackConfig extends SkillConfig {
     private static final double ENLARGE_DURATION = 0.2;
     private static final double FADE_OUT_DURATION = 0.1;
     private static final double TOTAL_ANIMATION_PERIOD = FADE_OUT_DURATION + ENLARGE_DURATION;
-    private static final double RIGID_TIME = TOTAL_ANIMATION_PERIOD * 2.0;
+    private static final double RIGID_TIME = TOTAL_ANIMATION_PERIOD + 0.2;
 
     private final UpgradeValue damageUpgValue = new UpgradeValue(
             new double[]{ 6, 12, 18},

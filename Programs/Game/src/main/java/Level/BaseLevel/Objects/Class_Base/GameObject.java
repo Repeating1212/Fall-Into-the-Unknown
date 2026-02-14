@@ -29,20 +29,13 @@ public abstract class GameObject implements DisplayableObject {
 
     public void update(double deltaTime, Observer observer){
         toRemove = removeCondition();
-        checkBoundaries(MapX, MapY , MapHeight, MapWidth);
+        relatedDisplay = reloadDisplay();
+        property.handleTouchBoundary(MapX, MapY , MapHeight, MapWidth);
         if (property.isAlive()){
             property.updateMovement(deltaTime);
             property.move(observer.getGameObjPrt());
         }
     }
-
-    protected void checkBoundaries(double minX, double minY, double maxX, double maxY) {
-        property.handleTouchBoundary(minX, minY, maxX, maxY);
-    }
-
-    public ArrayList<DisplayableObject> getRelatedSprite(){
-        return relatedDisplay.get();
-    };
 
     // Allow Override
 
@@ -50,13 +43,25 @@ public abstract class GameObject implements DisplayableObject {
         return (!property.isHealthNull() && property.isDead());
     }
 
-    // Data Class Getter
+    protected ArrayData<DisplayableObject> reloadDisplay(){
+        ArrayData<DisplayableObject> returnArray = new ArrayData<>();
+        returnArray.add(this);
+        return returnArray;
+    }
+
+    // Getter
 
     public Property getProperty(){return property;}
 
-    // Condition Getter
-
     public boolean toRemove(){return toRemove;}
+
+    public ArrayList<DisplayableObject> getRelatedSprite(){
+        return relatedDisplay.get();
+    }
+
+    // Abstract Method
+
+    public abstract Node getSprite();
 
     // Position related
 
@@ -109,11 +114,7 @@ public abstract class GameObject implements DisplayableObject {
 
     public boolean isHealthNull() {return property.isHealthNull();}
 
-    // Override by subclass
-
     public double getHealthPercentage(){
         return property.getHealthPercentage();
     }
-
-    public abstract Node getSprite();
 }

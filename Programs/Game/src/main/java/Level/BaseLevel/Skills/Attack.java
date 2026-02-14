@@ -2,6 +2,7 @@ package Level.BaseLevel.Skills;
 
 import Level.BaseLevel.Objects.Class_Base.AttackArea;
 import Data.DataClass.Timer;
+import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Properties.PlayerState;
 import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
@@ -25,7 +26,6 @@ public class Attack implements Skill {
 
     // private value
     private Position destinationPos = new Position();
-    private ArrayList<GameObject> targetEntity = new ArrayList<GameObject>();
 
 
     public Attack(AttackVisual attackVisual, double attackRigidTime, AttackArea attackArea, double attackDamage,
@@ -57,7 +57,6 @@ public class Attack implements Skill {
     }
 
     public void update(double deltaTime, Observer observer){
-        this.targetEntity = getTargets(observer.getHealthObj());
 
         enlargeTimer.update(deltaTime);
         cooldown.update(deltaTime);
@@ -65,8 +64,8 @@ public class Attack implements Skill {
         attackVisual.update(deltaTime);
 
         handlePendingAttack();
-        handleDamaging();
-        handleAnimation(observer);
+        handleDamaging(observer.getHealthObj());
+        handleAnimation();
     }
 
     public void handleRigid(){
@@ -75,15 +74,20 @@ public class Attack implements Skill {
         }
     }
 
+    public boolean isRunning(){
+        return animationTimer.isTicking();
+    }
+
     // Passing Method
 
-    public AttackVisual getAttackVisual(){
+    public DisplayableObject getVisual(){
         return attackVisual;
     }
 
     public double getCooldownPercentage() {return cooldown.getCooldownPercentage();}
 
     // Private Method
+
     private void handlePendingAttack(){
         if (enlargeTimer.isPending()){
             enlargeTimer.start();
@@ -92,31 +96,19 @@ public class Attack implements Skill {
         }
     }
 
-    private void handleDamaging(){
+    private void handleDamaging(ArrayList<GameObject> healthObj){
         if(enlargeTimer.isEnd() && cooldown.isPending()){
-            attack(targetEntity);
+            for (GameObject entity : healthObj) {
+                if (entity.getProperty() == owner) continue;
+                if (attackArea.isHitBoxInArea(entity.getProperty())) {
+                    entity.takeDamage(ATTACK_DAMAGE);
+                }
+            }
             cooldown.start();
         }
     }
 
-    private ArrayList<GameObject> getTargets(ArrayList<GameObject> healthObj){
-        ArrayList<GameObject> targets = new ArrayList<>();
-        for (GameObject entity : healthObj) {
-                if (entity.getProperty() == owner) continue;
-                targets.add(entity);
-            }
-        return targets;
-    }
-
-    private void attack(ArrayList<GameObject> targets){
-        for (GameObject entity : targets) {
-            if (attackArea.isHitBoxInArea(entity.getProperty())) {
-                entity.takeDamage(ATTACK_DAMAGE);
-            }
-        }
-    }
-
-    private void handleAnimation(Observer observer){
+    private void handleAnimation(){
         if (animationTimer.isPending()){
             animationTimer.start();
             attackVisual.activate(new Position(owner.getCenterX(), owner.getCenterY()), destinationPos);
