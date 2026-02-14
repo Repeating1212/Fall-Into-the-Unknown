@@ -20,10 +20,10 @@ public class Guard extends Boss {
     // Override Method
 
     @Override
-    public void update(double deltaTime, Observer observer) {
+    public void updateAlive(double deltaTime, Observer observer) {
         property.pointTo(observer.getPlayerPosition());
         groundSlap.update(deltaTime, observer);
-        super.update(deltaTime, observer);
+        super.updateAlive(deltaTime, observer);
     }
 
     @Override
@@ -32,7 +32,6 @@ public class Guard extends Boss {
         if(groundSlap.isRunning() && deadAnimation.isDeactive()) {
             display.add(groundSlap.getVisual());
         }
-
         return display;
     }
 }

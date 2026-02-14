@@ -43,13 +43,10 @@ public class SlimeGrey extends ImageObject {
     }
 
     @Override
-    public void update(double deltaTime, Observer observer){
-        super.update(deltaTime, observer);
-
-        if (isAlive()){
-            property.pointTo(observer.getPlayerPosition());
-            tackle.update(deltaTime, observer);
-        }
+    public void updateAlive(double deltaTime, Observer observer){
+        property.pointTo(observer.getPlayerPosition());
+        tackle.update(deltaTime, observer);
+        super.updateAlive(deltaTime, observer);
     }
 
     public int getSize(){

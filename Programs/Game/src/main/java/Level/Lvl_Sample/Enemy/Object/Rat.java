@@ -23,10 +23,10 @@ public class Rat extends ImageObject {
     // Override Method
 
     @Override
-    public void update(double deltaTime, Observer observer) {
+    public void updateAlive(double deltaTime, Observer observer) {
         property.pointTo(observer.getPlayerPosition());
-        super.update(deltaTime, observer);
         handleAttack(deltaTime, observer);
+        super.updateAlive(deltaTime, observer);
     }
 
     // Private Method

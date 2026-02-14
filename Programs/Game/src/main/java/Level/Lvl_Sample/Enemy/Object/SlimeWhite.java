@@ -36,15 +36,12 @@ public class SlimeWhite extends ImageObject {
     }
 
     @Override
-    public void update(double deltaTime, Observer observer){
-        super.update(deltaTime, observer);
-
-        if (isAlive()){
-            property.pointTo(observer.getPlayerPosition());
-            for (Behaviour behaviour: behaviours){
-                behaviour.update(deltaTime, observer);
-            }
+    public void updateAlive(double deltaTime, Observer observer){
+        property.pointTo(observer.getPlayerPosition());
+        for (Behaviour behaviour: behaviours){
+            behaviour.update(deltaTime, observer);
         }
+        super.updateAlive(deltaTime, observer);
     }
 
     @Override

@@ -24,8 +24,7 @@ public class Player extends ImageObject {
     }
 
     @Override
-    public void update(double deltaTime, Observer observer) {
-
+    public void updateAlive(double deltaTime, Observer observer) {
         handleInvincibilityAnimation();
         playerState.update(deltaTime);
         for(Skill skill : skills){
@@ -33,7 +32,7 @@ public class Player extends ImageObject {
             skill.update(deltaTime, observer);
         }
 
-        super.update(deltaTime, observer); // Add skill visualize
+        super.updateAlive(deltaTime, observer);
     }
 
     @Override

@@ -57,7 +57,6 @@ public class Attack implements Skill {
     }
 
     public void update(double deltaTime, Observer observer){
-
         enlargeTimer.update(deltaTime);
         cooldown.update(deltaTime);
         animationTimer.update(deltaTime);

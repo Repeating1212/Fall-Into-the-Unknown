@@ -28,13 +28,13 @@ public abstract class GameObject implements DisplayableObject {
     // Base Method
 
     public void update(double deltaTime, Observer observer){
+        if (property.isAlive()){
+            updateAlive(deltaTime, observer);
+        }
+
         toRemove = removeCondition();
         relatedDisplay = reloadDisplay();
         property.handleTouchBoundary(MapX, MapY , MapHeight, MapWidth);
-        if (property.isAlive()){
-            property.updateMovement(deltaTime);
-            property.move(observer.getGameObjPrt());
-        }
     }
 
     // Allow Override
@@ -43,11 +43,20 @@ public abstract class GameObject implements DisplayableObject {
         return (!property.isHealthNull() && property.isDead());
     }
 
+    protected void updateAlive(double deltaTime, Observer observer){
+        property.updateMovement(deltaTime);
+        property.move(observer.getGameObjPrt());
+    }
+
     protected ArrayData<DisplayableObject> reloadDisplay(){
         ArrayData<DisplayableObject> returnArray = new ArrayData<>();
         returnArray.add(this);
         return returnArray;
     }
+
+    // Abstract Method
+
+    public abstract Node getSprite();
 
     // Getter
 
@@ -58,10 +67,6 @@ public abstract class GameObject implements DisplayableObject {
     public ArrayList<DisplayableObject> getRelatedSprite(){
         return relatedDisplay.get();
     }
-
-    // Abstract Method
-
-    public abstract Node getSprite();
 
     // Position related
 
