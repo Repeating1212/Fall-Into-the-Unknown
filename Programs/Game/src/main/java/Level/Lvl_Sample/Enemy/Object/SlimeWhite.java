@@ -49,7 +49,7 @@ public class SlimeWhite extends ImageObject {
 
         if (isAlive()){
             property.pointTo(observer.getPlayerPosition());
-            rush.update(deltaTime, observer.getHealthObj());
+            rush.update(deltaTime, observer.getPlayer());
             if(rush.isRunning()){
                 relatedDisplay.add(rush.getAttackVisual());
             } else {

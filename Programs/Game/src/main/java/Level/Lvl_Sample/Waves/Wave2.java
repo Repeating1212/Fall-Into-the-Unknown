@@ -7,7 +7,6 @@ import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.SceneView;
-import Level.Lvl_Sample.Enemy.Object.SlimeGrey;
 import Level.Lvl_Sample.Enemy.Object.SlimeWhite;
 
 import java.util.ArrayList;

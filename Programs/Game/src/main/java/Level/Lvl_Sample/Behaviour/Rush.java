@@ -35,14 +35,14 @@ public class Rush {
         this.attackVisual = new RectangleAttackVisual(range, owner.getHeight());
     }
 
-    public void update(double deltaTime, ArrayList<GameObject> healthObj){
+    public void update(double deltaTime, GameObject player){
         cooldown.update(deltaTime);
         rigid.update(deltaTime);
 
 
         handleActivate();
         handleRigid();
-        handleRush(healthObj);
+        handleRush(player);
         handleComplete();
     }
 
@@ -80,16 +80,13 @@ public class Rush {
         }
     }
 
-    private void handleRush(ArrayList<GameObject> healthObj){
+    private void handleRush(GameObject player){
         if (!pendingRush && cooldown.isPending() &&
                 currentRush < totalRush && rigid.isDeactive()){
 
             currentRush ++;
-            for (GameObject object: healthObj){
-                if (owner.isTouch(object.getProperty())){
-                    if (object.getProperty() == owner) continue;
-                    object.takeDamage(DAMAGE);
-                }
+            if (owner.isTouch(player.getProperty())){
+                player.takeDamage(DAMAGE);
             }
         }
     }

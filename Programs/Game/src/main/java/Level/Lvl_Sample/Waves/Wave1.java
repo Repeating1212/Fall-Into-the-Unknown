@@ -8,6 +8,7 @@ import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.SceneView;
 import Level.Lvl_Sample.Enemy.Object.Rat;
+import Level.Lvl_Sample.Enemy.Object.SlimeGrey;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -20,6 +21,8 @@ public class Wave1  extends Wave implements Updater{
     private int currentWave = 0;
     private Timer waveTimer = new Timer(WAVE_DURATION);
     private double progress;
+
+    private ArrayData<SlimeGrey> slimeGreys = new ArrayData<>();
 
 
     public Wave1(SceneView sceneView, Player player){
@@ -41,9 +44,10 @@ public class Wave1  extends Wave implements Updater{
         }
 
         waveTimer.update(deltaTime);
+        handleSpawnSlime();
 
-        removeObject();
         handleDisplay(1 - progress);
+        removeObject();
     }
 
     // Override Method
@@ -62,8 +66,13 @@ public class Wave1  extends Wave implements Updater{
         int num =  random.nextInt(2,5);
         for (int i = 0; i < num; i++){
             ArrayList<Property> properties = getProperties(gameObj);
-            Rat rat = new Rat(properties);
-            gameObj.add(rat);
+            gameObj.add(new Rat(properties));
+        }
+        for (int i = 0; i < num; i++){
+            ArrayList<Property> properties = getProperties(gameObj);
+            SlimeGrey slimeGrey = new SlimeGrey(properties);
+            gameObj.add(slimeGrey);
+            slimeGreys.add(slimeGrey);
         }
     }
 
@@ -73,5 +82,22 @@ public class Wave1  extends Wave implements Updater{
             properties.add(gameObject.getProperty());
         }
         return properties;
+    }
+
+    private void handleSpawnSlime(){
+        ArrayData<SlimeGrey> temp = new ArrayData<>();
+        temp.add(slimeGreys.get());
+
+        for (SlimeGrey parent : temp.get()){
+            if (parent.spawnable()){
+                for (int i = 0; i < 3; i ++){
+                    SlimeGrey child = new SlimeGrey(getProperties(gameObj), parent.getSize() - 1, parent.duplicatePosition());
+                    slimeGreys.add(child);
+                    gameObj.add(child);
+                    parent.setSpawned();
+                }
+            }
+
+        }
     }
 }
