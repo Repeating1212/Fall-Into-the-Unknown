@@ -28,16 +28,13 @@ public class SlimeGreyConfig {
     }
 
     public static Property getProperty(int size, Position position){
+        Status status = new Status();
         int width = (1 + size) * WIDTH_Mul;
         int height = (1 + size) * HEIGHT_Mul;
-        HitBox hitBox = new HitBox(width, height, position, SlimeGreyConfig.IS_BLOCKABLE);
-        MovementState movementState = new MovementState(SlimeGreyConfig.SPEED);
-        Health guardHeart = new Health(SlimeGreyConfig.MAXIMUM_HEALTH);
-        return new Property(hitBox, movementState, guardHeart);
-    }
-
-    public static Health getHealth(){
-        return new Health(SlimeGreyConfig.MAXIMUM_HEALTH);
+        HitBox hitBox = new HitBox(width, height, position, SlimeGreyConfig.IS_BLOCKABLE, status);
+        MovementState movementState = new MovementState(SlimeGreyConfig.SPEED,  status);
+        Health health = new Health(SlimeGreyConfig.MAXIMUM_HEALTH, status);
+        return new Property(hitBox, movementState, health, status);
     }
 
     public static Tackle getTackle(int size, Property owner){

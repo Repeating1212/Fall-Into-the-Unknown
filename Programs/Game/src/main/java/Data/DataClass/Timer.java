@@ -10,6 +10,11 @@ public class Timer {
         this.DURATION = cooldown;
     }
 
+    public Timer(double cooldown, boolean start){
+        this.DURATION = cooldown;
+        if (start) start();
+    }
+
     public void update(double deltaTime){
         currentTime = (currentTime > deltaTime) ? (currentTime - deltaTime) : 0;
     }

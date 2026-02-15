@@ -1,5 +1,6 @@
 package Level.BaseLevel.Properties;
 
+import Data.DataClass.Timer;
 import Data.DataClass.Vector2D;
 import javafx.scene.shape.Rectangle;
 
@@ -10,19 +11,43 @@ public class Property {
     private final HitBox hitBox;
     private final MovementState movementState;
     private final Health health;
-    private final Status status = new Status();
+    private final Status status;
 
-    public Property(HitBox hitBox, MovementState movementState, Health health){
+    public Property(HitBox hitBox, MovementState movementState, Health health, Status status){
         this.hitBox = hitBox;
         this.position = hitBox.getPosition();
         this.movementState = movementState;
         this.health = health;
+        this.status = status;
+        this.position.setStatus(status);
     }
 
     // Status
 
     public void updateStatus(double deltaTime){
         status.update(deltaTime);
+    }
+
+    public void pauseMovement (Double duration){
+        status.pauseMovement(duration);
+    }
+
+    public void pauseDirect (Double duration){
+        status.pauseDirect(duration);
+    }
+
+    public void setDirectable(boolean directable){
+        status.setDirectable(directable);
+    }
+
+    public boolean isInvincible(){ return status.isInvincible();}
+
+    public void setInvincible(double duration){ status.setInvincible(duration);}
+
+    public boolean isDefend() { return  status.isDefend();}
+
+    public void setDefend(double duration){
+        status.setDefend(duration);
     }
 
     // HitBox
@@ -70,10 +95,6 @@ public class Property {
 
     // MovementState
 
-    public void pauseMovement (Double duration){
-        status.pauseMovement(duration);
-    }
-
     public double getSpeed() { return  movementState.getSpeed();}
 
     public void speedMultiply(double multiplication){
@@ -91,17 +112,8 @@ public class Property {
         movementState.setMovement(movementX, movementY);
     }
 
-    public void setDirectable(boolean directable){
-        movementState.setDirectable(directable);
-    }
-
     public double getDirection(){
         return movementState.getDirection();
-    }
-
-    public Vector2D getVector() {return movementState.getVector();}
-
-    public void setPauseMovement(boolean pauseMovement){
     }
 
     public void pointTo(Property destination){
@@ -119,19 +131,19 @@ public class Property {
     public double getY() { return position.getY(); }
 
     public void move(Position increment, ArrayList<Property> properties){
-        position.move(increment.getX(), increment.getY(), this.hitBox, getHitBoxArray(properties), status);
+        position.move(increment.getX(), increment.getY(), this.hitBox, getHitBoxArray(properties));
     }
 
     public void move(ArrayList<Property> properties){
-        position.move(movementState.calculateMovement(), this.hitBox, getHitBoxArray(properties), status);
+        position.move(movementState.calculateMovement(), this.hitBox, getHitBoxArray(properties));
     }
 
     public void move(double incrementX, double incrementY,  ArrayList<Property> properties){
-        position.move(incrementX, incrementY, this.hitBox, getHitBoxArray(properties), status);
+        position.move(incrementX, incrementY, this.hitBox, getHitBoxArray(properties));
     }
 
     public void moveTo(Position destination, ArrayList<Property> properties){
-        position.moveTo(destination, this.hitBox, getHitBoxArray(properties), status);
+        position.moveTo(destination, this.hitBox, getHitBoxArray(properties));
     }
 
     public void setPosition(double x, double y) {

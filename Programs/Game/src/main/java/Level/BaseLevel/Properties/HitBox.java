@@ -7,19 +7,22 @@ import java.util.ArrayList;
 
 public class HitBox {
 
+    private final Position position;
+    private final Status status;
+
     private final int width;
     private final int height;
-    private final Position position;
     private final boolean isBlockMovement; // True when object unable to pass through, wall etc
     private final double TOUCH_TOLERANCE = 3;
 
     private Rectangle debugView;
 
-    public HitBox(int width, int height, Position position, Boolean isBlockMovement){
+    public HitBox(int width, int height, Position position, Boolean isBlockMovement, Status status){
         this.height = height;
         this.width = width;
         this.position = position;
         this.isBlockMovement = isBlockMovement;
+        this.status = status;
         createDebugView();
     }
 

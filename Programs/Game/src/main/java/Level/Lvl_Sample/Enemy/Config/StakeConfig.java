@@ -18,11 +18,12 @@ public class StakeConfig {
     // Supplier
 
     public static Property getProperty(){
+        Status status = new Status();
         Position position =  new Position(StakeConfig.INITIAL_X, StakeConfig.INITIAL_Y);
-        HitBox hitBox = new HitBox(StakeConfig.WIDTH, StakeConfig.HEIGHT, position, StakeConfig.IS_BLOCKABLE);
-        MovementState movementState = new MovementState(StakeConfig.SPEED);
-        Health health = new Health(StakeConfig.INITIAL_HEALTH);
-        return new Property(hitBox, movementState, health);
+        HitBox hitBox = new HitBox(StakeConfig.WIDTH, StakeConfig.HEIGHT, position, StakeConfig.IS_BLOCKABLE, status);
+        MovementState movementState = new MovementState(StakeConfig.SPEED, status);
+        Health health = new Health(StakeConfig.INITIAL_HEALTH, status);
+        return new Property(hitBox, movementState, health, status);
     }
 
 }

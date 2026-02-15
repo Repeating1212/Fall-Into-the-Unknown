@@ -21,15 +21,12 @@ public class RatConfig {
     // Supplier
 
     public static Property getProperty(){
+        Status status = new Status();
         Position position =  new Position(RatConfig.INITIAL_X, RatConfig.INITIAL_Y);
-        HitBox hitBox = new HitBox(RatConfig.WIDTH, RatConfig.HEIGHT, position, RatConfig.IS_BLOCKABLE);
-        MovementState movementState = new MovementState(RatConfig.SPEED);
-        Health guardHeart = new Health(RatConfig.MAXIMUM_HEALTH);
-        return new Property(hitBox, movementState, guardHeart);
-    }
-
-    public static Health getHealth(){
-        return new Health(RatConfig.MAXIMUM_HEALTH);
+        HitBox hitBox = new HitBox(RatConfig.WIDTH, RatConfig.HEIGHT, position, RatConfig.IS_BLOCKABLE, status);
+        MovementState movementState = new MovementState(RatConfig.SPEED, status);
+        Health health = new Health(RatConfig.MAXIMUM_HEALTH, status);
+        return new Property(hitBox, movementState, health, status);
     }
 
     public static Tackle getTackle(Property owner){

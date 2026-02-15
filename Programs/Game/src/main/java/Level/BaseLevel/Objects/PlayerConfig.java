@@ -18,14 +18,11 @@ public class PlayerConfig {
     // Supplier
 
     public static Property getProperty(){
-        Position playerPosition =  new Position(PlayerConfig.INITIAL_X, PlayerConfig.INITIAL_Y);
-        HitBox playerHitBox = new HitBox(PlayerConfig.WIDTH, PlayerConfig.HEIGHT, playerPosition, PlayerConfig.IS_BLOCKABLE);
-        MovementState playerMovement = new MovementState(PlayerConfig.SPEED);
-        Health playerHealth = new Health(PlayerConfig.MAXIMUM_HEALTH);
-        return new Property(playerHitBox, playerMovement, playerHealth);
-    }
-
-    public static Health getHealth(){
-        return new Health(PlayerConfig.MAXIMUM_HEALTH);
+        Status status = new Status();
+        Position position =  new Position(PlayerConfig.INITIAL_X, PlayerConfig.INITIAL_Y);
+        HitBox hitBox = new HitBox(PlayerConfig.WIDTH, PlayerConfig.HEIGHT, position, PlayerConfig.IS_BLOCKABLE, status);
+        MovementState movementState = new MovementState(PlayerConfig.SPEED, status);
+        Health health = new Health(PlayerConfig.MAXIMUM_HEALTH, status);
+        return new Property(hitBox, movementState, health, status);
     }
 }

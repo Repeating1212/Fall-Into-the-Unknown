@@ -3,10 +3,12 @@ package Level.BaseLevel.Properties;
 public class Health {
     private int currentHealth;
     private final int MAXIMUM_HEALTH;
+    private final Status status;
 
-    public Health(int maximumHealth){
+    public Health(int maximumHealth, Status status){
         MAXIMUM_HEALTH = maximumHealth;
         currentHealth = MAXIMUM_HEALTH;
+        this.status = status;
     }
 
     protected void reduceHealth(double damage) {

@@ -1,6 +1,7 @@
 package Data.DataClass;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 public class ArrayData<T> {
 
@@ -39,6 +40,15 @@ public class ArrayData<T> {
     public boolean isEmpty(){
         return arrayList.isEmpty();
     }
+
+    public void clear(){
+        arrayList.clear();
+    }
+
+    public boolean removeIf(Predicate<T> filter) {
+        return arrayList.removeIf(filter);
+    }
+
 
 
     // Private method

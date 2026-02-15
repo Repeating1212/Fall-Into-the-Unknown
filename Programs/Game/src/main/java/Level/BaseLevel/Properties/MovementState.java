@@ -3,18 +3,17 @@ package Level.BaseLevel.Properties;
 import Data.DataClass.Vector2D;
 
 public class MovementState {
+
+    private final Status status;
     // Movement states
     private final double SPEED;
     private double deltaX = 0;
     private double deltaY = 0;
     private double speedMultiply = 1;
 
-    private boolean directable = true;
-
-
-
-    public MovementState (double SPEED){
+    public MovementState (double SPEED, Status status){
         this.SPEED = SPEED;
+        this.status = status;
     }
 
     protected double getSpeed(){ return SPEED * speedMultiply;}
@@ -38,12 +37,8 @@ public class MovementState {
         this.speedMultiply /= speedPercentage;
     }
 
-    protected void setDirectable(boolean directable){
-        this.directable = directable;
-    }
-
     protected void pointTo(Position destination, Position self){
-        if (directable) {
+        if ( status.directable()) {
             Vector2D vector = Vector2D.getAttackVector(self, destination);
             vector = vector.normalize();
             deltaX = vector.getX();
@@ -53,7 +48,7 @@ public class MovementState {
     }
 
     protected void setMovement(double movementX, double movementY){
-        if (directable){
+        if (status.directable()){
             this.deltaX = movementX;
             this.deltaY = movementY;
         }

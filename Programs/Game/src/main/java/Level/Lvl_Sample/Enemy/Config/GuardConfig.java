@@ -35,11 +35,12 @@ public class GuardConfig {
     // Supplier
 
     public static Property getProperty(){
-        Position guardPosition =  new Position(GuardConfig.INITIAL_X, GuardConfig.INITIAL_Y);
-        HitBox guardHitBox = new HitBox(GuardConfig.WIDTH, GuardConfig.HEIGHT, guardPosition, GuardConfig.IS_BLOCKABLE);
-        MovementState guardMovementState = new MovementState(GuardConfig.SPEED);
-        Health guardHeart = new Health(GuardConfig.MAXIMUM_HEALTH);
-        return new Property(guardHitBox, guardMovementState, guardHeart);
+        Status status = new Status();
+        Position position =  new Position(GuardConfig.INITIAL_X, GuardConfig.INITIAL_Y);
+        HitBox hitBox = new HitBox(GuardConfig.WIDTH, GuardConfig.HEIGHT, position, GuardConfig.IS_BLOCKABLE, status);
+        MovementState movementState = new MovementState(GuardConfig.SPEED, status);
+        Health health = new Health(GuardConfig.MAXIMUM_HEALTH, status);
+        return new Property(hitBox, movementState, health, status);
     }
 
     public static GroundSlap getGroundSlap(Property owner){

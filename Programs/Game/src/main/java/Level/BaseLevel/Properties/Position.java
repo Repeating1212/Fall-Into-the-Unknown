@@ -6,6 +6,8 @@ import java.util.Random;
 public class Position {
     private double x;
     private double y;
+    private Status status;
+
 
     public Position(double startX, double startY){
         this.x = startX;
@@ -15,6 +17,10 @@ public class Position {
     public Position(){
         this.x = 0;
         this.y = 0;
+    }
+
+    protected void setStatus(Status status){
+        this.status = status;
     }
 
     public void setX(double x) { this.x = x; }
@@ -34,19 +40,19 @@ public class Position {
         if (y > maxY - hitBox.getHeight()) y = maxY - hitBox.getHeight();
     }
 
-    protected void moveTo(Position destination, HitBox ownerHB , ArrayList<HitBox> objectHB, Status status){
+    protected void moveTo(Position destination, HitBox ownerHB , ArrayList<HitBox> objectHB){
         double movementX = destination.getX() - x;
         double movementY = destination.getY() - y;
-        move(movementX,movementY, ownerHB, objectHB, status);
+        move(movementX,movementY, ownerHB, objectHB);
     }
 
-    protected void move(double incrementX, double incrementY, HitBox ownerHB ,ArrayList<HitBox> objectsHB, Status status){
+    protected void move(double incrementX, double incrementY, HitBox ownerHB ,ArrayList<HitBox> objectsHB){
         double[] movement = new double[] {incrementX, incrementY};
-        move(movement, ownerHB, objectsHB, status);
+        move(movement, ownerHB, objectsHB);
     }
 
-    protected void move(double[] movement, HitBox ownerHB ,ArrayList<HitBox> objectsHB, Status status){
-        if (status.isPause()) return;
+    protected void move(double[] movement, HitBox ownerHB ,ArrayList<HitBox> objectsHB){
+        if (status.isPauseMovement()) return;
         double deltaX = (movement[0] > 0) ? 0.1 : -0.1;
         double deltaY = (movement[1] > 0) ? 0.1 : -0.1;
         int targetStepX = Math.abs((int) movement[0]); // Increment loop calculation

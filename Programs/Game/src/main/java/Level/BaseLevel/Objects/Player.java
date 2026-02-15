@@ -26,7 +26,6 @@ public class Player extends ImageObject {
     @Override
     public void updateAlive(double deltaTime, Observer observer) {
         handleInvincibilityAnimation();
-        playerState.update(deltaTime);
         for(Skill skill : skills){
             skill.handleRigid();
             skill.update(deltaTime, observer);
@@ -64,20 +63,18 @@ public class Player extends ImageObject {
 
     @Override
     public boolean takeDamage(double damage){
-        if(playerState.isDamageable()){
-            super.takeDamage(damage);
-            playerState.setDamaged();
-            return true;
+        if (property.isInvincible() || property.isDefend()){
+            return false;
+        } else {
+            property.setInvincible(PlayerConfig.INVINCIBILITY_PERIOD);
+            return super.takeDamage(damage);
         }
-        return false;
     }
 
     // Private Method
 
     private  void handleInvincibilityAnimation(){
-        if (playerState == null) return;
-
-        if(playerState.isInvincibility()) {
+        if(property.isInvincible()) {
             sprite.setImage(ImageLoader.PLAYER_INVINCIBILITY);
         } else{
             sprite.setImage(ImageLoader.PLAYER_LEFT);

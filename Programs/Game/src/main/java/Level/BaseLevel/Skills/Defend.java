@@ -11,7 +11,7 @@ public class Defend implements Skill {
     private final Timer defendTimer;
     private final Timer cooldownTimer;
     private Property owner;
-    private PlayerState playerState;
+//    private PlayerState playerState;
 
     public Defend(Double cooldown, double defendDuration){
         this.defendTimer = new Timer(defendDuration);
@@ -20,7 +20,7 @@ public class Defend implements Skill {
 
     public void initializeData(Property owner, PlayerState playerState){
         this.owner = owner;
-        this.playerState = playerState;
+//        this.playerState = playerState;
     }
 
     public double getCooldownPercentage(){
@@ -41,13 +41,11 @@ public class Defend implements Skill {
         if(defendTimer.isPending()){
             defendTimer.start();
             cooldownTimer.setPending();
-            playerState.setDefend(true);
+            owner.setDefend(defendTimer.getDuration());
             owner.pauseMovement(defendTimer.getDuration());
         }
         if(defendTimer.isEnd() && cooldownTimer.isPending()){
-            playerState.setDefend(false);
             cooldownTimer.start();
-
         }
         cooldownTimer.update(deltaTime);
         defendTimer.update(deltaTime);
