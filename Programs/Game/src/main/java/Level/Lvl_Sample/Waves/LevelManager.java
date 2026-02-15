@@ -23,7 +23,7 @@ public class LevelManager implements Updater{
 
         waves = new Wave[]{
                 new Wave1(sceneView, player),
-                new Wave1(sceneView, player),
+                new Wave2(sceneView, player),
                 new Wave3(sceneView, player)
         };
     }

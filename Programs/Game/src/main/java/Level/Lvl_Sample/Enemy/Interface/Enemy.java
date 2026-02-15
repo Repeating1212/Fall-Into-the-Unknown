@@ -19,6 +19,11 @@ public abstract class Enemy extends ImageObject {
 
     protected abstract Behaviour[] getBehaviours();
 
+    // Allow modify updateAlive
+    protected void superUpdate(double deltaTime, Observer observer){
+        super.updateAlive(deltaTime, observer);
+    }
+
     // Override Method
 
     @Override
@@ -30,7 +35,6 @@ public abstract class Enemy extends ImageObject {
                 behaviour.update(deltaTime, observer);
             }
         }
-
 
         super.updateAlive(deltaTime, observer);
     }

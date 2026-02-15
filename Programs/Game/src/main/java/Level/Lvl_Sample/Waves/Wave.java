@@ -49,7 +49,7 @@ public abstract class Wave implements Updater{
 
         waveTimer.update(deltaTime);
         gameObj = fission.spawnSlime(gameObj.copyOf());
-        handleDisplay(1 - ((double) currentWave / TOTAL_WAVE));
+        handleDisplay(setProgression());
         removeObject();
     }
 
@@ -66,6 +66,10 @@ public abstract class Wave implements Updater{
     }
 
     // Abstract Method
+
+    protected double setProgression(){
+        return getProgress();
+    }
 
     public abstract boolean isComplete();
 
@@ -86,7 +90,6 @@ public abstract class Wave implements Updater{
     }
 
     // Private Method
-
 
     private void handleDisplay(double progression){
 

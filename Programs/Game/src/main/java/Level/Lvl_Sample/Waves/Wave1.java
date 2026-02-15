@@ -36,14 +36,9 @@ public class Wave1  extends Wave implements Updater{
     protected void spawnEnemies(){
         Random random = new Random();
         int num =  random.nextInt(2,5);
-//        for (int i = 0; i < num; i++){
-//            ArrayList<Property> properties = getProperties(gameObj);
-//            gameObj.add(new Rat(properties));
-//        }
         for (int i = 0; i < num; i++){
             ArrayList<Property> properties = getProperties(gameObj);
-            SlimeGrey slimeGrey = new SlimeGrey(properties);
-            gameObj.add(slimeGrey);
+            gameObj.add(new Rat(properties));
         }
     }
 }

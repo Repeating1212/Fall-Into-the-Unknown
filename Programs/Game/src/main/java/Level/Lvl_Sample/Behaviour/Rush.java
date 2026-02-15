@@ -9,6 +9,7 @@ import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.AttackVisualize.RectangleAttackVisual;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Rush implements Behaviour{
 
@@ -27,6 +28,7 @@ public class Rush implements Behaviour{
     private double totalRush;
 
     private Property owner;
+    private boolean autoActivate = true;
 
     public Rush(double range, double cooldown, double damage, double speedIncrement, Property owner, double rushRigid){
         this.RANGE = range;
@@ -45,7 +47,7 @@ public class Rush implements Behaviour{
         cooldown.update(deltaTime);
         rigid.update(deltaTime);
 
-        handleActivate();
+        if (autoActivate) activate(observer);
         handleRigid();
         handleRush(observer.getPlayer());
         handleComplete();
@@ -61,9 +63,8 @@ public class Rush implements Behaviour{
         return (rigid.isTicking() || cooldown.isPending());
     }
 
-    // Private Method
-
-    private void handleActivate(){
+    @Override
+    public void activate(Observer observer){
         if (rigid.isDeactive() && cooldown.isDeactive() && !pendingRush){
             rigid.start();
             owner.pauseMovement(rigid.getDuration());
@@ -72,6 +73,19 @@ public class Rush implements Behaviour{
             attackVisual.activate(owner.getCenterPos(), owner.getDirection());
         }
     }
+
+    @Override
+    public boolean isCooldown(){
+        return cooldown.isTicking();
+    }
+
+    @Override
+    public void setAutoActivate(boolean autoActivate){
+        this.autoActivate = autoActivate;
+    }
+
+
+    // Private Method
 
     private void handleRigid(){
         if (rigid.isEnd() && cooldown.isDeactive() && pendingRush ){

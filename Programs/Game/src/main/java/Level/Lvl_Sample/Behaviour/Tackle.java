@@ -17,6 +17,7 @@ public class Tackle implements Behaviour{
     private final double RIGID_DURATION;
     private final Timer cooldown;
     private final Property owner;
+    private boolean autoActivate = true;
 
     private final List<Class<? extends GameObject>> TARGET = Arrays.asList(
             Player.class
@@ -33,13 +34,7 @@ public class Tackle implements Behaviour{
 
         cooldown.update(deltaTime);
         if (cooldown.isTicking()) return;
-
-        for (GameObject object : observer.getHealthObj()){
-            if( isActivate(object) ){
-                cooldown.start();
-                owner.pauseMovement(RIGID_DURATION);
-            }
-        }
+        if (autoActivate) activate(observer);
     }
 
     @Override
@@ -52,9 +47,29 @@ public class Tackle implements Behaviour{
         return new ArrayList<>();
     }
 
+    @Override
+    public void activate(Observer observer){
+        for (GameObject object : observer.getHealthObj()){
+            if( isHittable(object) ){
+                cooldown.start();
+                owner.pauseMovement(RIGID_DURATION);
+            }
+        }
+    }
+
+    @Override
+    public boolean isCooldown(){
+        return cooldown.isTicking();
+    }
+
+    @Override
+    public void setAutoActivate(boolean autoActivate){
+        this.autoActivate = autoActivate;
+    }
+
     // Private Method
 
-    private boolean isActivate(GameObject object){
+    private boolean isHittable(GameObject object){
         // Object is target + Object touching owner + Object taken damage
         return (TARGET.contains(object.getClass()) &&
                 owner.isTouch(object.getProperty())&&

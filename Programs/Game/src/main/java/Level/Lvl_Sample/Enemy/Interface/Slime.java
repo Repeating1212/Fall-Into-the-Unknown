@@ -16,7 +16,7 @@ public abstract class Slime extends Enemy {
     protected boolean isSpawned = false;
 
     private final Class<? extends Slime>[] childrenType = new Class[]{
-//            SlimeGrey.class,
+            SlimeGrey.class,
             SlimeWhite.class,
     };
 

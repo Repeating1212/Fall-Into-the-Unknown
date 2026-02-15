@@ -24,6 +24,7 @@ public class GroundSlap implements Behaviour{
     private final Timer animationTimer;
 //    private final Timer rigidTimer;
     private Property owner;
+    private boolean autoActivate = true;
 
 
     public GroundSlap(AttackVisual attackVisual, double attackRigidTime, AttackArea attackArea, double attackDamage,
@@ -47,7 +48,7 @@ public class GroundSlap implements Behaviour{
         animationTimer.update(deltaTime);
         attackVisual.update(deltaTime);
 
-        handleActivate(observer.getPlayer());
+        if (autoActivate) activate(observer);
         handlePendingAttack(observer.getPlayer().getCenterPos());
         handleDamaging(observer.getHealthObj());
     }
@@ -65,16 +66,27 @@ public class GroundSlap implements Behaviour{
         return animationTimer.isTicking();
     }
 
-    // Private Method
-
-    private void handleActivate(GameObject player) {
+    @Override
+    public void activate(Observer observer){
         if (cooldown.isDeactive() && enlargeTimer.isDeactive() &&
-                isNearEnemy(player)) {
+                isNearEnemy(observer.getPlayer())) {
             enlargeTimer.setPending();
             animationTimer.start();
             owner.pauseMovement(RIGID_DURATION);
         }
     }
+
+    @Override
+    public boolean isCooldown(){
+        return cooldown.isTicking();
+    }
+
+    @Override
+    public void setAutoActivate(boolean autoActivate){
+        this.autoActivate = autoActivate;
+    }
+
+    // Private Method
 
     private void handlePendingAttack(Position destinationPos) {
         if (enlargeTimer.isPending()) {

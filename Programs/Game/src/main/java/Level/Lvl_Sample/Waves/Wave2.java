@@ -7,6 +7,7 @@ import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.SceneView;
+import Level.Lvl_Sample.Enemy.Object.SlimeGrey;
 import Level.Lvl_Sample.Enemy.Object.SlimeWhite;
 
 import java.util.ArrayList;
@@ -37,6 +38,10 @@ public class Wave2 extends Wave implements Updater{
         for (int i = 0; i < num; i++){
             SlimeWhite slimeWhite = new SlimeWhite(getProperties(gameObj));
             gameObj.add(slimeWhite);
+        }
+        for (int i = 0; i < 5 - num; i++){
+            SlimeGrey slimeGrey = new SlimeGrey(getProperties(gameObj));
+            gameObj.add(slimeGrey);
         }
     }
 }

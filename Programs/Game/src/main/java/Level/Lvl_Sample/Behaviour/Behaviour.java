@@ -10,4 +10,7 @@ public interface Behaviour {
     void update(double deltaTime, Observer observer);
     ArrayList<DisplayableObject> getVisual();
     boolean isRunning();
+    void activate(Observer observer);
+    boolean isCooldown();
+    void setAutoActivate(boolean autoActivate);
 }
