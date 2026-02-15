@@ -156,6 +156,43 @@ public class Position {
         spawnNearBoundary(self, others);
     }
 
+    protected void resolveCollision(HitBox self, ArrayList<HitBox> others) {
+        if (!self.isCollide(others)) {
+            return; // Already not colliding
+        }
+
+        int MAX_ATTEMPTS = 100;
+        double MOVE_STEP = 1.0;
+        Random random = new Random();
+        Position oldPosition = new Position(x, y);
+
+        for (int attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+            // Try moving in a random direction
+            double angle = random.nextDouble() * 2 * Math.PI;
+            double moveX = Math.cos(angle) * MOVE_STEP;
+            double moveY = Math.sin(angle) * MOVE_STEP;
+
+            // Try moving in this direction until we find a valid spot
+            for (int step = 0; step < 20; step++) {
+
+                if (self.isTouchBoundary()) break;
+
+                this.x = (x + moveX);
+                this.y = (y + moveY);
+
+                if (!self.isCollide(others)) {
+                    return;
+                }
+
+                // Increase step size gradually
+                moveX *= 1.2;
+                moveY *= 1.2;
+            }
+            this.x = oldPosition.getX();
+            this.y = oldPosition.getY();
+        }
+    }
+
     // Private Method
 
     private int randomRange(int min, int max) {

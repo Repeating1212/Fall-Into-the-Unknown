@@ -2,6 +2,7 @@ package Level.BaseLevel.Objects.Class_Base;
 
 import Level.BaseLevel.Manager.Observer;
 import Data.DataClass.DeadAnimation;
+import Level.BaseLevel.Properties.Position;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -51,8 +52,8 @@ public abstract class ImageObject extends GameObject {
     }
 
     @Override
-    public void setPosition(double x, double y) {
-        super.setPosition(x,y);
+    public void setPosition(Position position) {
+        super.setPosition(position);
         updateSpritePosition();
     }
 

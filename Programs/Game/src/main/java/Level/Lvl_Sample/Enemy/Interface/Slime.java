@@ -8,15 +8,15 @@ import Level.Lvl_Sample.Enemy.Object.SlimeWhite;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Random;
 
-public abstract class Slime extends ImageObject {
+public abstract class Slime extends Enemy {
 
     protected final int SIZE;
-    protected boolean spawnable = false;
+    protected boolean isSpawned = false;
+
     private final Class<? extends Slime>[] childrenType = new Class[]{
-            SlimeGrey.class,
+//            SlimeGrey.class,
             SlimeWhite.class,
     };
 
@@ -30,7 +30,7 @@ public abstract class Slime extends ImageObject {
     }
 
     public void setSpawned(){
-        spawnable = true;
+        isSpawned = true;
     }
 
     protected Slime randomSpawn(ArrayList<Property> properties, Position position){
@@ -47,7 +47,8 @@ public abstract class Slime extends ImageObject {
         } else {
             slime = new SlimeGrey(properties, size);
         }
-        slime.getProperty().spawnNearBy(properties, position);
+        slime.setPosition(position);
+        slime.resolveCollision(properties);
         return slime;
     }
 

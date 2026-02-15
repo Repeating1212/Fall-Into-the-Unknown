@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import Level.BaseLevel.Manager.Observer;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public abstract class GameObject implements DisplayableObject {
 
@@ -35,6 +36,7 @@ public abstract class GameObject implements DisplayableObject {
         toRemove = removeCondition();
         relatedDisplay = reloadDisplay();
         property.handleTouchBoundary(MapX, MapY , MapHeight, MapWidth);
+        property.resolveCollision(observer.getGameObjPrt());
     }
 
     // Allow Override
@@ -76,6 +78,10 @@ public abstract class GameObject implements DisplayableObject {
 
     public Position duplicatePosition(){return property.duplicatePosition();}
 
+    public void resolveCollision(ArrayList<Property> properties) {
+        property.resolveCollision(properties);
+    }
+
     // Hitbox related
 
     public int getWidth() { return property.getWidth(); }
@@ -88,8 +94,8 @@ public abstract class GameObject implements DisplayableObject {
 
     public Position getCenterPos() {return property.getCenterPos();}
 
-    public void setPosition(double x, double y) {
-        property.setPosition(x, y);
+    public void setPosition(Position position) {
+        property.setPosition(position.getX(), position.getY());
     }
 
     // Movement control methods

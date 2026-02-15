@@ -167,6 +167,10 @@ public class Property {
         position.spawnNearBy(this.hitBox, getHitBoxArray(others), destination);
     }
 
+    public void resolveCollision(ArrayList<Property> properties){
+        position.resolveCollision(this.hitBox, getHitBoxArray(properties));
+    }
+
     // Health
 
     public void reduceHealth(double damage) {

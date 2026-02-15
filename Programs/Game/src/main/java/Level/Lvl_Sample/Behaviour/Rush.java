@@ -45,7 +45,6 @@ public class Rush implements Behaviour{
         cooldown.update(deltaTime);
         rigid.update(deltaTime);
 
-
         handleActivate();
         handleRigid();
         handleRush(observer.getPlayer());
@@ -70,7 +69,6 @@ public class Rush implements Behaviour{
             owner.pauseMovement(rigid.getDuration());
             owner.setDirectable(false);
             pendingRush = true;
-
             attackVisual.activate(owner.getCenterPos(), owner.getDirection());
         }
     }
@@ -88,9 +86,7 @@ public class Rush implements Behaviour{
     }
 
     private void handleRush(GameObject player){
-        if (!pendingRush && cooldown.isPending() &&
-                currentRush < totalRush && rigid.isDeactive()){
-
+        if (!pendingRush){
             currentRush ++;
             if (owner.isTouch(player.getProperty())){
                 player.takeDamage(DAMAGE);

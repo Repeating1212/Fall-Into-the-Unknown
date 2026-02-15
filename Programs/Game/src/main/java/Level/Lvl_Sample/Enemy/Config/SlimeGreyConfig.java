@@ -17,8 +17,8 @@ public class SlimeGreyConfig {
     public static final double ATTACK_RIGID = 2.5;
     public static final double DEAD_DURATION = 1.5;
 
-    public static final int MIN_SPAWN = 1;
-    public static final int MAX_SPAWN = 3;
+    public static final int MIN_SPAWN = 3;
+    public static final int MAX_SPAWN = 4;
 
 
     // Supplier

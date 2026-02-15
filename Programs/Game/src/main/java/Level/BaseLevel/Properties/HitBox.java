@@ -81,6 +81,16 @@ public class HitBox {
         return isBlockMovement;
     }
 
+    protected boolean isTouchBoundary(){
+        int MAP_WIDTH = 1200;
+        int MAP_HEIGHT = 675;
+
+        return position.getX() < 0 &&
+                position.getX() > MAP_WIDTH - width &&
+                position.getY() < 0 &&
+                position.getY() <= MAP_HEIGHT;
+    }
+
     // Getter Method
 
     protected int getWidth() { return width; }

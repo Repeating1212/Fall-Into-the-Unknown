@@ -1,9 +1,6 @@
 package Level.Lvl_Sample.Enemy.Object;
 
 import Data.Loader.ImageLoader;
-import Level.BaseLevel.Manager.Observer;
-import Level.BaseLevel.Objects.Class_Base.ImageObject;
-import Level.BaseLevel.Properties.Position;
 import Level.BaseLevel.Properties.Property;
 import Level.Lvl_Sample.Behaviour.Behaviour;
 import Level.Lvl_Sample.Enemy.Config.SlimeGreyConfig;
@@ -14,8 +11,6 @@ import java.util.Random;
 
 public class SlimeGrey extends Slime {
 
-    private Behaviour tackle;
-    private boolean isSpawned = false;
 
     public SlimeGrey(ArrayList<Property> properties) {
         this(properties, 2); // Default size
@@ -27,15 +22,15 @@ public class SlimeGrey extends Slime {
                 ,SlimeGreyConfig.getProperty(size),
                 ImageLoader.L01_SLIME_GREY,
                 SlimeGreyConfig.DEAD_DURATION);
-        this.tackle = SlimeGreyConfig.getTackle(size, this.property);
         property.spawnNearBoundary(properties);
+        behaviours = getBehaviours();
     }
 
     @Override
-    public void updateAlive(double deltaTime, Observer observer){
-        property.pointTo(observer.getPlayerPosition());
-        tackle.update(deltaTime, observer);
-        super.updateAlive(deltaTime, observer);
+    protected Behaviour[] getBehaviours(){
+        return new Behaviour[]{
+                SlimeGreyConfig.getTackle(SIZE, this.property)
+        };
     }
 
     // Smile Interface
@@ -58,5 +53,4 @@ public class SlimeGrey extends Slime {
         }
         return children;
     }
-
 }

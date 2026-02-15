@@ -6,6 +6,7 @@ import Level.BaseLevel.Objects.Class_Base.Boss;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.View.SceneView;
+import Level.Lvl_Sample.Enemy.Interface.Enemy;
 import Level.Lvl_Sample.Enemy.Object.Guard;
 import Level.Lvl_Sample.Waves.Updater;
 import javafx.scene.shape.Rectangle;
@@ -17,7 +18,7 @@ public class MainManager implements Updater {
     private final SceneView sceneView;
     // Objects
     private final Player player;
-    private final Boss boss ;
+    private final Enemy boss ;
     // GameState
     private boolean gameRunning = true;
     // ObjectList

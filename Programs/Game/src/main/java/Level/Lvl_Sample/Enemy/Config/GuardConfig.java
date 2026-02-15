@@ -5,6 +5,7 @@ import Level.BaseLevel.Skills.ConeAttackArea;
 import Level.BaseLevel.Properties.*;
 import Level.BaseLevel.View.AttackVisualize.ConeAttackVisual;
 import Level.Lvl_Sample.Behaviour.GroundSlap;
+import Level.Lvl_Sample.Behaviour.Rush;
 
 public class GuardConfig {
     public static final int HEIGHT = 50;

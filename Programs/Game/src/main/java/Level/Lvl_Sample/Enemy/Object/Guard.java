@@ -7,31 +7,19 @@ import Level.Lvl_Sample.Behaviour.Behaviour;
 import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Objects.Class_Base.Boss;
 import Level.Lvl_Sample.Enemy.Config.GuardConfig;
+import Level.Lvl_Sample.Enemy.Interface.Enemy;
 
-public class Guard extends Boss {
+public class Guard extends Enemy {
 
-    private final Behaviour groundSlap;
 
     public Guard() {
         super(GuardConfig.getProperty(), ImageLoader.STAKE, GuardConfig.DEAD_DURATION);
-        this.groundSlap = GuardConfig.getGroundSlap(this.property);
-    }
-
-    // Override Method
-
-    @Override
-    public void updateAlive(double deltaTime, Observer observer) {
-        property.pointTo(observer.getPlayerPosition());
-        groundSlap.update(deltaTime, observer);
-        super.updateAlive(deltaTime, observer);
     }
 
     @Override
-    public ArrayData<DisplayableObject> reloadDisplay(){
-        ArrayData<DisplayableObject> display = super.reloadDisplay();
-        if(groundSlap.isRunning() && deadAnimation.isDeactive()) {
-            display.add(groundSlap.getVisual());
-        }
-        return display;
+    protected Behaviour[] getBehaviours(){
+        return new Behaviour[]{
+                GuardConfig.getGroundSlap(this.property)
+        };
     }
 }
