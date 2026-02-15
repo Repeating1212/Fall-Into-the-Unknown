@@ -42,18 +42,16 @@ public class Defend implements Skill {
             defendTimer.start();
             cooldownTimer.setPending();
             playerState.setDefend(true);
+            owner.pauseMovement(defendTimer.getDuration());
         }
         if(defendTimer.isEnd() && cooldownTimer.isPending()){
             playerState.setDefend(false);
             cooldownTimer.start();
+
         }
         cooldownTimer.update(deltaTime);
         defendTimer.update(deltaTime);
     }
 
-    public void handleRigid(){
-        if (defendTimer.isPending()){
-            owner.pauseMovement(defendTimer.getDuration());
-        }
-    }
+    public void handleRigid(){}
 }

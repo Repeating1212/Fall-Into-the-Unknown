@@ -34,18 +34,19 @@ public class Position {
         if (y > maxY - hitBox.getHeight()) y = maxY - hitBox.getHeight();
     }
 
-    protected void moveTo(Position destination, HitBox ownerHB , ArrayList<HitBox> objectHB){
+    protected void moveTo(Position destination, HitBox ownerHB , ArrayList<HitBox> objectHB, Status status){
         double movementX = destination.getX() - x;
         double movementY = destination.getY() - y;
-        move(movementX,movementY, ownerHB, objectHB);
+        move(movementX,movementY, ownerHB, objectHB, status);
     }
 
-    protected void move(double incrementX, double incrementY, HitBox ownerHB ,ArrayList<HitBox> objectsHB){
+    protected void move(double incrementX, double incrementY, HitBox ownerHB ,ArrayList<HitBox> objectsHB, Status status){
         double[] movement = new double[] {incrementX, incrementY};
-        move(movement, ownerHB, objectsHB);
+        move(movement, ownerHB, objectsHB, status);
     }
 
-    protected void move(double[] movement, HitBox ownerHB ,ArrayList<HitBox> objectsHB){
+    protected void move(double[] movement, HitBox ownerHB ,ArrayList<HitBox> objectsHB, Status status){
+        if (status.isPause()) return;
         double deltaX = (movement[0] > 0) ? 0.1 : -0.1;
         double deltaY = (movement[1] > 0) ? 0.1 : -0.1;
         int targetStepX = Math.abs((int) movement[0]); // Increment loop calculation

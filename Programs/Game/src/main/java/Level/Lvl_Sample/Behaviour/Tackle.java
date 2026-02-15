@@ -13,9 +13,9 @@ import java.util.List;
 
 public class Tackle implements Behaviour{
 
-    private final double Damage;
-    private final double AttackRigid;
-    private final Timer rigidTimer;
+    private final double DAMAGE;
+    private final double RIGID_DURATION;
+    private final Timer cooldown;
     private final Property owner;
 
     private final List<Class<? extends GameObject>> TARGET = Arrays.asList(
@@ -23,42 +23,41 @@ public class Tackle implements Behaviour{
     );
 
     public Tackle(double damage, double attackRigid, Property owner){
-        this.Damage = damage;
-        this.AttackRigid = attackRigid;
-        this.rigidTimer = new Timer(attackRigid);
+        this.DAMAGE = damage;
+        this.RIGID_DURATION = attackRigid;
+        this.cooldown = new Timer(attackRigid);
         this.owner = owner;
     }
 
     public void update(double deltaTime, Observer observer){
 
-        rigidTimer.update(deltaTime);
-        if (rigidTimer.isTicking()) return;
+        cooldown.update(deltaTime);
+        if (cooldown.isTicking()) return;
 
         for (GameObject object : observer.getHealthObj()){
-            if (TARGET.contains(object.getClass()) &&
-                    owner.isTouch(object.getProperty())){
-                boolean damaged = object.takeDamage(Damage);
-                if (damaged) handleRigid(owner);
+            if( isActivate(object) ){
+                cooldown.start();
+                owner.pauseMovement(RIGID_DURATION);
             }
         }
     }
 
     @Override
     public boolean isRunning(){
-        return rigidTimer.isTicking();
+        return cooldown.isTicking();
     }
 
     @Override
     public ArrayList<DisplayableObject> getVisual(){
         return new ArrayList<>();
     }
+
     // Private Method
 
-    private void handleRigid(Property property){
-        if (rigidTimer.isPending()){
-            property.pauseMovement(AttackRigid);
-            rigidTimer.start();
-        }
+    private boolean isActivate(GameObject object){
+        // Object is target + Object touching owner + Object taken damage
+        return (TARGET.contains(object.getClass()) &&
+                owner.isTouch(object.getProperty())&&
+                object.takeDamage(DAMAGE));
     }
-
 }

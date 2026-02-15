@@ -3,11 +3,11 @@ package Data.DataClass;
 public class Timer {
 
     private double currentTime = 0;
-    private final double COOLDOWN;
+    private final double DURATION;
     private boolean pendingStart = false;
 
     public Timer(double cooldown){
-        this.COOLDOWN = cooldown;
+        this.DURATION = cooldown;
     }
 
     public void update(double deltaTime){
@@ -23,7 +23,7 @@ public class Timer {
     }
 
     public void start(){
-        currentTime = COOLDOWN;
+        currentTime = DURATION;
         pendingStart = false;
     }
 
@@ -40,8 +40,8 @@ public class Timer {
     }
 
     public double getCooldownPercentage(){
-        return (currentTime / COOLDOWN);
+        return (currentTime / DURATION);
     }
 
-    public double getDuration(){ return COOLDOWN;}
+    public double getDuration(){ return DURATION;}
 }

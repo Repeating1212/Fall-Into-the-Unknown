@@ -67,7 +67,7 @@ public class Rush implements Behaviour{
     private void handleActivate(){
         if (rigid.isDeactive() && cooldown.isDeactive() && !pendingRush){
             rigid.start();
-            owner.setPauseMovement(true);
+            owner.pauseMovement(rigid.getDuration());
             owner.setDirectable(false);
             pendingRush = true;
 
@@ -80,7 +80,6 @@ public class Rush implements Behaviour{
             pendingRush = false;
             cooldown.setPending();
 
-            owner.setPauseMovement(false);
             owner.speedMultiply(SPEED_INCREMENT);
 
             currentRush = 0;
@@ -98,7 +97,6 @@ public class Rush implements Behaviour{
             }
         }
     }
-
 
     private void handleComplete(){
         if (!pendingRush && cooldown.isPending() &&

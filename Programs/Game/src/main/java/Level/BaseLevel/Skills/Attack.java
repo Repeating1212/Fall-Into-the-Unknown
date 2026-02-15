@@ -14,8 +14,8 @@ import java.util.ArrayList;
 
 public class Attack implements Skill {
 
-    private final double ATTACK_DAMAGE;
-    private final double ATTACK_RIGID_TIME;
+    private final double DAMAGE;
+    private final double RIGID_DURATION;
 
     private final AttackVisual attackVisual;
     private final AttackArea attackArea;
@@ -32,8 +32,8 @@ public class Attack implements Skill {
                   double cooldown, double enlargeTime, double animationPeriod){
         this.attackVisual = attackVisual;
         this.attackArea = attackArea;
-        this.ATTACK_RIGID_TIME = attackRigidTime;
-        this.ATTACK_DAMAGE = attackDamage;
+        this.DAMAGE = attackDamage;
+        this.RIGID_DURATION = attackRigidTime;
 
         this.cooldown = new Timer(cooldown);
         this.enlargeTimer = new Timer(enlargeTime);
@@ -67,11 +67,7 @@ public class Attack implements Skill {
         handleAnimation();
     }
 
-    public void handleRigid(){
-        if (enlargeTimer.isPending()) {
-            owner.pauseMovement(ATTACK_RIGID_TIME);
-        }
-    }
+    public void handleRigid(){}
 
     public boolean isRunning(){
         return animationTimer.isTicking();
@@ -91,6 +87,7 @@ public class Attack implements Skill {
         if (enlargeTimer.isPending()){
             enlargeTimer.start();
             cooldown.setPending();
+            owner.pauseMovement(RIGID_DURATION);
             attackArea.updatePosition(new Position(owner.getCenterX(), owner.getCenterY()), destinationPos);
         }
     }
@@ -100,7 +97,7 @@ public class Attack implements Skill {
             for (GameObject entity : healthObj) {
                 if (entity.getProperty() == owner) continue;
                 if (attackArea.isHitBoxInArea(entity.getProperty())) {
-                    entity.takeDamage(ATTACK_DAMAGE);
+                    entity.takeDamage(DAMAGE);
                 }
             }
             cooldown.start();

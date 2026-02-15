@@ -36,6 +36,10 @@ public class ArrayData<T> {
         return arrayList.size();
     }
 
+    public boolean isEmpty(){
+        return arrayList.isEmpty();
+    }
+
 
     // Private method
 

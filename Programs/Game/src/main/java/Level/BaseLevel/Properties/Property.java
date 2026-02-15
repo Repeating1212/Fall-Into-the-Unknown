@@ -10,12 +10,19 @@ public class Property {
     private final HitBox hitBox;
     private final MovementState movementState;
     private final Health health;
+    private final Status status = new Status();
 
     public Property(HitBox hitBox, MovementState movementState, Health health){
         this.hitBox = hitBox;
         this.position = hitBox.getPosition();
         this.movementState = movementState;
         this.health = health;
+    }
+
+    // Status
+
+    public void updateStatus(double deltaTime){
+        status.update(deltaTime);
     }
 
     // HitBox
@@ -63,11 +70,9 @@ public class Property {
 
     // MovementState
 
-    public void updateMovement (Double deltaTime){
-        movementState.update(deltaTime);
+    public void pauseMovement (Double duration){
+        status.pauseMovement(duration);
     }
-
-    public void pauseMovement (Double deltaTime) {movementState.pauseMovement(deltaTime);}
 
     public double getSpeed() { return  movementState.getSpeed();}
 
@@ -97,7 +102,6 @@ public class Property {
     public Vector2D getVector() {return movementState.getVector();}
 
     public void setPauseMovement(boolean pauseMovement){
-        movementState.setPauseMovement(pauseMovement);
     }
 
     public void pointTo(Property destination){
@@ -115,19 +119,19 @@ public class Property {
     public double getY() { return position.getY(); }
 
     public void move(Position increment, ArrayList<Property> properties){
-        position.move(increment.getX(), increment.getY(), this.hitBox, getHitBoxArray(properties));
+        position.move(increment.getX(), increment.getY(), this.hitBox, getHitBoxArray(properties), status);
     }
 
     public void move(ArrayList<Property> properties){
-        position.move(movementState.calculateMovement(), this.hitBox, getHitBoxArray(properties));
+        position.move(movementState.calculateMovement(), this.hitBox, getHitBoxArray(properties), status);
     }
 
     public void move(double incrementX, double incrementY,  ArrayList<Property> properties){
-        position.move(incrementX, incrementY, this.hitBox, getHitBoxArray(properties));
+        position.move(incrementX, incrementY, this.hitBox, getHitBoxArray(properties), status);
     }
 
     public void moveTo(Position destination, ArrayList<Property> properties){
-        position.moveTo(destination, this.hitBox, getHitBoxArray(properties));
+        position.moveTo(destination, this.hitBox, getHitBoxArray(properties), status);
     }
 
     public void setPosition(double x, double y) {

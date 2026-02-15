@@ -3,13 +3,11 @@ package Level.Lvl_Sample.Behaviour;
 import Level.BaseLevel.Objects.Class_Base.AttackArea;
 import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
-import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.Properties.Position;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.AttackVisualize.AttackVisual;
 import Data.DataClass.Timer;
 import Level.BaseLevel.Manager.Observer;
-import Level.Lvl_Sample.Enemy.Config.GuardConfig;
 
 import java.util.ArrayList;
 
@@ -17,13 +15,14 @@ public class GroundSlap implements Behaviour{
 
     private final double ATTACK_DAMAGE;
     private final double ATTACK_OFFSET;
+    private final double RIGID_DURATION;
 
     private final AttackVisual attackVisual;
     private final AttackArea attackArea;
     private final Timer cooldown;
     private final Timer enlargeTimer;
     private final Timer animationTimer;
-    private final Timer rigidTimer;
+//    private final Timer rigidTimer;
     private Property owner;
 
 
@@ -33,11 +32,11 @@ public class GroundSlap implements Behaviour{
         this.attackArea = attackArea;
         this.ATTACK_DAMAGE = attackDamage;
         this.ATTACK_OFFSET = attackOffset;
+        this.RIGID_DURATION = attackRigidTime;
 
         this.cooldown = new Timer(cooldown);
         this.enlargeTimer = new Timer(enlargeTime);
         this.animationTimer = new Timer(animationPeriod);
-        this.rigidTimer = new Timer(attackRigidTime);
         this.owner = owner;
     }
 
@@ -47,11 +46,9 @@ public class GroundSlap implements Behaviour{
         cooldown.update(deltaTime);
         animationTimer.update(deltaTime);
         attackVisual.update(deltaTime);
-        rigidTimer.update(deltaTime);
 
         handleActivate(observer.getPlayer());
         handlePendingAttack(observer.getPlayer().getCenterPos());
-        handleRigid();
         handleDamaging(observer.getHealthObj());
     }
 
@@ -75,7 +72,7 @@ public class GroundSlap implements Behaviour{
                 isNearEnemy(player)) {
             enlargeTimer.setPending();
             animationTimer.start();
-            rigidTimer.start();
+            owner.pauseMovement(RIGID_DURATION);
         }
     }
 
@@ -85,15 +82,6 @@ public class GroundSlap implements Behaviour{
             cooldown.setPending();
             attackVisual.activate(new Position(owner.getCenterX(), owner.getCenterY()), destinationPos);
             attackArea.updatePosition(new Position(owner.getCenterX(), owner.getCenterY()), destinationPos);
-        }
-    }
-
-    private void handleRigid(){
-        if (rigidTimer.isTicking()){
-            owner.setPauseMovement(true);
-        }
-        if (rigidTimer.isEnd()){
-            owner.setPauseMovement(false);
         }
     }
 
