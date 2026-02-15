@@ -1,9 +1,6 @@
 package Level.BaseLevel.Properties;
-
 import Data.DataClass.ArrayData;
 import Data.DataClass.Timer;
-
-import java.util.ArrayList;
 
 public class Status {
 

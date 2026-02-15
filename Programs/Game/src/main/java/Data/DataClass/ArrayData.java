@@ -49,6 +49,11 @@ public class ArrayData<T> {
         return arrayList.removeIf(filter);
     }
 
+    public ArrayData<T> copyOf(){
+        ArrayData<T> returnArray = new ArrayData<>();
+        returnArray.add((ArrayList<T>) arrayList.clone());
+        return returnArray;
+    }
 
 
     // Private method

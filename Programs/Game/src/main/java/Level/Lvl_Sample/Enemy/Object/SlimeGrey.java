@@ -7,13 +7,12 @@ import Level.BaseLevel.Properties.Position;
 import Level.BaseLevel.Properties.Property;
 import Level.Lvl_Sample.Behaviour.Behaviour;
 import Level.Lvl_Sample.Enemy.Config.SlimeGreyConfig;
+import Level.Lvl_Sample.Enemy.Interface.Slime;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class SlimeGrey extends ImageObject {
-
-    private final int size;
+public class SlimeGrey extends Slime {
 
     private Behaviour tackle;
     private boolean isSpawned = false;
@@ -24,22 +23,12 @@ public class SlimeGrey extends ImageObject {
 
     // Default slime
     public SlimeGrey(ArrayList<Property> properties, int size){
-        super(SlimeGreyConfig.getProperty(size),
+        super(size
+                ,SlimeGreyConfig.getProperty(size),
                 ImageLoader.L01_SLIME_GREY,
                 SlimeGreyConfig.DEAD_DURATION);
-        this.size = size;
         this.tackle = SlimeGreyConfig.getTackle(size, this.property);
         property.spawnNearBoundary(properties);
-    }
-
-    // Spawned slime
-    public SlimeGrey (ArrayList<Property> properties, int size, Position destination){
-        super(SlimeGreyConfig.getProperty(size),
-                ImageLoader.L01_SLIME_GREY,
-                SlimeGreyConfig.DEAD_DURATION);
-        this.size = size;
-        this.tackle = SlimeGreyConfig.getTackle(size, this.property);
-        property.spawnNearBy(properties , destination);
     }
 
     @Override
@@ -49,22 +38,25 @@ public class SlimeGrey extends ImageObject {
         super.updateAlive(deltaTime, observer);
     }
 
-    public int getSize(){
-        return size;
-    }
+    // Smile Interface
 
+    @Override
     public boolean spawnable(){
-        return (size > 1 &&
+        return (SIZE > 1 &&
                 ! isSpawned &&
                 deadAnimation.isEnd());
     }
 
-    public void setSpawned(){
-        isSpawned = true;
+    @Override
+    public ArrayList<Slime> getChildren(ArrayList<Property> properties){
+        Random random = new Random();
+
+        ArrayList<Slime> children = new ArrayList<>();
+        int spawnNum = random.nextInt(SlimeGreyConfig.MIN_SPAWN, SlimeGreyConfig.MAX_SPAWN);
+        for (int i = 0; i < spawnNum ; i ++){
+            children.add(super.randomSpawn(properties, property.duplicatePosition()));
+        }
+        return children;
     }
 
-    public int getSpawnNum(){
-        Random random = new Random();
-        return random.nextInt(SlimeGreyConfig.MIN_SPAWN, SlimeGreyConfig.MAX_SPAWN);
-    }
 }

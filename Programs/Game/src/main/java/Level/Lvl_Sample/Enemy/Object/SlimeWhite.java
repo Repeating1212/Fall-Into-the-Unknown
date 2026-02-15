@@ -4,18 +4,17 @@ import Data.DataClass.ArrayData;
 import Data.Loader.ImageLoader;
 import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
-import Level.BaseLevel.Objects.Class_Base.ImageObject;
+import Level.BaseLevel.Properties.Position;
 import Level.BaseLevel.Properties.Property;
 import Level.Lvl_Sample.Behaviour.Behaviour;
-import Level.Lvl_Sample.Behaviour.Rush;
 import Level.Lvl_Sample.Enemy.Config.SlimeWhiteConfig;
+import Level.Lvl_Sample.Enemy.Interface.Slime;
 
 import java.util.ArrayList;
 
-public class SlimeWhite extends ImageObject {
+public class SlimeWhite extends Slime {
 
-    private final int size;
-
+    private final boolean SPAWNABLE = false; // White slime cannot spawn
     private Behaviour[] behaviours;
 
     public SlimeWhite(ArrayList<Property> properties) {
@@ -24,12 +23,14 @@ public class SlimeWhite extends ImageObject {
 
     // Default slime
     public SlimeWhite(ArrayList<Property> properties, int size){
-        super(SlimeWhiteConfig.getProperty(size),
+        super(size,
+                SlimeWhiteConfig.getProperty(size),
                 ImageLoader.L01_SLIME_WHITE,
-                SlimeWhiteConfig.DEAD_DURATION);
-        this.size = size;
+                SlimeWhiteConfig.DEAD_DURATION
+        );
+
         behaviours = new Behaviour[]{
-                SlimeWhiteConfig.getRush(this.property),
+                SlimeWhiteConfig.getRush(this.property, size),
                 SlimeWhiteConfig.getTackle(this.property, size)
         };
         property.spawnNearBoundary(properties);
@@ -55,7 +56,15 @@ public class SlimeWhite extends ImageObject {
         return display;
     }
 
-    public int getSize(){
-        return size;
+    // Slime Interface
+
+    @Override
+    public boolean spawnable(){
+        return SPAWNABLE;
+    }
+
+    @Override
+    public ArrayList<Slime> getChildren(ArrayList<Property> properties) {
+        return new ArrayList<>();
     }
 }

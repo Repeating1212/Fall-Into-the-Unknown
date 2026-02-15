@@ -5,8 +5,8 @@ import Level.Lvl_Sample.Behaviour.Rush;
 import Level.Lvl_Sample.Behaviour.Tackle;
 
 public class SlimeWhiteConfig {
-    public static final int HEIGHT_Mul = 10;
-    public static final int WIDTH_Mul = 15;
+    public static final int HEIGHT_Mul = 12;
+    public static final int WIDTH_Mul = 18;
     public static final int SPEED = 2;
     public static final int INITIAL_X = 0;
     public static final int INITIAL_Y = 0;
@@ -20,9 +20,9 @@ public class SlimeWhiteConfig {
 
     // Rush
     public static final double RUSH_COOLDOWN = 5;
-    public static final double RUSH_RANGE = 300;
+    public static final double RUSH_RANGE = 100;
     public static final double RUSH_SPEED_MULTIPLY = 3.0;
-    public static final double RUSH_RIGID = 2.0;
+    public static final double RUSH_RIGID = 1.0;
 
     // Supplier
 
@@ -40,8 +40,8 @@ public class SlimeWhiteConfig {
         return new Property(hitBox, movementState, health, status);
     }
 
-    public static Rush getRush(Property owner){
-        return new Rush(RUSH_RANGE, RUSH_COOLDOWN, DAMAGE, RUSH_SPEED_MULTIPLY, owner, RUSH_RIGID);
+    public static Rush getRush(Property owner, int size){
+        return new Rush(RUSH_RANGE * size, RUSH_COOLDOWN, DAMAGE, RUSH_SPEED_MULTIPLY, owner, RUSH_RIGID * size);
     }
 
     public static Tackle getTackle(Property owner, int size){
