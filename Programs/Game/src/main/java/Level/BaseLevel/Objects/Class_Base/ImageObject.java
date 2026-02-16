@@ -12,6 +12,7 @@ public abstract class ImageObject extends GameObject {
     protected ImageView sprite = new ImageView();
     protected DeadAnimation deadAnimation;
     private boolean pointLeft = true;
+    private boolean pointRight = true;
 
     public ImageObject(Property property, Image image, double deadDuration){
         super(property);
@@ -24,7 +25,7 @@ public abstract class ImageObject extends GameObject {
 
     protected void updateSpritePosition() {
         if (pointLeft) sprite.setScaleX(1);
-        else sprite.setScaleX(-1);
+        if (pointRight) sprite.setScaleX(-1);
         sprite.setX(property.getX());
         sprite.setY(property.getY());
         property.resetDebugHitBox();
@@ -36,6 +37,7 @@ public abstract class ImageObject extends GameObject {
         if ( property.isAlive() ) {
             // Prevent dead changing direction
             pointLeft = property.isMovingLeft();
+            pointRight = property.isMovingRight();
         }
         updateSpritePosition();
         super.update(deltaTime, observer);

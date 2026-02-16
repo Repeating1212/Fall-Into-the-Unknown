@@ -38,12 +38,9 @@ public class ImageLoader {
     private static final String STARTSCENE_IMAGE_Path = "/Picture/UI_Picture/StartScene/Background.png";
 
     // LevelData Images
-    private static final String COIN_ANIMATION_Path = "/Picture/Level_Picture/Coin_Animation.gif";
-    private static final String STAKE_Path          = "/Picture/Level_Picture/Character/Stake.png";
-    private static final String PLAYER_LEFT_Path    = "/Picture/Level_Picture/Character/Character_Left.png";
-    private static final String PLAYER_RIGHT_Path   = "/Picture/Level_Picture/Character/Character_Right.png";
+    private static final String STAKE_Path          = "/Picture/Level_Picture/Enemy/Stake.png";
+    private static final String PLAYER_LEFT_Path    = "/Picture/Level_Picture/Character/Character.png";
     private static final String PLAYER_INVINCIBILITY_Path = "/Picture/Level_Picture/Character/Invincibility Animation.gif";
-    private static final String PORTAL_Path         = "/Picture/Level_Picture/Character/Portal.png";
     private static final String LEVEL01_MAP_Path    = "/Picture/Level_Picture/map.png";
     private static final String HEART_FULL_Path     = "/Picture/Level_Picture/HeartFull.png";
     private static final String HEART_EMPTY_Path    = "/Picture/Level_Picture/HeartEmpty.png";
@@ -87,15 +84,12 @@ public class ImageLoader {
 
     public static final Image STAKE = new Image(ImageLoader.class.getResourceAsStream(STAKE_Path));
     public static final Image PLAYER_LEFT = new Image(PlayerConfig.class.getResourceAsStream(PLAYER_LEFT_Path));
-    public static final Image PLAYER_RIGHT =  new Image(PlayerConfig.class.getResourceAsStream(PLAYER_RIGHT_Path));
     public static final Image PLAYER_INVINCIBILITY =  new Image(PlayerConfig.class.getResourceAsStream(PLAYER_INVINCIBILITY_Path));
-    public static final Image PORTAL = new Image(PlayerConfig.class.getResourceAsStream(PORTAL_Path));
 
 
     public static final Image L01_MAP = new Image(ImageLoader.class.getResourceAsStream(LEVEL01_MAP_Path));
     public static final Image HEART_FULL = new Image(ImageLoader.class.getResourceAsStream(HEART_FULL_Path));
     public static final Image HEART_EMPTY = new Image(ImageLoader.class.getResourceAsStream(HEART_EMPTY_Path));
-    public static final Image COIN_ANIMATION = new Image(ImageLoader.class.getResourceAsStream(COIN_ANIMATION_Path));
 
     public static final Image L01_RAT = new Image(ImageLoader.class.getResourceAsStream(L01_RAT_Path));
     public static final Image L01_SLIME_GREY = new Image(ImageLoader.class.getResourceAsStream(L01_SLIME_GREY_Path));

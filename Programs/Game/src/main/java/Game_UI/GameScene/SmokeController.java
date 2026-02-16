@@ -64,19 +64,12 @@ public class SmokeController extends OverlayController {
         animation.play();
 
         animation = new TranslateTransition(Duration.millis(millisecond), image9);
-        animation.setToX(- 450);
-        animation.setToY(- 450);
+        animation.setToX( -450);
+        animation.setToY( -450);
         animation.play();
         animation.setOnFinished(e -> {
             handleClose();
         });
-
-        for (ImageView imageView: imageViews){
-            FadeTransition fade = new FadeTransition(Duration.millis(millisecond), imageView);
-            fade.setFromValue(0.9);
-            fade.setToValue(0.3);
-            fade.play();
-        }
 
         FadeTransition fade = new FadeTransition(Duration.millis(millisecond), smokePane);
         fade.setFromValue(0.9);
