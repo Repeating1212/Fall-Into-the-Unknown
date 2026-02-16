@@ -73,6 +73,7 @@ public class GroundSlap implements Behaviour{
             enlargeTimer.setPending();
             animationTimer.start();
             owner.pauseMovement(RIGID_DURATION);
+            owner.pauseDirect(RIGID_DURATION);
         }
     }
 

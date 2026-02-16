@@ -32,6 +32,12 @@ public class ConeAttackVisual extends AttackVisual {
     @Override
     public Node getSprite() { return arc; }
 
+    @Override
+    public int getLayer(){
+        return 1;
+    }
+
+
     public void activate(Position startPos, Position endPos) {
         // Position the arc center
         arc.setCenterX(startPos.getX());

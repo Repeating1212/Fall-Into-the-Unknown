@@ -22,6 +22,11 @@ public class RectangleAttackVisual implements DisplayableObject {
     @Override
     public Node getSprite() { return rectangle; }
 
+    @Override
+    public int getLayer(){
+        return 1;
+    }
+
     public void activate(Position startPos, double direction) {
         rectangle.setWidth(WIDTH);
         rectangle.setHeight(HEIGHT);

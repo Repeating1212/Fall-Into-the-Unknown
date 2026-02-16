@@ -19,7 +19,8 @@ import java.util.ArrayList;
 
 public class SceneView {
 
-    private final Pane rootPane, spritePane;
+    private final Pane rootPane;
+    private final Pane[] spriteLayer;
 
     private ArrayList<DisplayableObject> objectList = new ArrayList<>();
     private final FileManager fileManager;
@@ -29,12 +30,12 @@ public class SceneView {
     private final SkillBoxView skillBoxView;
     private final MapView mapView;
 
-    public SceneView(Pane rootPane, Pane spritePane, ImageView[] hearts,
+    public SceneView(Pane rootPane, Pane[] spriteLayer, ImageView[] hearts,
                      ProgressBar progressBar, ImageView map,
                      ImageView[] skills, StackPane[] skillBackgrounds, Rectangle[] skillCooldowns,
                      FileManager fileManager){
         this.rootPane = rootPane;
-        this.spritePane = spritePane;
+        this.spriteLayer = spriteLayer;
         this.fileManager = fileManager;
 
         bossHealthView = new BossHealthBar(progressBar);
@@ -49,14 +50,16 @@ public class SceneView {
         // Remove node that shouldn't be there anymore
         for (DisplayableObject object : objectList){
             if (! toDisplay.contains(object)) {
-                spritePane.getChildren().removeAll(object.getSprite());
+                Pane layer = spriteLayer[object.getLayer()];
+                layer.getChildren().removeAll(object.getSprite());
             }
         }
 
         // Add new sprites that aren't already present
         for (DisplayableObject object : toDisplay){
             if(! objectList.contains(object)){
-                spritePane.getChildren().addAll(object.getSprite());
+                Pane layer = spriteLayer[object.getLayer()];
+                layer.getChildren().addAll(object.getSprite());
             }
         }
 
@@ -66,8 +69,9 @@ public class SceneView {
 
     public void addDebugHitBox(ArrayList<Rectangle> debugHitBox){
         for (Rectangle rectangle : debugHitBox){
-            if (! spritePane.getChildren().contains(rectangle)) {
-                spritePane.getChildren().add(rectangle);
+            Pane layer = spriteLayer[spriteLayer.length - 1];
+            if (! layer.getChildren().contains(rectangle)) {
+                layer.getChildren().add(rectangle);
             }
         }
     }
@@ -106,18 +110,5 @@ public class SceneView {
 
     public void updateSkillCooldowns(double[] cooldownPercentages){
         skillBoxView.updateSkillCooldowns(cooldownPercentages);
-    }
-
-    public void addRectangle(){
-        Rectangle rectangle = new Rectangle();
-        rectangle.setHeight(200);
-        rectangle.setWidth(10);
-        rectangle.setX(0);
-        rectangle.setY(200);
-        rectangle.setRotate(-90);
-        rectangle.setFill(Color.rgb(255, 0, 0, 0.3));
-        rectangle.setStroke(Color.RED);
-        rectangle.setStrokeWidth(2);
-        spritePane.getChildren().add(rectangle);
     }
 }

@@ -20,6 +20,7 @@ public abstract class GameObject implements DisplayableObject {
     public static final double MapY = 0;
     public static final double MapHeight = 1200;
     public static final double MapWidth = 675;
+    private static final int LAYER = 0;
 
     public GameObject(Property property){
         this.property = property;
@@ -56,9 +57,15 @@ public abstract class GameObject implements DisplayableObject {
         return returnArray;
     }
 
-    // Abstract Method
+    // Override DisplayableObject Method
 
+    @Override
     public abstract Node getSprite();
+
+    @Override
+    public int getLayer(){
+        return LAYER;
+    }
 
     // Getter
 

@@ -28,7 +28,7 @@ public class LevelController extends SceneInterface {
     @FXML private ProgressBar bossHealthBar;
     @FXML private ImageView map;
     @FXML private Rectangle skillCooldown1, skillCooldown2, skillCooldown3, skillCooldown4;
-    @FXML private AnchorPane spritePane;
+    @FXML private AnchorPane layer1, layer2;
 
     private SceneView sceneView;
     private GameTicks gameTicks;
@@ -61,9 +61,10 @@ public class LevelController extends SceneInterface {
         ImageView[] skills = new ImageView[]{skill1, skill2, skill3, skill4};
         Rectangle[] skillCooldowns = new Rectangle[] {skillCooldown1, skillCooldown2, skillCooldown3, skillCooldown4};
         StackPane[] skillBackgrounds = new StackPane[]{skillBgd1, skillBgd2, skillBgd3, skillBgd4};
+        AnchorPane[] layers = new AnchorPane[]{layer1, layer2};
 
         // Display Related
-        sceneView = new SceneView(rootPane, spritePane, hearts, bossHealthBar, map,
+        sceneView = new SceneView(rootPane, layers, hearts, bossHealthBar, map,
                 skills, skillBackgrounds, skillCooldowns,
                 fileManager);
 
