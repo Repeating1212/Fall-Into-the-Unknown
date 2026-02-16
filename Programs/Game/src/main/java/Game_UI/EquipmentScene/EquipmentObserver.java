@@ -2,13 +2,13 @@ package Game_UI.EquipmentScene;
 
 public class EquipmentObserver {
 
-    private final Equipment equipment;
+    private final EquipmentController equipmentController;
 
-    protected  EquipmentObserver (Equipment equipment){
-        this.equipment = equipment;
+    protected  EquipmentObserver (EquipmentController equipmentController){
+        this.equipmentController = equipmentController;
     }
 
     public void reloadData(){
-        equipment.reloadData();
+        equipmentController.reloadData();
     }
 }

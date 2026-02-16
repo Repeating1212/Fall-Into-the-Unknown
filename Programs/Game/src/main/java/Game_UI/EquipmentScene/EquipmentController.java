@@ -21,7 +21,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class Equipment extends SceneInterface {
+public class EquipmentController extends SceneInterface {
     @FXML
     private Pane rootPane;
     @FXML private ImageView coinView;
@@ -74,7 +74,7 @@ public class Equipment extends SceneInterface {
 
     private SkillPane loadSkillPane(){
         try {
-            FXMLLoader loader = new FXMLLoader(Equipment.class.getResource(SceneLoader.PaneType.SKILL_PANE.getPath()));
+            FXMLLoader loader = new FXMLLoader(EquipmentController.class.getResource(SceneLoader.PaneType.SKILL_PANE.getPath()));
             Node skillNode = loader.load();
             flowPane.getChildren().add(skillNode);
 
@@ -110,7 +110,7 @@ public class Equipment extends SceneInterface {
 
     private EquipmentPane loadEquipmentPane(){
         try {
-            FXMLLoader loader = new FXMLLoader(Equipment.class.getResource(SceneLoader.PaneType.EQUIPMENT_PANE.getPath()));
+            FXMLLoader loader = new FXMLLoader(EquipmentController.class.getResource(SceneLoader.PaneType.EQUIPMENT_PANE.getPath()));
             Node equipmentNode = loader.load();
             hBox.getChildren().add(equipmentNode);
 

@@ -2,6 +2,7 @@ package Data.Loader;
 
 import Data.Interface.OverlayController;
 import Data.Interface.SceneInterface;
+import Game_UI.GameScene.GameController2;
 import LoadFile.FileManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,6 +22,7 @@ public class SceneLoader {
         GAME("/Game_UI/FxmlFile/GameScene.fxml"),
         SETTING("/Game_UI/FxmlFile/Setting.fxml"),
         START("/Game_UI/FxmlFile/StartScene.fxml"),
+        SMOKE("/Game_UI/FxmlFile/Smoke.fxml"),
         // EditorUI
         EQUIPMENT("/EquipmentScene/FxmlFile/EquipmentScene.fxml"),
         SKILL_MENU("/EquipmentScene/FxmlFile/SkillMenu.fxml"),
@@ -98,6 +100,32 @@ public class SceneLoader {
             e.printStackTrace();
         }
     }
+
+    public static void switchGameSceneWithSmoke(Pane rootPane, FileManager fileManager) {
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource(SceneType.GAME.path));
+
+            Parent newScene = loader.load();
+
+            Object controller = loader.getController();
+            if (controller instanceof SceneInterface) {
+                ((SceneInterface) controller).setFileManager(fileManager);
+                ((SceneInterface) controller).initializeData();
+            }
+
+            if (controller instanceof GameController2){
+                ((GameController2) controller).loadSmoke();
+            }
+
+            Stage stage = (Stage) rootPane.getScene().getWindow();
+            stage.setScene(new Scene(newScene));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static void loadInitialScene(Stage primaryStage, SceneType sceneType) {
         try {
