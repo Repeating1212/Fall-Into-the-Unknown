@@ -29,7 +29,8 @@ public class Wave1  extends Wave implements Updater{
         return  (player.isAlive() &&
                 waveTimer.isEnd() &&
                 super.getProgress() >= 1) ||
-                gameObj.length() == 1;
+                ( player.isAlive() &&
+                        gameObj.length() == 1);
     }
 
     @Override

@@ -37,7 +37,7 @@ public abstract class Wave implements Updater{
 
         if (waveTimer.isEnd() && currentWave < TOTAL_WAVE){
             spawnEnemies();
-            waveTimer = new Timer(gameObj.length());
+            waveTimer = new Timer(Math.min(gameObj.length(), 10));
             waveTimer.start();
 
             currentWave ++;

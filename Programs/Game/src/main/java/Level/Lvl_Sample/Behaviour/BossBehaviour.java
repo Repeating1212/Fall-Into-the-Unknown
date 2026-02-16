@@ -5,6 +5,9 @@ import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import Level.BaseLevel.Properties.Property;
 import Level.Lvl_Sample.Enemy.Config.SlimeKingConfig;
+import Level.Lvl_Sample.Enemy.Interface.Enemy;
+import Level.Lvl_Sample.Enemy.Interface.Spawnable;
+import Level.Lvl_Sample.Enemy.Object.SlimeKing;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,10 +18,11 @@ public class BossBehaviour implements Behaviour {
 
     private final Behaviour[] behaviours;
 
-    public BossBehaviour(Property owner){
+    public BossBehaviour(SlimeKing owner){
         behaviours = new Behaviour[]{
-                SlimeKingConfig.getGroupSlap(owner),
-                SlimeKingConfig.getRush(owner)
+                SlimeKingConfig.getGroupSlap(owner.getProperty()),
+                SlimeKingConfig.getRush(owner.getProperty()),
+                SlimeKingConfig.getSpawn(owner)
         };
         for (Behaviour behaviour : behaviours){
             behaviour.setAutoActivate(false);

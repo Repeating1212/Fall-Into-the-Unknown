@@ -49,7 +49,7 @@ public class SlimeGrey extends Slime {
         ArrayList<Slime> children = new ArrayList<>();
         int spawnNum = random.nextInt(SlimeGreyConfig.MIN_SPAWN, SlimeGreyConfig.MAX_SPAWN);
         for (int i = 0; i < spawnNum ; i ++){
-            children.add(super.randomSpawn(properties, property.duplicatePosition()));
+            children.add(super.randomSpawn(properties, property.duplicatePosition(), SIZE -1));
         }
         return children;
     }

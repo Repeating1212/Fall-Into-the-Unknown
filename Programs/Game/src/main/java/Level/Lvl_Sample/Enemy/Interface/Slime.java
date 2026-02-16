@@ -33,10 +33,9 @@ public abstract class Slime extends Enemy {
         isSpawned = true;
     }
 
-    protected Slime randomSpawn(ArrayList<Property> properties, Position position){
+    protected Slime randomSpawn(ArrayList<Property> properties, Position position, int size){
         Random random = new Random();
         int index = random.nextInt(childrenType.length);
-        int size = SIZE -1;
 
         Slime slime;
 

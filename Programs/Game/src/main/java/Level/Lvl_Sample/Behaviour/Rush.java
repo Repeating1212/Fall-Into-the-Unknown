@@ -100,7 +100,7 @@ public class Rush implements Behaviour{
     }
 
     private void handleRush(GameObject player){
-        if (!pendingRush){
+        if (!pendingRush && cooldown.isPending()){
             currentRush ++;
             if (owner.isTouch(player.getProperty())){
                 player.takeDamage(DAMAGE);

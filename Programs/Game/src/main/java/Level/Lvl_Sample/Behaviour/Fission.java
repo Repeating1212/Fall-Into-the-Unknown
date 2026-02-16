@@ -4,14 +4,13 @@ import Data.DataClass.ArrayData;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Properties.Property;
 import Level.Lvl_Sample.Enemy.Interface.Slime;
-import Level.Lvl_Sample.Enemy.Object.SlimeGrey;
 
 import java.util.ArrayList;
 
 public class Fission{
 
     public ArrayData<GameObject> spawnSlime(ArrayData<GameObject> gameObj){
-        ArrayData<Slime> slimes = getSlimeGreys(gameObj);
+        ArrayData<Slime> slimes = getSlime(gameObj);
 
         for (Slime parent : slimes.get()){
             if (parent.spawnable()){
@@ -25,7 +24,7 @@ public class Fission{
 
     // Private Method
 
-    private ArrayData<Slime> getSlimeGreys(ArrayData<GameObject> gameObj){
+    private ArrayData<Slime> getSlime(ArrayData<GameObject> gameObj){
         ArrayData<Slime> returnArray = new ArrayData<>();
         for (GameObject object : gameObj.get()){
             if (object instanceof Slime){

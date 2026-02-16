@@ -4,6 +4,9 @@ import Data.DataClass.ArrayData;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.View.SceneView;
+import javafx.scene.shape.Rectangle;
+
+import java.util.ArrayList;
 
 public class LevelManager implements Updater{
 
@@ -58,6 +61,18 @@ public class LevelManager implements Updater{
             currentWave ++;
             waves[currentWave].setGameObj( waves[currentWave -1].getGameObj() );
         }
+    }
+
+    // Debug usage
+
+    private void addHitBoxDebug(){
+        // For Debug purpose
+        ArrayList<Rectangle> rectangles = new ArrayList<>();
+        for (GameObject object : gameObj.get()) {
+            rectangles.add(object.getProperty().getDebugHitBox());
+            object.getProperty().showDebugHitBox();
+        }
+        sceneView.addDebugHitBox(rectangles);
     }
 
 }

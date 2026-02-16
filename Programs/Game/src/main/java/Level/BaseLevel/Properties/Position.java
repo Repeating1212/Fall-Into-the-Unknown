@@ -167,6 +167,10 @@ public class Position {
         Position oldPosition = new Position(x, y);
 
         for (int attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+
+            this.x = oldPosition.getX();
+            this.y = oldPosition.getY();
+
             // Try moving in a random direction
             double angle = random.nextDouble() * 2 * Math.PI;
             double moveX = Math.cos(angle) * MOVE_STEP;
@@ -188,8 +192,6 @@ public class Position {
                 moveX *= 1.2;
                 moveY *= 1.2;
             }
-            this.x = oldPosition.getX();
-            this.y = oldPosition.getY();
         }
     }
 
