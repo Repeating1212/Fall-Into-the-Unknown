@@ -17,6 +17,15 @@ public class JSONStorage {
 
     // Single save method
     public static <T> void save(String fileName, T data) {
+
+        File file = new File(fileName);
+
+        // Create parent directories if they don't exist
+        File parentDir = file.getParentFile();
+        if (parentDir != null && !parentDir.exists()) {
+            parentDir.mkdirs();
+        }
+
         try (FileWriter writer = new FileWriter(fileName)) {
             gson.toJson(data, writer);
         } catch (IOException e) {
