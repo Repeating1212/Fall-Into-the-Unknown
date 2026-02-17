@@ -3,12 +3,14 @@ package Data.Loader;
 import Data.Interface.OverlayController;
 import Data.Interface.SceneInterface;
 import Game_UI.GameScene.GameController2;
+import Game_UI.StartScene.GameController1;
 import LoadFile.FileManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -141,11 +143,14 @@ public class SceneLoader {
                 ((SceneInterface) controller).initializeData();
             }
 
+
+
             // Set up the stage
             Scene scene = new Scene(root, 1200, 675);
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
-            primaryStage.setTitle("UI Protocol");
+            primaryStage.setTitle("Fall into The Unknown");
+            if (controller instanceof GameController1) primaryStage.initStyle(StageStyle.TRANSPARENT);
             primaryStage.show();
 
         } catch (IOException e) {

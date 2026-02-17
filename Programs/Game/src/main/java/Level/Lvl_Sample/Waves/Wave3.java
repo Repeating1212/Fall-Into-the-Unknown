@@ -28,7 +28,6 @@ public class Wave3 extends Wave {
     @Override
     public void updateObjects(double deltaTime){
         waveTimer2.update(deltaTime);
-
         if (waveTimer2.isEnd()){
             Random random = new Random();
             int duration = random.nextInt(3, 7);
@@ -49,7 +48,7 @@ public class Wave3 extends Wave {
     }
 
     @Override
-    protected double setProgression(){
+    protected double getWaveProgression(){
         return boss.getHealthPercentage();
     }
 

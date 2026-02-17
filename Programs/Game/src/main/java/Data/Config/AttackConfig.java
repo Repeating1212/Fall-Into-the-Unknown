@@ -42,25 +42,25 @@ public class AttackConfig extends SkillConfig {
     private static final double RIGID_TIME = TOTAL_ANIMATION_PERIOD + 0.2;
 
     private final UpgradeValue damageUpgValue = new UpgradeValue(
-            new double[]{ 6, 12, 18},
+            new double[]{ 10, 14, 18},
             new double[]{ 2, 4, 4},
             DAMAGE_ID
     );
 
     private final UpgradeValue rangeUpgValue = new UpgradeValue(
-            new double[]{ 100, 120, 140},
+            new double[]{ 150, 155, 160},
             new double[]{ 4, 4, 4},
             RANGE_ID
     );
 
     private final UpgradeValue cooldownUpgValue = new UpgradeValue(
-            new double[]{ 2.0, 1.5, 1.0},
+            new double[]{ 1.3, 1.15, 1.0},
             new double[]{ 4, 8, 8},
             COOLDOWN_ID
     );
 
     private final UpgradeValue angleUpgValue = new UpgradeValue(
-            new double[]{ 60, 75, 90},
+            new double[]{ 65, 70, 75},
             new double[]{ 4, 8, 8},
             ATTACK_ANGLE_ID
     );

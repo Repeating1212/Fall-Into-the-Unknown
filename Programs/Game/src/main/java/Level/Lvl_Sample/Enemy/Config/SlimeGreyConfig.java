@@ -11,14 +11,13 @@ public class SlimeGreyConfig {
     public static final int INITIAL_Y = 0;
     public static final boolean IS_BLOCKABLE = true;
 
-    public static final int MAXIMUM_HEALTH = 10;
+    public static final int HEALTH_Mul = 3;
 
-    public static final double DAMAGE = 2;
-    public static final double ATTACK_RIGID = 2.5;
+    public static final double TACKLE_RIGID = 2.5;
     public static final double DEAD_DURATION = 1.5;
 
-    public static final int MIN_SPAWN = 3;
-    public static final int MAX_SPAWN = 4;
+    public static final int MIN_SPAWN = 1;
+    public static final int MAX_SPAWN = 3;
 
 
     // Supplier
@@ -31,13 +30,14 @@ public class SlimeGreyConfig {
         Status status = new Status();
         int width = (1 + size) * WIDTH_Mul;
         int height = (1 + size) * HEIGHT_Mul;
+        int healthNum = (1 + size) * HEALTH_Mul;
         HitBox hitBox = new HitBox(width, height, position, SlimeGreyConfig.IS_BLOCKABLE, status);
         MovementState movementState = new MovementState(SlimeGreyConfig.SPEED,  status);
-        Health health = new Health(SlimeGreyConfig.MAXIMUM_HEALTH, status);
+        Health health = new Health(healthNum, status);
         return new Property(hitBox, movementState, health, status);
     }
 
     public static Tackle getTackle(int size, Property owner){
-        return new Tackle(size, SlimeGreyConfig.ATTACK_RIGID, owner);
+        return new Tackle(size, SlimeGreyConfig.TACKLE_RIGID, owner);
     }
 }

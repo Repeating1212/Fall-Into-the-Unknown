@@ -1,9 +1,5 @@
 package Level.Lvl_Sample.Waves;
 
-import Data.DataClass.ArrayData;
-import Data.DataClass.Timer;
-import Level.BaseLevel.Manager.Observer;
-import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.SceneView;
@@ -11,11 +7,10 @@ import Level.Lvl_Sample.Enemy.Object.Rat;
 import Level.Lvl_Sample.Enemy.Object.SlimeGrey;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Wave1  extends Wave implements Updater{
 
-    private static final int TOTAL_WAVE = 2;
+    private static final int TOTAL_WAVE = 5;
 
 
     public Wave1(SceneView sceneView, Player player){
@@ -27,19 +22,20 @@ public class Wave1  extends Wave implements Updater{
     @Override
     public boolean isComplete(){
         return  (player.isAlive() &&
-                waveTimer.isEnd() &&
-                super.getProgress() >= 1) ||
-                ( player.isAlive() &&
-                        gameObj.length() == 1);
+                (waveTimer.isEnd() || gameObj.length() == 1) &&
+                super.getRoundProgress() >= 1);
     }
 
     @Override
     protected void spawnEnemies(){
-        Random random = new Random();
-        int num =  random.nextInt(2,5);
-        for (int i = 0; i < num; i++){
-            ArrayList<Property> properties = getProperties(gameObj);
+        ArrayList<Property> properties = getProperties(gameObj);
+
+        int ratNum =  2 + currentWave;
+        for (int i = 0; i < ratNum; i++){
             gameObj.add(new Rat(properties));
+        }
+        for (int i = 0; i < (currentWave - ratNum); i++){
+            gameObj.add(new SlimeGrey(properties));
         }
     }
 }

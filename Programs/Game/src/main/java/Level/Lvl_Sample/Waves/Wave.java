@@ -35,9 +35,10 @@ public abstract class Wave implements Updater{
     public void updateObjects(double deltaTime){
         Observer observer = new Observer(player, gameObj);
 
-        if (waveTimer.isEnd() && currentWave < TOTAL_WAVE){
+        if (currentWave < TOTAL_WAVE &&
+                (waveTimer.isEnd() || gameObj.length() == 1)){
             spawnEnemies();
-            waveTimer = new Timer(Math.min(gameObj.length(), 10));
+            waveTimer = new Timer(Math.max(gameObj.length(), 5));
             waveTimer.start();
 
             currentWave ++;
@@ -49,7 +50,7 @@ public abstract class Wave implements Updater{
 
         waveTimer.update(deltaTime);
         gameObj = fission.spawnSlime(gameObj.copyOf());
-        handleDisplay(setProgression());
+        handleDisplay(getWaveProgression());
         removeObject();
     }
 
@@ -67,8 +68,8 @@ public abstract class Wave implements Updater{
 
     // Abstract Method
 
-    protected double setProgression(){
-        return getProgress();
+    protected double getWaveProgression(){
+        return waveTimer.getCooldownPercentage();
     }
 
     public abstract boolean isComplete();
@@ -85,7 +86,7 @@ public abstract class Wave implements Updater{
         return properties;
     }
 
-    protected double getProgress(){
+    protected double getRoundProgress(){
         return (double) currentWave / TOTAL_WAVE;
     }
 

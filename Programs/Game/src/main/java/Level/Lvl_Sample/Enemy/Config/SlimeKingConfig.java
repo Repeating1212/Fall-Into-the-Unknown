@@ -16,7 +16,7 @@ public class SlimeKingConfig {
     public static final int INITIAL_Y = 0;
     public static final boolean IS_BLOCKABLE = true;
 
-    public static final int MAXIMUM_HEALTH = 75;
+    public static final int MAXIMUM_HEALTH = 60;
 
     public static final double DEAD_DURATION = 1.5;
 

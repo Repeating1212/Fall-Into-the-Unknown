@@ -12,7 +12,7 @@ public class SlimeWhiteConfig {
     public static final int INITIAL_Y = 0;
     public static final boolean IS_BLOCKABLE = true;
 
-    public static final int MAXIMUM_HEALTH = 10;
+    public static final int HEALTH_Mul = 6;
 
     public static final double DAMAGE = 2;
     public static final double ATTACK_RIGID = 2.5;
@@ -34,9 +34,10 @@ public class SlimeWhiteConfig {
         Status status = new Status();
         int width = (1 + size) * WIDTH_Mul;
         int height = (1 + size) * HEIGHT_Mul;
+        int healthNum = (1 + size) * HEALTH_Mul;
         HitBox hitBox = new HitBox(width, height, position, SlimeWhiteConfig.IS_BLOCKABLE, status);
         MovementState movementState = new MovementState(SlimeWhiteConfig.SPEED, status);
-        Health health = new Health(SlimeWhiteConfig.MAXIMUM_HEALTH,status);
+        Health health = new Health(healthNum, status);
         return new Property(hitBox, movementState, health, status);
     }
 
