@@ -1,7 +1,8 @@
 package Data.Config;
 
 import Data.DataClass.UpgradeText;
-import Level.Skills.Skill;
+import Data.DataClass.UpgradeValue;
+import Level.BaseLevel.Skills.Skill;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.SkillFile;
 import javafx.scene.image.Image;
@@ -13,6 +14,7 @@ public abstract class SkillConfig {
     public final Image LEVEL_IMAGE;
     public final String NAME;
     protected final Class<? extends SkillFile> fileType;
+    protected UpgradeValue[] upgradeValues;
 
     public SkillConfig(Image IMAGE, Image LEVEL_IMAGE, Class<? extends SkillFile> skillFile, String NAME){
         this.UI_IMAGE = IMAGE;
@@ -35,5 +37,8 @@ public abstract class SkillConfig {
 
     public void setConfigID(int configID){
         this.configID = configID;
+        for (UpgradeValue upgradeValue : upgradeValues){
+            upgradeValue.setSkillID(configID);
+        }
     }
 }

@@ -1,19 +1,28 @@
 package Game_UI.GameScene;
 
 import Data.Interface.SceneInterface;
+import Data.Interface.SmokeScene;
 import Data.Loader.ImageLoader;
 import Data.Loader.SceneLoader;
 import Data.Supplier.SkillSupplier;
+import Game_UI.StartScene.GameController1;
+import LoadFile.FileManager;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class GameController2 extends SceneInterface {
+import java.io.IOException;
+
+public class GameController2 extends SceneInterface implements SmokeScene {
     @FXML private ImageView Forest, Graveyard, Bridge, Fish_Port, Lake, Mountain, Tower, Dragon, Portal, gameBackground;
     @FXML private ImageView settingView, coinView;
     @FXML private ImageView characterView, encyclopediaView, storeView;
@@ -21,6 +30,7 @@ public class GameController2 extends SceneInterface {
     @FXML private Pane rootPane;
     @FXML private Text CoinLabel;
 
+    @FXML private Pane stackPane;
 
     private RotateTransition settingRotationEnter;
     private RotateTransition settingRotationExit;
@@ -41,6 +51,11 @@ public class GameController2 extends SceneInterface {
         initializeSkillImage();
         for (ImageView level : levels) level.setOpacity(0.5);
         CoinLabel.setText(String.valueOf(fileManager.getGameFile().getCoins()));
+    }
+
+    @Override
+    public void loadSmoke(){
+        SceneLoader.loadOverlayScene(stackPane, SceneLoader.SceneType.SMOKE, fileManager);
     }
 
     // FXML Method
@@ -76,7 +91,7 @@ public class GameController2 extends SceneInterface {
 
     @FXML
     private void loadLevel01() {
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.LEVEL_01, fileManager);
+        SceneLoader.switchSceneWithSmoke(rootPane, SceneLoader.SceneType.LEVEL_01, fileManager);
     }
 
     @FXML

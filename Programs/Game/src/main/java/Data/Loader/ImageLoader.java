@@ -1,12 +1,9 @@
 package Data.Loader;
 
 import Data.Supplier.SkillSupplier;
-import Level.Data.Config.PlayerConfig;
-import javafx.scene.SnapshotParameters;
+import Level.BaseLevel.Objects.PlayerConfig;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class ImageLoader {
@@ -19,36 +16,41 @@ public class ImageLoader {
     private static final String EMPTY_ICON_Path     = "/Picture/Skill_Icon/Empty_Skill.png";
 
     // Map components
-    private static final String FOREST_Path     = "/Picture/Map Components/Forest.png";
-    private static final String GRAVEYARD_Path  = "/Picture/Map Components/Graveyard.png";
-    private static final String BRIDGE_Path     = "/Picture/Map Components/Bridge.png";
-    private static final String FISH_PORT_Path  = "/Picture/Map Components/Fish_Port.png";
-    private static final String LAKE_Path       = "/Picture/Map Components/Lake.png";
-    private static final String MOUNTAIN_Path   = "/Picture/Map Components/Mountain.png";
-    private static final String TOWER_Path      = "/Picture/Map Components/Tower.png";
-    private static final String DRAGON_Path     = "/Picture/Map Components/Dragon.png";
-    private static final String MAP_PORTAL_Path = "/Picture/Map Components/Portal.png";
-    private static final String GAME_BACKGROUND_Path = "/Picture/Map Components/Map_Background.png";
+    private static final String FOREST_Path     = "/Picture/UI_Picture/Map Components/Forest.png";
+    private static final String GRAVEYARD_Path  = "/Picture/UI_Picture/Map Components/Graveyard.png";
+    private static final String BRIDGE_Path     = "/Picture/UI_Picture/Map Components/Bridge.png";
+    private static final String FISH_PORT_Path  = "/Picture/UI_Picture/Map Components/Fish_Port.png";
+    private static final String LAKE_Path       = "/Picture/UI_Picture/Map Components/Lake.png";
+    private static final String MOUNTAIN_Path   = "/Picture/UI_Picture/Map Components/Mountain.png";
+    private static final String TOWER_Path      = "/Picture/UI_Picture/Map Components/Tower.png";
+    private static final String DRAGON_Path     = "/Picture/UI_Picture/Map Components/Dragon.png";
+    private static final String MAP_PORTAL_Path = "/Picture/UI_Picture/Map Components/Portal.png";
+    private static final String GAME_BACKGROUND_Path = "/Picture/UI_Picture/Map Components/Map_Background.png";
 
     // GameController2 Icon
-    private static final String COIN_Path       = "/Picture/Game_Icon/Coin_Image.png";
-    private static final String CHARACTER_PATH  = "/Picture/Game_Icon/Character.png";
-    private static final String STORE_Path      = "/Picture/Game_Icon/Store.png";
-    private static final String SETTING_PATH    = "/Picture/Game_Icon/Setting.png";
-    private static final String ENCYCLOPEDIA_PATH = "/Picture/Game_Icon/Encyclopedia.png";
+    private static final String COIN_Path       = "/Picture/UI_Picture/Game_Icon/Coin_Image.png";
+    private static final String CHARACTER_PATH  = "/Picture/UI_Picture/Game_Icon/Character.png";
+    private static final String STORE_Path      = "/Picture/UI_Picture/Game_Icon/Store.png";
+    private static final String SETTING_PATH    = "/Picture/UI_Picture/Game_Icon/Setting.png";
+    private static final String ENCYCLOPEDIA_PATH = "/Picture/UI_Picture/Game_Icon/Encyclopedia.png";
 
     // GameController1
-    private static final String STARTSCENE_IMAGE_Path = "/Picture/StartScene/Background.png";
+    private static final String STARTSCENE_IMAGE_Path = "/Picture/UI_Picture/StartScene/Background.png";
 
-    // Level Images
-    private static final String COIN_ANIMATION_Path = "/Picture/Level_Picture/Coin_Animation.gif";
-    private static final String STAKE_Path          = "/Picture/Level_Picture/Character/Stake.png";
-    private static final String PLAYER_LEFT_Path    = "/Picture/Level_Picture/Character/Character_Left.png";
-    private static final String PLAYER_RIGHT_Path   = "/Picture/Level_Picture/Character/Character_Right.png";
-    private static final String PORTAL_Path         = "/Picture/Level_Picture/Character/Portal.png";
+    // LevelData Images
+    private static final String STAKE_Path          = "/Picture/Level_Picture/Enemy/Stake.png";
+    private static final String PLAYER_LEFT_Path    = "/Picture/Level_Picture/Character/Character.png";
+    private static final String PLAYER_INVINCIBILITY_Path = "/Picture/Level_Picture/Character/Invincibility Animation.gif";
     private static final String LEVEL01_MAP_Path    = "/Picture/Level_Picture/map.png";
     private static final String HEART_FULL_Path     = "/Picture/Level_Picture/HeartFull.png";
     private static final String HEART_EMPTY_Path    = "/Picture/Level_Picture/HeartEmpty.png";
+
+    // EnemyImage
+    private static final String L01_RAT_Path = "/Picture/Level_Picture/Enemy/Rat.png";
+    private static final String L01_SLIME_GREY_Path = "/Picture/Level_Picture/Enemy/Slime Grey.png";
+    private static final String L01_SLIME_WHITE_Path = "/Picture/Level_Picture/Enemy/Slime White.png";
+    private static final String L01_SLIME_KING_Path = "/Picture/Level_Picture/Enemy/Slime King.png";
+
 
 
 
@@ -82,14 +84,17 @@ public class ImageLoader {
 
     public static final Image STAKE = new Image(ImageLoader.class.getResourceAsStream(STAKE_Path));
     public static final Image PLAYER_LEFT = new Image(PlayerConfig.class.getResourceAsStream(PLAYER_LEFT_Path));
-    public static final Image PLAYER_RIGHT =  new Image(PlayerConfig.class.getResourceAsStream(PLAYER_RIGHT_Path));
-    public static final Image PORTAL = new Image(PlayerConfig.class.getResourceAsStream(PORTAL_Path));
+    public static final Image PLAYER_INVINCIBILITY =  new Image(PlayerConfig.class.getResourceAsStream(PLAYER_INVINCIBILITY_Path));
 
 
-    public static final Image LEVEL01_MAP = new Image(ImageLoader.class.getResourceAsStream(LEVEL01_MAP_Path));
+    public static final Image L01_MAP = new Image(ImageLoader.class.getResourceAsStream(LEVEL01_MAP_Path));
     public static final Image HEART_FULL = new Image(ImageLoader.class.getResourceAsStream(HEART_FULL_Path));
     public static final Image HEART_EMPTY = new Image(ImageLoader.class.getResourceAsStream(HEART_EMPTY_Path));
-    public static final Image COIN_ANIMATION = new Image(ImageLoader.class.getResourceAsStream(COIN_ANIMATION_Path));
+
+    public static final Image L01_RAT = new Image(ImageLoader.class.getResourceAsStream(L01_RAT_Path));
+    public static final Image L01_SLIME_GREY = new Image(ImageLoader.class.getResourceAsStream(L01_SLIME_GREY_Path));
+    public static final Image L01_SLIME_WHITE = new Image(ImageLoader.class.getResourceAsStream(L01_SLIME_WHITE_Path));
+    public static final Image L01_SLIME_KING = new Image(ImageLoader.class.getResourceAsStream(L01_SLIME_KING_Path));
 
     public static final Image STARTSCENE_BACKGROUND = new Image(ImageLoader.class.getResourceAsStream(STARTSCENE_IMAGE_Path));
 

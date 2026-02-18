@@ -3,10 +3,10 @@ package Data.Config;
 import Data.Loader.ImageLoader;
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
-import Level.Skills.Attacks.AttackArea;
-import Level.Skills.Attacks.AttackSkill;
-import Level.Skills.Attacks.ConeAttackArea;
-import Level.View.AttackVisualize.ConeAttackVisual;
+import Level.BaseLevel.Objects.Class_Base.AttackArea;
+import Level.BaseLevel.Skills.Attack;
+import Level.BaseLevel.Skills.ConeAttackArea;
+import Level.BaseLevel.View.AttackVisualize.ConeAttackVisual;
 import LoadFile.FileManager;
 import LoadFile.SkillFile.AttackFile;
 
@@ -24,39 +24,44 @@ public class AttackConfig extends SkillConfig {
                 AttackFile.class,
                 "Attack"
         );
+
+        this.upgradeValues = new UpgradeValue[]{
+                damageUpgValue, rangeUpgValue, cooldownUpgValue, angleUpgValue
+        };
+    }
+
+    @Override
+    public void setConfigID(int configID){
+        super.setConfigID(configID);
     }
 
     // AttackConfig Animation
     private static final double ENLARGE_DURATION = 0.2;
     private static final double FADE_OUT_DURATION = 0.1;
     private static final double TOTAL_ANIMATION_PERIOD = FADE_OUT_DURATION + ENLARGE_DURATION;
-    private static final double RIGID_TIME = TOTAL_ANIMATION_PERIOD * 2.0;
+    private static final double RIGID_TIME = TOTAL_ANIMATION_PERIOD + 0.2;
 
     private final UpgradeValue damageUpgValue = new UpgradeValue(
-            new double[]{ 6, 12, 18},
+            new double[]{ 10, 14, 18},
             new double[]{ 2, 4, 4},
-            configID,
             DAMAGE_ID
     );
 
     private final UpgradeValue rangeUpgValue = new UpgradeValue(
-            new double[]{ 100, 120, 140},
+            new double[]{ 150, 155, 160},
             new double[]{ 4, 4, 4},
-            configID,
             RANGE_ID
     );
 
     private final UpgradeValue cooldownUpgValue = new UpgradeValue(
-            new double[]{ 2.0, 1.5, 1.0},
+            new double[]{ 1.3, 1.15, 1.0},
             new double[]{ 4, 8, 8},
-            configID,
             COOLDOWN_ID
     );
 
     private final UpgradeValue angleUpgValue = new UpgradeValue(
-            new double[]{ 60, 75, 90},
+            new double[]{ 65, 70, 75},
             new double[]{ 4, 8, 8},
-            configID,
             ATTACK_ANGLE_ID
     );
 
@@ -82,7 +87,7 @@ public class AttackConfig extends SkillConfig {
 
     // Public Method
 
-    public final UpgradeText[] upgradeTexts = new UpgradeText[]{
+    private final UpgradeText[] upgradeTexts = new UpgradeText[]{
             damageUpg, rangeUpg, cooldownUpg, angleUpg
     };
 
@@ -91,7 +96,7 @@ public class AttackConfig extends SkillConfig {
     }
 
 
-    public AttackSkill getSkill(FileManager fileManager){
+    public Attack getSkill(FileManager fileManager){
         AttackFile attackFile = fileManager.getAttackFile();
 
         double damage = damageUpgValue.getValue(attackFile.getDamageUpgrade());
@@ -107,13 +112,14 @@ public class AttackConfig extends SkillConfig {
                 range, areaAngle, ENLARGE_DURATION, FADE_OUT_DURATION
         );
 
-        AttackSkill attackSkill = new AttackSkill(
+        Attack attackSkill = new Attack(
                 attackVisual,
                 AttackConfig.RIGID_TIME,
                 attackArea,
                 damage,
                 cooldown,
-                ENLARGE_DURATION
+                ENLARGE_DURATION,
+                TOTAL_ANIMATION_PERIOD
         );
 
         return attackSkill;

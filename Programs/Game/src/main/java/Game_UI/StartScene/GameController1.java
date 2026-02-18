@@ -29,7 +29,7 @@ public class GameController1 extends SceneInterface {
 
     @FXML
     private void loadGameScene() {
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.GAME, fileManager);
+        SceneLoader.switchSceneWithSmoke(rootPane, SceneLoader.SceneType.GAME, fileManager);
     }
 
     @FXML

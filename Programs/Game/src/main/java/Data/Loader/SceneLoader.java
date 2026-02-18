@@ -2,12 +2,16 @@ package Data.Loader;
 
 import Data.Interface.OverlayController;
 import Data.Interface.SceneInterface;
+import Data.Interface.SmokeScene;
+import Game_UI.GameScene.GameController2;
+import Game_UI.StartScene.GameController1;
 import LoadFile.FileManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -21,14 +25,16 @@ public class SceneLoader {
         GAME("/Game_UI/FxmlFile/GameScene.fxml"),
         SETTING("/Game_UI/FxmlFile/Setting.fxml"),
         START("/Game_UI/FxmlFile/StartScene.fxml"),
+        SMOKE("/Game_UI/FxmlFile/Smoke.fxml"),
+        SMOKE2("/Game_UI/FxmlFile/Smoke2.fxml"),
         // EditorUI
         EQUIPMENT("/EquipmentScene/FxmlFile/EquipmentScene.fxml"),
         SKILL_MENU("/EquipmentScene/FxmlFile/SkillMenu.fxml"),
-        // Level
-        LOSE("/Level/View/lose-screen.fxml"),
-        PAUSE("/Level/View/pause-screen.fxml"),
-        WIN("/Level/View/win-screen.fxml"),
-        LEVEL_01("/Level/LevelScene.fxml");
+        // LevelData
+        LOSE("/Level/FxmlFile/lose-screen.fxml"),
+        PAUSE("/Level/FxmlFile/pause-screen.fxml"),
+        WIN("/Level/FxmlFile/win-screen.fxml"),
+        LEVEL_01("/Level/FxmlFile/LevelScene.fxml");
 
         private final String path;
 
@@ -99,6 +105,32 @@ public class SceneLoader {
         }
     }
 
+    public static void switchSceneWithSmoke(Pane rootPane, SceneType sceneType, FileManager fileManager) {
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource(sceneType.path));
+
+            Parent newScene = loader.load();
+
+            Object controller = loader.getController();
+            if (controller instanceof SceneInterface) {
+                ((SceneInterface) controller).setFileManager(fileManager);
+                ((SceneInterface) controller).initializeData();
+            }
+
+            if (controller instanceof SmokeScene){
+                ((SmokeScene) controller).loadSmoke();
+            }
+
+            Stage stage = (Stage) rootPane.getScene().getWindow();
+            stage.setScene(new Scene(newScene));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public static void loadInitialScene(Stage primaryStage, SceneType sceneType) {
         try {
             FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource(sceneType.getPath()));
@@ -113,11 +145,14 @@ public class SceneLoader {
                 ((SceneInterface) controller).initializeData();
             }
 
+
+
             // Set up the stage
             Scene scene = new Scene(root, 1200, 675);
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
-            primaryStage.setTitle("UI Protocol");
+            primaryStage.setTitle("Fall into The Unknown");
+            if (controller instanceof GameController1) primaryStage.initStyle(StageStyle.TRANSPARENT);
             primaryStage.show();
 
         } catch (IOException e) {
