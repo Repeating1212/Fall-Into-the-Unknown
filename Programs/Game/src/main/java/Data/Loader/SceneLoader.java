@@ -2,6 +2,7 @@ package Data.Loader;
 
 import Data.Interface.OverlayController;
 import Data.Interface.SceneInterface;
+import Data.Interface.SmokeScene;
 import Game_UI.GameScene.GameController2;
 import Game_UI.StartScene.GameController1;
 import LoadFile.FileManager;
@@ -25,6 +26,7 @@ public class SceneLoader {
         SETTING("/Game_UI/FxmlFile/Setting.fxml"),
         START("/Game_UI/FxmlFile/StartScene.fxml"),
         SMOKE("/Game_UI/FxmlFile/Smoke.fxml"),
+        SMOKE2("/Game_UI/FxmlFile/Smoke2.fxml"),
         // EditorUI
         EQUIPMENT("/EquipmentScene/FxmlFile/EquipmentScene.fxml"),
         SKILL_MENU("/EquipmentScene/FxmlFile/SkillMenu.fxml"),
@@ -103,9 +105,9 @@ public class SceneLoader {
         }
     }
 
-    public static void switchGameSceneWithSmoke(Pane rootPane, FileManager fileManager) {
+    public static void switchSceneWithSmoke(Pane rootPane, SceneType sceneType, FileManager fileManager) {
         try {
-            FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource(SceneType.GAME.path));
+            FXMLLoader loader = new FXMLLoader(SceneLoader.class.getResource(sceneType.path));
 
             Parent newScene = loader.load();
 
@@ -115,8 +117,8 @@ public class SceneLoader {
                 ((SceneInterface) controller).initializeData();
             }
 
-            if (controller instanceof GameController2){
-                ((GameController2) controller).loadSmoke();
+            if (controller instanceof SmokeScene){
+                ((SmokeScene) controller).loadSmoke();
             }
 
             Stage stage = (Stage) rootPane.getScene().getWindow();

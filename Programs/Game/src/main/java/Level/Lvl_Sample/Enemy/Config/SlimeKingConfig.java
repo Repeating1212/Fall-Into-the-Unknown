@@ -11,7 +11,7 @@ import Level.Lvl_Sample.Enemy.Interface.Spawnable;
 public class SlimeKingConfig {
     public static final int HEIGHT = 100;
     public static final int WIDTH = 150;
-    public static final int SPEED = 2;
+    public static final int SPEED = 100;
     public static final int INITIAL_X = 0;
     public static final int INITIAL_Y = 0;
     public static final boolean IS_BLOCKABLE = true;

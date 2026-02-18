@@ -27,7 +27,7 @@ public class WinController extends OverlayController {
 
     @FXML
     private void handleExitButton(ActionEvent event) {
-        SceneLoader.switchGameSceneWithSmoke(rootPane, fileManager);
+        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.GAME, fileManager);
     }
 
     @FXML

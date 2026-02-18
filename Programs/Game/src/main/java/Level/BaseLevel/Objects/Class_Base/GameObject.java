@@ -48,7 +48,7 @@ public abstract class GameObject implements DisplayableObject {
 
     protected void updateAlive(double deltaTime, Observer observer){
         property.updateStatus(deltaTime);
-        property.move(observer.getGameObjPrt());
+        property.move(observer.getGameObjPrt(), deltaTime);
     }
 
     protected ArrayData<DisplayableObject> reloadDisplay(){

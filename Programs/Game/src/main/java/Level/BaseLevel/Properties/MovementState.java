@@ -6,35 +6,26 @@ public class MovementState {
 
     private final Status status;
     // Movement states
-    private final double SPEED;
+    private final double SPEED_PER_SECOND;
     private double deltaX = 0;
     private double deltaY = 0;
-    private double speedMultiply = 1;
 
     public MovementState (double SPEED, Status status){
-        this.SPEED = SPEED;
+        this.SPEED_PER_SECOND = SPEED;
         this.status = status;
     }
 
-    protected double getSpeed(){ return SPEED * speedMultiply;}
+    protected double getSpeed(){ return SPEED_PER_SECOND;}
 
     protected boolean isMovingLeft() {return deltaX < 0;}
     protected boolean isMovingRight() {return deltaX > 0;}
 
     // Movement control methods
 
-    protected double[] calculateMovement() {
-        double movementX = deltaX * SPEED * speedMultiply;
-        double movementY = deltaY * SPEED * speedMultiply;
+    protected double[] calculateMovement(double deltaTime) {
+        double movementX = deltaX * SPEED_PER_SECOND * status.getSpeedMultiply() * deltaTime;
+        double movementY = deltaY * SPEED_PER_SECOND * status.getSpeedMultiply() * deltaTime;
         return new double[] {movementX, movementY};
-    }
-
-    protected void speedMultiply(double speedPercentage) {
-        this.speedMultiply *= speedPercentage;
-    }
-
-    protected void speedDivide(double speedPercentage) {
-        this.speedMultiply /= speedPercentage;
     }
 
     protected void pointTo(Position destination, Position self){

@@ -1,6 +1,7 @@
 package Game_UI.GameScene;
 
 import Data.Interface.SceneInterface;
+import Data.Interface.SmokeScene;
 import Data.Loader.ImageLoader;
 import Data.Loader.SceneLoader;
 import Data.Supplier.SkillSupplier;
@@ -21,7 +22,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class GameController2 extends SceneInterface {
+public class GameController2 extends SceneInterface implements SmokeScene {
     @FXML private ImageView Forest, Graveyard, Bridge, Fish_Port, Lake, Mountain, Tower, Dragon, Portal, gameBackground;
     @FXML private ImageView settingView, coinView;
     @FXML private ImageView characterView, encyclopediaView, storeView;
@@ -52,6 +53,7 @@ public class GameController2 extends SceneInterface {
         CoinLabel.setText(String.valueOf(fileManager.getGameFile().getCoins()));
     }
 
+    @Override
     public void loadSmoke(){
         SceneLoader.loadOverlayScene(stackPane, SceneLoader.SceneType.SMOKE, fileManager);
     }
@@ -89,7 +91,7 @@ public class GameController2 extends SceneInterface {
 
     @FXML
     private void loadLevel01() {
-        SceneLoader.switchScene(rootPane, SceneLoader.SceneType.LEVEL_01, fileManager);
+        SceneLoader.switchSceneWithSmoke(rootPane, SceneLoader.SceneType.LEVEL_01, fileManager);
     }
 
     @FXML

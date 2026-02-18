@@ -6,7 +6,7 @@ import Level.Lvl_Sample.Behaviour.Tackle;
 public class SlimeGreyConfig {
     public static final int HEIGHT_Mul = 10;
     public static final int WIDTH_Mul = 15;
-    public static final int SPEED = 2;
+    public static final int SPEED = 100;
     public static final int INITIAL_X = 0;
     public static final int INITIAL_Y = 0;
     public static final boolean IS_BLOCKABLE = true;

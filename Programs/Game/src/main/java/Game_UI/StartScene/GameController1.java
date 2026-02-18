@@ -3,22 +3,15 @@ package Game_UI.StartScene;
 import Data.Interface.SceneInterface;
 import Data.Loader.ImageLoader;
 import Data.Loader.SceneLoader;
-import Game_UI.GameScene.GameController2;
-import LoadFile.FileManager;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.io.IOException;
 
 public class GameController1 extends SceneInterface {
 
@@ -36,7 +29,7 @@ public class GameController1 extends SceneInterface {
 
     @FXML
     private void loadGameScene() {
-        SceneLoader.switchGameSceneWithSmoke(rootPane, fileManager);
+        SceneLoader.switchSceneWithSmoke(rootPane, SceneLoader.SceneType.GAME, fileManager);
     }
 
     @FXML

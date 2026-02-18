@@ -6,7 +6,7 @@ import Level.Lvl_Sample.Behaviour.Tackle;
 public class RatConfig {
     public static final int HEIGHT = 30;
     public static final int WIDTH = 45;
-    public static final double SPEED = 3.5;
+    public static final double SPEED = 150;
     public static final int INITIAL_X = 600;
     public static final int INITIAL_Y = 100;
     public static final boolean IS_BLOCKABLE = true;

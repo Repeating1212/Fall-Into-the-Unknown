@@ -9,7 +9,6 @@ import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.AttackVisualize.RectangleAttackVisual;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Rush implements Behaviour{
 
@@ -19,13 +18,10 @@ public class Rush implements Behaviour{
 
     private Timer cooldown;
     private Timer rigid;
+    private Timer rushTimer;
 
     private RectangleAttackVisual attackVisual;
     private ArrayList<DisplayableObject> visualObjects = new ArrayList<>();
-
-    private boolean pendingRush = false;
-    private double currentRush;
-    private double totalRush;
 
     private Property owner;
     private boolean autoActivate = true;
@@ -35,8 +31,10 @@ public class Rush implements Behaviour{
         this.SPEED_INCREMENT = speedIncrement;
         this.DAMAGE = damage;
 
-        this.cooldown = new Timer(cooldown);
         this.rigid = new Timer(rushRigid);
+        this.rushTimer = new Timer(RANGE / (owner.getAverageSpeed() * SPEED_INCREMENT));
+        this.cooldown = new Timer(cooldown);
+
         this.owner = owner;
         this.attackVisual = new RectangleAttackVisual(range, owner.getHeight());
         visualObjects.add(attackVisual);
@@ -44,8 +42,9 @@ public class Rush implements Behaviour{
 
     @Override
     public void update(double deltaTime, Observer observer){
-        cooldown.update(deltaTime);
         rigid.update(deltaTime);
+        rushTimer.update(deltaTime);
+        cooldown.update(deltaTime);
 
         if (autoActivate) activate(observer);
         handleRigid();
@@ -65,11 +64,11 @@ public class Rush implements Behaviour{
 
     @Override
     public void activate(Observer observer){
-        if (rigid.isDeactive() && cooldown.isDeactive() && !pendingRush){
+        if (rigid.isDeactive() && cooldown.isDeactive() && rushTimer.isDeactive()){
             rigid.start();
+            rushTimer.setPending();
             owner.pauseMovement(rigid.getDuration());
-            owner.setDirectable(false);
-            pendingRush = true;
+            owner.pauseDirect(rigid.getDuration() + rushTimer.getDuration());
             attackVisual.activate(owner.getCenterPos(), owner.getDirection());
         }
     }
@@ -88,20 +87,18 @@ public class Rush implements Behaviour{
     // Private Method
 
     private void handleRigid(){
-        if (rigid.isEnd() && cooldown.isDeactive() && pendingRush ){
-            pendingRush = false;
+        if (rigid.isEnd() && rushTimer.isPending() ){
+            rushTimer.start();
             cooldown.setPending();
 
-            owner.speedMultiply(SPEED_INCREMENT);
-
-            currentRush = 0;
-            totalRush = (RANGE / owner.getSpeed());
+            double duration = rushTimer.getDuration();
+            owner.setSpeedMultiply(duration, SPEED_INCREMENT);
+            owner.pauseDirect(duration);
         }
     }
 
     private void handleRush(GameObject player){
-        if (!pendingRush && cooldown.isPending()){
-            currentRush ++;
+        if (rushTimer.isTicking()){
             if (owner.isTouch(player.getProperty())){
                 player.takeDamage(DAMAGE);
             }
@@ -109,12 +106,8 @@ public class Rush implements Behaviour{
     }
 
     private void handleComplete(){
-        if (!pendingRush && cooldown.isPending() &&
-                currentRush >= totalRush && rigid.isDeactive()){
-
+        if (rushTimer.isEnd() && cooldown.isPending()){
             cooldown.start();
-            owner.speedDivide(SPEED_INCREMENT);
-            owner.setDirectable(true);
         }
     }
 }

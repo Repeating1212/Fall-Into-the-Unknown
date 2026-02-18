@@ -1,7 +1,5 @@
 package Level.BaseLevel.Properties;
 
-import Data.DataClass.Timer;
-import Data.DataClass.Vector2D;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
@@ -36,9 +34,6 @@ public class Property {
         status.pauseDirect(duration);
     }
 
-    public void setDirectable(boolean directable){
-        status.setDirectable(directable);
-    }
 
     public boolean isInvincible(){ return status.isInvincible();}
 
@@ -50,6 +45,9 @@ public class Property {
         status.setDefend(duration);
     }
 
+    public void setSpeedMultiply(double duration, double speedMultiply){
+        status.setSpeedMultiply(duration, speedMultiply);
+    }
     // HitBox
 
     public void resetDebugHitBox(){ hitBox.resetBugView();}
@@ -95,14 +93,8 @@ public class Property {
 
     // MovementState
 
-    public double getSpeed() { return  movementState.getSpeed();}
-
-    public void speedMultiply(double multiplication){
-        movementState.speedMultiply(multiplication);
-    }
-
-    public void speedDivide(double division){
-        movementState.speedDivide(division);
+    public double getAverageSpeed() { return
+            movementState.getSpeed();
     }
 
     public boolean isMovingLeft() {return movementState.isMovingLeft();}
@@ -134,8 +126,8 @@ public class Property {
         position.move(increment.getX(), increment.getY(), this.hitBox, getHitBoxArray(properties));
     }
 
-    public void move(ArrayList<Property> properties){
-        position.move(movementState.calculateMovement(), this.hitBox, getHitBoxArray(properties));
+    public void move(ArrayList<Property> properties, double deltaTime){
+        position.move(movementState.calculateMovement(deltaTime), this.hitBox, getHitBoxArray(properties));
     }
 
     public void move(double incrementX, double incrementY,  ArrayList<Property> properties){

@@ -1,6 +1,8 @@
 package Level.BaseLevel.Controllers;
 
 
+import Data.Interface.SmokeScene;
+import Data.Loader.SceneLoader;
 import Level.BaseLevel.Manager.GameTicks;
 import Level.BaseLevel.Manager.InputHandler;
 import Data.Interface.SceneInterface;
@@ -19,7 +21,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import Level.BaseLevel.View.* ;
 
-public class LevelController extends SceneInterface {
+public class LevelController extends SceneInterface implements SmokeScene {
 
     // Nodes
     @FXML private ImageView heart1, heart2, heart3, heart4, heart5, heart6, heart7, heart8;
@@ -52,6 +54,11 @@ public class LevelController extends SceneInterface {
         // Run after receive fileManger
         createClass();
         gameTicks.start();
+    }
+
+    @Override
+    public void loadSmoke(){
+        SceneLoader.loadOverlayScene(rootPane, SceneLoader.SceneType.SMOKE2, fileManager);
     }
 
     // Private method

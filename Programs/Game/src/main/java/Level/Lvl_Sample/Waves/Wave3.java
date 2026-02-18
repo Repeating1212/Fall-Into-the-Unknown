@@ -54,6 +54,7 @@ public class Wave3 extends Wave {
 
     // Private Method
     private void spawnEnemy2(){
+        if (boss.isDead()) return;
         Random random = new Random();
         int num =  random.nextInt(1,3);
         for (int i = 0; i < num; i++){
