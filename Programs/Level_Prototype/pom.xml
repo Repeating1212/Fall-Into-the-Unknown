@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>Level</groupId>
-    <artifactId>Level_Protocol</artifactId>
+    <artifactId>Level_Prototype</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Level_Protocol</name>
 
