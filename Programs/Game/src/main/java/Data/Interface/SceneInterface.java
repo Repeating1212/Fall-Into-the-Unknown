@@ -1,6 +1,6 @@
 package Data.Interface;
 
-import LoadFile.FileManager;
+import Game_File.FileManager;
 
 public abstract class SceneInterface {
     protected FileManager fileManager;

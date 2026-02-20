@@ -1,9 +1,9 @@
 {
-  "coins": 8,
+  "coins": 0,
   "equipment": [
     1,
     2,
-    0,
+    3,
     0
   ]
 }

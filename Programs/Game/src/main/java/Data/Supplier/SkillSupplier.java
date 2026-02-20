@@ -1,11 +1,11 @@
 package Data.Supplier;
 
-import Data.Config.*;
+import Data.SkillConfig.*;
 import Level.BaseLevel.Skills.EmptySkill;
 import Level.BaseLevel.Skills.Skill;
-import LoadFile.FileManager;
-import LoadFile.SkillFile.EmptySkillFile;
-import LoadFile.SkillFile.SkillFile;
+import Game_File.FileManager;
+import Game_File.SkillFile.EmptySkillFile;
+import Game_File.SkillFile.SkillFile;
 import javafx.scene.image.Image;
 
 public class SkillSupplier {

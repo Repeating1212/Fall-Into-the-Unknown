@@ -1,4 +1,4 @@
-package LoadFile.SkillFile;
+package Game_File.SkillFile;
 
 public interface SkillFile {
 

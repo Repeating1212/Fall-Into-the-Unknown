@@ -1,4 +1,4 @@
-package Data.Config;
+package Data.SkillConfig;
 
 public class SkillConfigList {
 

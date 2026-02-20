@@ -1,6 +1,6 @@
-package LoadFile;
+package Game_File;
 
-import LoadFile.SkillFile.*;
+import Game_File.SkillFile.*;
 
 public class FileManager {
 

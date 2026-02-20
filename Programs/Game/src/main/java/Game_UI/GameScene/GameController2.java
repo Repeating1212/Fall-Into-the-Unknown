@@ -5,22 +5,14 @@ import Data.Interface.SmokeScene;
 import Data.Loader.ImageLoader;
 import Data.Loader.SceneLoader;
 import Data.Supplier.SkillSupplier;
-import Game_UI.StartScene.GameController1;
-import LoadFile.FileManager;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.io.IOException;
 
 public class GameController2 extends SceneInterface implements SmokeScene {
     @FXML private ImageView Forest, Graveyard, Bridge, Fish_Port, Lake, Mountain, Tower, Dragon, Portal, gameBackground;

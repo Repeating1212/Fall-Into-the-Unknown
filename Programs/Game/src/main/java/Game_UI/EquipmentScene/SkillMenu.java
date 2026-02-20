@@ -1,6 +1,6 @@
 package Game_UI.EquipmentScene;
 
-import Data.Config.SkillConfig;
+import Data.SkillConfig.SkillConfig;
 import Data.DataClass.UpgradeText;
 import Data.Interface.OverlayController;
 import Data.Loader.SceneLoader;

@@ -1,7 +1,7 @@
 package Game_UI.EquipmentScene;
 
-import Data.Config.EmptySkillConfig;
-import Data.Config.SkillConfig;
+import Data.SkillConfig.EmptySkillConfig;
+import Data.SkillConfig.SkillConfig;
 import Data.Interface.PaneInterface;
 import Data.Interface.SceneInterface;
 import Data.Loader.ImageLoader;

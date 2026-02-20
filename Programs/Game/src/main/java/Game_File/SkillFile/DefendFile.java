@@ -1,6 +1,6 @@
-package LoadFile.SkillFile;
+package Game_File.SkillFile;
 
-import Data.Config.DefendConfig;
+import Data.SkillConfig.DefendConfig;
 
 public class DefendFile implements SkillFile{
     private int durationUpgrade = 0;

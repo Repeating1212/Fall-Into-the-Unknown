@@ -1,10 +1,10 @@
-package LoadFile;
+package Game_File;
 
 import java.io.*;
 
-import LoadFile.SkillFile.AttackFile;
-import LoadFile.SkillFile.DashFile;
-import LoadFile.SkillFile.DefendFile;
+import Game_File.SkillFile.AttackFile;
+import Game_File.SkillFile.DashFile;
+import Game_File.SkillFile.DefendFile;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

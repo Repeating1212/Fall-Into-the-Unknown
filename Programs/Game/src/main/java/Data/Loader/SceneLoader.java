@@ -3,9 +3,8 @@ package Data.Loader;
 import Data.Interface.OverlayController;
 import Data.Interface.SceneInterface;
 import Data.Interface.SmokeScene;
-import Game_UI.GameScene.GameController2;
 import Game_UI.StartScene.GameController1;
-import LoadFile.FileManager;
+import Game_File.FileManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -152,7 +151,7 @@ public class SceneLoader {
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.setTitle("Fall into The Unknown");
-            if (controller instanceof GameController1) primaryStage.initStyle(StageStyle.TRANSPARENT);
+//            if (controller instanceof GameController1) primaryStage.initStyle(StageStyle.TRANSPARENT);
             primaryStage.show();
 
         } catch (IOException e) {

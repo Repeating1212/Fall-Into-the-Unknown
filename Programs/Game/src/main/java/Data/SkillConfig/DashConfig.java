@@ -1,11 +1,11 @@
-package Data.Config;
+package Data.SkillConfig;
 
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
 import Data.Loader.ImageLoader;
 import Level.BaseLevel.Skills.Dash;
-import LoadFile.FileManager;
-import LoadFile.SkillFile.DashFile;
+import Game_File.FileManager;
+import Game_File.SkillFile.DashFile;
 
 public class DashConfig extends SkillConfig {
 

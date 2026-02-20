@@ -1,4 +1,4 @@
-package LoadFile;
+package Game_File;
 
 import Data.Supplier.SkillSupplier;
 

@@ -5,7 +5,7 @@ import Data.DataClass.UpgradeValue;
 import Data.Interface.PaneInterface;
 import Data.Loader.ImageLoader;
 import Data.Supplier.SkillSupplier;
-import LoadFile.SkillFile.SkillFile;
+import Game_File.SkillFile.SkillFile;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;

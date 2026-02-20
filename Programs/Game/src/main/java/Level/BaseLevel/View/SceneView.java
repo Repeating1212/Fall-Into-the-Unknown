@@ -1,14 +1,12 @@
 package Level.BaseLevel.View;
 
 import Data.Loader.SceneLoader;
-import LoadFile.FileManager;
+import Game_File.FileManager;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import Level.BaseLevel.Controllers.WinController;
 import Level.BaseLevel.Manager.GameTicks;
 import Level.BaseLevel.Controllers.PauseController;

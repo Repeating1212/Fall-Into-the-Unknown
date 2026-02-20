@@ -1,7 +1,7 @@
 package Level.BaseLevel.View;
 
 import Data.Supplier.SkillSupplier;
-import LoadFile.FileManager;
+import Game_File.FileManager;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;

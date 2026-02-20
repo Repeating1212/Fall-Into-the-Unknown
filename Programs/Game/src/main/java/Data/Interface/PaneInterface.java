@@ -1,6 +1,6 @@
 package Data.Interface;
 
-import LoadFile.FileManager;
+import Game_File.FileManager;
 import javafx.scene.layout.Pane;
 
 public abstract class PaneInterface {

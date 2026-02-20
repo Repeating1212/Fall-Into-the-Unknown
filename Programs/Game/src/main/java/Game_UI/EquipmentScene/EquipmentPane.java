@@ -1,6 +1,6 @@
 package Game_UI.EquipmentScene;
 
-import Data.Config.SkillConfig;
+import Data.SkillConfig.SkillConfig;
 import Data.Interface.PaneInterface;
 import Data.Loader.ImageLoader;
 import Data.Loader.SceneLoader;

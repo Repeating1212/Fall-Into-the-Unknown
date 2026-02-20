@@ -1,10 +1,10 @@
-package Data.Config;
+package Data.SkillConfig;
 
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
 import Level.BaseLevel.Skills.Skill;
-import LoadFile.FileManager;
-import LoadFile.SkillFile.SkillFile;
+import Game_File.FileManager;
+import Game_File.SkillFile.SkillFile;
 import javafx.scene.image.Image;
 
 public abstract class SkillConfig {

@@ -1,12 +1,12 @@
-package Data.Config;
+package Data.SkillConfig;
 
 import Data.DataClass.UpgradeText;
 import Data.DataClass.UpgradeValue;
 import Data.Loader.ImageLoader;
 import Level.BaseLevel.Skills.EmptySkill;
 import Level.BaseLevel.Skills.Skill;
-import LoadFile.FileManager;
-import LoadFile.SkillFile.EmptySkillFile;
+import Game_File.FileManager;
+import Game_File.SkillFile.EmptySkillFile;
 
 public class EmptySkillConfig extends SkillConfig {
 

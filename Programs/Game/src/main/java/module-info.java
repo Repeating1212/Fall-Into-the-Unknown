@@ -18,12 +18,12 @@ module Game {
     exports Game_UI.EquipmentScene;
     opens Game_UI.EquipmentScene to javafx.fxml;
 
-    exports LoadFile to com.google.gson;
-    opens LoadFile to com.google.gson;
-    opens LoadFile.SkillFile to com.google.gson;
+    exports Game_File to com.google.gson;
+    opens Game_File to com.google.gson;
+    opens Game_File.SkillFile to com.google.gson;
 
-    exports Data.Config;
-    opens Data.Config to com.google.gson, javafx.fxml;
+    exports Data.SkillConfig;
+    opens Data.SkillConfig to com.google.gson, javafx.fxml;
     exports Data.Supplier;
     opens Data.Supplier to com.google.gson, javafx.fxml;
     exports Data.Interface;

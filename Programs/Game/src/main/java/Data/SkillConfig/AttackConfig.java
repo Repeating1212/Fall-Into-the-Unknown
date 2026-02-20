@@ -1,4 +1,4 @@
-package Data.Config;
+package Data.SkillConfig;
 
 import Data.Loader.ImageLoader;
 import Data.DataClass.UpgradeText;
@@ -7,8 +7,8 @@ import Level.BaseLevel.Objects.Class_Base.AttackArea;
 import Level.BaseLevel.Skills.Attack;
 import Level.BaseLevel.Skills.ConeAttackArea;
 import Level.BaseLevel.View.AttackVisualize.ConeAttackVisual;
-import LoadFile.FileManager;
-import LoadFile.SkillFile.AttackFile;
+import Game_File.FileManager;
+import Game_File.SkillFile.AttackFile;
 
 public class AttackConfig extends SkillConfig {
 
