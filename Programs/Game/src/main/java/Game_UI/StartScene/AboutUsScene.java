@@ -5,7 +5,7 @@ import Data.Loader.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 
-public class GameDesignerScene extends SceneInterface {
+public class AboutUsScene extends SceneInterface {
 
     @FXML private Pane rootPane;
 

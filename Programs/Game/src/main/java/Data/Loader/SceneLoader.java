@@ -3,14 +3,12 @@ package Data.Loader;
 import Data.Interface.OverlayController;
 import Data.Interface.SceneInterface;
 import Data.Interface.SmokeScene;
-import Game_UI.StartScene.GameController1;
 import Game_File.FileManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -20,7 +18,7 @@ public class SceneLoader {
         // Game UI
         CHARACTER("/Game_UI/FxmlFile/Character.fxml"),
         ENCYCLOPEDIA("/Game_UI/FxmlFile/Encyclopedia.fxml"),
-        GAME_DESIGNER("/Game_UI/FxmlFile/GameDesigner.fxml"),
+        GAME_DESIGNER("/Game_UI/FxmlFile/AboutUs.fxml"),
         GAME("/Game_UI/FxmlFile/GameScene.fxml"),
         SETTING("/Game_UI/FxmlFile/Setting.fxml"),
         START("/Game_UI/FxmlFile/StartScene.fxml"),
