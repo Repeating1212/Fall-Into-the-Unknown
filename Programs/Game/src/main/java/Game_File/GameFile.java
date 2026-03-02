@@ -5,7 +5,7 @@ import Data.Supplier.SkillSupplier;
 import java.io.*;
 
 public class GameFile implements Serializable {
-    private int coins = 0;
+    private int coins = 10; // Initial coin
     private int[] equipment = new int[]{1, 0, 0, 0};
 
     // Coins
