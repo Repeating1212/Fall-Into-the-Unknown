@@ -1,18 +1,19 @@
-package Level.Lvl_Sample.Waves;
+package Level.Lvl_Sample.Waves.NewWave;
 
 import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.SceneView;
 import Level.Lvl_Sample.Enemy.Object.Rat;
+import Level.Lvl_Sample.Waves.Updater;
+import Level.Lvl_Sample.Waves.Wave;
 
 import java.util.ArrayList;
 
-public class Wave1  extends Wave implements Updater{
+public class NewWave1 extends Wave implements Updater {
 
-    private static final int TOTAL_ROUND = 5;
+    private static final int TOTAL_ROUND = 3;
 
-
-    public Wave1(SceneView sceneView, Player player){
+    public NewWave1(SceneView sceneView, Player player){
         super(sceneView, player, TOTAL_ROUND);
     }
 
@@ -28,7 +29,6 @@ public class Wave1  extends Wave implements Updater{
     @Override
     protected void spawnEnemies(){
         ArrayList<Property> properties = getProperties(gameObj);
-
         int ratNum =  2 + currentRound;
         for (int i = 0; i < ratNum; i++){
             gameObj.add(new Rat(properties));
@@ -37,6 +37,6 @@ public class Wave1  extends Wave implements Updater{
 
     @Override
     protected int getRoundDuration(){
-        return Math.max(8, gameObj.length());
+        return 10;
     }
 }

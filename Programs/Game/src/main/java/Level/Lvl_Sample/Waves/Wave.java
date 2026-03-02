@@ -16,41 +16,40 @@ public abstract class Wave implements Updater{
 
     protected final Player player;
     protected final SceneView sceneView;
-    protected ArrayData<GameObject> gameObj = new ArrayData();
+    protected ArrayData<GameObject> gameObj = new ArrayData<>();
 
-    protected Timer waveTimer = new Timer(0); // Prevent null
-    protected final int TOTAL_WAVE;
-    protected int currentWave = 0;
+    protected final int TOTAL_ROUND;
+    protected Timer roundTimer = new Timer(0); // Prevent null
+    protected int currentRound = 0;
 
     // Slime Spawn
     private final Fission fission = new Fission();
 
-    public Wave(SceneView sceneView, Player player, int totalWave){
+    public Wave(SceneView sceneView, Player player, int totalRound){
         this.player = player;
         this.sceneView = sceneView;
-        this.TOTAL_WAVE = totalWave;
+        this.TOTAL_ROUND = totalRound;
         gameObj.add(player);
     }
 
     public void updateObjects(double deltaTime){
         Observer observer = new Observer(player, gameObj);
 
-        if (currentWave < TOTAL_WAVE &&
-                (waveTimer.isEnd() || gameObj.length() == 1)){
+        if (currentRound < TOTAL_ROUND &&
+                (roundTimer.isEnd() || gameObj.length() == 1)){
             spawnEnemies();
-            waveTimer = new Timer(Math.max(gameObj.length(), 5));
-            waveTimer.start();
+            roundTimer = new Timer(getRoundDuration(), true);
 
-            currentWave ++;
+            currentRound++;
         }
 
         for (GameObject gameObject : gameObj.get()){
             gameObject.update(deltaTime, observer);
         }
 
-        waveTimer.update(deltaTime);
+        roundTimer.update(deltaTime);
         gameObj = fission.spawnSlime(gameObj.copyOf());
-        handleDisplay(getWaveProgression());
+        handleDisplay(getDisplayProgress());
         removeObject();
     }
 
@@ -68,13 +67,11 @@ public abstract class Wave implements Updater{
 
     // Abstract Method
 
-    protected double getWaveProgression(){
-        return waveTimer.getCooldownPercentage();
-    }
-
     public abstract boolean isComplete();
 
     protected abstract void spawnEnemies();
+
+    protected abstract int getRoundDuration();
 
     // Helper method
 
@@ -86,9 +83,12 @@ public abstract class Wave implements Updater{
         return properties;
     }
 
-    protected double getRoundProgress(){
-        return (double) currentWave / TOTAL_WAVE;
+    protected double getRoundProgression(){
+        return (double) currentRound / TOTAL_ROUND;
     }
+
+    protected double getDisplayProgress(){ return roundTimer.getCooldownPercentage(); }
+
 
     // Private Method
 

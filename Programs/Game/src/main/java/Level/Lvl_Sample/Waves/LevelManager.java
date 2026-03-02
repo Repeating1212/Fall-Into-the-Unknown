@@ -4,6 +4,10 @@ import Data.DataClass.ArrayData;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.View.SceneView;
+import Level.Lvl_Sample.Waves.NewWave.NewWave1;
+import Level.Lvl_Sample.Waves.NewWave.NewWave2;
+import Level.Lvl_Sample.Waves.NewWave.NewWave3;
+import Level.Lvl_Sample.Waves.NewWave.NewWave4;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
@@ -25,9 +29,10 @@ public class LevelManager implements Updater{
         gameObj.add(player);
 
         waves = new Wave[]{
-                new Wave1(sceneView, player),
-                new Wave2(sceneView, player),
-                new Wave3(sceneView, player)
+                new NewWave1(sceneView, player),
+                new NewWave2(sceneView, player),
+                new NewWave3(sceneView, player),
+                new NewWave4(sceneView, player)
         };
     }
 

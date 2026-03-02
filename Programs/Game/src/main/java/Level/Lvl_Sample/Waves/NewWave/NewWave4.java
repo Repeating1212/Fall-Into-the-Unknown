@@ -1,4 +1,4 @@
-package Level.Lvl_Sample.Waves;
+package Level.Lvl_Sample.Waves.NewWave;
 
 import Data.DataClass.Timer;
 import Level.BaseLevel.Objects.Player;
@@ -6,18 +6,18 @@ import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.SceneView;
 import Level.Lvl_Sample.Enemy.Object.Rat;
 import Level.Lvl_Sample.Enemy.Object.SlimeKing;
+import Level.Lvl_Sample.Waves.Wave;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-public class Wave3 extends Wave {
+public class NewWave4 extends Wave {
 
     private static final int TOTAL_ROUND = 1;
 
     private final SlimeKing boss;
-    private Timer ratSpawnTimer = new Timer(3, true); // Won't spawn at start
+    private final Timer ratSpawnTimer = new Timer(6, true);
 
-    public Wave3(SceneView sceneView, Player player){
+    public NewWave4(SceneView sceneView, Player player){
         super(sceneView, player, TOTAL_ROUND);
         this.boss = new SlimeKing(getProperties(gameObj));
     }
@@ -26,9 +26,7 @@ public class Wave3 extends Wave {
     public void updateObjects(double deltaTime){
         ratSpawnTimer.update(deltaTime);
         if (ratSpawnTimer.isEnd()){
-            Random random = new Random();
-            int duration = random.nextInt(3, 7);
-            ratSpawnTimer = new Timer(duration, true);
+            ratSpawnTimer.start();
             spawnRat();
         }
         super.updateObjects(deltaTime);
@@ -51,7 +49,7 @@ public class Wave3 extends Wave {
 
     @Override
     protected int getRoundDuration(){
-        return Math.max(8, gameObj.length());
+        return 10;
     }
 
     // Private Method

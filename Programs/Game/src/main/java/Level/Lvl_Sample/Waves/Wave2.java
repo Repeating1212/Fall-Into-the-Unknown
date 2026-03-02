@@ -12,11 +12,11 @@ import java.util.Random;
 
 public class Wave2 extends Wave implements Updater{
 
-    private final static int TOTAL_WAVE = 3;
+    private final static int TOTAL_ROUND = 3;
 
 
     public Wave2(SceneView sceneView, Player player){
-        super(sceneView, player, TOTAL_WAVE);
+        super(sceneView, player, TOTAL_ROUND);
     }
 
     // Override Method
@@ -24,8 +24,8 @@ public class Wave2 extends Wave implements Updater{
     @Override
     public boolean isComplete(){
         return  (player.isAlive() &&
-                (waveTimer.isEnd() || gameObj.length() == 1) &&
-                super.getRoundProgress() >= 1);
+                (roundTimer.isEnd() || gameObj.length() == 1) &&
+                super.getRoundProgression() >= 1);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class Wave2 extends Wave implements Updater{
         ArrayList<Property> properties = getProperties(gameObj);
 
         Random random = new Random();
-        int totalNum = 5 + currentWave;
+        int totalNum = 5 + currentRound;
         int slimeNum = random.nextInt(totalNum + 1);
         int whiteSlimeNum = (slimeNum > 0) ? random.nextInt(slimeNum + 1) : 0;
         int greySlimeNum = slimeNum - whiteSlimeNum;
@@ -49,5 +49,10 @@ public class Wave2 extends Wave implements Updater{
         for (int i = 0; i < ratNum; i++){
             gameObj.add(new Rat(getProperties(gameObj)));
         }
+    }
+
+    @Override
+    protected int getRoundDuration(){
+        return Math.max(8, gameObj.length());
     }
 }
