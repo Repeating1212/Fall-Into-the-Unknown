@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="upgradePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="500.0" styleClass="upgradePane" stylesheets="@../CssFile/UpgradePane.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game_UI.EquipmentScene.UpgradePane">
+   <children>
+      <Text fx:id="title" fill="WHITE" layoutX="22.0" layoutY="48.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textTitle" text="Upgrade Title" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="description" fill="WHITE" layoutX="22.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textDescription" text="Upgrade Text" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="60.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <ProgressBar fx:id="progressBar" layoutX="19.0" layoutY="129.0" prefHeight="8.0" progress="0.13" styleClass="rounded-progress-bar" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="90.0" />
+      <HBox layoutX="16.0" layoutY="155.0" spacing="25.0" AnchorPane.leftAnchor="20.0" />
+      <Button layoutX="406.0" layoutY="25.0" mnemonicParsing="false" onAction="#handlePurchase" prefHeight="30.0" prefWidth="102.0" styleClass="upgradeButton" text="Upgrades" AnchorPane.rightAnchor="-1.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <HBox fx:id="hBox" alignment="CENTER_RIGHT" layoutX="293.0" layoutY="102.0" AnchorPane.rightAnchor="20.0" />
+      <HBox alignment="CENTER_LEFT" layoutX="22.0" layoutY="110.0" spacing="10.0" styleClass="resourcesBox">
+         <children>
+            <Text fx:id="costLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textCoin" text="0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="coinView" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Picture/Game_Icon/Coin_Image.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
