@@ -15,12 +15,15 @@ Note: *This project was developed as a summer game development project and is cu
 
 Prerequisites
 1. Windows Operating System
+2. **Java JDK 23** or later (https://www.oracle.com/java/technologies/javase/jdk23-archive-downloads.html)
+3. **Maven** 3.6 or later (https://maven.apache.org/download.cgi)
 
 Installation and running
 
 1. Clone or download the repository
-2. Navigate to the main folder
-3. Double-click `Game.bat` to start
+2. Navigate to the `Fall-Into-the-Unknown` folder 
+3. Double-click `Game.bat` to start or,
+4. Navigate to `Fall-Into-the-Unknown/GameData` and execute `Game.jar`
 
 ## How to play
 
