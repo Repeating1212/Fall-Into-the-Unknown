@@ -1,5 +1,7 @@
 # Fall Into the Unknown
 
+<img width="600" height="600" alt="Untitled 158" src="https://github.com/user-attachments/assets/2e56fc28-78fb-4b3f-a9b3-31a3fefcecb4" />
+
 ## About The Project
 
 **“ Equip – Challenge – Survive – Upgrade "**
