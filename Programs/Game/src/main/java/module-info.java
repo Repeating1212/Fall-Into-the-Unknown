@@ -58,5 +58,4 @@ module Game {
     opens Level.Lvl_2.Launcher to javafx.fxml;
     exports Level.Lvl_2.Enemy.Object;
     opens Level.Lvl_2.Enemy.Object to javafx.fxml;
-
 }

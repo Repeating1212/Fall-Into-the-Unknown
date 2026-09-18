@@ -5,10 +5,6 @@ import Data.DataClass.LevelType;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.View.SceneView;
-import Level.Lvl_1.Waves.NewWave.NewWave1;
-import Level.Lvl_1.Waves.NewWave.NewWave2;
-import Level.Lvl_1.Waves.NewWave.NewWave3;
-import Level.Lvl_1.Waves.NewWave.NewWave4;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
@@ -17,8 +13,8 @@ public class LevelManager implements Updater {
 
     protected final Player player;
     protected final SceneView sceneView;
-    protected final ArrayData<GameObject> gameObj = new ArrayData();
     protected boolean gameEnd = false;
+    protected boolean debugBoxIsShow = false;
 
     private int currentWave = 0;
 
@@ -27,7 +23,6 @@ public class LevelManager implements Updater {
     public LevelManager(SceneView sceneView, Player player, LevelType levelType){
         this.player = player;
         this.sceneView = sceneView;
-        gameObj.add(player);
 
         waves = levelType.getWaves(sceneView, player);
     }
@@ -36,6 +31,8 @@ public class LevelManager implements Updater {
         if (gameEnd) return;
 
         waves[currentWave].updateObjects(deltaTime);
+        addDebugBox(debugBoxIsShow);
+
         gameEnd = handleWinLose();
 
         if (gameEnd) return;
@@ -66,14 +63,16 @@ public class LevelManager implements Updater {
 
     // Debug usage
 
-    private void addHitBoxDebug(){
+    public void toggleDebugBox(){
+        debugBoxIsShow = !debugBoxIsShow;
+        addDebugBox(debugBoxIsShow);
+    }
+
+    private void addDebugBox(boolean isShow){
         // For Debug purpose
-        ArrayList<Rectangle> rectangles = new ArrayList<>();
-        for (GameObject object : gameObj.get()) {
-            rectangles.add(object.getProperty().getDebugHitBox());
-            object.getProperty().showDebugHitBox();
+        for (GameObject object : waves[currentWave].getGameObj().get()) {
+            object.getProperty().showDebugBox(isShow);
         }
-        sceneView.addDebugHitBox(rectangles);
     }
 
 }

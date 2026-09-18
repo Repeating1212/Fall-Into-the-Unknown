@@ -1,5 +1,6 @@
 package Level.BaseLevel.Properties;
 
+import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -16,6 +17,7 @@ public class HitBox {
     private final double TOUCH_TOLERANCE = 3;
 
     private Rectangle debugView;
+    private DebugBox debugBox;
 
     public HitBox(int width, int height, Position position, Boolean isBlockMovement, Status status){
         this.height = height;
@@ -24,6 +26,7 @@ public class HitBox {
         this.isBlockMovement = isBlockMovement;
         this.status = status;
         createDebugView();
+        debugBox = new DebugBox(debugView);
     }
 
     protected void resetBugView(){
@@ -36,11 +39,6 @@ public class HitBox {
         if (debugView != null) {
             debugView.setVisible(show);
         }
-    }
-
-    // Get debug rectangle for adding to scene
-    protected Rectangle getDebugHitBox() {
-        return debugView;
     }
 
     protected boolean isCollide (HitBox other) {
@@ -121,6 +119,10 @@ public class HitBox {
 
     protected Position getBottomRight() {
         return new Position(position.getX() + width, position.getY() + height);
+    }
+
+    protected DebugBox getDebugBox(){
+        return debugBox;
     }
 
     // Private Method

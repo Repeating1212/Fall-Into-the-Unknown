@@ -54,6 +54,7 @@ public abstract class GameObject implements DisplayableObject {
     protected ArrayData<DisplayableObject> reloadDisplay(){
         ArrayData<DisplayableObject> returnArray = new ArrayData<>();
         returnArray.add(this);
+        returnArray.add(this.property.getDebugBox());
         return returnArray;
     }
 

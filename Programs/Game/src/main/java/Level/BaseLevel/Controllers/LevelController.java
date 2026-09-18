@@ -1,12 +1,14 @@
 package Level.BaseLevel.Controllers;
 
 
+import Data.DataClass.LevelType;
 import Data.Interface.SmokeScene;
 import Data.Loader.SceneLoader;
 import Level.BaseLevel.Manager.GameTicks;
 import Level.BaseLevel.Manager.InputHandler;
 import Data.Interface.SceneInterface;
 import Data.Supplier.SkillSupplier;
+import Level.BaseLevel.Manager.LevelManager;
 import Level.BaseLevel.Objects.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
@@ -20,6 +22,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import Level.BaseLevel.View.* ;
+
+import java.util.Objects;
 
 public class LevelController extends SceneInterface implements SmokeScene {
 
@@ -35,6 +39,7 @@ public class LevelController extends SceneInterface implements SmokeScene {
     private SceneView sceneView;
     private GameTicks gameTicks;
     private InputHandler inputHandler;
+    private LevelManager levelManager;
 
     @FXML private Pane rootPane;
 
@@ -78,7 +83,9 @@ public class LevelController extends SceneInterface implements SmokeScene {
         // Game update related
         Player player = new Player(SkillSupplier.getPlayerSkills(fileManager));
         this.inputHandler = new InputHandler(sceneView, player);
-        gameTicks = new GameTicks(sceneView, player, inputHandler);
+        this.levelManager = new LevelManager(sceneView, player, LevelType.LEVEL_01);
+
+        gameTicks = new GameTicks(sceneView, player, inputHandler, levelManager);
     }
 
     private void setupMouseInput() {
@@ -106,6 +113,7 @@ public class LevelController extends SceneInterface implements SmokeScene {
                 case A -> inputHandler.moveLeft(true);
                 case S -> inputHandler.moveDown(true);
                 case D -> inputHandler.moveRight(true);
+                case B -> levelManager.toggleDebugBox();
             }
         });
 
@@ -119,6 +127,13 @@ public class LevelController extends SceneInterface implements SmokeScene {
                 case D -> inputHandler.moveRight(false);
             }
         });
+//        rootPane.setOnlyKeyPressed(event -> {
+//            KeyCode key = event.getCode();
+//
+//            if (Objects.requireNonNull(key) == KeyCode.B) {
+//                levelManager.toggleDebugBox();
+//            }
+//        });
     }
 
     private void handleMouseWheel(ScrollEvent event) {

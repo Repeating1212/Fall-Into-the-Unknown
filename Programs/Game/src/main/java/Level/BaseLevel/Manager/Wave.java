@@ -88,7 +88,6 @@ public abstract class Wave implements Updater {
 
     protected double getDisplayProgress(){ return roundTimer.getCooldownPercentage(); }
 
-
     // Private Method
 
     private void handleDisplay(double progression){

@@ -15,8 +15,9 @@ public class GameTicks {
     private long lastUpdateTime = 0;
     private boolean isRunning = false;
 
-    public GameTicks(SceneView sceneView, Player player, InputHandler inputHandler) {
-        this.manager = new LevelManager(sceneView, player, LevelType.LEVEL_01);
+    public GameTicks(SceneView sceneView, Player player, InputHandler inputHandler, Updater levelManager) {
+        this.manager = levelManager;
+//        this.manager = new LevelManager(sceneView, player, LevelType.LEVEL_01);
         this.inputHandler = inputHandler;
     }
 

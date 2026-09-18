@@ -52,12 +52,12 @@ public class Property {
 
     public void resetDebugHitBox(){ hitBox.resetBugView();}
 
-    public void showDebugHitBox(){
-        hitBox.showDebug(true);
+    public void showDebugBox(boolean isShow){
+        hitBox.showDebug(isShow);
     }
 
-    public Rectangle getDebugHitBox() {
-        return hitBox.getDebugHitBox();
+    public DebugBox getDebugBox(){
+        return hitBox.getDebugBox();
     }
 
     public boolean isCollide (Property other) {
