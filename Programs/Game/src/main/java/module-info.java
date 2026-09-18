@@ -58,4 +58,6 @@ module Game {
     opens Level.Lvl_2.Launcher to javafx.fxml;
     exports Level.Lvl_2.Enemy.Object;
     opens Level.Lvl_2.Enemy.Object to javafx.fxml;
+    exports Game_File.StaticData;
+    opens Game_File.StaticData to com.google.gson, javafx.fxml;
 }

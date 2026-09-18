@@ -1,6 +1,5 @@
 package Level.BaseLevel.Manager;
 
-import Data.DataClass.LevelType;
 import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.View.SceneView;
 import javafx.animation.AnimationTimer;

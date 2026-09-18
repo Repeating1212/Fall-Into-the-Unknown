@@ -5,6 +5,8 @@ import Data.Interface.SmokeScene;
 import Data.Loader.ImageLoader;
 import Data.Loader.SceneLoader;
 import Data.Supplier.SkillSupplier;
+import Game_File.StaticData.GameData;
+import Game_File.StaticData.LevelType;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -32,7 +34,7 @@ public class GameController2 extends SceneInterface implements SmokeScene {
 
     @FXML
     public void initialize() {
-        levels = new  ImageView[]{Graveyard, Bridge, Fish_Port, Lake, Mountain, Tower, Dragon, Portal};
+        levels = new  ImageView[]{Bridge, Fish_Port, Lake, Mountain, Tower, Dragon, Portal};
         skillIcons  = new ImageView[]{skill01, skill02, skill03, skill04};
         setupSettingIconAnimation();
     }
@@ -83,6 +85,13 @@ public class GameController2 extends SceneInterface implements SmokeScene {
 
     @FXML
     private void loadLevel01() {
+        GameData.GAME_LEVEL = LevelType.LEVEL_01;
+        SceneLoader.switchSceneWithSmoke(rootPane, SceneLoader.SceneType.LEVEL_01, fileManager);
+    }
+
+    @FXML
+    private void loadLevel02() {
+        GameData.GAME_LEVEL = LevelType.LEVEL_02;
         SceneLoader.switchSceneWithSmoke(rootPane, SceneLoader.SceneType.LEVEL_01, fileManager);
     }
 

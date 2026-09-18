@@ -1,7 +1,8 @@
 package Level.BaseLevel.Controllers;
 
 
-import Data.DataClass.LevelType;
+import Game_File.StaticData.GameData;
+import Game_File.StaticData.LevelType;
 import Data.Interface.SmokeScene;
 import Data.Loader.SceneLoader;
 import Level.BaseLevel.Manager.GameTicks;
@@ -22,8 +23,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import Level.BaseLevel.View.* ;
-
-import java.util.Objects;
 
 public class LevelController extends SceneInterface implements SmokeScene {
 
@@ -83,7 +82,7 @@ public class LevelController extends SceneInterface implements SmokeScene {
         // Game update related
         Player player = new Player(SkillSupplier.getPlayerSkills(fileManager));
         this.inputHandler = new InputHandler(sceneView, player);
-        this.levelManager = new LevelManager(sceneView, player, LevelType.LEVEL_01);
+        this.levelManager = new LevelManager(sceneView, player, GameData.GAME_LEVEL);
 
         gameTicks = new GameTicks(sceneView, player, inputHandler, levelManager);
     }

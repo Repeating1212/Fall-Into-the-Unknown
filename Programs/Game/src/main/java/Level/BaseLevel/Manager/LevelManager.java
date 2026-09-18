@@ -1,13 +1,10 @@
 package Level.BaseLevel.Manager;
 
-import Data.DataClass.ArrayData;
-import Data.DataClass.LevelType;
+import Game_File.StaticData.LevelType;
 import Level.BaseLevel.Objects.Class_Base.GameObject;
 import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.View.SceneView;
-import javafx.scene.shape.Rectangle;
 
-import java.util.ArrayList;
 
 public class LevelManager implements Updater {
 

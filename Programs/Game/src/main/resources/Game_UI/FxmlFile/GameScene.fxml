@@ -13,43 +13,43 @@
    <children>
       <ImageView fx:id="gameBackground" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../../Picture/Map%20Components/Map_Background.png" />
+            <Image url="@../../Picture/UI_Picture/Map%20Components/Map_Background.png" />
          </image></ImageView>
       <ImageView fx:id="Forest" fitWidth="350.0" layoutX="126.0" layoutY="23.0" onMouseClicked="#loadLevel01" pickOnBounds="true" preserveRatio="true" styleClass="hover-enlarge">
          <image>
-            <Image url="@../../Picture/Map%20Components/Forest.png" />
+            <Image url="@../../Picture/UI_Picture/Map%20Components/Forest.png" />
          </image></ImageView>
-      <ImageView fx:id="Graveyard" fitWidth="275.0" layoutX="463.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true" styleClass="hover-enlarge">
+      <ImageView fx:id="Graveyard" fitWidth="275.0" layoutX="463.0" layoutY="47.0" onMouseClicked="#loadLevel02" pickOnBounds="true" preserveRatio="true" styleClass="hover-enlarge">
          <image>
-            <Image url="@../../Picture/Map%20Components/Graveyard.png" />
+            <Image url="@../../Picture/UI_Picture/Map%20Components/Graveyard.png" />
          </image></ImageView>
       <ImageView fx:id="Bridge" fitHeight="140.0" fitWidth="175.0" layoutX="382.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" styleClass="hover-enlarge">
          <image>
-            <Image url="@../../Picture/Map%20Components/Bridge.png" />
+            <Image url="@../../Picture/UI_Picture/Map%20Components/Bridge.png" />
          </image></ImageView>
       <ImageView fx:id="Fish_Port" fitWidth="225.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true" styleClass="hover-enlarge">
          <image>
-            <Image url="@../../Picture/Map%20Components/Fish_Port.png" />
+            <Image url="@../../Picture/UI_Picture/Map%20Components/Fish_Port.png" />
          </image></ImageView>
       <ImageView fx:id="Lake" fitWidth="300.0" layoutX="254.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" styleClass="hover-enlarge">
          <image>
-            <Image url="@../../Picture/Map%20Components/Lake.png" />
+            <Image url="@../../Picture/UI_Picture/Map%20Components/Lake.png" />
          </image></ImageView>
       <ImageView fx:id="Mountain" fitWidth="250.0" layoutX="433.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" styleClass="hover-enlarge">
          <image>
-            <Image url="@../../Picture/Map%20Components/Mountain.png" />
+            <Image url="@../../Picture/UI_Picture/Map%20Components/Mountain.png" />
          </image></ImageView>
       <ImageView fx:id="Tower" fitWidth="240.0" layoutX="665.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true" styleClass="hover-enlarge">
          <image>
-            <Image url="@../../Picture/Map%20Components/Tower.png" />
+            <Image url="@../../Picture/UI_Picture/Map%20Components/Tower.png" />
          </image></ImageView>
       <ImageView fx:id="Dragon" fitWidth="175.0" layoutX="975.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true" styleClass="hover-enlarge">
          <image>
-            <Image url="@../../Picture/Map%20Components/Dragon.png" />
+            <Image url="@../../Picture/UI_Picture/Map%20Components/Dragon.png" />
          </image></ImageView>
       <ImageView fx:id="Portal" fitWidth="225.0" layoutX="911.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" styleClass="hover-enlarge">
          <image>
-            <Image url="@../../Picture/Map%20Components/Portal.png" />
+            <Image url="@../../Picture/UI_Picture/Map%20Components/Portal.png" />
          </image></ImageView>
       <HBox alignment="CENTER" layoutX="201.0" layoutY="567.0" prefWidth="800.0" spacing="45.0" styleClass="iconBoard" AnchorPane.bottomAnchor="0.0">
          <children>

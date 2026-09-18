@@ -1,4 +1,4 @@
-package Level.Lvl_1.Waves;
+package Level.Lvl_2.Waves;
 
 import Level.BaseLevel.Manager.Wave;
 import Level.BaseLevel.Objects.Player;
@@ -8,15 +8,13 @@ import Level.Lvl_1.Waves.NewWave.NewWave2;
 import Level.Lvl_1.Waves.NewWave.NewWave3;
 import Level.Lvl_1.Waves.NewWave.NewWave4;
 
-public class Level01_Wave {
+public class Level02_Wave {
 
     public static Wave[] getWaves(SceneView sceneView, Player player){
         return new Wave[]
                 {
-                new NewWave1(sceneView, player),
-                new NewWave2(sceneView, player),
-                new NewWave3(sceneView, player),
-                new NewWave4(sceneView, player)
+                new Wave1(sceneView, player),
+                new Wave1(sceneView, player),
                 };
     }
 }
