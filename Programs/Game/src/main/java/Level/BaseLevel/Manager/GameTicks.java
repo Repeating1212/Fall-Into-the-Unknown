@@ -1,9 +1,8 @@
 package Level.BaseLevel.Manager;
 
+import Data.DataClass.LevelType;
 import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.View.SceneView;
-import Level.Lvl_Sample.Waves.LevelManager;
-import Level.Lvl_Sample.Waves.Updater;
 import javafx.animation.AnimationTimer;
 
 public class GameTicks {
@@ -17,7 +16,7 @@ public class GameTicks {
     private boolean isRunning = false;
 
     public GameTicks(SceneView sceneView, Player player, InputHandler inputHandler) {
-        this.manager = new LevelManager(sceneView, player);
+        this.manager = new LevelManager(sceneView, player, LevelType.LEVEL_01);
         this.inputHandler = inputHandler;
     }
 

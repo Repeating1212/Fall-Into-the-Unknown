@@ -37,7 +37,7 @@ module Game {
     opens Level.BaseLevel.View to javafx.fxml;
     exports Level.BaseLevel.Properties;
     opens Level.BaseLevel.Properties to javafx.fxml;
-    exports Level.Lvl_Sample.Enemy.Config;
+    exports Level.Lvl_1.Enemy.Config;
     exports Level.BaseLevel.View.AttackVisualize;
     opens Level.BaseLevel.View.AttackVisualize to javafx.fxml;
     exports Level.BaseLevel.Skills;
@@ -47,11 +47,16 @@ module Game {
     opens Level.BaseLevel.Objects.Class_Base to javafx.fxml;
     exports Data.DataClass;
     opens Data.DataClass to com.google.gson, javafx.fxml;
-    exports Level.Lvl_Sample.Launcher;
-    opens Level.Lvl_Sample.Launcher to javafx.fxml;
-    exports Level.Lvl_Sample.Enemy.Object;
-    opens Level.Lvl_Sample.Enemy.Object to javafx.fxml;
+    exports Level.Lvl_1.Launcher;
+    opens Level.Lvl_1.Launcher to javafx.fxml;
+    exports Level.Lvl_1.Enemy.Object;
+    opens Level.Lvl_1.Enemy.Object to javafx.fxml;
     exports Level.BaseLevel.Objects;
     opens Level.BaseLevel.Objects to javafx.fxml;
+
+    exports Level.Lvl_2.Launcher;
+    opens Level.Lvl_2.Launcher to javafx.fxml;
+    exports Level.Lvl_2.Enemy.Object;
+    opens Level.Lvl_2.Enemy.Object to javafx.fxml;
 
 }

@@ -8,7 +8,6 @@ import Level.BaseLevel.Properties.PlayerState;
 import Level.BaseLevel.Skills.Attack;
 import Level.BaseLevel.Manager.Observer;
 import Level.BaseLevel.Skills.Skill;
-import Level.Lvl_Sample.Behaviour.Behaviour;
 
 public class Player extends ImageObject {
     private final PlayerState playerState;
