@@ -179,7 +179,7 @@ public class Position {
             // Try moving in this direction until we find a valid spot
             for (int step = 0; step < 20; step++) {
 
-                if (self.isTouchBoundary()) break;
+                if (self.isCollideBoundary()) break;
 
                 this.x = (x + moveX);
                 this.y = (y + moveY);

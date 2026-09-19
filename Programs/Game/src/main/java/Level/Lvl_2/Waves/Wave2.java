@@ -3,19 +3,18 @@ package Level.Lvl_2.Waves;
 import Level.BaseLevel.Objects.Player;
 import Level.BaseLevel.Properties.Property;
 import Level.BaseLevel.View.SceneView;
+import Level.Lvl_1.Enemy.Object.Rat;
 import Level.BaseLevel.Manager.Updater;
 import Level.BaseLevel.Manager.Wave;
-import Level.Lvl_1.Enemy.Object.Rat;
-import Level.Lvl_2.Enemy.Object.Skeleton;
-
+import Level.Lvl_2.Enemy.Object.Bullet;
 
 import java.util.ArrayList;
 
-public class Wave1 extends Wave implements Updater {
+public class Wave2 extends Wave implements Updater {
 
     private static final int TOTAL_ROUND = 3;
 
-    public Wave1(SceneView sceneView, Player player){
+    public Wave2(SceneView sceneView, Player player){
         super(sceneView, player, TOTAL_ROUND);
     }
 
@@ -30,10 +29,10 @@ public class Wave1 extends Wave implements Updater {
 
     @Override
     protected void spawnEnemies(){
-        ArrayList<Property> properties = getProperties(gameObj);
-        int enemyNum =  2 + currentRound;
-        for (int i = 0; i < enemyNum; i++){
-            gameObj.add(new Skeleton(properties));
+        int ratNum =  10 + currentRound;
+        for (int i = 0; i < ratNum; i++){
+            Bullet bullet = new Bullet(player.getCenterPos());
+            gameObj.add(bullet);
         }
     }
 

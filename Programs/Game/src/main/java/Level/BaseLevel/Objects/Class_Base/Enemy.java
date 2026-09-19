@@ -21,13 +21,11 @@ public abstract class Enemy extends ImageObject {
 
     @Override
     public void updateAlive(double deltaTime, Observer observer) {
-
         if (! property.isCollide(observer.getGameObjPrt())){
             for (Behaviour behaviour: behaviours){
                 behaviour.update(deltaTime, observer);
             }
         }
-
         super.updateAlive(deltaTime, observer);
     }
 

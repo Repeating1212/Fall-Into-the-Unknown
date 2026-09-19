@@ -32,7 +32,7 @@ public class Rush implements Behaviour{
         this.DAMAGE = damage;
 
         this.rigid = new Timer(rushRigid);
-        this.rushTimer = new Timer(RANGE / (owner.getAverageSpeed() * SPEED_INCREMENT));
+        this.rushTimer = new Timer(RANGE / (owner.getBaseSpeed() * SPEED_INCREMENT));
         this.cooldown = new Timer(cooldown);
 
         this.owner = owner;

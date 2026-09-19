@@ -51,4 +51,22 @@ public class TimerValue {
         }
         return product;
     }
+
+    public double getMax() {
+        if (values.isEmpty()) return 0;
+        double max = 0;
+        for (double v : values) {
+            max = Math.max(max, v);
+        }
+        return max;
+    }
+
+    public double getMin() {
+        if (values.isEmpty()) return 0;
+        double min = 0;
+        for (double v : values) {
+            min = Math.min(min, v);
+        }
+        return min;
+    }
 }

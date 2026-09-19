@@ -61,16 +61,6 @@ public class Player extends ImageObject {
 
     // Override Method
 
-    @Override
-    public boolean takeDamage(double damage){
-        if (property.isInvincible() || property.isDefend()){
-            return false;
-        } else {
-            property.setInvincible(PlayerConfig.INVINCIBILITY_PERIOD);
-            return super.takeDamage(damage);
-        }
-    }
-
     // Private Method
 
     private  void handleInvincibilityAnimation(){

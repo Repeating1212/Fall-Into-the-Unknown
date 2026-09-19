@@ -42,8 +42,8 @@ public class AttackConfig extends SkillConfig {
     private static final double RIGID_TIME = TOTAL_ANIMATION_PERIOD + 0.2;
 
     private final UpgradeValue damageUpgValue = new UpgradeValue(
-            new double[]{ 10, 14, 18},
-            new double[]{ 2, 4, 4},
+            new double[]{ 10, 14, 18}, // Damage
+            new double[]{ 2, 4, 4},    // Cost
             DAMAGE_ID
     );
 

@@ -69,6 +69,11 @@ public abstract class ImageObject extends GameObject {
         updateSpritePosition();
     }
 
+    protected void resetSprite(){
+        sprite.setFitWidth(property.getWidth());
+        sprite.setFitHeight(property.getHeight());
+    }
+
     private void handleDeadAnimation(){
         if (property.isDead()){
             deadAnimation.play();

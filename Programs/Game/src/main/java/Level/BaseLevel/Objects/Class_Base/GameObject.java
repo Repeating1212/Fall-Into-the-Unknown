@@ -119,8 +119,12 @@ public abstract class GameObject implements DisplayableObject {
     // Health Related
 
     public boolean takeDamage(double damage) {
-        property.reduceHealth(damage);
-        return true;
+        if (property.isInvincible() || property.isDefend()){
+            return false;
+        } else {
+            property.reduceHealth(damage);
+            return true;
+        }
     }
 
     public int getHealth() {

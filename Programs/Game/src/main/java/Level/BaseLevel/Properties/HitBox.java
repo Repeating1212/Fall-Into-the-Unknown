@@ -1,6 +1,6 @@
 package Level.BaseLevel.Properties;
 
-import Level.BaseLevel.Objects.Class_Base.DisplayableObject;
+import Game_File.StaticData.GameData;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -11,8 +11,8 @@ public class HitBox {
     private final Position position;
     private final Status status;
 
-    private final int width;
-    private final int height;
+    private int width;
+    private int height;
     private final boolean isBlockMovement; // True when object unable to pass through, wall etc
     private final double TOUCH_TOLERANCE = 3;
 
@@ -26,7 +26,6 @@ public class HitBox {
         this.isBlockMovement = isBlockMovement;
         this.status = status;
         createDebugView();
-        debugBox = new DebugBox(debugView);
     }
 
     protected void resetBugView(){
@@ -79,14 +78,29 @@ public class HitBox {
         return isBlockMovement;
     }
 
-    protected boolean isTouchBoundary(){
-        int MAP_WIDTH = 1200;
-        int MAP_HEIGHT = 675;
-
+    protected boolean isCollideBoundary(){
         return position.getX() < 0 &&
-                position.getX() > MAP_WIDTH - width &&
+                position.getX() > GameData.MAP_WIDTH - width &&
                 position.getY() < 0 &&
-                position.getY() <= MAP_HEIGHT;
+                position.getY() > GameData.MAP_HEIGHT - height;
+    }
+
+    protected boolean isTouchBoundary(){
+
+        return position.getX() <= 0 ||
+                position.getX() >= GameData.MAP_WIDTH - width ||
+                position.getY() <= 0 ||
+                position.getY() >= GameData.MAP_HEIGHT - height;
+    }
+
+    protected void setHeight(int height) {
+        this.height = height;
+        createDebugView();
+    }
+
+    protected void setWidth(int width) {
+        this.width = width;
+        createDebugView();
     }
 
     // Getter Method
@@ -136,5 +150,6 @@ public class HitBox {
         debugView.setStrokeWidth(1);
         debugView.setOpacity(0.7);
         debugView.setVisible(false); // Hidden by default
+        debugBox = new DebugBox(debugView);
     }
 }

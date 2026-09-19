@@ -9,13 +9,17 @@ public class Status {
     private ArrayData<Timer> pauseDirect = new ArrayData<>();
     private ArrayData<Timer> invincibilityTimer = new ArrayData<>();
     private ArrayData<Timer> defends = new ArrayData<>();
+    private ArrayData<Timer> pauseAttack = new ArrayData<>();
     private TimerValue speedMultiply = new TimerValue();
+    private TimerValue speedIncrement = new TimerValue();
 
     public void update(double deltaTime) {
         updateTimerList(pauseMovement, deltaTime);
         updateTimerList(pauseDirect, deltaTime);
         updateTimerList(invincibilityTimer, deltaTime);
         updateTimerList(defends, deltaTime);
+        updateTimerList(pauseAttack, deltaTime);
+        speedIncrement.update(deltaTime);
         speedMultiply.update(deltaTime);
     }
 
@@ -31,6 +35,11 @@ public class Status {
         pauseDirect.add(timer);
     }
 
+    public void pauseAttack(double duration){
+        Timer timer = new Timer(duration, true);
+        pauseAttack.add(timer);
+    }
+
     public void setInvincible (double duration){
         invincibilityTimer.add(new Timer(duration, true));
     }
@@ -43,14 +52,18 @@ public class Status {
         this.speedMultiply.add(duration, speedMultiply);
     }
 
-    public void setSpeedDivision(double duration, double speedDivide){
-        this.speedMultiply.add(duration,  (1 / speedDivide));
+    public void setSpeedIncrement(double duration, double speedIncrement){
+        this.speedIncrement.add(duration, speedIncrement);
     }
 
     // Getter
 
     public boolean isPauseMovement(){
         return ! pauseMovement.isEmpty();
+    }
+
+    public boolean isPauseAttack(){
+        return ! pauseAttack.isEmpty();
     }
 
     public boolean directable() {return pauseDirect.isEmpty();}
@@ -62,6 +75,8 @@ public class Status {
     public double getSpeedMultiply(){
         return speedMultiply.getProduct();
     }
+
+    public double getSpeedIncrement(){ return speedIncrement.getMax(); }
 
     // Private Method
 

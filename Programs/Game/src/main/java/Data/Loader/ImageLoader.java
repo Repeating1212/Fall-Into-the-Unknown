@@ -53,6 +53,8 @@ public class ImageLoader {
 
     // LEVEL 02 IMAGE
     private static final String L02_BULLET_PATH = "/Picture/Level_Picture/Lvl_02/Bullet.png";
+    private static final String L02_SKELETON_PATH = "/Picture/Level_Picture/Lvl_02/Skeleton.png";
+    private static final String L02_SKELETON_INVINCIBLE_PATH = "/Picture/Level_Picture/Lvl_02/Skeleton.gif";
 
 
 
@@ -101,6 +103,9 @@ public class ImageLoader {
 
     public static final Image STARTSCENE_BACKGROUND = new Image(ImageLoader.class.getResourceAsStream(STARTSCENE_IMAGE_Path));
     public static final Image L02_BULLET            = new Image(ImageLoader.class.getResourceAsStream(L02_BULLET_PATH));
+    public static final Image L02_Skeleton          = new Image(ImageLoader.class.getResourceAsStream(L02_SKELETON_PATH));
+    public static final Image L02_Skeleton_Invincible = new Image(ImageLoader.class.getResourceAsStream(L02_SKELETON_INVINCIBLE_PATH));
+
 
     public static void clipImage(ImageView imageView){
         Rectangle clip = new Rectangle(

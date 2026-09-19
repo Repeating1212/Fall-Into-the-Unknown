@@ -1,7 +1,5 @@
 package Level.BaseLevel.Properties;
 
-import javafx.scene.shape.Rectangle;
-
 import java.util.ArrayList;
 
 public class Property {
@@ -9,7 +7,7 @@ public class Property {
     private final HitBox hitBox;
     private final MovementState movementState;
     private final Health health;
-    private final Status status;
+    public final Status status;
 
     public Property(HitBox hitBox, MovementState movementState, Health health, Status status){
         this.hitBox = hitBox;
@@ -52,6 +50,10 @@ public class Property {
 
     public void resetDebugHitBox(){ hitBox.resetBugView();}
 
+    public boolean isCollideBoundary(){ return hitBox.isCollideBoundary();}
+
+    public boolean isTouchBoundary(){ return hitBox.isTouchBoundary();}
+
     public void showDebugBox(boolean isShow){
         hitBox.showDebug(isShow);
     }
@@ -82,20 +84,27 @@ public class Property {
     public Position getCenterPos() {return hitBox.getCenterPos();}
 
     public Position[] getCorner(){
-        Position[] corners = {
+        return new Position[]{
                 hitBox.getTopLeft(),
                 hitBox.getTopRight(),
                 hitBox.getBottomLeft(),
                 hitBox.getBottomRight()
         };
-        return corners;
+    }
+
+    public void setHeight(int height){
+        hitBox.setHeight(height);
+    }
+
+    public void setWidth(int width){
+        hitBox.setWidth(width);
     }
 
     // MovementState
 
-    public double getAverageSpeed() { return
-            movementState.getSpeed();
-    }
+    public double getBaseSpeed() { return movementState.getBaseSpeed(); }
+
+    public void setBaseSpeed(int speed) { movementState.setBaseSpeed(speed);}
 
     public boolean isMovingLeft() {return movementState.isMovingLeft();}
     public boolean isMovingRight() {return movementState.isMovingRight();}

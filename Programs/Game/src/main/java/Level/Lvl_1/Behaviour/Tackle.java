@@ -49,10 +49,12 @@ public class Tackle implements Behaviour{
 
     @Override
     public void activate(Observer observer){
-        for (GameObject object : observer.getHealthObj()){
-            if( isHittable(object) ){
-                cooldown.start();
-                owner.pauseMovement(RIGID_DURATION);
+        if (!owner.status.isPauseAttack()){
+            for (GameObject object : observer.getHealthObj()){
+                if( isHittable(object) ){
+                    cooldown.start();
+                    owner.pauseMovement(RIGID_DURATION);
+                }
             }
         }
     }
