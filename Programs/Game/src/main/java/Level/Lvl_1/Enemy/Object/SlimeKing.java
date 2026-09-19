@@ -4,6 +4,7 @@ import Data.Loader.ImageLoader;
 import Level.BaseLevel.Properties.Property;
 import Level.Lvl_1.Behaviour.Behaviour;
 import Level.Lvl_1.Behaviour.BossBehaviour;
+import Level.Lvl_1.Behaviour.PointToward;
 import Level.Lvl_1.Enemy.Config.SlimeKingConfig;
 import Level.Lvl_1.Enemy.Interface.Slime;
 import Level.Lvl_1.Enemy.Interface.Spawnable;
@@ -23,7 +24,8 @@ public class SlimeKing extends Slime implements Spawnable {
     @Override
     protected Behaviour[] getBehaviours(){
         return new Behaviour[]{
-                new BossBehaviour(this)
+                new PointToward(this.property),
+                new BossBehaviour(this),
         };
     }
 

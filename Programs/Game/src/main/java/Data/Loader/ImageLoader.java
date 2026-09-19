@@ -45,11 +45,14 @@ public class ImageLoader {
     private static final String HEART_FULL_Path     = "/Picture/Level_Picture/HeartFull.png";
     private static final String HEART_EMPTY_Path    = "/Picture/Level_Picture/HeartEmpty.png";
 
-    // EnemyImage
+    // LEVEL 01 IMAGE
     private static final String L01_RAT_Path = "/Picture/Level_Picture/Enemy/Rat.png";
     private static final String L01_SLIME_GREY_Path = "/Picture/Level_Picture/Enemy/Slime Grey.png";
     private static final String L01_SLIME_WHITE_Path = "/Picture/Level_Picture/Enemy/Slime White.png";
     private static final String L01_SLIME_KING_Path = "/Picture/Level_Picture/Enemy/Slime King.png";
+
+    // LEVEL 02 IMAGE
+    private static final String L02_BULLET_PATH = "/Picture/Level_Picture/Lvl_02/Bullet.png";
 
 
 
@@ -97,6 +100,7 @@ public class ImageLoader {
     public static final Image L01_SLIME_KING = new Image(ImageLoader.class.getResourceAsStream(L01_SLIME_KING_Path));
 
     public static final Image STARTSCENE_BACKGROUND = new Image(ImageLoader.class.getResourceAsStream(STARTSCENE_IMAGE_Path));
+    public static final Image L02_BULLET            = new Image(ImageLoader.class.getResourceAsStream(L02_BULLET_PATH));
 
     public static void clipImage(ImageView imageView){
         Rectangle clip = new Rectangle(

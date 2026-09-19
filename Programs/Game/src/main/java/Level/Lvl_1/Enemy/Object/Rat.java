@@ -3,6 +3,7 @@ package Level.Lvl_1.Enemy.Object;
 import Data.Loader.ImageLoader;
 import Level.BaseLevel.Properties.Property;
 import Level.Lvl_1.Behaviour.Behaviour;
+import Level.Lvl_1.Behaviour.PointToward;
 import Level.Lvl_1.Enemy.Config.RatConfig;
 import Level.BaseLevel.Objects.Class_Base.Enemy;
 
@@ -19,7 +20,8 @@ public class Rat extends Enemy {
     @Override
     protected Behaviour[] getBehaviours(){
         return new Behaviour[]{
-                RatConfig.getTackle(this.property)
+                new PointToward(this.property),
+                RatConfig.getTackle(this.property),
         };
     }
 }

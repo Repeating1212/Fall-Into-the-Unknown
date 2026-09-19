@@ -21,7 +21,6 @@ public abstract class Enemy extends ImageObject {
 
     @Override
     public void updateAlive(double deltaTime, Observer observer) {
-        property.pointTo(observer.getPlayerPosition());
 
         if (! property.isCollide(observer.getGameObjPrt())){
             for (Behaviour behaviour: behaviours){

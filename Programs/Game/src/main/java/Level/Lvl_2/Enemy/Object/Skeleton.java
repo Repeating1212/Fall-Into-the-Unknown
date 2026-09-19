@@ -13,7 +13,7 @@ public class Skeleton extends Enemy {
 
 
     public Skeleton(ArrayList<Property> properties) {
-        super(SkeletonConfig.getProperty(), ImageLoader.L01_RAT, RatConfig.DEAD_DURATION);
+        super(SkeletonConfig.getProperty(), ImageLoader.L02_BULLET, RatConfig.DEAD_DURATION);
         property.spawnNearBoundary(properties);
     }
 

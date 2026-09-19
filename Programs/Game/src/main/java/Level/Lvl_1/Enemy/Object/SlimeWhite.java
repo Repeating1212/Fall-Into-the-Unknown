@@ -3,6 +3,7 @@ package Level.Lvl_1.Enemy.Object;
 import Data.Loader.ImageLoader;
 import Level.BaseLevel.Properties.Property;
 import Level.Lvl_1.Behaviour.Behaviour;
+import Level.Lvl_1.Behaviour.PointToward;
 import Level.Lvl_1.Enemy.Config.SlimeWhiteConfig;
 import Level.Lvl_1.Enemy.Interface.Slime;
 
@@ -30,8 +31,9 @@ public class SlimeWhite extends Slime {
     @Override
     protected Behaviour[] getBehaviours(){
         return new Behaviour[]{
+                        new PointToward(this.property),
                         SlimeWhiteConfig.getRush(this.property, SIZE),
-                        SlimeWhiteConfig.getTackle(this.property, SIZE)
+                        SlimeWhiteConfig.getTackle(this.property, SIZE),
                 };
     }
 

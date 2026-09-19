@@ -3,6 +3,7 @@ package Level.Lvl_1.Enemy.Object;
 import Data.Loader.ImageLoader;
 import Level.BaseLevel.Properties.Property;
 import Level.Lvl_1.Behaviour.Behaviour;
+import Level.Lvl_1.Behaviour.PointToward;
 import Level.Lvl_1.Enemy.Config.SlimeGreyConfig;
 import Level.Lvl_1.Enemy.Interface.Slime;
 
@@ -29,7 +30,8 @@ public class SlimeGrey extends Slime {
     @Override
     protected Behaviour[] getBehaviours(){
         return new Behaviour[]{
-                SlimeGreyConfig.getTackle(SIZE, this.property)
+                new PointToward(this.property),
+                SlimeGreyConfig.getTackle(SIZE, this.property),
         };
     }
 
